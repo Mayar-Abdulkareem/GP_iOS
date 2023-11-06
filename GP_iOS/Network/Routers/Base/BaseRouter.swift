@@ -10,6 +10,6 @@ import Alamofire
 
 /// Protocol for API routers
 protocol BaseRouter: URLRequestConvertible {
-
+    
 }
 
