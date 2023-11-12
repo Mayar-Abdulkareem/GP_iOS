@@ -1,14 +1,14 @@
 //
-//  LoginVC.swift
+//  LoginViewController.swift
 //  GP_iOS
 //
-//  Created by FTS on 05/11/2023.
+//  Created by FTS on 12/11/2023.
 //
 
 import UIKit
 
-class LoginVC: UIViewController {
-    
+class LoginViewController: UIViewController {
+
     weak var coordinator: LoginCoordinator?
 
     override func viewDidLoad() {

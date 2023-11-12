@@ -28,7 +28,7 @@ class MainCoordinator: Coordinator {
     private func showLoginFlow() {
         let coordinator = LoginCoordinator(navigationController: navigationController)
         coordinator.parentCoordinator = self
-        self.childCoordinators.append(coordinator)
+        childCoordinators.append(coordinator)
         coordinator.start()
     }
 }

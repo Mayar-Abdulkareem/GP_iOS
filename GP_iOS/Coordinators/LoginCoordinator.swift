@@ -24,8 +24,8 @@ class LoginCoordinator: Coordinator {
     
     /// Present the ``LoginVC``
     private func showLoginViewController() {
-        let destVC = LoginVC()
-        destVC.coordinator = self
-        navigationController.pushViewController(destVC, animated: false)
+        let loginViewController = LoginViewController()
+        loginViewController.coordinator = self
+        navigationController.pushViewController(loginViewController, animated: false)
     }
 }
