@@ -23,6 +23,7 @@
 		2F5B06A62AF979F60075D083 /* BaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5B06A52AF979F60075D083 /* BaseClient.swift */; };
 		2F5B06A92AF97DF00075D083 /* NetworkConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5B06A82AF97DF00075D083 /* NetworkConstant.swift */; };
 		2F5B06B12B02231F0075D083 /* BaseUnitRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5B06B02B02231F0075D083 /* BaseUnitRouter.swift */; };
+		2F5B06AD2AF996E10075D083 /* UserDefaultStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5B06AC2AF996E10075D083 /* UserDefaultStorage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		2F5B06A52AF979F60075D083 /* BaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseClient.swift; sourceTree = "<group>"; };
 		2F5B06A82AF97DF00075D083 /* NetworkConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstant.swift; sourceTree = "<group>"; };
 		2F5B06B02B02231F0075D083 /* BaseUnitRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUnitRouter.swift; sourceTree = "<group>"; };
+		2F5B06AC2AF996E10075D083 /* UserDefaultStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultStorage.swift; sourceTree = "<group>"; };
 		3B79D20A1AC8A7967C76ABF4 /* Pods-GP_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GP_iOS.debug.xcconfig"; path = "Target Support Files/Pods-GP_iOS/Pods-GP_iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		A0417F91EF6796DE5F43F4A7 /* Pods-GP_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GP_iOS.release.xcconfig"; path = "Target Support Files/Pods-GP_iOS/Pods-GP_iOS.release.xcconfig"; sourceTree = "<group>"; };
 		BA1F783B8298801C30A3BA09 /* Pods_GP_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GP_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,6 +86,7 @@
 				2F5B06A72AF97DD50075D083 /* Constants */,
 				2F5B06902AF95AD30075D083 /* Model */,
 				2F5B068B2AF952BE0075D083 /* Network */,
+				2F5B06AA2AF9968D0075D083 /* Utilities */,
 				2F5B06652AF7A0340075D083 /* AppDelegate.swift */,
 				2F5B06672AF7A0340075D083 /* SceneDelegate.swift */,
 				2F5B06692AF7A0340075D083 /* ViewController.swift */,
@@ -195,6 +198,20 @@
 				2F5B06A82AF97DF00075D083 /* NetworkConstant.swift */,
 			);
 			path = Constants;
+		2F5B06AA2AF9968D0075D083 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				2F5B06AB2AF996A10075D083 /* LocalDatabase */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		2F5B06AB2AF996A10075D083 /* LocalDatabase */ = {
+			isa = PBXGroup;
+			children = (
+				2F5B06AC2AF996E10075D083 /* UserDefaultStorage.swift */,
+			);
+			path = LocalDatabase;
 			sourceTree = "<group>";
 		};
 		BDD64D1FE57A09686C945A68 /* Frameworks */ = {
@@ -331,6 +348,7 @@
 			files = (
 				2F5B06A42AF96F370075D083 /* Administrator.swift in Sources */,
 				2F5B06A62AF979F60075D083 /* BaseClient.swift in Sources */,
+				2F5B06AD2AF996E10075D083 /* UserDefaultStorage.swift in Sources */,
 				2F5B066A2AF7A0340075D083 /* ViewController.swift in Sources */,
 				2F5B06B12B02231F0075D083 /* BaseUnitRouter.swift in Sources */,
 				2F5B06962AF95D740075D083 /* BaseRouter.swift in Sources */,
