@@ -5,7 +5,5 @@ Pods/
 Podfile.lock
 
 #Ignore User specific files 
-xcuserdata
+xcuserdata/
 codesigndoc_exports/
-GP_iOS.xcodeproj/xcuserdata/* 
-GP_iOS.xcworkspace/xcuserdata/* 
