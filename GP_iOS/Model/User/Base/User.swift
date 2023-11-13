@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-class User: Codable {
-    let regNumber: String
-    let password: String
+protocol User {
+    var regNumber: String { get set }
+    var password: String { get set }
 }

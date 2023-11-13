@@ -7,6 +7,7 @@
 
 import Foundation
 
-class Teacher: User {
-
+struct Teacher: User {
+    var regNumber: String
+    var password: String
 }

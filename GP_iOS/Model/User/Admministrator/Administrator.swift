@@ -7,6 +7,7 @@
 
 import Foundation
 
-class Administrator: User {
-    
+struct Administrator: User {
+    var regNumber: String
+    var password: String
 }
