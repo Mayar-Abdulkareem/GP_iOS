@@ -22,19 +22,17 @@ class BaseClient {
      - router: The router that defines the API endpoint, method, and parameters.
      - completion: A closure to be executed when the request completes, providing a `Result` with the decoded data or an `AFError` in case of failure.
      */
-    func performRequest<T: Codable> (
-        router: BaseRouter,
-        completion: @escaping (Result<T, AFError>) -> ()) {
-            
-            AF.request(router)
-                .validate()
-                .responseDecodable(of: T.self) { response in
-                    switch response.result {
-                    case .success(let data):
-                        completion(.success(data))
-                    case .failure(let error):
-                        completion(.failure(error))
-                    }
+    func performRequest<T: Codable> (router: BaseRouter,
+                                     completion: @escaping (Result<T, AFError>) -> ()) {
+        AF.request(router)
+            .validate()
+            .responseDecodable(of: T.self) { response in
+                switch response.result {
+                case .success(let data):
+                    completion(.success(data))
+                case .failure(let error):
+                    completion(.failure(error))
                 }
-        }
+            }
+    }
 }

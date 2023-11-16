@@ -8,7 +8,7 @@
 
 import Alamofire
 
-enum LoginRouter: BaseUnitRouter {
+enum LoginRouter: BaseRouter {
     
     // MARK: Cases
     

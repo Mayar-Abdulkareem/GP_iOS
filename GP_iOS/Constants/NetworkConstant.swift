@@ -8,6 +8,6 @@
 import Foundation
 
 struct NetworkConstant {
-    static let loginBaseURL = ""
+    static let loginEndpointURL = ""
     static var baseURL = ""
 }
