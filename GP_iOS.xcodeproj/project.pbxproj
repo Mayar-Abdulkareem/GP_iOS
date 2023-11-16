@@ -16,6 +16,10 @@
 		2F4490C12B05814B002B6975 /* BaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4490C02B05814B002B6975 /* BaseClient.swift */; };
 		2F4490C52B058186002B6975 /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4490C42B058186002B6975 /* BaseRouter.swift */; };
 		2F4490C92B0581C1002B6975 /* LoginLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4490C82B0581C1002B6975 /* LoginLayer.swift */; };
+		2F4490A52B0578BA002B6975 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4490A42B0578BA002B6975 /* LoginViewController.swift */; };
+		2F4490A72B0578E3002B6975 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4490A62B0578E3002B6975 /* Coordinator.swift */; };
+		2F4490A92B057906002B6975 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4490A82B057906002B6975 /* MainCoordinator.swift */; };
+		2F4490AB2B05791E002B6975 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4490AA2B05791E002B6975 /* LoginCoordinator.swift */; };
 		2F5B06662AF7A0340075D083 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5B06652AF7A0340075D083 /* AppDelegate.swift */; };
 		2F5B06682AF7A0340075D083 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5B06672AF7A0340075D083 /* SceneDelegate.swift */; };
 		2F5B066A2AF7A0340075D083 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5B06692AF7A0340075D083 /* ViewController.swift */; };
@@ -34,6 +38,10 @@
 		2F4490C02B05814B002B6975 /* BaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseClient.swift; sourceTree = "<group>"; };
 		2F4490C42B058186002B6975 /* BaseRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
 		2F4490C82B0581C1002B6975 /* LoginLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginLayer.swift; sourceTree = "<group>"; };
+		2F4490A42B0578BA002B6975 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		2F4490A62B0578E3002B6975 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		2F4490A82B057906002B6975 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		2F4490AA2B05791E002B6975 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		2F5B06622AF7A0340075D083 /* GP_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GP_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F5B06652AF7A0340075D083 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F5B06672AF7A0340075D083 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -151,6 +159,33 @@
 				2F4490C82B0581C1002B6975 /* LoginLayer.swift */,
 			);
 			path = Layers;
+            sourceTree = "<group>";
+        };
+
+		2F4490A12B05788E002B6975 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				2F4490A62B0578E3002B6975 /* Coordinator.swift */,
+				2F4490A82B057906002B6975 /* MainCoordinator.swift */,
+				2F4490AA2B05791E002B6975 /* LoginCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		2F4490A22B0578A1002B6975 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				2F4490A32B0578AC002B6975 /* Login */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		2F4490A32B0578AC002B6975 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				2F4490A42B0578BA002B6975 /* LoginViewController.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		2F5B06592AF7A0340075D083 = {
@@ -177,6 +212,8 @@
 				2F4490BD2B058117002B6975 /* Network */,
 				2F4490BA2B0580E3002B6975 /* Constants */,
 				2F4490AC2B057F37002B6975 /* Models */,
+				2F4490A22B0578A1002B6975 /* Screens */,
+				2F4490A12B05788E002B6975 /* Coordinators */,
 				2F5B06AA2AF9968D0075D083 /* Utilities */,
 				2F5B06652AF7A0340075D083 /* AppDelegate.swift */,
 				2F5B06672AF7A0340075D083 /* SceneDelegate.swift */,
@@ -340,11 +377,15 @@
 				2F5B06AD2AF996E10075D083 /* UserDefaultStorage.swift in Sources */,
 				2F4490C12B05814B002B6975 /* BaseClient.swift in Sources */,
 				2F4490B32B057F9D002B6975 /* Student.swift in Sources */,
+				2F4490A92B057906002B6975 /* MainCoordinator.swift in Sources */,
 				2F5B066A2AF7A0340075D083 /* ViewController.swift in Sources */,
+				2F4490A72B0578E3002B6975 /* Coordinator.swift in Sources */,
 				2F5B06662AF7A0340075D083 /* AppDelegate.swift in Sources */,
 				2F4490B02B057F66002B6975 /* User.swift in Sources */,
 				2F4490B62B058094002B6975 /* Teacher.swift in Sources */,
 				2F4490C52B058186002B6975 /* BaseRouter.swift in Sources */,
+				2F4490A52B0578BA002B6975 /* LoginViewController.swift in Sources */,
+				2F4490AB2B05791E002B6975 /* LoginCoordinator.swift in Sources */,
 				2F5B06682AF7A0340075D083 /* SceneDelegate.swift in Sources */,
 				2F4490BC2B0580FB002B6975 /* NetworkConstant.swift in Sources */,
 				2F4490B92B0580BF002B6975 /* Administrator.swift in Sources */,
