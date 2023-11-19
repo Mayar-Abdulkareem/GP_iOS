@@ -12,6 +12,14 @@
 		2F4490A72B0578E3002B6975 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4490A62B0578E3002B6975 /* Coordinator.swift */; };
 		2F4490A92B057906002B6975 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4490A82B057906002B6975 /* MainCoordinator.swift */; };
 		2F4490AB2B05791E002B6975 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4490AA2B05791E002B6975 /* LoginCoordinator.swift */; };
+		2F4490CC2B08FD14002B6975 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4490CA2B08FD14002B6975 /* TestViewController.swift */; };
+		2F4490CD2B08FD14002B6975 /* TestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F4490CB2B08FD14002B6975 /* TestViewController.xib */; };
+		2F4490D22B094C17002B6975 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4490D12B094C17002B6975 /* UIImageExtension.swift */; };
+		2F4490D42B095A79002B6975 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4490D32B095A79002B6975 /* UIColorExtension.swift */; };
+		2F4490D62B095CAB002B6975 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F4490D52B095CAB002B6975 /* Colors.xcassets */; };
+		2F4490D92B097717002B6975 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4490D82B097717002B6975 /* CustomTextField.swift */; };
+		2F4490DB2B098D3B002B6975 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4490DA2B098D3B002B6975 /* CustomButton.swift */; };
+		2F4490E02B0A3541002B6975 /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4490DF2B0A3541002B6975 /* LogoView.swift */; };
 		2F5B06662AF7A0340075D083 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5B06652AF7A0340075D083 /* AppDelegate.swift */; };
 		2F5B06682AF7A0340075D083 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5B06672AF7A0340075D083 /* SceneDelegate.swift */; };
 		2F5B066A2AF7A0340075D083 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5B06692AF7A0340075D083 /* ViewController.swift */; };
@@ -26,6 +34,14 @@
 		2F4490A62B0578E3002B6975 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		2F4490A82B057906002B6975 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		2F4490AA2B05791E002B6975 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
+		2F4490CA2B08FD14002B6975 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TestViewController.swift; path = GP_iOS/Screens/TestViewController.swift; sourceTree = SOURCE_ROOT; };
+		2F4490CB2B08FD14002B6975 /* TestViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TestViewController.xib; path = GP_iOS/Screens/TestViewController.xib; sourceTree = SOURCE_ROOT; };
+		2F4490D12B094C17002B6975 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
+		2F4490D32B095A79002B6975 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		2F4490D52B095CAB002B6975 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		2F4490D82B097717002B6975 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		2F4490DA2B098D3B002B6975 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		2F4490DF2B0A3541002B6975 /* LogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoView.swift; sourceTree = "<group>"; };
 		2F5B06622AF7A0340075D083 /* GP_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GP_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F5B06652AF7A0340075D083 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F5B06672AF7A0340075D083 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +81,8 @@
 		2F4490A22B0578A1002B6975 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				2F4490CA2B08FD14002B6975 /* TestViewController.swift */,
+				2F4490CB2B08FD14002B6975 /* TestViewController.xib */,
 				2F4490A32B0578AC002B6975 /* Login */,
 			);
 			path = Screens;
@@ -76,6 +94,49 @@
 				2F4490A42B0578BA002B6975 /* LoginViewController.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		2F4490D02B094BE9002B6975 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2F4490D12B094C17002B6975 /* UIImageExtension.swift */,
+				2F4490D32B095A79002B6975 /* UIColorExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		2F4490D72B0976D2002B6975 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2F4490DE2B0A351E002B6975 /* Views */,
+				2F4490DD2B0A350C002B6975 /* TextFields */,
+				2F4490DC2B0A3502002B6975 /* Buttons */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		2F4490DC2B0A3502002B6975 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				2F4490DA2B098D3B002B6975 /* CustomButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		2F4490DD2B0A350C002B6975 /* TextFields */ = {
+			isa = PBXGroup;
+			children = (
+				2F4490D82B097717002B6975 /* CustomTextField.swift */,
+			);
+			path = TextFields;
+			sourceTree = "<group>";
+		};
+		2F4490DE2B0A351E002B6975 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2F4490DF2B0A3541002B6975 /* LogoView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		2F5B06592AF7A0340075D083 = {
@@ -99,6 +160,8 @@
 		2F5B06642AF7A0340075D083 /* GP_iOS */ = {
 			isa = PBXGroup;
 			children = (
+				2F4490D72B0976D2002B6975 /* Views */,
+				2F4490D02B094BE9002B6975 /* Extensions */,
 				2F4490A22B0578A1002B6975 /* Screens */,
 				2F4490A12B05788E002B6975 /* Coordinators */,
 				2F5B06AA2AF9968D0075D083 /* Utilities */,
@@ -107,6 +170,7 @@
 				2F5B06692AF7A0340075D083 /* ViewController.swift */,
 				2F5B066B2AF7A0340075D083 /* Main.storyboard */,
 				2F5B066E2AF7A0370075D083 /* Assets.xcassets */,
+				2F4490D52B095CAB002B6975 /* Colors.xcassets */,
 				2F5B06702AF7A0370075D083 /* LaunchScreen.storyboard */,
 				2F5B06732AF7A0370075D083 /* Info.plist */,
 			);
@@ -206,8 +270,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F4490D62B095CAB002B6975 /* Colors.xcassets in Resources */,
 				2F5B06722AF7A0370075D083 /* LaunchScreen.storyboard in Resources */,
 				2F5B066F2AF7A0370075D083 /* Assets.xcassets in Resources */,
+				2F4490CD2B08FD14002B6975 /* TestViewController.xib in Resources */,
 				2F5B066D2AF7A0340075D083 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -261,13 +327,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F4490DB2B098D3B002B6975 /* CustomButton.swift in Sources */,
 				2F5B06AD2AF996E10075D083 /* UserDefaultStorage.swift in Sources */,
 				2F4490A92B057906002B6975 /* MainCoordinator.swift in Sources */,
+				2F4490D22B094C17002B6975 /* UIImageExtension.swift in Sources */,
 				2F5B066A2AF7A0340075D083 /* ViewController.swift in Sources */,
 				2F4490A72B0578E3002B6975 /* Coordinator.swift in Sources */,
 				2F5B06662AF7A0340075D083 /* AppDelegate.swift in Sources */,
 				2F4490A52B0578BA002B6975 /* LoginViewController.swift in Sources */,
+				2F4490E02B0A3541002B6975 /* LogoView.swift in Sources */,
 				2F4490AB2B05791E002B6975 /* LoginCoordinator.swift in Sources */,
+				2F4490D92B097717002B6975 /* CustomTextField.swift in Sources */,
+				2F4490D42B095A79002B6975 /* UIColorExtension.swift in Sources */,
+				2F4490CC2B08FD14002B6975 /* TestViewController.swift in Sources */,
 				2F5B06682AF7A0340075D083 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
