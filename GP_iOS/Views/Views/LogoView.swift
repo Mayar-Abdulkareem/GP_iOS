@@ -10,16 +10,27 @@ import UIKit
 class LogoView: UIView {
     let symbolImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         imageView.tintColor = .white
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
     let textLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 40, weight: .bold)
+        label.font = UIFont.systemFont(ofSize: 30, weight: .bold)
         label.textColor = .white
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
+    }()
+    
+    let stackView: UIStackView = {
+        let sv = UIStackView()
+        sv.axis = .horizontal
+        sv.spacing = 10
+        sv.translatesAutoresizingMaskIntoConstraints = false
+        return sv
     }()
     
     init(symbolName: String, logoText: String) {
@@ -27,10 +38,18 @@ class LogoView: UIView {
         
         symbolImageView.image = UIImage(systemName: symbolName)
         textLabel.text = logoText
-        textLabel.textAlignment = .center
+        stackView.addArrangedSubview(symbolImageView)
+        stackView.addArrangedSubview(textLabel)
+        contentMode = .center
+        translatesAutoresizingMaskIntoConstraints = false
+        addSubview(stackView)
         
-        addSubview(symbolImageView)
-        addSubview(textLabel)
+        NSLayoutConstraint.activate([
+            stackView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            stackView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            symbolImageView.widthAnchor.constraint(equalToConstant: 30),
+            symbolImageView.heightAnchor.constraint(equalToConstant: 30),
+        ])
     }
     
     required init?(coder: NSCoder) {

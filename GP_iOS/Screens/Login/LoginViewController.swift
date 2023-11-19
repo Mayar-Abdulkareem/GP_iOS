@@ -33,7 +33,7 @@ class LoginViewController: UIViewController {
         configureLoginImages()
         configureLoginView()
         configureLoginBackground()
-        configureLoginLogLabel()
+        configureLoginLabel()
         configureLoginWelcomeMessageLabel()
         configureLoginForm()
         configureTogglePassword()
@@ -105,23 +105,18 @@ class LoginViewController: UIViewController {
     }
     
     /// Configure the logo and its constraints
-    private func configureLoginLogLabel() {
+    private func configureLoginLabel() {
         
         let logoLabel = LogoView(symbolName: "book", logoText: "NNU")
+        logoLabel.backgroundColor = .black
         
         // MARK: properities
-//        logoLabel.translatesAutoresizingMaskIntoConstraints = false
-//        logoLabel.text = "NNU"
-//        logoLabel.textAlignment = .center
-//        logoLabel.textColor = .white
-//        logoLabel.numberOfLines = 0
-//        logoLabel.font = UIFont.boldSystemFont(ofSize: 30.0)
         view.addSubview(logoLabel)
         
         // MARK: Constraints
         NSLayoutConstraint.activate([
             logoLabel.centerXAnchor.constraint(equalTo: loginView.centerXAnchor),
-            logoLabel.centerYAnchor.constraint(equalTo: loginView.centerYAnchor, constant: 20)
+            logoLabel.centerYAnchor.constraint(equalTo: loginView.centerYAnchor, constant: 40)
         ])
     }
     
@@ -180,7 +175,7 @@ class LoginViewController: UIViewController {
         togglePasswordButton.translatesAutoresizingMaskIntoConstraints = false
         togglePasswordButton.addTarget(self, action: #selector(togglePasswordVisibility), for: .touchUpInside)
         if let tintColor = UIColor(named: .gray) {
-            togglePasswordButton.tintColor = .tintColor
+            togglePasswordButton.tintColor = tintColor
 
         } else {
             togglePasswordButton.tintColor = UIColor.white
