@@ -27,6 +27,8 @@
 		2F5B066F2AF7A0370075D083 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F5B066E2AF7A0370075D083 /* Assets.xcassets */; };
 		2F5B06722AF7A0370075D083 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F5B06702AF7A0370075D083 /* LaunchScreen.storyboard */; };
 		2F5B06AD2AF996E10075D083 /* UserDefaultStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5B06AC2AF996E10075D083 /* UserDefaultStorage.swift */; };
+		2F7031022B0CE39E00FBB5D6 /* TopAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7031002B0CE39E00FBB5D6 /* TopAlertView.swift */; };
+		2F7031032B0CE39E00FBB5D6 /* TopAlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7031012B0CE39E00FBB5D6 /* TopAlertManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +53,8 @@
 		2F5B06712AF7A0370075D083 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2F5B06732AF7A0370075D083 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2F5B06AC2AF996E10075D083 /* UserDefaultStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultStorage.swift; sourceTree = "<group>"; };
+		2F7031002B0CE39E00FBB5D6 /* TopAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopAlertView.swift; sourceTree = "<group>"; };
+		2F7031012B0CE39E00FBB5D6 /* TopAlertManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopAlertManager.swift; sourceTree = "<group>"; };
 		3B79D20A1AC8A7967C76ABF4 /* Pods-GP_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GP_iOS.debug.xcconfig"; path = "Target Support Files/Pods-GP_iOS/Pods-GP_iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		A0417F91EF6796DE5F43F4A7 /* Pods-GP_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GP_iOS.release.xcconfig"; path = "Target Support Files/Pods-GP_iOS/Pods-GP_iOS.release.xcconfig"; sourceTree = "<group>"; };
 		BA1F783B8298801C30A3BA09 /* Pods_GP_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GP_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -160,6 +164,7 @@
 		2F5B06642AF7A0340075D083 /* GP_iOS */ = {
 			isa = PBXGroup;
 			children = (
+				2F7030FF2B0CE37D00FBB5D6 /* TopAlert */,
 				2F4490D72B0976D2002B6975 /* Views */,
 				2F4490D02B094BE9002B6975 /* Extensions */,
 				2F4490A22B0578A1002B6975 /* Screens */,
@@ -191,6 +196,15 @@
 				2F5B06AC2AF996E10075D083 /* UserDefaultStorage.swift */,
 			);
 			path = LocalDatabase;
+			sourceTree = "<group>";
+		};
+		2F7030FF2B0CE37D00FBB5D6 /* TopAlert */ = {
+			isa = PBXGroup;
+			children = (
+				2F7031012B0CE39E00FBB5D6 /* TopAlertManager.swift */,
+				2F7031002B0CE39E00FBB5D6 /* TopAlertView.swift */,
+			);
+			path = TopAlert;
 			sourceTree = "<group>";
 		};
 		BDD64D1FE57A09686C945A68 /* Frameworks */ = {
@@ -333,8 +347,10 @@
 				2F4490D22B094C17002B6975 /* UIImageExtension.swift in Sources */,
 				2F5B066A2AF7A0340075D083 /* ViewController.swift in Sources */,
 				2F4490A72B0578E3002B6975 /* Coordinator.swift in Sources */,
+				2F7031032B0CE39E00FBB5D6 /* TopAlertManager.swift in Sources */,
 				2F5B06662AF7A0340075D083 /* AppDelegate.swift in Sources */,
 				2F4490A52B0578BA002B6975 /* LoginViewController.swift in Sources */,
+				2F7031022B0CE39E00FBB5D6 /* TopAlertView.swift in Sources */,
 				2F4490E02B0A3541002B6975 /* LogoView.swift in Sources */,
 				2F4490AB2B05791E002B6975 /* LoginCoordinator.swift in Sources */,
 				2F4490D92B097717002B6975 /* CustomTextField.swift in Sources */,

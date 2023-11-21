@@ -20,17 +20,9 @@ class CustomButton: UIButton {
     
     private func setUpButton(buttonText: String) {
         setTitle(buttonText, for: .normal)
-        if let fontColor = UIColor(named: .primary) {
-            setTitleColor(fontColor, for: .normal)
-        } else {
-            setTitleColor(.white, for: .normal)
-        }
+        setTitleColor(UIColor(named: .primary), for: .normal)
         titleLabel?.font = UIFont.boldSystemFont(ofSize: UIFont.systemFontSize)
-        if let buttonBackgroundColor = UIColor(named: .secondary) {
-            backgroundColor = buttonBackgroundColor
-        } else {
-            backgroundColor = .green
-        }
+        backgroundColor = UIColor(named: .secondary)
         layer.cornerRadius = 8
         heightAnchor.constraint(equalToConstant: 45).isActive = true
     }

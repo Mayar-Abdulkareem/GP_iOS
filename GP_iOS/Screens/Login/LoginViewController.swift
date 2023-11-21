@@ -24,8 +24,9 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         connfigureUI()
-        fillLoginImagesArray()
-        timer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(changeImage), userInfo: nil, repeats: true)
+        loginButton.addAction(UIAction { [weak self] _ in
+            TopAlertManager.show(title: "error", subTitle: "anything", type: .info)
+        }, for: .primaryActionTriggered)
     }
     
     /// Configure the UI of the login screen
@@ -44,11 +45,7 @@ class LoginViewController: UIViewController {
         
         // MARK: properities
         loginImageView.translatesAutoresizingMaskIntoConstraints = false
-        if let image = UIImage(named: .loginImage0) {
-            loginImageView.image = image
-        } else {
-            print("Image not found!")
-        }
+        loginImageView.image = UIImage(named: .loginImage)
         view.addSubview(loginImageView)
         
         // MARK: Constraints
@@ -65,11 +62,7 @@ class LoginViewController: UIViewController {
         
         // MARK: properities
         loginView.translatesAutoresizingMaskIntoConstraints = false
-        if let color = UIColor(named: .secondary) {
-            loginView.backgroundColor = color.withAlphaComponent(0.8)
-        } else {
-            loginView.backgroundColor = .black.withAlphaComponent(0.8)
-        }
+        loginView.backgroundColor = UIColor(named: .secondary).withAlphaComponent(0.8)
         view.addSubview(loginView)
         
         // MARK: Constraints
@@ -88,11 +81,8 @@ class LoginViewController: UIViewController {
         
         // MARK: properities
         loginBackground.translatesAutoresizingMaskIntoConstraints = false
-        if let image = UIImage(named: .loginBackground) {
-            loginBackground.image = image
-        } else {
-            print("Image not found!")
-        }
+        loginBackground.image = UIImage(named: .loginBackground)
+
         view.addSubview(loginBackground)
         
         // MARK: Constraints
@@ -147,7 +137,7 @@ class LoginViewController: UIViewController {
         let stackView = UIStackView(arrangedSubviews: [registrationIDTextField, passwordTextField, loginButton])
                 
         // MARK: properities
-        //registrationIDTextField.keyboardType = .numberPad
+        registrationIDTextField.keyboardType = .numberPad
         passwordTextField.isSecureTextEntry = true
         
         stackView.axis = .vertical
@@ -170,16 +160,12 @@ class LoginViewController: UIViewController {
     private func configureTogglePassword() {
         
         // MARK: Properities
-        togglePasswordButton.setImage(UIImage(systemName: "eye.slash"), for: .normal)
-        togglePasswordButton.setImage(UIImage(systemName: "eye"), for: .selected)
+        togglePasswordButton.setImage(UIImage.SystemImages.slashFillEye.image, for: .normal)
+        togglePasswordButton.setImage(UIImage.SystemImages.fillEye.image, for: .selected)
         togglePasswordButton.translatesAutoresizingMaskIntoConstraints = false
         togglePasswordButton.addTarget(self, action: #selector(togglePasswordVisibility), for: .touchUpInside)
-        if let tintColor = UIColor(named: .gray) {
-            togglePasswordButton.tintColor = tintColor
-
-        } else {
-            togglePasswordButton.tintColor = UIColor.white
-        }
+        togglePasswordButton.tintColor = UIColor(named: .gray)
+        
         view.addSubview(togglePasswordButton)
         
         // MARK: Constraints
@@ -189,21 +175,6 @@ class LoginViewController: UIViewController {
             togglePasswordButton.widthAnchor.constraint(equalToConstant: 45),
             togglePasswordButton.heightAnchor.constraint(equalToConstant: 45)
         ])
-    }
-    
-    /// Fill the loginImagesArray
-    private func fillLoginImagesArray() {
-        loginImages = ImageName.loginImagesCases
-            .compactMap { UIImage(named: $0) }
-    }
-    
-    /// Change the image every 2 seconds
-    @objc func changeImage() {
-        if loginImageIndex == loginImages.count - 1 {
-            loginImageIndex = 0
-        }
-        loginImageView.image = loginImages[loginImageIndex]
-        loginImageIndex += 1
     }
     
     /// Handle the toggle password event

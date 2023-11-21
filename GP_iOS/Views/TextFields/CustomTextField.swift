@@ -30,19 +30,11 @@ class CustomTextField: UITextField {
         borderStyle = .none
         let bottomLine = CALayer()
         bottomLine.frame = CGRect(x: 0.0, y: frame.size.height + 10, width: frame.size.width, height: 1.0)
-        if let color = UIColor(named: .gray) {
-            bottomLine.backgroundColor = color.cgColor
-        } else {
-            bottomLine.backgroundColor = UIColor.black.cgColor
-        }
+        bottomLine.backgroundColor = UIColor(named: .gray).cgColor
         layer.addSublayer(bottomLine)
         
         // cursor color
-        if let cursorColor = UIColor(named: .secondary) {
-            tintColor = cursorColor
-        } else {
-            tintColor = .black
-        }
+        tintColor = UIColor(named: .secondary)
     }
     
     override func textRect(forBounds bounds: CGRect) -> CGRect {

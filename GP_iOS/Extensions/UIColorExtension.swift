@@ -16,7 +16,7 @@ enum ColorName: String {
 
 extension UIColor {
     /// Function to create a UIColor from an asset name
-    convenience init?(named colorName: ColorName) {
-        self.init(named: colorName.rawValue)
+    convenience init(named colorName: ColorName) {
+        self.init(named: colorName.rawValue)!
     }
 }
