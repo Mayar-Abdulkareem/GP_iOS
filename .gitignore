@@ -1,9 +1,9 @@
 .DS_Store
 
 # User settings
- xcuserdata/
- GP_iOS.xcworkspace
+xcuserdata/
+GP_iOS.xcworkspace
 
 # CocoaPods
- Pods/
- Podfile.lock
+Pods/
+Podfile.lock
