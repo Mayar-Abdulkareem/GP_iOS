@@ -23,18 +23,18 @@ class CustomTextField: UITextField {
         setupTextField()
     }
     
-    /// congigure the CustomTextField
+    /// configure the CustomTextField
     private func setupTextField() {
         
         // border
         borderStyle = .none
         let bottomLine = CALayer()
         bottomLine.frame = CGRect(x: 0.0, y: frame.size.height + 10, width: frame.size.width, height: 1.0)
-        bottomLine.backgroundColor = UIColor(named: .gray).cgColor
+        bottomLine.backgroundColor = UIColor(resource: .gray).cgColor
         layer.addSublayer(bottomLine)
         
         // cursor color
-        tintColor = UIColor(named: .secondary)
+        tintColor = UIColor(resource: .secondary)
     }
     
     override func textRect(forBounds bounds: CGRect) -> CGRect {

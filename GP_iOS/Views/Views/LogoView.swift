@@ -7,12 +7,16 @@
 
 import UIKit
 
+/// A custom logo view
+/// - Parameters:
+///  - symbolImage: The logo image
+///  - logoText: The logo title (Label text)
 class LogoView: UIView {
+    
     let symbolImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
-        imageView.tintColor = .white
-        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.tintColor = UIColor(resource: .primary)
         return imageView
     }()
     
@@ -21,7 +25,6 @@ class LogoView: UIView {
         label.font = UIFont.systemFont(ofSize: 30, weight: .bold)
         label.textColor = .white
         label.textAlignment = .center
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -29,30 +32,47 @@ class LogoView: UIView {
         let sv = UIStackView()
         sv.axis = .horizontal
         sv.spacing = 10
-        sv.translatesAutoresizingMaskIntoConstraints = false
         return sv
     }()
     
-    init(symbolName: String, logoText: String) {
+    init(symbolImage: UIImage, logoText: String) {
         super.init(frame: .zero)
-        
-        symbolImageView.image = UIImage(systemName: symbolName)
+        addViews()
+        setUpConstraints()
+        symbolImageView.image = symbolImage
         textLabel.text = logoText
-        stackView.addArrangedSubview(symbolImageView)
-        stackView.addArrangedSubview(textLabel)
-        contentMode = .center
-        translatesAutoresizingMaskIntoConstraints = false
-        addSubview(stackView)
-        
-        NSLayoutConstraint.activate([
-            stackView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            stackView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            symbolImageView.widthAnchor.constraint(equalToConstant: 30),
-            symbolImageView.heightAnchor.constraint(equalToConstant: 30),
-        ])
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func addViews() {
+        
+        addSubview(stackView)
+        
+        if UIView.userInterfaceLayoutDirection(for: stackView.semanticContentAttribute) == .rightToLeft {
+            stackView.addArrangedSubview(textLabel)
+            stackView.addArrangedSubview(symbolImageView)
+        } else {
+            stackView.addArrangedSubview(symbolImageView)
+            stackView.addArrangedSubview(textLabel)
+        }
+        
+        [self, symbolImageView, textLabel, stackView].forEach {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+        }
+    }
+    
+    private func setUpConstraints() {
+        
+        NSLayoutConstraint.activate([
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            stackView.topAnchor.constraint(equalTo: topAnchor),
+            stackView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            symbolImageView.widthAnchor.constraint(equalToConstant: 30),
+            symbolImageView.heightAnchor.constraint(equalToConstant: 30),
+        ])
     }
 }
