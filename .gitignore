@@ -1,9 +1,11 @@
-.DS_Store
-
-# User settings
-xcuserdata/
-GP_iOS.xcworkspace
-
-# CocoaPods
+#Ignore CocoaPods
 Pods/
 Podfile.lock
+
+#Ignore User specific files
+xcuserdata
+codesigndoc_exports/
+
+#DerivedData
+DerivedData/
+
