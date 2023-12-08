@@ -16,6 +16,24 @@ extension String {
         case loginButtonKey
         case logoText
         
+        /// Top Alert
+        /// - Title:
+        case infoTitle
+        case errorTitle
+        /// - Subtitle:
+        case fillAllFieldsMsg
+        case unauthenticatedSubtitle
+        /// Tab Bar Menue
+        /// - Title:
+        case homeTitle
+        case searchTitle
+        case storeTitle
+        case moreTitle
+        case profileTitle
+        case registerTitle
+        case announcementTitle
+        case logoutTitle
+        
         var localized: String {
             return String(localizedKey: self)
         }

@@ -16,7 +16,12 @@ protocol BaseRouter: URLRequestConvertible {
 }
 
 extension BaseRouter {
-    /// Retums a URLRequest object based an the provided path, method, and parameter
+    
+    var defaultHeaders: HTTPHeaders {
+        return ["Content-Type": "application/json"]
+    }
+    
+    /// Returns a URLRequest object based an the provided path, method, and parameter
     func asURLRequest() throws -> URLRequest {
         let url = try (NetworkConstant.baseURL +
                        self.path).asURL()
@@ -24,6 +29,9 @@ extension BaseRouter {
         
         // HTTP Method
         urlRequest.httpMethod = method.rawValue
+        
+        // Headers
+        urlRequest.headers = defaultHeaders
         
         // Parameters
         if let parameters = parameters {

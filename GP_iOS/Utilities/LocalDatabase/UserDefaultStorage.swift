@@ -9,7 +9,7 @@ import Foundation
 
 /// Keys used in the project for UserDefaults
 enum UserDefaultsKeys: String {
-    case theme
+    case accessToken
 }
 
 /// Storing and rerieving values for UserDefaults.

@@ -9,9 +9,16 @@ import UIKit
 
 class CustomTextField: UITextField {
     
-    init(withPlaceHolder placeHolderText: String) {
+    lazy var inset: UIEdgeInsets = {
+        return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+    }()
+    
+    init(withPlaceHolder placeHolderText: String, isPassword: Bool = false) {
         super.init(frame: .zero)
         placeholder = placeHolderText
+        if isPassword {
+            inset.right = 45
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -25,25 +32,22 @@ class CustomTextField: UITextField {
     
     /// configure the CustomTextField
     private func setupTextField() {
-        
         // border
         borderStyle = .none
         let bottomLine = CALayer()
         bottomLine.frame = CGRect(x: 0.0, y: frame.size.height + 10, width: frame.size.width, height: 1.0)
-        bottomLine.backgroundColor = UIColor(resource: .gray).cgColor
+        bottomLine.backgroundColor = UIColor.myGray.cgColor
         layer.addSublayer(bottomLine)
-        
+    
         // cursor color
-        tintColor = UIColor(resource: .secondary)
+        tintColor = UIColor.mySecondary
     }
     
     override func textRect(forBounds bounds: CGRect) -> CGRect {
-        let insetRect = bounds.inset(by: UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0))
-        return super.textRect(forBounds: insetRect)
+        return bounds.inset(by: inset)
     }
     
     override func editingRect(forBounds bounds: CGRect) -> CGRect {
-        let insetRect = bounds.inset(by: UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0))
-        return super.editingRect(forBounds: insetRect)
+        return bounds.inset(by: inset)
     }
 }

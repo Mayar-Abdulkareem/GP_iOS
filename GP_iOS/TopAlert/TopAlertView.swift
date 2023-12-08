@@ -2,7 +2,7 @@
 //  TopAlertView.swift
 //  Paycard
 //
-//  Created by Bassam Hillo on 08/11/2023.
+//  Created by FTS on 08/11/2023.
 //  Copyright © 2023 R365. All rights reserved.
 //
 
@@ -34,7 +34,7 @@ enum TopAlertType {
         case .success:
             return UIColor.green
         case .failure:
-            return UIColor.red
+            return UIColor(resource: .failure)
         case .info:
             return UIColor.orange.withAlphaComponent(0.9)
         }
@@ -82,7 +82,7 @@ class TopAlertView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 14)
         label.numberOfLines = 0
-        label.textColor = UIColor.gray
+        label.textColor = UIColor(resource: .subTitle)
         return label
     }()
     

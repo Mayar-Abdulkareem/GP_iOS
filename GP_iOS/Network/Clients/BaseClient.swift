@@ -2,7 +2,7 @@
 //  BaseClient.swift
 //  GP_iOS
 //
-//  Created by Mayar Abdulkareem - FTS on 06/11/2023.
+//  Created by FTS on 06/11/2023.
 //
 
 import Foundation
@@ -22,8 +22,11 @@ class BaseClient {
      - router: The router that defines the API endpoint, method, and parameters.
      - completion: A closure to be executed when the request completes, providing a `Result` with the decoded data or an `AFError` in case of failure.
      */
-    func performRequest<T: Codable> (router: BaseRouter,
-                                     completion: @escaping (Result<T, AFError>) -> ()) {
+    func performRequest<T: Codable> (
+        type: T.Type,
+        router: BaseRouter,
+        completion: @escaping (Result<T, AFError>) -> ()
+    ) {
         AF.request(router)
             .validate()
             .responseDecodable(of: T.self) { response in
@@ -31,6 +34,9 @@ class BaseClient {
                 case .success(let data):
                     completion(.success(data))
                 case .failure(let error):
+                    if let data = response.data, let jsonString = String(data: data, encoding: .utf8) {
+                        print("Response JSON: \(jsonString)")
+                    }
                     completion(.failure(error))
                 }
             }

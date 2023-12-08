@@ -8,6 +8,5 @@
 import Foundation
 
 struct NetworkConstant {
-    static let loginEndpointURL = ""
-    static var baseURL = ""
+    static var baseURL = "http://127.0.0.1:3001"
 }

@@ -16,15 +16,13 @@ class LogoView: UIView {
     let symbolImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
-        imageView.tintColor = UIColor(resource: .primary)
+        imageView.tintColor = UIColor.myPrimary
         return imageView
     }()
     
     let textLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 30, weight: .bold)
         label.textColor = .white
-        label.textAlignment = .center
         return label
     }()
     
@@ -35,12 +33,22 @@ class LogoView: UIView {
         return sv
     }()
     
-    init(symbolImage: UIImage, logoText: String) {
+    private var heightAndWidth: CGFloat
+    
+    init(
+        symbolImage: UIImage = UIImage.SystemImages.graduationCap.image,
+        logoText: String = String.LocalizedKeys.logoText.localized,
+        heightAndWidth: CGFloat = 30,
+        logoTextSize: CGFloat = 30,
+        weight: UIFont.Weight = .bold
+    ) {
+        self.heightAndWidth = heightAndWidth
         super.init(frame: .zero)
         addViews()
         setUpConstraints()
         symbolImageView.image = symbolImage
         textLabel.text = logoText
+        textLabel.font = UIFont.systemFont(ofSize: logoTextSize, weight: weight)
     }
     
     required init?(coder: NSCoder) {
@@ -59,20 +67,24 @@ class LogoView: UIView {
             stackView.addArrangedSubview(textLabel)
         }
         
-        [self, symbolImageView, textLabel, stackView].forEach {
+        [symbolImageView, textLabel, stackView].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
     }
     
     private func setUpConstraints() {
         
+        subviews.forEach{
+            $0.translatesAutoresizingMaskIntoConstraints = false
+        }
+        
         NSLayoutConstraint.activate([
             stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
             stackView.topAnchor.constraint(equalTo: topAnchor),
             stackView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            symbolImageView.widthAnchor.constraint(equalToConstant: 30),
-            symbolImageView.heightAnchor.constraint(equalToConstant: 30),
+            symbolImageView.widthAnchor.constraint(equalToConstant: heightAndWidth),
+            symbolImageView.heightAnchor.constraint(equalToConstant: heightAndWidth),
         ])
     }
 }

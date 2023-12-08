@@ -2,10 +2,15 @@
 //  MainCoordinator.swift
 //  GP_iOS
 //
-//  Created by Mayar Abdulkareem - FTS on 05/11/2023.
+//  Created by FTS on 05/11/2023.
 //
 
 import UIKit
+
+protocol MainCoordinatorProtocol{
+    func didFinishAuth()
+    func didLogout()
+}
 
 /// The initial coordinator that decide which ViewController will will be shown first
 class MainCoordinator: Coordinator {
@@ -21,7 +26,13 @@ class MainCoordinator: Coordinator {
     
     /// which screen will be shown first
     func start() {
-        showLoginFlow()
+        //AuthManager.shared.userAccessToken = nil
+        //print(AuthManager.shared.userAccessToken)
+        if AuthManager.shared.isUserAuthenticated {
+            showTabBarFlow()
+        } else {
+            showLoginFlow()
+        }
     }
     
     ///  Start ``LoginCordinator`` to present the Login page
@@ -30,5 +41,34 @@ class MainCoordinator: Coordinator {
         coordinator.parentCoordinator = self
         childCoordinators.append(coordinator)
         coordinator.start()
+    }
+    
+    /// Start ``TabBarCoordinator``  to present the Login page
+    func showTabBarFlow() {
+        let coordinator = TabBarCoordinator(navigationController: navigationController)
+        coordinator.parentCoordinator = self
+        childCoordinators.append(coordinator)
+        coordinator.start()
+    }
+}
+
+extension MainCoordinator: MainCoordinatorProtocol {
+    
+    /// Handles the necessary actions after the user has completed the authentication process.
+    /// This method clears the  navigation stack
+    func didFinishAuth() {
+        /// Clear the navigation stack
+        navigationController.setViewControllers([], animated: false)
+        childCoordinators.removeAll()
+        showTabBarFlow()
+    }
+    
+    /// Handles the necessary actions when the user logs out.
+    func didLogout() {
+        // Clear the navigation stack to ensure a clean state.
+        navigationController.setViewControllers([], animated: false)
+        childCoordinators.removeAll()
+        AuthManager.shared.userAccessToken = nil
+        showLoginFlow()
     }
 }

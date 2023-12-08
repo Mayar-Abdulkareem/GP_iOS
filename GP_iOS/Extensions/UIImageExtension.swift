@@ -19,6 +19,16 @@ extension UIImage {
         case info = "info.circle.fill"
         /// Logo
         case graduationCap = "graduationcap"
+        /// Tab Bar Menue
+        case home = "house.fill"
+        case search = "doc.text.magnifyingglass"
+        case store = "storefront.fill"
+        case more = "circle.grid.2x2.fill"
+        /// More
+        case profile = "person.fill"
+        case register = "square.and.pencil"
+        case announcement = "bell.and.waves.left.and.right.fill"
+        case logout = "power.circle"
         
         ///  Get image
         var image: UIImage {

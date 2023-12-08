@@ -2,7 +2,7 @@
 //  LoginCoordinator.swift
 //  GP_iOS
 //
-//  Created by Mayar Abdulkareem - FTS on 05/11/2023.
+//  Created by FTS on 05/11/2023.
 //
 
 import UIKit
@@ -11,7 +11,7 @@ class LoginCoordinator: Coordinator {
     
     var navigationController: UINavigationController
     var childCoordinators = [Coordinator]()
-    var parentCoordinator: Coordinator?
+    var parentCoordinator: MainCoordinator?
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -27,5 +27,10 @@ class LoginCoordinator: Coordinator {
         let loginViewController = LoginViewController()
         loginViewController.coordinator = self
         navigationController.pushViewController(loginViewController, animated: false)
+    }
+
+    /// Present the home screen
+    func didFinishAuth() {
+        parentCoordinator?.didFinishAuth()
     }
 }

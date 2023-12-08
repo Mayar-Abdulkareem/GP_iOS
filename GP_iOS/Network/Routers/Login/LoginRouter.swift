@@ -2,18 +2,23 @@
 //  LoginRouter.swift
 //  GP_iOS
 //
-//  Created by Mayar Abdulkareem - FTS on 06/11/2023.
+//  Created by FTS on 06/11/2023.
 //
 
 
 import Alamofire
+
+struct Credential {
+    let regID: String
+    let password: String
+}
 
 enum LoginRouter: BaseRouter {
     
     // MARK: Cases
     
     ///  Login
-    case login(regNumber: String, password: String)
+    case login(credential: Credential)
     
     // MARK: Paths
     
@@ -21,7 +26,7 @@ enum LoginRouter: BaseRouter {
     var path: String {
         switch self {
         case .login:
-            return "user/login"
+            return "/login"
         }
     }
     
@@ -40,10 +45,10 @@ enum LoginRouter: BaseRouter {
     /// Provide parameters for the request, if applicable
     var parameters: Parameters? {
         switch self {
-        case .login(regNumber: let regNumber, password: let password):
+        case .login(credential: let credential):
             return [
-                "regNumber": regNumber,
-                "password": password
+                "regID": credential.regID,
+                "password": credential.password
             ]
         }
     }
