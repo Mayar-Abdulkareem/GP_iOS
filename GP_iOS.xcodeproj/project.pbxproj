@@ -36,6 +36,7 @@
 		2F7031092B0D35EE00FBB5D6 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 2F7031082B0D35EE00FBB5D6 /* Localizable.xcstrings */; };
 		2F70310E2B0E285100FBB5D6 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70310D2B0E285100FBB5D6 /* StringExtension.swift */; };
 		2FA7FCC22B235A5300749D38 /* MoreCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA7FCC12B235A5300749D38 /* MoreCoordinator.swift */; };
+		2FA7FCC62B24ADEF00749D38 /* GetUserByIdAndPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA7FCC52B24ADEF00749D38 /* GetUserByIdAndPassword.swift */; };
 		2FB7A1232B13801E00923D02 /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB7A1222B13801E00923D02 /* AccessToken.swift */; };
 		2FB7A1272B13804400923D02 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB7A1262B13804400923D02 /* LoginViewModel.swift */; };
 		2FB7A12A2B14890800923D02 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB7A1292B14890800923D02 /* HomeViewController.swift */; };
@@ -83,6 +84,7 @@
 		2F7031082B0D35EE00FBB5D6 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		2F70310D2B0E285100FBB5D6 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		2FA7FCC12B235A5300749D38 /* MoreCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreCoordinator.swift; sourceTree = "<group>"; };
+		2FA7FCC52B24ADEF00749D38 /* GetUserByIdAndPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserByIdAndPassword.swift; sourceTree = "<group>"; };
 		2FB7A1222B13801E00923D02 /* AccessToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessToken.swift; sourceTree = "<group>"; };
 		2FB7A1262B13804400923D02 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		2FB7A1292B14890800923D02 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -305,6 +307,7 @@
 		2F5B06642AF7A0340075D083 /* GP_iOS */ = {
 			isa = PBXGroup;
 			children = (
+				2FA7FCC32B24AD5C00749D38 /* UseCases */,
 				2FB7A13D2B15EC3800923D02 /* Cells */,
 				2FB7A13A2B15464700923D02 /* Managers */,
 				2FB7A1242B13804400923D02 /* ViewModels */,
@@ -359,6 +362,22 @@
 				2F7031082B0D35EE00FBB5D6 /* Localizable.xcstrings */,
 			);
 			path = Localizable;
+			sourceTree = "<group>";
+		};
+		2FA7FCC32B24AD5C00749D38 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				2FA7FCC42B24AD6700749D38 /* Authenitication */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		2FA7FCC42B24AD6700749D38 /* Authenitication */ = {
+			isa = PBXGroup;
+			children = (
+				2FA7FCC52B24ADEF00749D38 /* GetUserByIdAndPassword.swift */,
+			);
+			path = Authenitication;
 			sourceTree = "<group>";
 		};
 		2FB7A1212B13801E00923D02 /* AccessToken */ = {
@@ -578,6 +597,7 @@
 				2FA7FCC22B235A5300749D38 /* MoreCoordinator.swift in Sources */,
 				2F4490B32B057F9D002B6975 /* Student.swift in Sources */,
 				2F4490A92B057906002B6975 /* MainCoordinator.swift in Sources */,
+				2FA7FCC62B24ADEF00749D38 /* GetUserByIdAndPassword.swift in Sources */,
 				2FB7A12C2B1493FC00923D02 /* TabBarCoordinator.swift in Sources */,
 				2F4490D22B094C17002B6975 /* UIImageExtension.swift in Sources */,
 				2F4490A72B0578E3002B6975 /* Coordinator.swift in Sources */,

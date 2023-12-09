@@ -26,8 +26,6 @@ class MainCoordinator: Coordinator {
     
     /// which screen will be shown first
     func start() {
-        //AuthManager.shared.userAccessToken = nil
-        //print(AuthManager.shared.userAccessToken)
         if AuthManager.shared.isUserAuthenticated {
             showTabBarFlow()
         } else {
