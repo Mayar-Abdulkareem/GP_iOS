@@ -18,7 +18,7 @@ class CoursesViewModel {
     
     // MARK: - UseCases
     
-    /// UseCase for fetching user by credential
+    /// UseCase for fetching courses by regID
     private let fetchCourses = FetchCoursesUseCase()
     
     // MARK: - Methods
