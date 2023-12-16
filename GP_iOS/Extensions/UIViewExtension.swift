@@ -2,7 +2,7 @@
 //  UIViewExtension.swift
 //  GP_iOS
 //
-//  Created by FTS on 21/11/2023.
+//  Created by Mayar Abdulkareem on 21/11/2023.
 //
 
 import UIKit
@@ -34,6 +34,30 @@ extension UIView {
             viewToAdd.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: leading),
             viewToAdd.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -trailing)
         ])
+    }
+    
+    func addViewWithConstant(
+        _ viewToAdd: UIView,
+        constant: CGFloat
+    ) {
+        
+        viewToAdd.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(viewToAdd)
+        
+        NSLayoutConstraint.activate([
+            viewToAdd.topAnchor.constraint(equalTo: self.topAnchor, constant: constant),
+            viewToAdd.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -constant),
+            viewToAdd.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: constant),
+            viewToAdd.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -constant)
+        ])
+    }
+    
+    func addShadow() {
+        self.layer.cornerRadius = 10
+        self.layer.shadowColor = UIColor.gray.cgColor
+        self.layer.shadowOpacity = 0.2
+        self.layer.shadowOffset = CGSize(width: 0, height: 0)
+        self.layer.shadowRadius = 8
     }
 }
 

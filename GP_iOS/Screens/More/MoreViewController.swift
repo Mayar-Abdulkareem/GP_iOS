@@ -2,20 +2,13 @@
 //  MoreViewController.swift
 //  GP_iOS
 //
-//  Created by FTS on 27/11/2023.
+//  Created by Mayar Abdulkareem on 27/11/2023.
 //
 
 import UIKit
 
 class MoreViewController: UIViewController {
-    
     weak var coordinator: MoreCoordinator?
-    
-    private let viewControllers = [
-        ProfileViewController(),
-        RegisterViewController(),
-        AnnouncementViewController()
-    ]
     
     private let moreCellModel = [
         MoreCellModel(title: String.LocalizedKeys.profileTitle.localized, icon: UIImage.SystemImages.profile.image),
@@ -26,7 +19,8 @@ class MoreViewController: UIViewController {
     
     private let tableView: UITableView = {
         let tableView = UITableView()
-        tableView.rowHeight = 80
+        tableView.separatorStyle = .singleLine
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 25, bottom: 0, right: 25)
         return tableView
     }()
 
@@ -35,23 +29,29 @@ class MoreViewController: UIViewController {
         return view
     }()
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(MoreTableViewCell.self, forCellReuseIdentifier: MoreTableViewCell.identifier)
         tableView.dataSource = self
         tableView.delegate = self
-        view.addViewFillEntireView(mainView)
         addViews()
         addConstraints()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.hideDefaultNavigationBar()
+    }
+    
     private func addViews() {
-        //view.addSubview(mainView)
+        view.addViewFillEntireView(mainView)
         view.addSubview(tableView)
     }
     
     private func addConstraints() {
-        
         view.subviews.forEach{
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
@@ -69,8 +69,7 @@ class MoreViewController: UIViewController {
 extension MoreViewController: UITableViewDelegate, UITableViewDataSource  {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        /// 3 view controllers + Logout
-        return viewControllers.count + 1
+        return moreCellModel.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -78,7 +77,7 @@ extension MoreViewController: UITableViewDelegate, UITableViewDataSource  {
         guard let cell = cell else {
             return UITableViewCell()
         }
-        cell.configureCell(moreCellModel: moreCellModel[indexPath.row])
+        cell.configureCell(model: moreCellModel[indexPath.row])
         return cell
     }
     
@@ -92,6 +91,9 @@ extension MoreViewController: UITableViewDelegate, UITableViewDataSource  {
             coordinator?.showAnnouncementViewController()
         default:
             coordinator?.didLogout()
+        }
+        if let selectedIndexPath = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: selectedIndexPath, animated: true)
         }
     }
 }

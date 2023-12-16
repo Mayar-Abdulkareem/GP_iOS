@@ -2,7 +2,7 @@
 //  MoreTableViewCell.swift
 //  GP_iOS
 //
-//  Created by FTS on 28/11/2023.
+//  Created by Mayar Abdulkareem on 28/11/2023.
 //
 
 import UIKit
@@ -19,24 +19,25 @@ class MoreTableViewCell: UITableViewCell {
     private let iconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.tintColor = UIColor.darkGray
-        //imageView.backgroundColor = UIColor.myGray
         imageView.layer.cornerRadius = 10
         imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.myAccent
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    private let stackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.spacing = 10
-        stackView.alignment = .center
-        return stackView
+    private let view = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor.myPrimary
+        //view.backgroundColor = UIColor.blue
+        return view
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -56,38 +57,30 @@ class MoreTableViewCell: UITableViewCell {
     }
     
     private func addViews() {
-        addSubview(stackView)
-        /// Add properities
-        stackView.addArrangedSubview(iconImageView)
-        stackView.addArrangedSubview(titleLabel)
+        addViewFillEntireView(view, top: 10, bottom: 10, leading: 25, trailing: 25)
+        view.addSubview(iconImageView)
+        view.addSubview(titleLabel)
     }
     
     private func addConstraints() {
-        subviews.forEach{
-            $0.translatesAutoresizingMaskIntoConstraints = false
-        }
         
         NSLayoutConstraint.activate([
-            //self.heightAnchor.constraint(greaterThanOrEqualToConstant: 80),
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -30),
-            stackView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            iconImageView.widthAnchor.constraint(equalToConstant: 35),
-            iconImageView.heightAnchor.constraint(equalToConstant: 35)
+            view.heightAnchor.constraint(greaterThanOrEqualToConstant: 60),
+            
+            iconImageView.widthAnchor.constraint(equalToConstant: 25),
+            iconImageView.heightAnchor.constraint(equalToConstant: 25),
+            iconImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+            iconImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            
+            titleLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: 5),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -5),
+            titleLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            titleLabel.heightAnchor.constraint(equalToConstant: 25)
         ])
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
-    func configureCell(moreCellModel: MoreCellModel) {
-        //print(moreCellModel.icon)
-        //print(moreCellModel.title)
-        iconImageView.image = moreCellModel.icon.withAlignmentRectInsets(UIEdgeInsets(top: -5, left: -5, bottom: -5, right: -5))
-        titleLabel.text = moreCellModel.title
+    func configureCell(model: MoreCellModel) {
+        iconImageView.image = model.icon
+        titleLabel.text = model.title
     }
-
 }

@@ -2,7 +2,7 @@
 //  SceneDelegate.swift
 //  GP_iOS
 //
-//  Created by FTS on 05/11/2023.
+//  Created by Mayar Abdulkareem on 05/11/2023.
 //
 
 import UIKit
@@ -11,6 +11,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
     var coordinator: MainCoordinator?
+    var tabBarController: UITabBarController?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -22,11 +23,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         coordinator = MainCoordinator(navigationController: navController)
         coordinator?.start()
         
+        configureTabBar()
+                
         let window = UIWindow(windowScene: windowScene)
         window.rootViewController = navController
         window.makeKeyAndVisible()
         
         self.window = window
+    }
+    
+    private func configureTabBar() {
+        UITabBar.appearance().tintColor = UIColor.mySecondary
+        UITabBar.appearance().backgroundColor = UIColor.myPrimary
+        let separatorLine = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 0.5))
+        separatorLine.backgroundColor = .lightGray
+        UITabBar.appearance().addSubview(separatorLine)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

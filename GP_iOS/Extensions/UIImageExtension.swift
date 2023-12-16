@@ -2,7 +2,7 @@
 //  UIImage + extension.swift
 //  GP_iOS
 //
-//  Created by FTS on 18/11/2023.
+//  Created by Mayar Abdulkareem on 18/11/2023.
 //
 
 import UIKit
@@ -29,6 +29,13 @@ extension UIImage {
         case register = "square.and.pencil"
         case announcement = "bell.and.waves.left.and.right.fill"
         case logout = "power.circle"
+        /// Project List
+        case choosePeer = "person.2"
+        case board = "list.bullet.clipboard"
+        case submission = "paperplane"
+        /// Navigation Bar
+        case notification = "bell"
+        case chat = "message"
         
         ///  Get image
         var image: UIImage {

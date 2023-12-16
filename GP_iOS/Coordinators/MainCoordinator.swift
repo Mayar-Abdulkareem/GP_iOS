@@ -2,7 +2,7 @@
 //  MainCoordinator.swift
 //  GP_iOS
 //
-//  Created by FTS on 05/11/2023.
+//  Created by Mayar Abdulkareem on 05/11/2023.
 //
 
 import UIKit
@@ -27,7 +27,7 @@ class MainCoordinator: Coordinator {
     /// which screen will be shown first
     func start() {
         if AuthManager.shared.isUserAuthenticated {
-            showTabBarFlow()
+            showHomeFlow()
         } else {
             showLoginFlow()
         }
@@ -41,8 +41,8 @@ class MainCoordinator: Coordinator {
         coordinator.start()
     }
     
-    /// Start ``TabBarCoordinator``  to present the Login page
-    func showTabBarFlow() {
+    /// Start ``TabBarCoordinator``  to present the Home page
+    func showHomeFlow() {
         let coordinator = TabBarCoordinator(navigationController: navigationController)
         coordinator.parentCoordinator = self
         childCoordinators.append(coordinator)
@@ -58,7 +58,7 @@ extension MainCoordinator: MainCoordinatorProtocol {
         /// Clear the navigation stack
         navigationController.setViewControllers([], animated: false)
         childCoordinators.removeAll()
-        showTabBarFlow()
+        showHomeFlow()
     }
     
     /// Handles the necessary actions when the user logs out.
@@ -67,6 +67,8 @@ extension MainCoordinator: MainCoordinatorProtocol {
         navigationController.setViewControllers([], animated: false)
         childCoordinators.removeAll()
         AuthManager.shared.userAccessToken = nil
+        AuthManager.shared.regID = nil
+        AuthManager.shared.role = nil
         showLoginFlow()
     }
 }

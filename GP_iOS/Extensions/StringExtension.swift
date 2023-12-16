@@ -2,7 +2,7 @@
 //  StringExtension.swift
 //  GP_iOS
 //
-//  Created by FTS on 22/11/2023.
+//  Created by Mayar Abdulkareem on 22/11/2023.
 //
 
 import Foundation
@@ -15,6 +15,7 @@ extension String {
         case passwordTextFieldText
         case loginButtonKey
         case logoText
+        case noCourses
         
         /// Top Alert
         /// - Title:
@@ -23,9 +24,11 @@ extension String {
         /// - Subtitle:
         case fillAllFieldsMsg
         case unauthenticatedSubtitle
+        
         /// Tab Bar Menue
         /// - Title:
         case homeTitle
+        case courseTitle
         case searchTitle
         case storeTitle
         case moreTitle
@@ -33,6 +36,11 @@ extension String {
         case registerTitle
         case announcementTitle
         case logoutTitle
+        
+        /// Project List
+        case choosePeerTitle
+        case boardTitle
+        case submissionTitle
         
         var localized: String {
             return String(localizedKey: self)

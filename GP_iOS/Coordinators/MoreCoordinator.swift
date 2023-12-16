@@ -2,7 +2,7 @@
 //  MoreCoordinator.swift
 //  GP_iOS
 //
-//  Created by FTS on 08/12/2023.
+//  Created by Mayar Abdulkareem on 08/12/2023.
 //
 
 import UIKit
@@ -12,11 +12,10 @@ class MoreCoordinator: Coordinator {
     var navigationController: UINavigationController
     var childCoordinators = [Coordinator]()
     var parentCoordinator: TabBarCoordinator?
-    var tabBarController: UITabBarController
     
-    init(navigationController: UINavigationController, tabBarController: UITabBarController) {
+    init(navigationController: UINavigationController) {
         self.navigationController = navigationController
-        self.tabBarController = tabBarController
+        navigationController.isNavigationBarHidden = true
     }
     
     ///  Start the ``MoreCoordinator``
@@ -25,24 +24,23 @@ class MoreCoordinator: Coordinator {
     
     func showProfileViewController() {
         let profileViewController = ProfileViewController()
-        
-        if let moreNavigationController = tabBarController.viewControllers?[3] as? UINavigationController {
-            moreNavigationController.pushViewController(profileViewController, animated: true)
-        }
+        let navController = UINavigationController(rootViewController: profileViewController)
+        navController.modalPresentationStyle = .fullScreen
+        navigationController.present(navController, animated: true)
     }
     
     func showRegisterViewController() {
         let registerViewController = RegisterViewController()
-        if let moreNavigationController = tabBarController.viewControllers?[3] as? UINavigationController {
-            moreNavigationController.pushViewController(registerViewController, animated: true)
-        }
+        let navController = UINavigationController(rootViewController: registerViewController)
+        navController.modalPresentationStyle = .fullScreen
+        navigationController.present(navController, animated: true)
     }
     
     func showAnnouncementViewController() {
         let announcementViewController = AnnouncementViewController()
-        if let moreNavigationController = tabBarController.viewControllers?[3] as? UINavigationController {
-            moreNavigationController.pushViewController(announcementViewController, animated: true)
-        }
+        let navController = UINavigationController(rootViewController: announcementViewController)
+        navController.modalPresentationStyle = .fullScreen
+        navigationController.present(navController, animated: true)
     }
     
     /// Present the Login screen

@@ -2,7 +2,7 @@
 //  AuthManager.swift
 //  GP_iOS
 //
-//  Created by FTS on 27/11/2023.
+//  Created by Mayar Abdulkareem on 27/11/2023.
 //
 
 import Foundation
@@ -13,6 +13,12 @@ class AuthManager {
     
     @UserDefaultStorage(key: .accessToken)
     var userAccessToken: String?
+    
+    @UserDefaultStorage(key: .role)
+    var role: String?
+    
+    @UserDefaultStorage(key: .regID)
+    var regID: String?
     
     private init() {}
     

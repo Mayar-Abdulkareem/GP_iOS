@@ -2,21 +2,19 @@
 //  AnnouncementViewController.swift
 //  GP_iOS
 //
-//  Created by FTS on 28/11/2023.
+//  Created by Mayar Abdulkareem on 28/11/2023.
 //
 
 import UIKit
 
 class AnnouncementViewController: UIViewController {
-    
-    private let mainView: UIView = {
-        let view = MainView(title: String.LocalizedKeys.announcementTitle.localized)
-        return view
-    }()
+    weak var coordinator: CourseCoordinator?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addViewFillEntireView(mainView)
+        navigationController?.showDefaultNavigationBar(title: String.LocalizedKeys.announcementTitle.localized, withCloseButton: true)
+        view.backgroundColor = UIColor.myLightGray
+
         addConstrainits()
     }
     

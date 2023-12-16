@@ -2,7 +2,7 @@
 //  UserDefaultStorage.swift
 //  GP_iOS
 //
-//  Created by FTS on 06/11/2023.
+//  Created by Mayar Abdulkareem on 06/11/2023.
 //
 
 import Foundation
@@ -10,6 +10,8 @@ import Foundation
 /// Keys used in the project for UserDefaults
 enum UserDefaultsKeys: String {
     case accessToken
+    case role
+    case regID
 }
 
 /// Storing and rerieving values for UserDefaults.

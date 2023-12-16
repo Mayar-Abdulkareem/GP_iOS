@@ -2,7 +2,7 @@
 //  LoginViewController.swift
 //  GP_iOS
 //
-//  Created by FTS on 16/11/2023.
+//  Created by Mayar Abdulkareem on 16/11/2023.
 //
 
 import UIKit
@@ -85,7 +85,6 @@ class LoginViewController: UIViewController {
         configureLoginUIElements()
         addConstraints()
         bindWithViewModel()
-        // or configureUI()
     }
     
     private func addViews() {
@@ -165,7 +164,6 @@ class LoginViewController: UIViewController {
         }
         
         viewModel.onAuthSuccess = { [weak self] accessToken in
-            AuthManager.shared.userAccessToken = accessToken.accessToken
             self?.coordinator?.didFinishAuth()
         }
     }

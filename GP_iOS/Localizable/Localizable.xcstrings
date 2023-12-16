@@ -18,6 +18,57 @@
         }
       }
     },
+    "boardTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "المهام"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Project Board"
+          }
+        }
+      }
+    },
+    "choosePeerTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اختر شريكك"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose Peer"
+          }
+        }
+      }
+    },
+    "courseTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "المساقات"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Courses"
+          }
+        }
+      }
+    },
     "errorTitle" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -154,6 +205,23 @@
         }
       }
     },
+    "noCourses" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لا توجد دورات مسجلة"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No registered courses"
+          }
+        }
+      }
+    },
     "passwordTextFieldText" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -252,6 +320,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Store"
+          }
+        }
+      }
+    },
+    "submissionTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "التسليمات"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Submissions"
           }
         }
       }

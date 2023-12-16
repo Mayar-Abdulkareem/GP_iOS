@@ -2,7 +2,7 @@
 //  StoreViewController.swift
 //  GP_iOS
 //
-//  Created by FTS on 27/11/2023.
+//  Created by Mayar Abdulkareem on 27/11/2023.
 //
 
 import UIKit
@@ -13,6 +13,10 @@ class StoreViewController: UIViewController {
         let view = MainView(title: String.LocalizedKeys.storeTitle.localized)
         return view
     }()
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

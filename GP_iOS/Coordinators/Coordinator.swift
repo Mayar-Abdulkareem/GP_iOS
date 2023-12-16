@@ -2,7 +2,7 @@
 //  Coordinator.swift
 //  GP_iOS
 //
-//  Created by FTS on 05/11/2023.
+//  Created by Mayar Abdulkareem on 05/11/2023.
 //
 
 import UIKit
@@ -19,3 +19,7 @@ protocol Coordinator {
     /// Presenting the ViewController based on the flow
     func start()
 }
+
+//protocol AdoptCloseButton {
+//    func dismissViewController()
+//}

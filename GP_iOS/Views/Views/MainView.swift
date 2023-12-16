@@ -2,7 +2,7 @@
 //  HeaderView.swift
 //  GP_iOS
 //
-//  Created by FTS on 27/11/2023.
+//  Created by Mayar Abdulkareem on 27/11/2023.
 //
 
 import UIKit
@@ -33,6 +33,20 @@ class MainView: UIView {
         return view
     }()
     
+    private let notificationImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage.SystemImages.notification.image
+        imageView.tintColor = UIColor.myPrimary
+        return imageView
+    }()
+    
+    private let chatImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage.SystemImages.chat.image
+        imageView.tintColor = UIColor.myPrimary
+        return imageView
+    }()
+    
     init(title: String) {
         super.init(frame: .zero)
         titleLabel.text = title
@@ -49,6 +63,8 @@ class MainView: UIView {
         addSubview(backgroundImageView)
         addSubview(logoView)
         addSubview(titleLabel)
+        addSubview(notificationImageView)
+        addSubview(chatImageView)
     }
     
     private func addConstraints() {
@@ -71,7 +87,15 @@ class MainView: UIView {
             logoView.centerYAnchor.constraint(equalTo: headerImageView.centerYAnchor, constant: 5),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 30),
-            titleLabel.centerYAnchor.constraint(equalTo: headerImageView.centerYAnchor, constant: 50)
+            titleLabel.centerYAnchor.constraint(equalTo: headerImageView.centerYAnchor, constant: 50),
+            notificationImageView.heightAnchor.constraint(equalToConstant: 25),
+            notificationImageView.widthAnchor.constraint(equalToConstant: 25),
+            notificationImageView.trailingAnchor.constraint(equalTo: headerImageView.trailingAnchor, constant: -20),
+            notificationImageView.topAnchor.constraint(equalTo: headerImageView.topAnchor, constant: 60),
+            chatImageView.heightAnchor.constraint(equalToConstant: 25),
+            chatImageView.widthAnchor.constraint(equalToConstant: 25),
+            chatImageView.trailingAnchor.constraint(equalTo: notificationImageView.leadingAnchor, constant: -10),
+            chatImageView.topAnchor.constraint(equalTo: headerImageView.topAnchor, constant: 60)
         ])
     }
 }
