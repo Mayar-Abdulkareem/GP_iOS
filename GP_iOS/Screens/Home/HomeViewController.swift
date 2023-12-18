@@ -41,7 +41,7 @@ class HomeViewController: UIViewController {
         tableView.register(HomeTableViewCell.self, forCellReuseIdentifier: HomeTableViewCell.identifier)
         tableView.dataSource = self
         tableView.delegate = self
-        view.addViewFillEntireView(mainView)
+
         bindWithViewModel()
         addViews()
         addConstrainits()
@@ -88,6 +88,7 @@ class HomeViewController: UIViewController {
     private func addViews() {
         view.addSubview(tableView)
         view.addSubview(activityIndicator)
+        view.addSubview(mainView)
         activityIndicator.color = .gray
     }
     
@@ -98,10 +99,15 @@ class HomeViewController: UIViewController {
         
         /// Set tableView constraints
         NSLayoutConstraint.activate([
+            mainView.topAnchor.constraint(equalTo: view.topAnchor),
+            mainView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            mainView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            mainView.bottomAnchor.constraint(equalTo: tableView.topAnchor),
+            
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.7),
+            
             activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])

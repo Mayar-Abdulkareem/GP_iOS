@@ -29,7 +29,7 @@ class LogoView: UIView {
     let stackView: UIStackView = {
         let sv = UIStackView()
         sv.axis = .horizontal
-        sv.spacing = 10
+        sv.spacing = 5
         return sv
     }()
     

@@ -11,6 +11,7 @@ class StoreViewController: UIViewController {
 
     private let mainView: UIView = {
         let view = MainView(title: String.LocalizedKeys.storeTitle.localized)
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
@@ -20,13 +21,15 @@ class StoreViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addViewFillEntireView(mainView)
+        view.addSubview(mainView)
         addConstrainits()
     }
     
     private func addConstrainits() {
-        view.subviews.forEach{
-            $0.translatesAutoresizingMaskIntoConstraints = false
-        }
+        NSLayoutConstraint.activate([
+            mainView.topAnchor.constraint(equalTo: view.topAnchor),
+            mainView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            mainView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
     }
 }

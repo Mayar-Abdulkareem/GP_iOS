@@ -19,6 +19,7 @@ class MoreViewController: UIViewController {
     
     private let tableView: UITableView = {
         let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorStyle = .singleLine
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 25, bottom: 0, right: 25)
         return tableView
@@ -26,6 +27,7 @@ class MoreViewController: UIViewController {
 
     private let mainView: UIView = {
         let view = MainView(title: String.LocalizedKeys.moreTitle.localized)
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
@@ -47,21 +49,21 @@ class MoreViewController: UIViewController {
     }
     
     private func addViews() {
-        view.addViewFillEntireView(mainView)
+        view.addSubview(mainView)
         view.addSubview(tableView)
     }
     
     private func addConstraints() {
-        view.subviews.forEach{
-            $0.translatesAutoresizingMaskIntoConstraints = false
-        }
-        
         /// Set tableView constraints
         NSLayoutConstraint.activate([
+            mainView.topAnchor.constraint(equalTo: view.topAnchor),
+            mainView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            mainView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            mainView.bottomAnchor.constraint(equalTo: tableView.topAnchor),
+            
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.7)
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
     }
 }

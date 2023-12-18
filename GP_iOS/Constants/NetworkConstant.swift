@@ -8,5 +8,5 @@
 import Foundation
 
 struct NetworkConstant {
-    static var baseURL = "http://127.0.0.1:3001"
+    static var baseURL = "http://3.238.223.225:3001"
 }
