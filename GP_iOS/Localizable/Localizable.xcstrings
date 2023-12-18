@@ -52,6 +52,17 @@
         }
       }
     },
+    "clearTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear"
+          }
+        }
+      }
+    },
     "courseTitle" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -99,6 +110,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Please fill the required fields."
+          }
+        }
+      }
+    },
+    "filterTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "فلتر"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filter"
           }
         }
       }
@@ -218,6 +246,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No registered courses"
+          }
+        }
+      }
+    },
+    "noMoreResultsMsg" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لا مزيد من النتائج"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No more results"
+          }
+        }
+      }
+    },
+    "noPrevProjects" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لا يوجد مشاريع سابقة"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No previous projects available"
           }
         }
       }

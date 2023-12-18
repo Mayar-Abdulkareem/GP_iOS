@@ -35,7 +35,12 @@ class TabBarCoordinator: Coordinator {
         homeViewController.coordinator = homeCoordinator
         homeViewController.tabBarItem = TabInfo.home.createTabBarItem()
         
+        let searchCoordinator = SearchCoordinator(navigationController: navigationController)
+        searchCoordinator.parentCoordinator = self
+        childCoordinators.append(searchCoordinator)
+        
         let searchViewController = SearchViewController()
+        searchViewController.coordinator = searchCoordinator
         searchViewController.tabBarItem = TabInfo.search.createTabBarItem()
         
         let storeViewController = StoreViewController()

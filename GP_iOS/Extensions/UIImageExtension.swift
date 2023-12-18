@@ -36,7 +36,12 @@ extension UIImage {
         /// Navigation Bar
         case notification = "bell"
         case chat = "message"
-        
+        /// Filter
+        case filter = "line.3.horizontal.decrease.circle"
+        case fiterFill = "line.3.horizontal.decrease.circle.fill"
+        case selectedFilter = "checkmark.circle"
+        /// Search
+        case viewMore = "greaterthan"
         ///  Get image
         var image: UIImage {
             return UIImage(systemImages: self)

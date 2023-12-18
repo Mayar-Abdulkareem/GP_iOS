@@ -35,8 +35,6 @@ class MoreTableViewCell: UITableViewCell {
     private let view = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor.myPrimary
-        //view.backgroundColor = UIColor.blue
         return view
     }()
     

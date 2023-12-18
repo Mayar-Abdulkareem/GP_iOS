@@ -16,6 +16,10 @@ extension String {
         case loginButtonKey
         case logoText
         case noCourses
+        case noPrevProjects
+        case noMoreResultsMsg
+        case clearTitle
+        case filterTitle
         
         /// Top Alert
         /// - Title:

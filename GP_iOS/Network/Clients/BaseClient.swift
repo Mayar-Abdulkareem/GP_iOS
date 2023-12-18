@@ -30,6 +30,7 @@ class BaseClient {
             .validate()
             .responseDecodable {
                 (response: DataResponse<T, AFError>) in
+                RunLoop.current.run(until: Date(timeIntervalSinceNow: 1))
                 switch response.result {
                 case .success(let data):
                     completion(.success(data))

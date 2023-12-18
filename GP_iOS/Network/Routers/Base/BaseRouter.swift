@@ -5,7 +5,6 @@
 //  Created by Mayar Abdulkareem - Mayar Abdulkareem - FTS on 06/11/2023.
 //
 
-import Foundation
 import Alamofire
 
 /// Protocol for API routers
