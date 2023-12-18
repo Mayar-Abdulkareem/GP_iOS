@@ -13,7 +13,6 @@ struct HomeTableViewCellModel {
 }
 
 class HomeTableViewCell: UITableViewCell {
-    
     static let identifier = "homeTableViewCellIdentifire"
     
     private let courseNameLabel: UILabel = {
@@ -70,15 +69,12 @@ class HomeTableViewCell: UITableViewCell {
         }
         
         NSLayoutConstraint.activate([
-            viewWithShadow.heightAnchor.constraint(equalToConstant: 90),
-            
             courseNameLabel.centerXAnchor.constraint(equalTo: viewWithShadow.centerXAnchor),
-            courseNameLabel.centerYAnchor.constraint(equalTo: viewWithShadow.centerYAnchor, constant: -20),
-            courseNameLabel.heightAnchor.constraint(equalToConstant: 25),
+            courseNameLabel.topAnchor.constraint(equalTo: viewWithShadow.topAnchor, constant: 10),
             
             supervisorNameLabel.centerXAnchor.constraint(equalTo: viewWithShadow.centerXAnchor),
-            supervisorNameLabel.centerYAnchor.constraint(equalTo: viewWithShadow.centerYAnchor, constant: 20),
-            supervisorNameLabel.heightAnchor.constraint(equalToConstant: 25)
+            supervisorNameLabel.topAnchor.constraint(equalTo: courseNameLabel.bottomAnchor, constant: 10),
+            supervisorNameLabel.bottomAnchor.constraint(equalTo: viewWithShadow.bottomAnchor, constant: -10)
         ])
     }
     
