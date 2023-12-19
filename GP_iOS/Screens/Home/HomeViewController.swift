@@ -24,6 +24,11 @@ class HomeViewController: UIViewController {
             forCellReuseIdentifier: HomeTableViewCell.identifier
         )
         
+        tableView.register(
+            HomeAboutMeCell.self,
+            forCellReuseIdentifier: HomeAboutMeCell.identifier
+        )
+        
         tableView.dataSource = self
         tableView.delegate = self
         
@@ -38,7 +43,6 @@ class HomeViewController: UIViewController {
     }()
     
     weak var coordinator: HomeCoordinator?
-    private var courses = [Course]()
     private var viewModel = CoursesViewModel()
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -52,7 +56,7 @@ class HomeViewController: UIViewController {
         addViews()
         addConstrainits()
         startActivityIndicator()
-        fetchCourses()
+        viewModel.getData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -74,7 +78,6 @@ class HomeViewController: UIViewController {
         }
         
         viewModel.onFetchCourses = { [weak self] courses in
-            self?.courses = courses
             self?.stopActivityIndicator()
             if courses.count == 0 {
                 self?.tableView.setEmptyView(message: String.LocalizedKeys.noCourses.localized)
@@ -84,13 +87,7 @@ class HomeViewController: UIViewController {
             self?.tableView.reloadData()
         }
     }
-    
-    private func fetchCourses() {
-        if let regID = AuthManager.shared.regID {
-            viewModel.fetchCourses(with: regID)
-        }
-    }
-    
+        
     private func addViews() {
         view.backgroundColor = .white
         
@@ -119,23 +116,51 @@ class HomeViewController: UIViewController {
 }
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource  {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        viewModel.sections.count
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return viewModel.sections[section].getTitle()
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return courses.count
+        switch viewModel.sections[section] {
+        case .header:
+            return 1
+        case .courses:
+            return viewModel.courses.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: HomeTableViewCell.identifier, for: indexPath) as? HomeTableViewCell
-        guard let cell = cell else {
-            return UITableViewCell()
+        switch viewModel.sections[indexPath.section] {
+        case .header:
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: HomeAboutMeCell.identifier,
+                for: indexPath
+            ) as? HomeAboutMeCell
+            cell?.configureCell(name: "Noura Hashem")
+            return cell ?? UITableViewCell()
+            
+        case .courses:
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: HomeTableViewCell.identifier,
+                for: indexPath
+            ) as? HomeTableViewCell
+            
+            let cellModel = viewModel.getCellModel(index: indexPath.row)
+            cell?.configureCell(model: cellModel)
+            return cell ?? UITableViewCell()
         }
-        let courseName = courses[indexPath.row].courseName
-        let supervisor = "Dr. " + courses[indexPath.row].supervisorName
-        cell.configureCell(model: HomeTableViewCellModel(name: courseName, supervisor: supervisor))
-        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        AppManager.shared.course = courses[indexPath.row]
-        coordinator?.showCourseViewController()
+        
+        if case .courses = viewModel.sections[indexPath.section] {
+            AppManager.shared.course = viewModel.courses[indexPath.row]
+            coordinator?.showCourseViewController()
+        }
     }
 }

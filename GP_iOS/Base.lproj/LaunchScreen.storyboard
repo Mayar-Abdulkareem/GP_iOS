@@ -21,7 +21,7 @@
                                 <rect key="frame" x="60" y="129" width="273" height="514"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="tNF-TZ-eLO">
-                                <rect key="frame" x="136.66666666666666" y="767" width="119.99999999999997" height="35"/>
+                                <rect key="frame" x="136.66666666666666" y="773" width="119.99999999999997" height="35"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Powered by" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zjf-ZD-b51">
                                         <rect key="frame" x="0.0" y="0.0" width="80" height="35"/>
@@ -44,7 +44,7 @@
                         <constraints>
                             <constraint firstItem="R98-37-sWI" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-40" id="44g-c2-ocU"/>
                             <constraint firstItem="tNF-TZ-eLO" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="45k-6P-7oU"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="tNF-TZ-eLO" secondAttribute="bottom" constant="16" id="Opm-gy-qpe"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="tNF-TZ-eLO" secondAttribute="bottom" constant="10" id="Opm-gy-qpe"/>
                             <constraint firstItem="R98-37-sWI" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="60" id="UQX-gg-Phw"/>
                             <constraint firstAttribute="trailing" secondItem="R98-37-sWI" secondAttribute="trailing" constant="60" id="hHw-LY-jTE"/>
                         </constraints>

@@ -10,6 +10,8 @@ import UIKit
 struct HomeTableViewCellModel {
     let name: String
     let supervisor: String
+    let background: UIColor
+    let titleColor: UIColor
 }
 
 class HomeTableViewCell: UITableViewCell {
@@ -18,7 +20,6 @@ class HomeTableViewCell: UITableViewCell {
     private let courseNameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = UIColor.myAccent
         label.font = UIFont.boldSystemFont(ofSize: 20)
         return label
     }()
@@ -33,7 +34,6 @@ class HomeTableViewCell: UITableViewCell {
     
     private let viewWithShadow: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.myPrimary
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -56,10 +56,16 @@ class HomeTableViewCell: UITableViewCell {
     }
     
     private func addViews() {
-        addViewFillEntireView(viewWithShadow, top: 20, bottom: 20, leading: 30, trailing: 30)
+        addViewFillEntireView(
+            viewWithShadow,
+            top: 10,
+            bottom: 10,
+            leading: 20,
+            trailing: 20
+        )
+        
         viewWithShadow.addSubview(courseNameLabel)
         viewWithShadow.addSubview(supervisorNameLabel)
-        /// Add properities
         viewWithShadow.addShadow()
     }
     
@@ -70,16 +76,18 @@ class HomeTableViewCell: UITableViewCell {
         
         NSLayoutConstraint.activate([
             courseNameLabel.centerXAnchor.constraint(equalTo: viewWithShadow.centerXAnchor),
-            courseNameLabel.topAnchor.constraint(equalTo: viewWithShadow.topAnchor, constant: 10),
+            courseNameLabel.topAnchor.constraint(equalTo: viewWithShadow.topAnchor, constant: 20),
             
             supervisorNameLabel.centerXAnchor.constraint(equalTo: viewWithShadow.centerXAnchor),
-            supervisorNameLabel.topAnchor.constraint(equalTo: courseNameLabel.bottomAnchor, constant: 10),
-            supervisorNameLabel.bottomAnchor.constraint(equalTo: viewWithShadow.bottomAnchor, constant: -10)
+            supervisorNameLabel.topAnchor.constraint(equalTo: courseNameLabel.bottomAnchor, constant: 0),
+            supervisorNameLabel.bottomAnchor.constraint(equalTo: viewWithShadow.bottomAnchor, constant: -20)
         ])
     }
     
     func configureCell(model: HomeTableViewCellModel) {
+        viewWithShadow.backgroundColor = model.background
         courseNameLabel.text = model.name
         supervisorNameLabel.text = model.supervisor
+        courseNameLabel.textColor = model.titleColor
     }
 }
