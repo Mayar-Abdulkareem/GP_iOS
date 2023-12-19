@@ -20,19 +20,20 @@ class MoreViewController: UIViewController {
     private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.backgroundColor = .clear
         tableView.separatorStyle = .singleLine
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 25, bottom: 0, right: 25)
         return tableView
     }()
 
     private let mainView: UIView = {
-        let view = MainView(title: String.LocalizedKeys.moreTitle.localized)
+        let view = HeaderView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
+        return .darkContent
     }
     
     override func viewDidLoad() {
@@ -40,21 +41,18 @@ class MoreViewController: UIViewController {
         tableView.register(MoreTableViewCell.self, forCellReuseIdentifier: MoreTableViewCell.identifier)
         tableView.dataSource = self
         tableView.delegate = self
-        addViews()
-        addConstraints()
+        configureViews()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.hideDefaultNavigationBar()
     }
     
-    private func addViews() {
+    private func configureViews() {
+        view.backgroundColor = .white
         view.addSubview(mainView)
         view.addSubview(tableView)
-    }
-    
-    private func addConstraints() {
-        /// Set tableView constraints
+        
         NSLayoutConstraint.activate([
             mainView.topAnchor.constraint(equalTo: view.topAnchor),
             mainView.leadingAnchor.constraint(equalTo: view.leadingAnchor),

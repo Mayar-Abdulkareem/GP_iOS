@@ -35,7 +35,7 @@ extension UIImage {
         case submission = "paperplane"
         /// Navigation Bar
         case notification = "bell"
-        case chat = "message"
+        case chat = "ellipsis.message"
         /// Filter
         case filter = "line.3.horizontal.decrease.circle"
         case fiterFill = "line.3.horizontal.decrease.circle.fill"

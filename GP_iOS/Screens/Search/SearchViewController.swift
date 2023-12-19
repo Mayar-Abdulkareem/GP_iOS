@@ -12,13 +12,7 @@ class SearchViewController: UIViewController {
     weak var coordinator: SearchCoordinator?
     
     let viewModel = SearchViewModel()
-    
-    private let mainView: UIView = {
-        let view = MainView(title: String.LocalizedKeys.searchTitle.localized)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
+        
     private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -83,7 +77,6 @@ class SearchViewController: UIViewController {
     
     private func addViews() {
         /// Add views to the view
-        view.addSubview(mainView)
         view.addSubview(searchBar)
         view.addSubview(filterButton)
         view.addSubview(tableView)
@@ -96,11 +89,8 @@ class SearchViewController: UIViewController {
     
     private func addConstrainits() {
         NSLayoutConstraint.activate([
-            mainView.topAnchor.constraint(equalTo: view.topAnchor),
-            mainView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            mainView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             
-            searchBar.topAnchor.constraint(equalTo: mainView.bottomAnchor),
+            searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
             searchBar.trailingAnchor.constraint(equalTo: filterButton.leadingAnchor, constant: 0),
             searchBar.heightAnchor.constraint(equalToConstant: 44),

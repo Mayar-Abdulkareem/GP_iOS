@@ -10,38 +10,44 @@ import Alamofire
 
 class HomeViewController: UIViewController {
     
-    weak var coordinator: HomeCoordinator?
-    private var courses = [Course]()
-    private var viewModel = CoursesViewModel()
-
-    private let mainView: UIView = {
-        let view = MainView(title: String.LocalizedKeys.homeTitle.localized)
-        return view
-    }()
+    private let mainView = HeaderView()
     
-    private let tableView: UITableView = {
+    private lazy var tableView: UITableView = {
         let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorStyle = .none
         tableView.separatorColor = .clear
+        tableView.backgroundColor = .clear
+        
+        tableView.register(
+            HomeTableViewCell.self,
+            forCellReuseIdentifier: HomeTableViewCell.identifier
+        )
+        
+        tableView.dataSource = self
+        tableView.delegate = self
+        
         return tableView
     }()
     
     private let activityIndicator: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView(style: .large)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         activityIndicator.hidesWhenStopped = true
         return activityIndicator
     }()
     
+    weak var coordinator: HomeCoordinator?
+    private var courses = [Course]()
+    private var viewModel = CoursesViewModel()
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
+        return .darkContent
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(HomeTableViewCell.self, forCellReuseIdentifier: HomeTableViewCell.identifier)
-        tableView.dataSource = self
-        tableView.delegate = self
-
+        
         bindWithViewModel()
         addViews()
         addConstrainits()
@@ -86,6 +92,8 @@ class HomeViewController: UIViewController {
     }
     
     private func addViews() {
+        view.backgroundColor = .white
+        
         view.addSubview(tableView)
         view.addSubview(activityIndicator)
         view.addSubview(mainView)
@@ -93,10 +101,6 @@ class HomeViewController: UIViewController {
     }
     
     private func addConstrainits() {
-        view.subviews.forEach{
-            $0.translatesAutoresizingMaskIntoConstraints = false
-        }
-        
         /// Set tableView constraints
         NSLayoutConstraint.activate([
             mainView.topAnchor.constraint(equalTo: view.topAnchor),

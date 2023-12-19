@@ -10,7 +10,7 @@ import UIKit
 class StoreViewController: UIViewController {
 
     private let mainView: UIView = {
-        let view = MainView(title: String.LocalizedKeys.storeTitle.localized)
+        let view = HeaderView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()

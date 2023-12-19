@@ -55,7 +55,14 @@ class MoreTableViewCell: UITableViewCell {
     }
     
     private func addViews() {
-        addViewFillEntireView(view, top: 10, bottom: 10, leading: 25, trailing: 25)
+        backgroundColor = .clear
+        addViewFillEntireView(
+            view,
+            top: 10,
+            bottom: 10,
+            leading: 25,
+            trailing: 25
+        )
         view.addSubview(iconImageView)
         view.addSubview(titleLabel)
     }
