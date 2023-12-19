@@ -11,7 +11,6 @@ class FilterViewController: UIViewController {
     
     var viewModel: SearchViewModel
     var categories: [(String, [String])] = [("Date", ["Newest", "Oldest"]), ("Type", ["Software", "Hardware"])]
-    var filterButtonTappedHandler: ((_ isTypeFilter: Bool) -> Void)?
     
     let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
@@ -29,19 +28,8 @@ class FilterViewController: UIViewController {
     /// Change the filter icon configuration
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        NotificationCenter.default.post(name: NSNotification.Name("YourNotificationName"), object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name("ClearNotification"), object: nil)
     }
-    
-//    override func viewWillDisappear(_ animated: Bool) {
-//        super.viewWillDisappear(animated)
-//        if let viewController = presentingViewController as? SearchViewController {
-//            print("Successfully cast to SearchViewController")
-//            viewController.filterViewControllerDidDismiss()
-//            print("Configure Filter Button called on SearchViewController")
-//        } else {
-//            print("Failed to cast to SearchViewController")
-//        }
-//    }
     
     func setupClearButton() {
         let clearButton = UIBarButtonItem(title: String.LocalizedKeys.clearTitle.localized, style: .plain, target: self, action: #selector(clearButtonTapped))
@@ -49,11 +37,9 @@ class FilterViewController: UIViewController {
     }
     
     @objc func clearButtonTapped() {
-        print(viewModel.selectedRows)
-        viewModel.selectedRows.removeAll()
+        viewModel.selectedFilterRows.removeAll()
         viewModel.updateFilter()
         tableView.reloadData()
-        print(viewModel.selectedRows)
     }
     
     init(viewModel: SearchViewModel) {
@@ -95,7 +81,7 @@ extension FilterViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FilterTableViewCell.identifier, for: indexPath) as? FilterTableViewCell ?? FilterTableViewCell()
         let category = categories[indexPath.section].1[indexPath.row]
-        let isSelected = viewModel.selectedRows.contains(indexPath)
+        let isSelected = viewModel.selectedFilterRows.contains(indexPath)
         cell.configureCell(title: category, isSelected: isSelected)
         return cell
     }
@@ -103,9 +89,6 @@ extension FilterViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: FilterHeaderView.identifier) as? FilterHeaderView else {
             return nil 
-        }
-        headerView.filterButtonTappedHandler = { [weak self] isTypeFilter in
-            self?.filterButtonTappedHandler?(isTypeFilter)
         }
         let title = categories[section].0
         headerView.configure(title: title)
@@ -126,17 +109,17 @@ extension FilterViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         /// Check if the indexPath is already in the selectedRows array
-        if let existingIndex = viewModel.selectedRows.firstIndex(of: indexPath) {
+        if let existingIndex = viewModel.selectedFilterRows.firstIndex(of: indexPath) {
             /// Remove the indexPath if it exists
-            viewModel.selectedRows.remove(at: existingIndex)
+            viewModel.selectedFilterRows.remove(at: existingIndex)
         } else {
             /// Check if there is any selected indexPath from the same section and it's in section 0
-            if let selectedIndexPathInSection = viewModel.selectedRows.first(where: { $0.section == indexPath.section && $0.section == 0 && $0.row != indexPath.row }) {
+            if let selectedIndexPathInSection = viewModel.selectedFilterRows.first(where: { $0.section == indexPath.section && $0.section == 0 && $0.row != indexPath.row }) {
                 /// Remove the existing selection in the same section
-                viewModel.selectedRows.removeAll { $0 == selectedIndexPathInSection }
+                viewModel.selectedFilterRows.removeAll { $0 == selectedIndexPathInSection }
             }
             /// Add the indexPath to the selectedRows array
-            viewModel.selectedRows.append(indexPath)
+            viewModel.selectedFilterRows.append(indexPath)
         }
         viewModel.updateFilter()
         tableView.reloadData()

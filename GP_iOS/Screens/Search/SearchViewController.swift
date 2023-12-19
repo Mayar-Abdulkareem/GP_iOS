@@ -65,7 +65,7 @@ class SearchViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         searchBar.delegate = self
-        NotificationCenter.default.addObserver(self, selector: #selector(configureFilterButton), name: NSNotification.Name("YourNotificationName"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(configureFilterButton), name: NSNotification.Name("ClearNotification"), object: nil)
         bindWithViewModel()
         addViews()
         addConstrainits()
@@ -82,7 +82,6 @@ class SearchViewController: UIViewController {
     }
     
     private func addViews() {
-        view.backgroundColor = .white
         /// Add views to the view
         view.addSubview(mainView)
         view.addSubview(searchBar)
@@ -91,11 +90,11 @@ class SearchViewController: UIViewController {
         view.addSubview(activityIndicator)
         
         /// Add properities to the view
+        view.backgroundColor = UIColor.myPrimary
         activityIndicator.color = .gray
     }
     
     private func addConstrainits() {
-        /// Set tableView constraints
         NSLayoutConstraint.activate([
             mainView.topAnchor.constraint(equalTo: view.topAnchor),
             mainView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -133,7 +132,7 @@ class SearchViewController: UIViewController {
             } else {
                 self?.viewModel.prevProjects += prevProjects.previousProjects
             }
-            self?.viewModel.totalCount = prevProjects.totalCount
+            self?.viewModel.totalPagesCount = prevProjects.totalCount
             self?.stopActivityIndicator()
             if self?.viewModel.prevProjects.count == 0 {
                 self?.tableView.setEmptyView(message: String.LocalizedKeys.noPrevProjects.localized)
@@ -145,7 +144,7 @@ class SearchViewController: UIViewController {
     }
     
     @objc func configureFilterButton() {
-        if viewModel.selectedRows.isEmpty && !viewModel.isSearching {
+        if viewModel.selectedFilterRows.isEmpty && !viewModel.isSearching {
             filterButton.tintColor = UIColor.gray
             filterButton.configuration?.image = UIImage.SystemImages.filter.image
         } else {
@@ -189,12 +188,12 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource  {
                 )
             )
             
-            if (indexPath.row == viewModel.prevProjects.count - 1) && (indexPath.row < (viewModel.totalCount - 1)) {
+            if (indexPath.row == viewModel.prevProjects.count - 1) && (indexPath.row < (viewModel.totalPagesCount - 1)) {
                 /// Check if the current row is the last one and it is loading
                 viewModel.isLastResult = false
                 viewModel.searchFilterModel.page += 1
                 viewModel.fetchPrevProjects(searchFilterModel: viewModel.searchFilterModel)
-            } else if (indexPath.row == viewModel.prevProjects.count - 1) && (indexPath.row == viewModel.totalCount - 1) {
+            } else if (indexPath.row == viewModel.prevProjects.count - 1) && (indexPath.row == viewModel.totalPagesCount - 1) {
                 /// Check if the current row is the last one and there are no more pages
                 viewModel.isLastResult = true
             }

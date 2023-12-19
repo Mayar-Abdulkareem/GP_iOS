@@ -11,10 +11,10 @@ class SearchViewModel {
     
     // MARK: - Variables
     
-    var totalCount = 0
+    var totalPagesCount = 0
     var prevProjects = [PreviousProject]()
     var searchFilterModel = SearchFilterModel(page: 1, projectName: nil, projectType: [], sortByDate: nil)
-    var selectedRows: [IndexPath] = []
+    var selectedFilterRows: [IndexPath] = []
     var isSearching = false
     var isLastResult = false
     
@@ -45,11 +45,12 @@ class SearchViewModel {
         }
     }
     
+    /// Static Filtering
     func updateFilter() {
         searchFilterModel.projectType = []
         searchFilterModel.sortByDate = nil
         //isFiltering = (selectedRows.isEmpty)
-        for indexPath in selectedRows {
+        for indexPath in selectedFilterRows {
             switch indexPath.section {
             case 0:
                 /// For section 0, update sortByDate based on the row index
@@ -61,7 +62,6 @@ class SearchViewModel {
             case 1:
                 /// For section 1, append projectType based on the row index
                 if indexPath.row == 0 {
-                    print("yes")
                     searchFilterModel.projectType.append("Software")
                 } else if indexPath.row == 1 {
                     searchFilterModel.projectType.append("Hardware")
