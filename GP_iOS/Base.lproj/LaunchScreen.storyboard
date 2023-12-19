@@ -21,16 +21,16 @@
                                 <rect key="frame" x="60" y="129" width="273" height="514"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="tNF-TZ-eLO">
-                                <rect key="frame" x="140.66666666666666" y="767" width="111.66666666666666" height="35"/>
+                                <rect key="frame" x="136.66666666666666" y="767" width="119.99999999999997" height="35"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Powerd by" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zjf-ZD-b51">
-                                        <rect key="frame" x="0.0" y="0.0" width="71.666666666666671" height="35"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Powered by" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zjf-ZD-b51">
+                                        <rect key="frame" x="0.0" y="0.0" width="80" height="35"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" name="darkMain"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nnu.png" translatesAutoresizingMaskIntoConstraints="NO" id="Nt1-fo-cSy">
-                                        <rect key="frame" x="76.666666666666686" y="0.0" width="35" height="35"/>
+                                        <rect key="frame" x="85" y="0.0" width="35" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="Juj-nh-zcx"/>
                                             <constraint firstAttribute="width" constant="35" id="Uhh-fy-IKk"/>
