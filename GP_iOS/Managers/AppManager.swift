@@ -10,6 +10,7 @@ import Foundation
 class AppManager {
     static let shared = AppManager()
     var course: Course?
+    var prevProject: PreviousProject?
     
     private init() {}
 }

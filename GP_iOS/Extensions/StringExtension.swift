@@ -20,6 +20,10 @@ extension String {
         case noMoreResultsMsg
         case clearTitle
         case filterTitle
+        case viewMoreTitle
+        case studentsTitle
+        case supervisorTitle
+        case doctorInitital
         
         /// Top Alert
         /// - Title:

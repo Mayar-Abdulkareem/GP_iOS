@@ -36,6 +36,7 @@
 		2F7031092B0D35EE00FBB5D6 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 2F7031082B0D35EE00FBB5D6 /* Localizable.xcstrings */; };
 		2F70310E2B0E285100FBB5D6 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70310D2B0E285100FBB5D6 /* StringExtension.swift */; };
 		2F9E719F2B2FCA2A00767A4D /* ProjectDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9E719E2B2FCA2A00767A4D /* ProjectDetailsViewController.swift */; };
+		2F9E71A12B30ACAD00767A4D /* ProjectDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9E71A02B30ACAD00767A4D /* ProjectDescriptionViewController.swift */; };
 		2FA7FCC22B235A5300749D38 /* MoreCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA7FCC12B235A5300749D38 /* MoreCoordinator.swift */; };
 		2FA7FCC62B24ADEF00749D38 /* GetUserByIdAndPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA7FCC52B24ADEF00749D38 /* GetUserByIdAndPassword.swift */; };
 		2FA7FCC82B24FBB700749D38 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA7FCC72B24FBB700749D38 /* HomeTableViewCell.swift */; };
@@ -113,6 +114,7 @@
 		2F7031082B0D35EE00FBB5D6 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		2F70310D2B0E285100FBB5D6 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		2F9E719E2B2FCA2A00767A4D /* ProjectDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailsViewController.swift; sourceTree = "<group>"; };
+		2F9E71A02B30ACAD00767A4D /* ProjectDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDescriptionViewController.swift; sourceTree = "<group>"; };
 		2FA7FCC12B235A5300749D38 /* MoreCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreCoordinator.swift; sourceTree = "<group>"; };
 		2FA7FCC52B24ADEF00749D38 /* GetUserByIdAndPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserByIdAndPassword.swift; sourceTree = "<group>"; };
 		2FA7FCC72B24FBB700749D38 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
@@ -578,6 +580,7 @@
 				2FB7A1342B1520BF00923D02 /* SearchViewController.swift */,
 				2FA7FD092B2F26D600749D38 /* FilterViewController.swift */,
 				2F9E719E2B2FCA2A00767A4D /* ProjectDetailsViewController.swift */,
+				2F9E71A02B30ACAD00767A4D /* ProjectDescriptionViewController.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -791,6 +794,7 @@
 				2FA7FD0C2B2F459A00749D38 /* SearchFilterModel.swift in Sources */,
 				2FB7A13C2B15467B00923D02 /* MainView.swift in Sources */,
 				2FA7FD112B2F69B100749D38 /* FilterHeaderView.swift in Sources */,
+				2F9E71A12B30ACAD00767A4D /* ProjectDescriptionViewController.swift in Sources */,
 				2FA7FCDC2B26570800749D38 /* PeerViewController.swift in Sources */,
 				2FA7FCFF2B2D349F00749D38 /* PrevProject.swift in Sources */,
 				2FA7FCF92B2D305500749D38 /* GetPreviousProjects.swift in Sources */,

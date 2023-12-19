@@ -55,6 +55,12 @@
     "clearTitle" : {
       "extractionState" : "manual",
       "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "حذف"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -76,6 +82,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Courses"
+          }
+        }
+      }
+    },
+    "doctorInitital" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "د."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dr."
           }
         }
       }
@@ -386,6 +409,23 @@
         }
       }
     },
+    "studentsTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الطلاب"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Students: "
+          }
+        }
+      }
+    },
     "submissionTitle" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -403,6 +443,23 @@
         }
       }
     },
+    "supervisorTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "المشرف"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supervisor:"
+          }
+        }
+      }
+    },
     "unauthenticatedSubtitle" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -416,6 +473,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Unauthenticated: Please check your ID or password."
+          }
+        }
+      }
+    },
+    "viewMoreTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اظهر المزيد"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "View More"
           }
         }
       }

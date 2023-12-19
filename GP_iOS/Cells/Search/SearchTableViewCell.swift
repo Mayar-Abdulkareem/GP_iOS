@@ -46,6 +46,7 @@ class SearchTableViewCell: UITableViewCell {
     private let viewWithShadow: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.myPrimary
+        view.addShadow()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -58,8 +59,8 @@ class SearchTableViewCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor.myAccent
-        label.font = UIFont.systemFont(ofSize: 15)
-        label.text = "View More"
+        label.font = UIFont.boldSystemFont(ofSize: 15)
+        label.text = String.LocalizedKeys.viewMoreTitle.localized
         
         let imageView = UIImageView(frame: CGRect(x: view.frame.minX, y: view.frame.minY, width: 20, height: 25))
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -93,14 +94,6 @@ class SearchTableViewCell: UITableViewCell {
         return view
     }()
     
-//    private let stackView: UIStackView = {
-//        let stackView = UIStackView()
-//        stackView.axis = .horizontal
-//        stackView.translatesAutoresizingMaskIntoConstraints = false
-//        stackView.distribution = .fill
-//        return stackView
-//    }()
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         selectionStyle = .none
@@ -120,17 +113,12 @@ class SearchTableViewCell: UITableViewCell {
     
     private func addViews() {
         addViewFillEntireView(viewWithShadow, top: 8, bottom: 8, leading: 16, trailing: 16)
- //       viewWithShadow.addSubview(stackView)
         viewWithShadow.addSubview(projectNameLabel)
         viewWithShadow.addSubview(yearLabel)
         viewWithShadow.addSubview(detailsLabel)
         viewWithShadow.addSubview(typeLabel)
         viewWithShadow.addSubview(viewMoreView)
-//        stackView.addArrangedSubview(yearLabel)
-//        stackView.addArrangedSubview(projectNameLabel)
-        //stackView.addArrangedSubview(typeLabel)
-        /// Add properities
-        viewWithShadow.addShadow()
+        viewWithShadow.addSubview(typeLabel)
     }
     
     private func addConstraints() {
@@ -139,39 +127,30 @@ class SearchTableViewCell: UITableViewCell {
         }
         
         NSLayoutConstraint.activate([
-            viewWithShadow.heightAnchor.constraint(equalToConstant: 150),
-            
-            //stackView.centerXAnchor.constraint(equalTo: viewWithShadow.centerXAnchor),
-//            stackView.centerYAnchor.constraint(equalTo: viewWithShadow.centerYAnchor, constant: -30),
-//            stackView.leadingAnchor.constraint(equalTo: viewWithShadow.leadingAnchor, constant: 10),
-//            stackView.heightAnchor.constraint(equalToConstant: 25),
-//            stackView.widthAnchor.constraint(equalTo: viewWithShadow.widthAnchor, constant: -16),
-            
             projectNameLabel.centerXAnchor.constraint(equalTo: viewWithShadow.centerXAnchor),
-            projectNameLabel.centerYAnchor.constraint(equalTo: viewWithShadow.centerYAnchor, constant: -30),
+            projectNameLabel.topAnchor.constraint(equalTo: viewWithShadow.topAnchor, constant: 10),
             
-            //detailsLabel.centerXAnchor.constraint(equalTo: viewWithShadow.centerXAnchor),
             detailsLabel.leadingAnchor.constraint(equalTo: viewWithShadow.leadingAnchor, constant: 16),
-            detailsLabel.centerYAnchor.constraint(equalTo: viewWithShadow.centerYAnchor, constant: 10),
-            detailsLabel.heightAnchor.constraint(equalToConstant: 50),
+            detailsLabel.topAnchor.constraint(equalTo: projectNameLabel.bottomAnchor, constant: 10),
+            detailsLabel.bottomAnchor.constraint(equalTo: viewMoreView.topAnchor, constant: -10),
             
-            //yearLabel.centerXAnchor.constraint(equalTo: viewWithShadow.centerXAnchor),
             yearLabel.leadingAnchor.constraint(equalTo: viewWithShadow.leadingAnchor, constant: 16),
-            yearLabel.centerYAnchor.constraint(equalTo: viewWithShadow.centerYAnchor, constant: -30),
+            yearLabel.topAnchor.constraint(equalTo: viewWithShadow.topAnchor, constant: 10),
+            
+            typeLabel.trailingAnchor.constraint(equalTo: viewWithShadow.trailingAnchor, constant: -16),
+            typeLabel.topAnchor.constraint(equalTo: viewWithShadow.topAnchor, constant: 10),
             
             viewMoreView.bottomAnchor.constraint(equalTo: viewWithShadow.bottomAnchor, constant: -2),
             viewMoreView.leadingAnchor.constraint(equalTo: viewWithShadow.leadingAnchor, constant: 0),
             viewMoreView.trailingAnchor.constraint(equalTo: viewWithShadow.trailingAnchor, constant: 0),
-            viewMoreView.heightAnchor.constraint(equalToConstant: 30)
-//            detailsLabel.centerXAnchor.constraint(equalTo: viewWithShadow.centerXAnchor),
-//            detailsLabel.centerYAnchor.constraint(equalTo: viewWithShadow.centerYAnchor, constant: 20),
+            viewMoreView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.2)
         ])
     }
     
     func configureCell(model: PreviousProject) {
         projectNameLabel.text = model.name
         yearLabel.text = model.date
-        //typeLabel.text = model.projectType
-        detailsLabel.text = "Students: " + model.students + "\nSupervisor: " + model.supervisor
+        typeLabel.text = model.projectType
+        detailsLabel.text = String.LocalizedKeys.studentsTitle.localized + " " + model.students + "\n" + String.LocalizedKeys.supervisorTitle.localized + " " + model.supervisor
     }
 }

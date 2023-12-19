@@ -13,6 +13,7 @@ class FooterView: UIView {
         label.textAlignment = .left
         label.textColor = .gray
         label.font = UIFont.boldSystemFont(ofSize: 12)
+        //label.frame = CGRect(x: 20, y: 16, width: 100, height: 20)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -21,6 +22,7 @@ class FooterView: UIView {
         let activityIndicator = UIActivityIndicatorView(style: .medium)
         activityIndicator.tintColor = UIColor.gray
         activityIndicator.hidesWhenStopped = true
+        //activityIndicator.frame = CGRect(x: 20, y: 20, width: 100, height: 20)
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         return activityIndicator
     }()
@@ -47,15 +49,13 @@ class FooterView: UIView {
         NSLayoutConstraint.activate([
             label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
             label.centerYAnchor.constraint(equalTo: centerYAnchor),
- //           label.topAnchor.constraint(equalTo: topAnchor, constant: 16),
- //           label.bottomAnchor.constraint(equalTo: topAnchor, constant: -16),
+       //     label.topAnchor.constraint(equalTo: topAnchor, constant: 16),
+   //         label.bottomAnchor.constraint(equalTo: topAnchor, constant: -16),
             
             activityIndicator.centerXAnchor.constraint(equalTo: centerXAnchor),
             activityIndicator.centerYAnchor.constraint(equalTo: centerYAnchor),
- //           activityIndicator.topAnchor.constraint(equalTo: topAnchor, constant: 16),
- //           activityIndicator.bottomAnchor.constraint(equalTo: topAnchor, constant: -16),
-            
-            //self.heightAnchor.constraint(equalToConstant: 60)
+   //         activityIndicator.topAnchor.constraint(equalTo: topAnchor, constant: 16),
+   //         activityIndicator.bottomAnchor.constraint(equalTo: topAnchor, constant: -16),
         ])
     }
     

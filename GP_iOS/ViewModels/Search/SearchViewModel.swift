@@ -11,48 +11,12 @@ class SearchViewModel {
     
     // MARK: - Variables
     
-    //var page = 1
     var totalCount = 0
     var prevProjects = [PreviousProject]()
     var searchFilterModel = SearchFilterModel(page: 1, projectName: nil, projectType: [], sortByDate: nil)
     var selectedRows: [IndexPath] = []
-    
-    func updateFilter() {
-        print("update")
-        searchFilterModel.projectType = []
-        searchFilterModel.sortByDate = nil
-        for indexPath in selectedRows {
-            switch indexPath.section {
-            case 0:
-                // For section 0, update sortByDate based on the row index
-                if indexPath.row == 0 {
-                    searchFilterModel.sortByDate = "desc"
-                } else if indexPath.row == 1 {
-                    searchFilterModel.sortByDate = "asc"
-                }
-            case 1:
-                // For section 1, append projectType based on the row index
-                if indexPath.row == 0 {
-                    print("yes")
-                    searchFilterModel.projectType.append("Software")
-                } else if indexPath.row == 1 {
-                    searchFilterModel.projectType.append("Hardware")
-                }
-                // Add more cases for additional rows if needed
-            default:
-                break
-            }
-        }
-        searchFilterModel.page = 1
-        fetchPrevProjects(searchFilterModel: searchFilterModel)
-    }
-    
-    var filteredProjects = [PreviousProject]()
-    var isFiltering = false
-    
-//    var rowsCount: Int {
-//        return isFiltering ? filteredProjects.count : prevProjects.count
-//    }
+    var isSearching = false
+    var isLastResult = false
     
     // MARK: - Call Backs
     
@@ -81,12 +45,32 @@ class SearchViewModel {
         }
     }
     
-//    func searchProjects(with searchText: String) {
-//        filteredProjects = prevProjects.filter { $0.name.lowercased().contains(searchText.lowercased()) }
-////        onFetchPrevProjects?(FilteredPrevProjects(filteredProjects, totalCount: filteredProjects.count))
-//    }
-//    
-//    func cancelSearch() {
-//        filteredProjects = []
-//    }
+    func updateFilter() {
+        searchFilterModel.projectType = []
+        searchFilterModel.sortByDate = nil
+        //isFiltering = (selectedRows.isEmpty)
+        for indexPath in selectedRows {
+            switch indexPath.section {
+            case 0:
+                /// For section 0, update sortByDate based on the row index
+                if indexPath.row == 0 {
+                    searchFilterModel.sortByDate = "desc"
+                } else if indexPath.row == 1 {
+                    searchFilterModel.sortByDate = "asc"
+                }
+            case 1:
+                /// For section 1, append projectType based on the row index
+                if indexPath.row == 0 {
+                    print("yes")
+                    searchFilterModel.projectType.append("Software")
+                } else if indexPath.row == 1 {
+                    searchFilterModel.projectType.append("Hardware")
+                }
+            default:
+                break
+            }
+        }
+        searchFilterModel.page = 1
+        fetchPrevProjects(searchFilterModel: searchFilterModel)
+    }
 }

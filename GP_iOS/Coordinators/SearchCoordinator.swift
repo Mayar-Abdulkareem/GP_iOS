@@ -32,8 +32,12 @@ class SearchCoordinator: Coordinator {
     func presentFilterViewController(with viewModel: SearchViewModel) {
         let filterViewController = FilterViewController(viewModel: viewModel)
         let navController = UINavigationController(rootViewController: filterViewController)
-        //navController.modalPresentationStyle = .popover
+        navigationController.present(navController, animated: true)
+    }
+    
+    func presentProjectDetailsViewController() {
+        let projectDetailsViewController = ProjectDetailsViewController()
+        let navController = UINavigationController(rootViewController: projectDetailsViewController)
         navigationController.present(navController, animated: true)
     }
 }
-

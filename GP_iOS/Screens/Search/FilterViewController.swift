@@ -10,7 +10,6 @@ import UIKit
 class FilterViewController: UIViewController {
     
     var viewModel: SearchViewModel
-    
     var categories: [(String, [String])] = [("Date", ["Newest", "Oldest"]), ("Type", ["Software", "Hardware"])]
     var filterButtonTappedHandler: ((_ isTypeFilter: Bool) -> Void)?
     
@@ -26,6 +25,23 @@ class FilterViewController: UIViewController {
         setupClearButton()
         setupTableView()
     }
+    
+    /// Change the filter icon configuration
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.post(name: NSNotification.Name("YourNotificationName"), object: nil)
+    }
+    
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        if let viewController = presentingViewController as? SearchViewController {
+//            print("Successfully cast to SearchViewController")
+//            viewController.filterViewControllerDidDismiss()
+//            print("Configure Filter Button called on SearchViewController")
+//        } else {
+//            print("Failed to cast to SearchViewController")
+//        }
+//    }
     
     func setupClearButton() {
         let clearButton = UIBarButtonItem(title: String.LocalizedKeys.clearTitle.localized, style: .plain, target: self, action: #selector(clearButtonTapped))
@@ -63,7 +79,6 @@ class FilterViewController: UIViewController {
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            //tableView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.8)
         ])
     }
 }

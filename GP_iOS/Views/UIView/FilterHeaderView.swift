@@ -7,14 +7,9 @@
 
 import UIKit
 
-//protocol FilterHeaderViewDelegate: AnyObject {
-//    func clearFilterHandle(isTypeFilter: Bool)
-//}
-
 class FilterHeaderView: UITableViewHeaderFooterView {
     
     static let identifier = "filterHeaderViewIdentifire"
-//    weak var delegate: FilterHeaderViewDelegate?
     var filterButtonTappedHandler: ((_ isTypeFilter: Bool) -> Void)?
     private var section: Int = 0
     
@@ -26,17 +21,6 @@ class FilterHeaderView: UITableViewHeaderFooterView {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
-//    private let clearFilterButton = {
-//        var configuration = UIButton.Configuration.plain()
-//        configuration.image = UIImage.SystemImages.clearFilter.image
-//        configuration.imagePlacement = .all
-//        
-//        let button = UIButton(configuration: configuration, primaryAction: nil)
-//        button.addTarget(FilterHeaderView.self, action: #selector(filterButtonTapped), for: .touchUpInside)
-//        button.tintColor = UIColor.gray
-//        return button
-//    }()
     
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
@@ -51,7 +35,6 @@ class FilterHeaderView: UITableViewHeaderFooterView {
     }
     
     private func addViews() {
-        //backgroundColor = UIColor.myLightGray
         addSubview(label)
     }
     
@@ -65,16 +48,4 @@ class FilterHeaderView: UITableViewHeaderFooterView {
     func configure(title: String) {
         label.text = title
     }
-    
-//    @objc func filterButtonTapped() {
-//        if section == 0{
-//            /// Date selected
-//            //delegate?.clearFilterHandle(isTypeFilter: false)
-//            filterButtonTappedHandler?(false)
-//        } else {
-//            /// Type selected
-//            //delegate?.clearFilterHandle(isTypeFilter: true)
-//            filterButtonTappedHandler?(true)
-//        }
-//    }
 }

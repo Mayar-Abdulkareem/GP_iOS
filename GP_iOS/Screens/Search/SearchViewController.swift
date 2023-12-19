@@ -35,13 +35,6 @@ class SearchViewController: UIViewController {
         return activityIndicator
     }()
     
-    private let footerView: FooterView = {
-        let view = FooterView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        //view.setBackgroundColor(color: .clear)
-        return view
-    }()
-    
     private let searchBar: UISearchBar = {
         let searchBar = UISearchBar()
         searchBar.translatesAutoresizingMaskIntoConstraints = false
@@ -72,6 +65,7 @@ class SearchViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         searchBar.delegate = self
+        NotificationCenter.default.addObserver(self, selector: #selector(configureFilterButton), name: NSNotification.Name("YourNotificationName"), object: nil)
         bindWithViewModel()
         addViews()
         addConstrainits()
@@ -98,10 +92,6 @@ class SearchViewController: UIViewController {
         
         /// Add properities to the view
         activityIndicator.color = .gray
-        tableView.tableFooterView = footerView
-        tableView.tableFooterView?.frame = CGRect(x: 0, y: 0, width: tableView.frame.width, height: 60)
-        tableView.tableFooterView?.isHidden = true
-        
     }
     
     private func addConstrainits() {
@@ -147,12 +137,20 @@ class SearchViewController: UIViewController {
             self?.stopActivityIndicator()
             if self?.viewModel.prevProjects.count == 0 {
                 self?.tableView.setEmptyView(message: String.LocalizedKeys.noPrevProjects.localized)
-                self?.tableView.tableFooterView?.isHidden = true
             } else {
-                self?.tableView.tableFooterView?.isHidden = false
                 self?.tableView.removeEmptyView()
             }
             self?.tableView.reloadData()
+        }
+    }
+    
+    @objc func configureFilterButton() {
+        if viewModel.selectedRows.isEmpty && !viewModel.isSearching {
+            filterButton.tintColor = UIColor.gray
+            filterButton.configuration?.image = UIImage.SystemImages.filter.image
+        } else {
+            filterButton.tintColor = UIColor.mySecondary
+            filterButton.configuration?.image = UIImage.SystemImages.fiterFill.image
         }
     }
     
@@ -162,37 +160,70 @@ class SearchViewController: UIViewController {
 }
 
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource  {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.prevProjects.count
+        if section == 0 {
+            return viewModel.prevProjects.count
+        } else {
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let currentProject: PreviousProject = viewModel.prevProjects[indexPath.row]
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.identifier, for: indexPath) as? SearchTableViewCell ?? SearchTableViewCell()
-        cell.configureCell(
-            model: PreviousProject(
-                name: currentProject.name,
-                projectType: currentProject.projectType,
-                date: currentProject.date,
-                students: currentProject.students,
-                supervisor: "Dr." + currentProject.supervisor,
-                description: currentProject.description,
-                link: currentProject.link
+        if indexPath.section == 0 {
+            let currentProject: PreviousProject = viewModel.prevProjects[indexPath.row]
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.identifier, for: indexPath) as? SearchTableViewCell ?? SearchTableViewCell()
+            cell.configureCell(
+                model: PreviousProject(
+                    name: currentProject.name,
+                    projectType: currentProject.projectType,
+                    date: currentProject.date,
+                    students: currentProject.students,
+                    supervisor: String.LocalizedKeys.doctorInitital.localized + " " + currentProject.supervisor,
+                    description: currentProject.description,
+                    link: currentProject.link
+                )
             )
-        )
-        
-        if (indexPath.row == viewModel.prevProjects.count - 1) && (indexPath.row < (viewModel.totalCount - 1)) {
-            /// Check if the current row is the last one and it is loading
-            footerView.startActivityIndicator()
-            viewModel.searchFilterModel.page += 1
-            viewModel.fetchPrevProjects(searchFilterModel: viewModel.searchFilterModel)
-        } else if (indexPath.row == viewModel.prevProjects.count - 1) && (indexPath.row == viewModel.totalCount - 1) {
-            /// Check if the current row is the last one and there are no more pages
-            tableView.tableFooterView = footerView
-            footerView.setFooterLabelTitle(text: String.LocalizedKeys.noMoreResultsMsg.localized)
+            
+            if (indexPath.row == viewModel.prevProjects.count - 1) && (indexPath.row < (viewModel.totalCount - 1)) {
+                /// Check if the current row is the last one and it is loading
+                viewModel.isLastResult = false
+                viewModel.searchFilterModel.page += 1
+                viewModel.fetchPrevProjects(searchFilterModel: viewModel.searchFilterModel)
+            } else if (indexPath.row == viewModel.prevProjects.count - 1) && (indexPath.row == viewModel.totalCount - 1) {
+                /// Check if the current row is the last one and there are no more pages
+                viewModel.isLastResult = true
+            }
+            return cell
+        } else {
+            return UITableViewCell()
         }
-        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        AppManager.shared.prevProject = viewModel.prevProjects[indexPath.row]
+        coordinator?.presentProjectDetailsViewController()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return section == 0 ? 0 : 40
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        if section == 1 && (!viewModel.prevProjects.isEmpty){
+            let footerView = FooterView()
+            if viewModel.isLastResult {
+                footerView.setFooterLabelTitle(text: String.LocalizedKeys.noMoreResultsMsg.localized)
+            } else {
+                footerView.startActivityIndicator()
+            }
+            return footerView
+        }
+        return nil
     }
 }
 
@@ -202,13 +233,15 @@ extension SearchViewController: UISearchBarDelegate {
             /// No text to search, then show all results
             viewModel.searchFilterModel.page = 1
             viewModel.searchFilterModel.projectName = nil
-            viewModel.isFiltering = false
+            viewModel.isSearching = false
+            configureFilterButton()
             viewModel.fetchPrevProjects(searchFilterModel: viewModel.searchFilterModel)
         } else {
             /// Search and filter the projects based on the project name
             viewModel.searchFilterModel.page = 1
             viewModel.searchFilterModel.projectName = searchText
-            viewModel.isFiltering = true
+            viewModel.isSearching = true
+            configureFilterButton()
             viewModel.fetchPrevProjects(searchFilterModel: viewModel.searchFilterModel)
         }
     }
