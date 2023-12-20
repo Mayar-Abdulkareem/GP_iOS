@@ -77,17 +77,17 @@ class HomeAboutMeCell: UITableViewCell {
         
         NSLayoutConstraint.activate([
             image.topAnchor.constraint(greaterThanOrEqualTo: viewWithShadow.topAnchor),
-            image.leadingAnchor.constraint(equalTo: viewWithShadow.leadingAnchor),
+            image.leadingAnchor.constraint(equalTo: viewWithShadow.leadingAnchor, constant: 10),
             image.bottomAnchor.constraint(equalTo: viewWithShadow.bottomAnchor),
             image.widthAnchor.constraint(equalToConstant: 170),
             image.heightAnchor.constraint(equalToConstant: 170),
             
-            nameLabel.leadingAnchor.constraint(equalTo: image.trailingAnchor, constant: 10),
+            nameLabel.leadingAnchor.constraint(equalTo: image.trailingAnchor, constant: 5),
             nameLabel.topAnchor.constraint(equalTo: viewWithShadow.topAnchor, constant: 30),
             nameLabel.trailingAnchor.constraint(equalTo: viewWithShadow.trailingAnchor, constant: -10),
             nameLabel.bottomAnchor.constraint(equalTo: descLabel.topAnchor, constant: -10),
             
-            descLabel.leadingAnchor.constraint(equalTo: image.trailingAnchor, constant: 10),
+            descLabel.leadingAnchor.constraint(equalTo: image.trailingAnchor, constant: 5),
             descLabel.trailingAnchor.constraint(equalTo: viewWithShadow.trailingAnchor, constant: -10),
             descLabel.bottomAnchor.constraint(equalTo: viewWithShadow.bottomAnchor, constant: -30),
         ])
