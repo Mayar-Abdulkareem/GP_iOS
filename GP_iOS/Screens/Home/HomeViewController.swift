@@ -34,14 +34,7 @@ class HomeViewController: UIViewController {
         
         return tableView
     }()
-    
-    private let activityIndicator: UIActivityIndicatorView = {
-        let activityIndicator = UIActivityIndicatorView(style: .large)
-        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
-        activityIndicator.hidesWhenStopped = true
-        return activityIndicator
-    }()
-    
+        
     weak var coordinator: HomeCoordinator?
     private var viewModel = CoursesViewModel()
     
@@ -55,7 +48,7 @@ class HomeViewController: UIViewController {
         bindWithViewModel()
         addViews()
         addConstrainits()
-        startActivityIndicator()
+        startLoading()
         viewModel.getData()
     }
     
@@ -63,22 +56,26 @@ class HomeViewController: UIViewController {
         navigationController?.hideDefaultNavigationBar()
     }
     
-    private func startActivityIndicator() {
-        activityIndicator.startAnimating()
+    func startLoading() {
+        tableView.alpha = 0
+        showLoading(maskView: view, hasTransparentBackground: true)
     }
     
-    private func stopActivityIndicator() {
-        activityIndicator.stopAnimating()
+    func stopLoading() {
+        UIView.animate(withDuration: 0.3) {
+            self.tableView.alpha = 1
+        }
+        hideLoading()
     }
     
     private func bindWithViewModel() {
         viewModel.onShowError = { [weak self] msg in
+            self?.stopLoading()
             print("Error!")
-            self?.stopActivityIndicator()
         }
         
         viewModel.onFetchCourses = { [weak self] courses in
-            self?.stopActivityIndicator()
+            self?.stopLoading()
             if courses.count == 0 {
                 self?.tableView.setEmptyView(message: String.LocalizedKeys.noCourses.localized)
             } else {
@@ -92,9 +89,7 @@ class HomeViewController: UIViewController {
         view.backgroundColor = .white
         
         view.addSubview(tableView)
-        view.addSubview(activityIndicator)
         view.addSubview(mainView)
-        activityIndicator.color = .gray
     }
     
     private func addConstrainits() {
@@ -107,10 +102,7 @@ class HomeViewController: UIViewController {
             
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            
-            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
     }
 }

@@ -110,10 +110,12 @@ class LoginViewController: UIViewController {
         
         loginButton.addAction(UIAction {
             [weak self] _ in
-            self?.viewModel.login(
+            guard let self else { return }
+            self.showLoading(maskView: view)
+            self.viewModel.login(
                 with: Credential(
-                    regID: self?.registrationIDTextField.text ?? "" ,
-                    password: self?.passwordTextField.text ?? ""
+                    regID: self.registrationIDTextField.text ?? "" ,
+                    password: self.passwordTextField.text ?? ""
                 )
             )
         }, for: .primaryActionTriggered)
@@ -153,8 +155,9 @@ class LoginViewController: UIViewController {
     }
     
     private func bindWithViewModel() {
-        viewModel.onShowError = { msg in
+        viewModel.onShowError = { [weak self] msg in
             AuthManager.shared.userAccessToken = nil
+            self?.hideLoading()
             if (msg == String.LocalizedKeys.fillAllFieldsMsg.localized) {
                 TopAlertManager.show(title: "Info", subTitle: msg, type: .info)
             }

@@ -82,6 +82,7 @@
 		2FB7A1452B15F18300923D02 /* AnnouncementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB7A1442B15F18300923D02 /* AnnouncementViewController.swift */; };
 		8B527C862B31CDC200B6ACF7 /* HomeAboutMeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B527C852B31CDC200B6ACF7 /* HomeAboutMeCell.swift */; };
 		8BA6A5B82B319C7300CACE48 /* nnu.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BA6A5B72B319C7300CACE48 /* nnu.png */; };
+		8BAA93252B32D217007B3B16 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAA93242B32D217007B3B16 /* UIViewController+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -163,6 +164,7 @@
 		3B79D20A1AC8A7967C76ABF4 /* Pods-GP_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GP_iOS.debug.xcconfig"; path = "Target Support Files/Pods-GP_iOS/Pods-GP_iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		8B527C852B31CDC200B6ACF7 /* HomeAboutMeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAboutMeCell.swift; sourceTree = "<group>"; };
 		8BA6A5B72B319C7300CACE48 /* nnu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nnu.png; sourceTree = "<group>"; };
+		8BAA93242B32D217007B3B16 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		A0417F91EF6796DE5F43F4A7 /* Pods-GP_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GP_iOS.release.xcconfig"; path = "Target Support Files/Pods-GP_iOS/Pods-GP_iOS.release.xcconfig"; sourceTree = "<group>"; };
 		BA1F783B8298801C30A3BA09 /* Pods_GP_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GP_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -320,6 +322,7 @@
 				2F70310D2B0E285100FBB5D6 /* StringExtension.swift */,
 				2FA7FCD52B2639A800749D38 /* UITableView.swift */,
 				2FA7FCE92B2923B500749D38 /* UINavigationController.swift */,
+				8BAA93242B32D217007B3B16 /* UIViewController+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -818,6 +821,7 @@
 				2FA7FD132B2F6B9A00749D38 /* SearchCoordinator.swift in Sources */,
 				2FA7FCD62B2639A800749D38 /* UITableView.swift in Sources */,
 				2FA7FCCE2B25E7F000749D38 /* Course.swift in Sources */,
+				8BAA93252B32D217007B3B16 /* UIViewController+Extensions.swift in Sources */,
 				2F70310E2B0E285100FBB5D6 /* StringExtension.swift in Sources */,
 				2F4490D92B097717002B6975 /* CustomTextField.swift in Sources */,
 				2FA7FCC82B24FBB700749D38 /* HomeTableViewCell.swift in Sources */,
