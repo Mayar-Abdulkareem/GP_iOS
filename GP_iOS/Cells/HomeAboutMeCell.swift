@@ -13,7 +13,7 @@ class HomeAboutMeCell: UITableViewCell {
     private let nameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 22, weight: .semibold)
+        label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
         label.textColor = .mySecondary
         label.numberOfLines = 0
         return label
@@ -25,7 +25,7 @@ class HomeAboutMeCell: UITableViewCell {
         label.textColor = UIColor.gray
         label.font = UIFont.systemFont(ofSize: 14)
         label.numberOfLines = 0
-        label.text = "We help you organize your work and increase your progress with our humble system. On each launch, you're one step closer to graduating! Good luck Graduate"
+        label.text = "You're one step closer to graduating on each launch!"
         return label
     }()
     
@@ -76,23 +76,24 @@ class HomeAboutMeCell: UITableViewCell {
         viewWithShadow.addSubview(descLabel)
         
         NSLayoutConstraint.activate([
+            image.topAnchor.constraint(greaterThanOrEqualTo: viewWithShadow.topAnchor),
             image.leadingAnchor.constraint(equalTo: viewWithShadow.leadingAnchor),
             image.bottomAnchor.constraint(equalTo: viewWithShadow.bottomAnchor),
             image.widthAnchor.constraint(equalToConstant: 170),
             image.heightAnchor.constraint(equalToConstant: 170),
             
-            nameLabel.leadingAnchor.constraint(equalTo: viewWithShadow.leadingAnchor, constant: 30),
+            nameLabel.leadingAnchor.constraint(equalTo: image.trailingAnchor, constant: 10),
             nameLabel.topAnchor.constraint(equalTo: viewWithShadow.topAnchor, constant: 30),
-            nameLabel.trailingAnchor.constraint(equalTo: viewWithShadow.trailingAnchor, constant: -30),
+            nameLabel.trailingAnchor.constraint(equalTo: viewWithShadow.trailingAnchor, constant: -10),
             nameLabel.bottomAnchor.constraint(equalTo: descLabel.topAnchor, constant: -10),
             
-            descLabel.leadingAnchor.constraint(equalTo: viewWithShadow.leadingAnchor, constant: 180),
-            descLabel.trailingAnchor.constraint(equalTo: viewWithShadow.trailingAnchor, constant: -30),
+            descLabel.leadingAnchor.constraint(equalTo: image.trailingAnchor, constant: 10),
+            descLabel.trailingAnchor.constraint(equalTo: viewWithShadow.trailingAnchor, constant: -10),
             descLabel.bottomAnchor.constraint(equalTo: viewWithShadow.bottomAnchor, constant: -30),
         ])
     }
         
     func configureCell(name: String) {
-        nameLabel.text = "Welcome Graduate \(name)"
+        nameLabel.text = "Welcome\n\(name)"
     }
 }
