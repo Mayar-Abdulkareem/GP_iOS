@@ -58,7 +58,14 @@ extension MainCoordinator: MainCoordinatorProtocol {
         /// Clear the navigation stack
         navigationController.setViewControllers([], animated: false)
         childCoordinators.removeAll()
-        showHomeFlow()
+        
+        UIView.transition(with: navigationController.view,
+                          duration: 0.5,
+                          options: .transitionFlipFromLeft,
+                          animations: {
+            
+            self.showHomeFlow()
+        })
     }
     
     /// Handles the necessary actions when the user logs out.
@@ -69,6 +76,12 @@ extension MainCoordinator: MainCoordinatorProtocol {
         AuthManager.shared.userAccessToken = nil
         AuthManager.shared.regID = nil
         AuthManager.shared.role = nil
-        showLoginFlow()
+        
+        UIView.transition(with: navigationController.view,
+                          duration: 0.5,
+                          options: .transitionFlipFromLeft,
+                          animations: {
+            self.showLoginFlow()
+        })
     }
 }
