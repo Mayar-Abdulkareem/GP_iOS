@@ -30,7 +30,7 @@ class HeaderView: UIView {
     private let logoImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage.gradPro
+        imageView.image = UIImage.gradProHorizontal
         return imageView
     }()
     
@@ -73,10 +73,10 @@ class HeaderView: UIView {
             
             logoImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
             logoImageView.centerYAnchor.constraint(equalTo: stackView.centerYAnchor),
-            logoImageView.widthAnchor.constraint(equalToConstant: 70),
-            logoImageView.heightAnchor.constraint(equalToConstant: 70),
+            logoImageView.widthAnchor.constraint(equalToConstant: 120),
+            logoImageView.heightAnchor.constraint(equalToConstant: 50),
             logoImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 10),
-            logoImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -15),
+            logoImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
         ])
     }
     
