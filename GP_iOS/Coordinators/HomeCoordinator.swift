@@ -28,8 +28,9 @@ class HomeCoordinator: Coordinator {
         navigationController.pushViewController(homeViewController, animated: false)
     }
     
-    func showCourseViewController() {
+    func showCourseViewController(viewModel: HomeViewModel) {
         let courseViewController = CourseViewController()
+        courseViewController.viewModel = viewModel
         let navController = UINavigationController(rootViewController: courseViewController)
         navController.modalPresentationStyle = .fullScreen
         
@@ -37,7 +38,7 @@ class HomeCoordinator: Coordinator {
         childCoordinators.append(myCoordinator)
         myCoordinator.parentCoordinator = self
         courseViewController.coordinator = myCoordinator 
-        navigationController.present(navController, animated: false)
+        navigationController.present(navController, animated: true)
     }
 
     func dismiss() {

@@ -21,11 +21,13 @@ class StoreViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(mainView)
-        addConstrainits()
+        view.backgroundColor = .myPrimary
+        configureViews()
     }
     
-    private func addConstrainits() {
+    private func configureViews() {
+        view.addSubview(mainView)
+
         NSLayoutConstraint.activate([
             mainView.topAnchor.constraint(equalTo: view.topAnchor),
             mainView.leadingAnchor.constraint(equalTo: view.leadingAnchor),

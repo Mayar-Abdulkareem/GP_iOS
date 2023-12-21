@@ -24,6 +24,7 @@ extension String {
         case studentsTitle
         case supervisorTitle
         case doctorInitital
+        case searchByProjectName
         
         /// Top Alert
         /// - Title:

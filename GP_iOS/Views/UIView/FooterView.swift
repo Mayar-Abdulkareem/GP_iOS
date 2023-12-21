@@ -27,23 +27,20 @@ class FooterView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addViews()
-        addConstraints()
+        configureViews()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        addViews()
-        addConstraints()
+        configureViews()
     }
     
-    private func addViews() {
+    private func configureViews() {
         backgroundColor = UIColor.myLightGray
+        
         addSubview(label)
         addSubview(activityIndicator)
-    }
-    
-    private func addConstraints() {
+        
         NSLayoutConstraint.activate([
             label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
             label.centerYAnchor.constraint(equalTo: centerYAnchor),

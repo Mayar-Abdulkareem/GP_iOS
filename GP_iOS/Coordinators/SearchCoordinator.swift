@@ -29,8 +29,16 @@ class SearchCoordinator: Coordinator {
         navigationController.pushViewController(searchViewController, animated: false)
     }
     
-    func presentFilterViewController(with viewModel: SearchViewModel) {
+    func presentFilterViewController(with viewModel: SearchViewModel?) {
+        guard let viewModel = viewModel else {return}
         let filterViewController = FilterViewController(viewModel: viewModel)
+        if navigationController.viewControllers.first is UITabBarController {            
+            if let tabBarController = navigationController.viewControllers.first as? UITabBarController {
+                if let searchViewController = tabBarController.viewControllers?[TabInfo.search.tag] as? SearchViewController {
+                    filterViewController.delegate = searchViewController
+                }
+            }
+        }
         let navController = UINavigationController(rootViewController: filterViewController)
         navigationController.present(navController, animated: true)
     }

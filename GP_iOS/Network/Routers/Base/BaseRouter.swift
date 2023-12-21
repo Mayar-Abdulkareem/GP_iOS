@@ -2,7 +2,7 @@
 //  BaseRouter.swift
 //  GP_iOS
 //
-//  Created by Mayar Abdulkareem - Mayar Abdulkareem - FTS on 06/11/2023.
+//  Created by Mayar Abdulkareem - FTS on 06/11/2023.
 //
 
 import Alamofire
@@ -22,8 +22,8 @@ extension BaseRouter {
     
     /// Returns a URLRequest object based an the provided path, method, and parameter
     func asURLRequest() throws -> URLRequest {
-        let url = try (NetworkConstant.baseURL +
-                       self.path).asURL()
+        let url = try (BuildConfiguration.shared.baseURL +
+                              self.path).asURL()
         var urlRequest = URLRequest(url: url)
         
         // HTTP Method

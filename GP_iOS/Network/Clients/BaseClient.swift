@@ -24,6 +24,7 @@ class BaseClient {
     func performRequest<T: Codable> (
         //type: T.Type,
         router: BaseRouter,
+        type: T.Type,
         completion: @escaping (Result<T, AFError>) -> ()
     ) {
         AF.request(router)

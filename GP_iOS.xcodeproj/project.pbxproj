@@ -37,6 +37,7 @@
 		2F70310E2B0E285100FBB5D6 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70310D2B0E285100FBB5D6 /* StringExtension.swift */; };
 		2F9E719F2B2FCA2A00767A4D /* ProjectDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9E719E2B2FCA2A00767A4D /* ProjectDetailsViewController.swift */; };
 		2F9E71A12B30ACAD00767A4D /* ProjectDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9E71A02B30ACAD00767A4D /* ProjectDescriptionViewController.swift */; };
+		2F9E71A32B32EAC300767A4D /* BuildConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9E71A22B32EAC300767A4D /* BuildConfiguration.swift */; };
 		2FA7FCC22B235A5300749D38 /* MoreCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA7FCC12B235A5300749D38 /* MoreCoordinator.swift */; };
 		2FA7FCC62B24ADEF00749D38 /* GetUserByIdAndPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA7FCC52B24ADEF00749D38 /* GetUserByIdAndPassword.swift */; };
 		2FA7FCC82B24FBB700749D38 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA7FCC72B24FBB700749D38 /* HomeTableViewCell.swift */; };
@@ -54,7 +55,7 @@
 		2FA7FCEA2B2923B500749D38 /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA7FCE92B2923B500749D38 /* UINavigationController.swift */; };
 		2FA7FCF02B2B036F00749D38 /* SubmissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA7FCEF2B2B036F00749D38 /* SubmissionsViewController.swift */; };
 		2FA7FCF22B2B818B00749D38 /* CourseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA7FCF12B2B818B00749D38 /* CourseCollectionViewCell.swift */; };
-		2FA7FCF42B2CCC0E00749D38 /* HeaderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA7FCF32B2CCC0E00749D38 /* HeaderCollectionViewCell.swift */; };
+		2FA7FCF42B2CCC0E00749D38 /* AboutCourseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA7FCF32B2CCC0E00749D38 /* AboutCourseCell.swift */; };
 		2FA7FCF62B2CDF5400749D38 /* CourseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA7FCF52B2CDF5400749D38 /* CourseCoordinator.swift */; };
 		2FA7FCF92B2D305500749D38 /* GetPreviousProjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA7FCF82B2D305500749D38 /* GetPreviousProjects.swift */; };
 		2FA7FCFC2B2D30A900749D38 /* SearchRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA7FCFB2B2D30A900749D38 /* SearchRoute.swift */; };
@@ -118,6 +119,7 @@
 		2F70310D2B0E285100FBB5D6 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		2F9E719E2B2FCA2A00767A4D /* ProjectDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailsViewController.swift; sourceTree = "<group>"; };
 		2F9E71A02B30ACAD00767A4D /* ProjectDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDescriptionViewController.swift; sourceTree = "<group>"; };
+		2F9E71A22B32EAC300767A4D /* BuildConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildConfiguration.swift; sourceTree = "<group>"; };
 		2FA7FCC12B235A5300749D38 /* MoreCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreCoordinator.swift; sourceTree = "<group>"; };
 		2FA7FCC52B24ADEF00749D38 /* GetUserByIdAndPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserByIdAndPassword.swift; sourceTree = "<group>"; };
 		2FA7FCC72B24FBB700749D38 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
@@ -135,7 +137,7 @@
 		2FA7FCE92B2923B500749D38 /* UINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
 		2FA7FCEF2B2B036F00749D38 /* SubmissionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmissionsViewController.swift; sourceTree = "<group>"; };
 		2FA7FCF12B2B818B00749D38 /* CourseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCollectionViewCell.swift; sourceTree = "<group>"; };
-		2FA7FCF32B2CCC0E00749D38 /* HeaderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionViewCell.swift; sourceTree = "<group>"; };
+		2FA7FCF32B2CCC0E00749D38 /* AboutCourseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutCourseCell.swift; sourceTree = "<group>"; };
 		2FA7FCF52B2CDF5400749D38 /* CourseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCoordinator.swift; sourceTree = "<group>"; };
 		2FA7FCF82B2D305500749D38 /* GetPreviousProjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPreviousProjects.swift; sourceTree = "<group>"; };
 		2FA7FCFB2B2D30A900749D38 /* SearchRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRoute.swift; sourceTree = "<group>"; };
@@ -211,7 +213,8 @@
 		2F4490A32B0578AC002B6975 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				2F4490A42B0578BA002B6975 /* LoginViewController.swift */,
+				2F9E71B92B330DB100767A4D /* ViewModel */,
+				2F9E71B82B330DA400767A4D /* Controller */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -356,10 +359,10 @@
 		2F4490DE2B0A351E002B6975 /* UIView */ = {
 			isa = PBXGroup;
 			children = (
+				2F7031002B0CE39E00FBB5D6 /* TopAlertView.swift */,
 				2F4490DF2B0A3541002B6975 /* LogoView.swift */,
 				2FB7A13B2B15467B00923D02 /* HeaderView.swift */,
 				2FA7FD072B2EFC3200749D38 /* FooterView.swift */,
-				2FA7FD102B2F69B100749D38 /* FilterHeaderView.swift */,
 			);
 			path = UIView;
 			sourceTree = "<group>";
@@ -387,11 +390,8 @@
 			children = (
 				2FA7FCE42B290ED300749D38 /* Enumeration  */,
 				2FA7FCC32B24AD5C00749D38 /* UseCases */,
-				2FB7A13D2B15EC3800923D02 /* Cells */,
 				2FB7A13A2B15464700923D02 /* Managers */,
-				2FB7A1242B13804400923D02 /* ViewModels */,
 				2F70310A2B0D3E1A00FBB5D6 /* Localizable */,
-				2F7030FF2B0CE37D00FBB5D6 /* TopAlert */,
 				2F4490D72B0976D2002B6975 /* Views */,
 				2F4490D02B094BE9002B6975 /* Extensions */,
 				2F4490BD2B058117002B6975 /* Network */,
@@ -427,21 +427,248 @@
 			path = LocalDatabase;
 			sourceTree = "<group>";
 		};
-		2F7030FF2B0CE37D00FBB5D6 /* TopAlert */ = {
-			isa = PBXGroup;
-			children = (
-				2F7031012B0CE39E00FBB5D6 /* TopAlertManager.swift */,
-				2F7031002B0CE39E00FBB5D6 /* TopAlertView.swift */,
-			);
-			path = TopAlert;
-			sourceTree = "<group>";
-		};
 		2F70310A2B0D3E1A00FBB5D6 /* Localizable */ = {
 			isa = PBXGroup;
 			children = (
 				2F7031082B0D35EE00FBB5D6 /* Localizable.xcstrings */,
 			);
 			path = Localizable;
+			sourceTree = "<group>";
+		};
+		2F9E71A52B33054800767A4D /* MainHome */ = {
+			isa = PBXGroup;
+			children = (
+				2F9E71B52B330A1600767A4D /* ViewModel */,
+				2F9E71B42B3309EE00767A4D /* Cells */,
+				2F9E71B32B3309E300767A4D /* Controller */,
+			);
+			path = MainHome;
+			sourceTree = "<group>";
+		};
+		2F9E71A62B33055D00767A4D /* Course */ = {
+			isa = PBXGroup;
+			children = (
+				2F9E71B72B330A4100767A4D /* Cells */,
+				2F9E71B62B330A2E00767A4D /* Controller */,
+			);
+			path = Course;
+			sourceTree = "<group>";
+		};
+		2F9E71A72B33056B00767A4D /* Borad */ = {
+			isa = PBXGroup;
+			children = (
+				2FA7FCD92B2656E600749D38 /* BoardViewController.swift */,
+			);
+			path = Borad;
+			sourceTree = "<group>";
+		};
+		2F9E71A82B33057500767A4D /* Peer */ = {
+			isa = PBXGroup;
+			children = (
+				2FA7FCDB2B26570800749D38 /* PeerViewController.swift */,
+			);
+			path = Peer;
+			sourceTree = "<group>";
+		};
+		2F9E71A92B33058100767A4D /* Submissions */ = {
+			isa = PBXGroup;
+			children = (
+				2FA7FCEF2B2B036F00749D38 /* SubmissionsViewController.swift */,
+			);
+			name = Submissions;
+			path = Controllers/Submissions;
+			sourceTree = "<group>";
+		};
+		2F9E71B32B3309E300767A4D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2FB7A1292B14890800923D02 /* HomeViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		2F9E71B42B3309EE00767A4D /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				2FA7FCC72B24FBB700749D38 /* HomeTableViewCell.swift */,
+				8B527C852B31CDC200B6ACF7 /* HomeAboutMeCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		2F9E71B52B330A1600767A4D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2FA7FCD32B25F3EF00749D38 /* CoursesViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2F9E71B62B330A2E00767A4D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2FA7FCDD2B26582800749D38 /* CourseViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		2F9E71B72B330A4100767A4D /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				2FA7FCF32B2CCC0E00749D38 /* AboutCourseCell.swift */,
+				2FA7FCF12B2B818B00749D38 /* CourseCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		2F9E71B82B330DA400767A4D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2F4490A42B0578BA002B6975 /* LoginViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		2F9E71B92B330DB100767A4D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2FB7A1262B13804400923D02 /* LoginViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2F9E71BA2B330EE800767A4D /* MainSearch */ = {
+			isa = PBXGroup;
+			children = (
+				2F9E71C92B33348D00767A4D /* Cells */,
+				2F9E71BE2B330F5000767A4D /* ViewModel */,
+				2F9E71BD2B330F3800767A4D /* Controller */,
+			);
+			path = MainSearch;
+			sourceTree = "<group>";
+		};
+		2F9E71BB2B330EF000767A4D /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				2F9E71CA2B3334F200767A4D /* Cells */,
+				2F9E71C22B3330FC00767A4D /* Views */,
+				2F9E71BF2B330F7700767A4D /* Controller */,
+			);
+			path = Filter;
+			sourceTree = "<group>";
+		};
+		2F9E71BC2B330EFB00767A4D /* ProjectDetails */ = {
+			isa = PBXGroup;
+			children = (
+				2F9E71C12B330F9A00767A4D /* Controller */,
+			);
+			path = ProjectDetails;
+			sourceTree = "<group>";
+		};
+		2F9E71BD2B330F3800767A4D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2FB7A1342B1520BF00923D02 /* SearchViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		2F9E71BE2B330F5000767A4D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2FA7FD032B2DCD7B00749D38 /* SearchViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2F9E71BF2B330F7700767A4D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2FA7FD092B2F26D600749D38 /* FilterViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		2F9E71C12B330F9A00767A4D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2F9E719E2B2FCA2A00767A4D /* ProjectDetailsViewController.swift */,
+				2F9E71A02B30ACAD00767A4D /* ProjectDescriptionViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		2F9E71C22B3330FC00767A4D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2FA7FD102B2F69B100749D38 /* FilterHeaderView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		2F9E71C32B3333DE00767A4D /* MainMore */ = {
+			isa = PBXGroup;
+			children = (
+				2F9E71C82B33342800767A4D /* Cells */,
+				2F9E71C72B33341D00767A4D /* Controller */,
+			);
+			path = MainMore;
+			sourceTree = "<group>";
+		};
+		2F9E71C42B3333EA00767A4D /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				2FB7A1402B15F0A000923D02 /* ProfileViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		2F9E71C52B3333F400767A4D /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				2FB7A1422B15F10500923D02 /* RegisterViewController.swift */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		2F9E71C62B3333FC00767A4D /* Announcement */ = {
+			isa = PBXGroup;
+			children = (
+				2FB7A1442B15F18300923D02 /* AnnouncementViewController.swift */,
+			);
+			path = Announcement;
+			sourceTree = "<group>";
+		};
+		2F9E71C72B33341D00767A4D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2FB7A1382B1530B300923D02 /* MoreViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		2F9E71C82B33342800767A4D /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				2FB7A13E2B15EC6E00923D02 /* MoreTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		2F9E71C92B33348D00767A4D /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				2FA7FD002B2DC88400749D38 /* SearchTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		2F9E71CA2B3334F200767A4D /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				2FA7FD052B2E5D2000749D38 /* FilterTableViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		2FA7FCC32B24AD5C00749D38 /* UseCases */ = {
@@ -486,14 +713,6 @@
 			path = Courses;
 			sourceTree = "<group>";
 		};
-		2FA7FCD22B25F3BA00749D38 /* Courses */ = {
-			isa = PBXGroup;
-			children = (
-				2FA7FCD32B25F3EF00749D38 /* CoursesViewModel.swift */,
-			);
-			path = Courses;
-			sourceTree = "<group>";
-		};
 		2FA7FCE42B290ED300749D38 /* Enumeration  */ = {
 			isa = PBXGroup;
 			children = (
@@ -527,23 +746,6 @@
 			path = PrevProjects;
 			sourceTree = "<group>";
 		};
-		2FA7FD022B2DCD5E00749D38 /* Search */ = {
-			isa = PBXGroup;
-			children = (
-				2FA7FD032B2DCD7B00749D38 /* SearchViewModel.swift */,
-			);
-			path = Search;
-			sourceTree = "<group>";
-		};
-		2FA7FD0D2B2F630E00749D38 /* Search */ = {
-			isa = PBXGroup;
-			children = (
-				2FA7FD052B2E5D2000749D38 /* FilterTableViewCell.swift */,
-				2FA7FD002B2DC88400749D38 /* SearchTableViewCell.swift */,
-			);
-			path = Search;
-			sourceTree = "<group>";
-		};
 		2FB7A1212B13801E00923D02 /* AccessToken */ = {
 			isa = PBXGroup;
 			children = (
@@ -552,32 +754,14 @@
 			path = AccessToken;
 			sourceTree = "<group>";
 		};
-		2FB7A1242B13804400923D02 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				2FA7FD022B2DCD5E00749D38 /* Search */,
-				2FA7FCD22B25F3BA00749D38 /* Courses */,
-				2FB7A1252B13804400923D02 /* Login */,
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		2FB7A1252B13804400923D02 /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				2FB7A1262B13804400923D02 /* LoginViewModel.swift */,
-			);
-			path = Login;
-			sourceTree = "<group>";
-		};
 		2FB7A1282B1488CA00923D02 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				2FB7A1292B14890800923D02 /* HomeViewController.swift */,
-				2FA7FCDD2B26582800749D38 /* CourseViewController.swift */,
-				2FA7FCD92B2656E600749D38 /* BoardViewController.swift */,
-				2FA7FCDB2B26570800749D38 /* PeerViewController.swift */,
-				2FA7FCEF2B2B036F00749D38 /* SubmissionsViewController.swift */,
+				2F9E71A52B33054800767A4D /* MainHome */,
+				2F9E71A62B33055D00767A4D /* Course */,
+				2F9E71A72B33056B00767A4D /* Borad */,
+				2F9E71A82B33057500767A4D /* Peer */,
+				2F9E71A92B33058100767A4D /* Submissions */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -585,10 +769,9 @@
 		2FB7A12F2B151FA000923D02 /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				2FB7A1342B1520BF00923D02 /* SearchViewController.swift */,
-				2FA7FD092B2F26D600749D38 /* FilterViewController.swift */,
-				2F9E719E2B2FCA2A00767A4D /* ProjectDetailsViewController.swift */,
-				2F9E71A02B30ACAD00767A4D /* ProjectDescriptionViewController.swift */,
+				2F9E71BC2B330EFB00767A4D /* ProjectDetails */,
+				2F9E71BB2B330EF000767A4D /* Filter */,
+				2F9E71BA2B330EE800767A4D /* MainSearch */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -604,10 +787,10 @@
 		2FB7A1312B151FF100923D02 /* More */ = {
 			isa = PBXGroup;
 			children = (
-				2FB7A1382B1530B300923D02 /* MoreViewController.swift */,
-				2FB7A1402B15F0A000923D02 /* ProfileViewController.swift */,
-				2FB7A1422B15F10500923D02 /* RegisterViewController.swift */,
-				2FB7A1442B15F18300923D02 /* AnnouncementViewController.swift */,
+				2F9E71C62B3333FC00767A4D /* Announcement */,
+				2F9E71C52B3333F400767A4D /* Register */,
+				2F9E71C42B3333EA00767A4D /* Profile */,
+				2F9E71C32B3333DE00767A4D /* MainMore */,
 			);
 			path = More;
 			sourceTree = "<group>";
@@ -615,23 +798,12 @@
 		2FB7A13A2B15464700923D02 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				2F7031012B0CE39E00FBB5D6 /* TopAlertManager.swift */,
 				2FB7A12D2B14F02100923D02 /* AuthManager.swift */,
 				2FA7FCE12B26825B00749D38 /* AppManager.swift */,
+				2F9E71A22B32EAC300767A4D /* BuildConfiguration.swift */,
 			);
 			path = Managers;
-			sourceTree = "<group>";
-		};
-		2FB7A13D2B15EC3800923D02 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				8B527C852B31CDC200B6ACF7 /* HomeAboutMeCell.swift */,
-				2FA7FCC72B24FBB700749D38 /* HomeTableViewCell.swift */,
-				2FB7A13E2B15EC6E00923D02 /* MoreTableViewCell.swift */,
-				2FA7FCF12B2B818B00749D38 /* CourseCollectionViewCell.swift */,
-				2FA7FCF32B2CCC0E00749D38 /* HeaderCollectionViewCell.swift */,
-				2FA7FD0D2B2F630E00749D38 /* Search */,
-			);
-			path = Cells;
 			sourceTree = "<group>";
 		};
 		BDD64D1FE57A09686C945A68 /* Frameworks */ = {
@@ -769,6 +941,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F9E71A32B32EAC300767A4D /* BuildConfiguration.swift in Sources */,
 				2FA7FD062B2E5D2000749D38 /* FilterTableViewCell.swift in Sources */,
 				2F4490DB2B098D3B002B6975 /* CustomButton.swift in Sources */,
 				2FA7FCE22B26825B00749D38 /* AppManager.swift in Sources */,
@@ -830,7 +1003,7 @@
 				2F4490B92B0580BF002B6975 /* Administrator.swift in Sources */,
 				2F4490C92B0581C1002B6975 /* LoginRouter.swift in Sources */,
 				2FB7A1232B13801E00923D02 /* AccessToken.swift in Sources */,
-				2FA7FCF42B2CCC0E00749D38 /* HeaderCollectionViewCell.swift in Sources */,
+				2FA7FCF42B2CCC0E00749D38 /* AboutCourseCell.swift in Sources */,
 				2FA7FCCB2B25E79600749D38 /* GetCoursesByRegID.swift in Sources */,
 				2FA7FCF22B2B818B00749D38 /* CourseCollectionViewCell.swift in Sources */,
 				2FA7FCEA2B2923B500749D38 /* UINavigationController.swift in Sources */,

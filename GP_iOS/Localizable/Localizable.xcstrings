@@ -375,6 +375,23 @@
         }
       }
     },
+    "searchByProjectName" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ابحث باستخدام اسم المشروع"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search by project name"
+          }
+        }
+      }
+    },
     "searchTitle" : {
       "extractionState" : "manual",
       "localizations" : {
