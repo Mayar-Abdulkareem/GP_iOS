@@ -12,55 +12,25 @@ class ProjectDetailsViewController: UIViewController {
     private let projectNameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.font = UIFont.boldSystemFont(ofSize: 25)
+        label.textColor = .mySecondary
         label.numberOfLines = 0
         return label
     }()
-    
-    private let projectTypeLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 16)
-        return label
-    }()
-    
-    private let yearLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 16)
-        return label
-    }()
-    
-    private let studentsLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 16)
-        return label
-    }()
-    
-    private let supervisorLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 16)
-        return label
-    }()
-    
-    private let descriptionLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 16)
-        label.numberOfLines = 0
-        return label
-    }()
-    
-    private let projectLinkButton = {
+   
+    private lazy var projectLinkButton = {
         var configuration = UIButton.Configuration.filled()
-        configuration.title = "Open Link"
+        configuration.title = "Open The Drive Link"
         configuration.imagePlacement = .all
         
         let button = UIButton(configuration: configuration, primaryAction: nil)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(projectLinkButtonTapped), for: .touchUpInside)
+        button.addAction(UIAction { [weak self] _ in
+            guard let self else { return }
+            if let link = AppManager.shared.prevProject?.link, let url = URL(string: link) {
+                UIApplication.shared.open(url)
+            }
+        }, for: .primaryActionTriggered)
         button.tintColor = UIColor.mySecondary
         return button
     }()
@@ -69,72 +39,62 @@ class ProjectDetailsViewController: UIViewController {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
-        stackView.spacing = 16
+        stackView.spacing = 20
         stackView.alignment = .fill
         stackView.distribution = .fill
         return stackView
     }()
     
-//    private let showMoreButton: UIButton = {
-//        let button = UIButton(type: .system)
-//        button.setTitle("Show More", for: .normal)
-//        button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
-//        button.tintColor = .blue
-//        button.addTarget(self, action: #selector(showMoreButtonTapped), for: .touchUpInside)
-//        return button
-//    }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.showDefaultNavigationBar(title: "Project details", withCloseButton: true)
-        addViews()
-        fillLabelsText()
+        configureViews()
     }
     
-    private func addViews() {
+    private func configureViews() {
         view.backgroundColor = UIColor.myPrimary
+        projectNameLabel.text = AppManager.shared.prevProject?.name
         
+        view.addSubview(projectNameLabel)
         view.addSubview(stackView)
         view.addSubview(projectLinkButton)
-
-        stackView.addArrangedSubview(projectNameLabel)
-        stackView.addArrangedSubview(projectTypeLabel)
-        stackView.addArrangedSubview(yearLabel)
-        stackView.addArrangedSubview(studentsLabel)
-        stackView.addArrangedSubview(supervisorLabel)
-        stackView.addArrangedSubview(descriptionLabel)
+        
+        let projectTypeView = LabeledIconView(
+            icon: UIImage.SystemImages.projectType.image,
+            prefix: "Project Type: ",
+            text: AppManager.shared.prevProject?.projectType ?? ""
+        )
+        let yearView = LabeledIconView(
+            icon: UIImage.SystemImages.year.image,
+            prefix: "Year: ",
+            text: (AppManager.shared.prevProject?.date ?? "")
+        )
+        let studentsView = LabeledIconView(
+            icon: UIImage.SystemImages.choosePeer.image,
+            prefix: "Students: ",
+            text: (AppManager.shared.prevProject?.students ?? "")
+        )
+        let supervisorView = LabeledIconView(
+            icon: UIImage.SystemImages.supervisor.image,
+            prefix: "Supervisor: ",
+            text: (AppManager.shared.prevProject?.supervisor ?? "")
+        )
+        
+        stackView.addArrangedSubview(projectTypeView)
+        stackView.addArrangedSubview(yearView)
+        stackView.addArrangedSubview(studentsView)
+        stackView.addArrangedSubview(supervisorView)
         
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
+            projectNameLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
+            projectNameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            stackView.topAnchor.constraint(equalTo: projectNameLabel.bottomAnchor, constant: 30),
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             
-            projectLinkButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 16),
-            projectLinkButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
-            projectLinkButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+            projectLinkButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 30),
+            projectLinkButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 60),
+            projectLinkButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -60),
         ])
     }
-    
-    private func fillLabelsText() {
-        if let selectedPrevProject = AppManager.shared.prevProject {
-            projectNameLabel.text = "Project Name: \(selectedPrevProject.name)"
-            projectTypeLabel.text = "Project Type: \(selectedPrevProject.projectType)"
-            yearLabel.text = "Year: \(selectedPrevProject.date )"
-            studentsLabel.text = "Students: \(selectedPrevProject.students)"
-            supervisorLabel.text = "Supervisor: \(selectedPrevProject.supervisor)"
-            descriptionLabel.text = "Description: \(selectedPrevProject.description)"
-        }
-    }
-    
-    @objc private func projectLinkButtonTapped() {
-        if let link = AppManager.shared.prevProject?.link, let url = URL(string: link) {
-            UIApplication.shared.open(url)
-        }
-    }
-    
-//    @objc private func showMoreButtonTapped() {
-//        let showMoreVC = ProjectDescriptionViewController()
-//        showMoreVC.descriptionText = AppManager.shared.prevProject?.description
-//        navigationController?.pushViewController(showMoreVC, animated: true)
-//    }
 }

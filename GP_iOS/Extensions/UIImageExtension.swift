@@ -42,6 +42,10 @@ extension UIImage {
         case selectedFilter = "checkmark.circle"
         /// Search
         case viewMore = "greaterthan"
+        /// Project Details
+        case supervisor = "person.crop.circle.badge.checkmark"
+        case year = "calendar"
+        case projectType = "doc.text"
         ///  Get image
         var image: UIImage {
             return UIImage(systemImages: self)

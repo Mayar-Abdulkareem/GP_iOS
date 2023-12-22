@@ -36,8 +36,9 @@
 		2F7031092B0D35EE00FBB5D6 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 2F7031082B0D35EE00FBB5D6 /* Localizable.xcstrings */; };
 		2F70310E2B0E285100FBB5D6 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F70310D2B0E285100FBB5D6 /* StringExtension.swift */; };
 		2F9E719F2B2FCA2A00767A4D /* ProjectDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9E719E2B2FCA2A00767A4D /* ProjectDetailsViewController.swift */; };
-		2F9E71A12B30ACAD00767A4D /* ProjectDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9E71A02B30ACAD00767A4D /* ProjectDescriptionViewController.swift */; };
 		2F9E71A32B32EAC300767A4D /* BuildConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9E71A22B32EAC300767A4D /* BuildConfiguration.swift */; };
+		2F9E71CC2B35A17C00767A4D /* LabeledIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9E71CB2B35A17B00767A4D /* LabeledIconView.swift */; };
+		2F9E71CE2B35B16000767A4D /* StringManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9E71CD2B35B16000767A4D /* StringManager.swift */; };
 		2FA7FCC22B235A5300749D38 /* MoreCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA7FCC12B235A5300749D38 /* MoreCoordinator.swift */; };
 		2FA7FCC62B24ADEF00749D38 /* GetUserByIdAndPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA7FCC52B24ADEF00749D38 /* GetUserByIdAndPassword.swift */; };
 		2FA7FCC82B24FBB700749D38 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA7FCC72B24FBB700749D38 /* HomeTableViewCell.swift */; };
@@ -118,8 +119,9 @@
 		2F7031082B0D35EE00FBB5D6 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		2F70310D2B0E285100FBB5D6 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		2F9E719E2B2FCA2A00767A4D /* ProjectDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailsViewController.swift; sourceTree = "<group>"; };
-		2F9E71A02B30ACAD00767A4D /* ProjectDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDescriptionViewController.swift; sourceTree = "<group>"; };
 		2F9E71A22B32EAC300767A4D /* BuildConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildConfiguration.swift; sourceTree = "<group>"; };
+		2F9E71CB2B35A17B00767A4D /* LabeledIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledIconView.swift; sourceTree = "<group>"; };
+		2F9E71CD2B35B16000767A4D /* StringManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringManager.swift; sourceTree = "<group>"; };
 		2FA7FCC12B235A5300749D38 /* MoreCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreCoordinator.swift; sourceTree = "<group>"; };
 		2FA7FCC52B24ADEF00749D38 /* GetUserByIdAndPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserByIdAndPassword.swift; sourceTree = "<group>"; };
 		2FA7FCC72B24FBB700749D38 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
@@ -363,6 +365,7 @@
 				2F4490DF2B0A3541002B6975 /* LogoView.swift */,
 				2FB7A13B2B15467B00923D02 /* HeaderView.swift */,
 				2FA7FD072B2EFC3200749D38 /* FooterView.swift */,
+				2F9E71CB2B35A17B00767A4D /* LabeledIconView.swift */,
 			);
 			path = UIView;
 			sourceTree = "<group>";
@@ -593,7 +596,6 @@
 			isa = PBXGroup;
 			children = (
 				2F9E719E2B2FCA2A00767A4D /* ProjectDetailsViewController.swift */,
-				2F9E71A02B30ACAD00767A4D /* ProjectDescriptionViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -802,6 +804,7 @@
 				2FB7A12D2B14F02100923D02 /* AuthManager.swift */,
 				2FA7FCE12B26825B00749D38 /* AppManager.swift */,
 				2F9E71A22B32EAC300767A4D /* BuildConfiguration.swift */,
+				2F9E71CD2B35B16000767A4D /* StringManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -978,7 +981,6 @@
 				2FA7FD0C2B2F459A00749D38 /* SearchFilterModel.swift in Sources */,
 				2FB7A13C2B15467B00923D02 /* HeaderView.swift in Sources */,
 				2FA7FD112B2F69B100749D38 /* FilterHeaderView.swift in Sources */,
-				2F9E71A12B30ACAD00767A4D /* ProjectDescriptionViewController.swift in Sources */,
 				2FA7FCDC2B26570800749D38 /* PeerViewController.swift in Sources */,
 				2FA7FCFF2B2D349F00749D38 /* PrevProject.swift in Sources */,
 				2FA7FCF92B2D305500749D38 /* GetPreviousProjects.swift in Sources */,
@@ -1002,6 +1004,7 @@
 				2F4490BC2B0580FB002B6975 /* NetworkConstant.swift in Sources */,
 				2F4490B92B0580BF002B6975 /* Administrator.swift in Sources */,
 				2F4490C92B0581C1002B6975 /* LoginRouter.swift in Sources */,
+				2F9E71CC2B35A17C00767A4D /* LabeledIconView.swift in Sources */,
 				2FB7A1232B13801E00923D02 /* AccessToken.swift in Sources */,
 				2FA7FCF42B2CCC0E00749D38 /* AboutCourseCell.swift in Sources */,
 				2FA7FCCB2B25E79600749D38 /* GetCoursesByRegID.swift in Sources */,
@@ -1011,6 +1014,7 @@
 				2FA7FCDE2B26582800749D38 /* CourseViewController.swift in Sources */,
 				2FB7A1452B15F18300923D02 /* AnnouncementViewController.swift in Sources */,
 				2FB7A1352B1520BF00923D02 /* SearchViewController.swift in Sources */,
+				2F9E71CE2B35B16000767A4D /* StringManager.swift in Sources */,
 				2FA7FCD42B25F3EF00749D38 /* CoursesViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
