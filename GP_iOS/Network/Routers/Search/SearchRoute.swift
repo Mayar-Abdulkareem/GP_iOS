@@ -15,6 +15,7 @@ enum SearchRouter: BaseRouter {
     
     /// Get previous projects
     case getPrevProjects(searchFilterModel: SearchFilterModel)
+    case getProjectTypes
     
     // MARK: Paths
     
@@ -23,6 +24,8 @@ enum SearchRouter: BaseRouter {
         switch self {
         case .getPrevProjects:
             return "/previousProjects"
+        case .getProjectTypes:
+            return "/previousProjects/projectTypes"
         }
     }
     
@@ -33,6 +36,8 @@ enum SearchRouter: BaseRouter {
         switch self {
         case .getPrevProjects:
             return .post
+        case .getProjectTypes:
+            return .get
         }
     }
     
@@ -57,6 +62,8 @@ enum SearchRouter: BaseRouter {
             }
             
             return params
+        case .getProjectTypes:
+            return nil
         }
     }
 }

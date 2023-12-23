@@ -1,5 +1,5 @@
 //
-//  UIImage + extension.swift
+//  UIImage+Extension.swift
 //  GP_iOS
 //
 //  Created by Mayar Abdulkareem on 18/11/2023.
@@ -38,7 +38,7 @@ extension UIImage {
         case chat = "ellipsis.message"
         /// Filter
         case filter = "line.3.horizontal.decrease.circle"
-        case fiterFill = "line.3.horizontal.decrease.circle.fill"
+        case filterFill = "line.3.horizontal.decrease.circle.fill"
         case selectedFilter = "checkmark.circle"
         /// Search
         case viewMore = "greaterthan"

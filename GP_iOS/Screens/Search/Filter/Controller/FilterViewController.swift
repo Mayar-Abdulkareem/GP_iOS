@@ -17,7 +17,6 @@ class FilterViewController: UIViewController {
     var delegate: FilterViewControllerDelegate?
     
     var viewModel: SearchViewModel
-    var categories: [(String, [String])] = [("Date", ["Newest", "Oldest"]), ("Type", ["Software", "Hardware"])]
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
@@ -42,7 +41,7 @@ class FilterViewController: UIViewController {
         super.viewDidLoad()
         navigationController?.showDefaultNavigationBar(title: String.LocalizedKeys.filterTitle.localized, withCloseButton: true)
         setupClearButton()
-        configureViews()
+        view.addViewFillEntireView(tableView)
     }
     
     /// Change the filter icon configuration
@@ -64,17 +63,6 @@ class FilterViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-    func configureViews() {
-        view.addSubview(tableView)
-  
-        NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.topAnchor),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-        ])
-    }
     
     @objc func clearButtonTapped() {
         viewModel.selectedFilterRows.removeAll()
@@ -84,16 +72,16 @@ class FilterViewController: UIViewController {
 
 extension FilterViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return categories.count
+        return viewModel.categories.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return categories[section].1.count
+        return viewModel.categories[section].1.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FilterTableViewCell.identifier, for: indexPath) as? FilterTableViewCell ?? FilterTableViewCell()
-        let category = categories[indexPath.section].1[indexPath.row]
+        let category = viewModel.categories[indexPath.section].1[indexPath.row]
         let isSelected = viewModel.selectedFilterRows.contains(indexPath)
         cell.configureCell(title: category, isSelected: isSelected)
         return cell
@@ -103,7 +91,7 @@ extension FilterViewController: UITableViewDataSource, UITableViewDelegate {
         guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: FilterHeaderView.identifier) as? FilterHeaderView else {
             return nil 
         }
-        let title = categories[section].0
+        let title = viewModel.categories[section].0
         headerView.configure(title: title)
         return headerView
     }

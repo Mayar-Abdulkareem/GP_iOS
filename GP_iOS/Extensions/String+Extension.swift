@@ -1,5 +1,5 @@
 //
-//  StringExtension.swift
+//  String+Extension.swift
 //  GP_iOS
 //
 //  Created by Mayar Abdulkareem on 22/11/2023.

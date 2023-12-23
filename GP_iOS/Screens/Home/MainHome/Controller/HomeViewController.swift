@@ -70,10 +70,10 @@ class HomeViewController: UIViewController {
     private func bindWithViewModel() {
         viewModel.onShowError = { [weak self] msg in
             self?.stopLoading()
-            print("Error!")
+            TopAlertManager.show(title: String.LocalizedKeys.errorTitle.localized, subTitle: msg, type: .failure)
         }
         
-        viewModel.onFetchCourses = { [weak self] courses in
+        viewModel.onCoursesFetched = { [weak self] courses in
             self?.stopLoading()
             if courses.count == 0 {
                 self?.tableView.setEmptyView(message: String.LocalizedKeys.noCourses.localized)
@@ -129,6 +129,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource  {
                 withIdentifier: HomeAboutMeCell.identifier,
                 for: indexPath
             ) as? HomeAboutMeCell
+            // TODO: show student name
             cell?.configureCell(name: "Noura Hashem")
             return cell ?? UITableViewCell()
             

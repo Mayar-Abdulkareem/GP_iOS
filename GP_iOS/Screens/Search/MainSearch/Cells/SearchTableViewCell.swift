@@ -1,5 +1,5 @@
 //
-//  SearchCollectionViewCell.swift
+//  SearchTableViewCell.swift
 //  GP_iOS
 //
 //  Created by FTS on 16/12/2023.

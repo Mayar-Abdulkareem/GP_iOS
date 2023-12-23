@@ -44,8 +44,7 @@ class LogoView: UIView {
     ) {
         self.heightAndWidth = heightAndWidth
         super.init(frame: .zero)
-        addViews()
-        setUpConstraints()
+        configureViews()
         symbolImageView.image = symbolImage
         textLabel.text = logoText
         textLabel.font = UIFont.systemFont(ofSize: logoTextSize, weight: weight)
@@ -55,9 +54,9 @@ class LogoView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func addViews() {
+    private func configureViews() {
         
-        addSubview(stackView)
+        addViewFillEntireView(stackView)
         
         if UIView.userInterfaceLayoutDirection(for: stackView.semanticContentAttribute) == .rightToLeft {
             stackView.addArrangedSubview(textLabel)
@@ -67,22 +66,7 @@ class LogoView: UIView {
             stackView.addArrangedSubview(textLabel)
         }
         
-        [symbolImageView, textLabel, stackView].forEach {
-            $0.translatesAutoresizingMaskIntoConstraints = false
-        }
-    }
-    
-    private func setUpConstraints() {
-        
-        subviews.forEach{
-            $0.translatesAutoresizingMaskIntoConstraints = false
-        }
-        
         NSLayoutConstraint.activate([
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            stackView.topAnchor.constraint(equalTo: topAnchor),
-            stackView.bottomAnchor.constraint(equalTo: bottomAnchor),
             symbolImageView.widthAnchor.constraint(equalToConstant: heightAndWidth),
             symbolImageView.heightAnchor.constraint(equalToConstant: heightAndWidth),
         ])

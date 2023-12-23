@@ -1,5 +1,5 @@
 //
-//  UIViewExtension.swift
+//  UIView+Extension.swift
 //  GP_iOS
 //
 //  Created by Mayar Abdulkareem on 21/11/2023.

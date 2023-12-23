@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LabeledIconView: UIView {
+class LabelIconView: UIView {
     
     let iconImageView: UIImageView = {
         let imageView = UIImageView()
@@ -43,7 +43,7 @@ class LabeledIconView: UIView {
         
         NSLayoutConstraint.activate([
             iconImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            iconImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            iconImageView.topAnchor.constraint(equalTo: topAnchor),
             iconImageView.widthAnchor.constraint(equalToConstant: 25),
             iconImageView.heightAnchor.constraint(equalToConstant: 25),
             

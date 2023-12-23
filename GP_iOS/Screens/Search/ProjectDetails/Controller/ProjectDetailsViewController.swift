@@ -48,6 +48,7 @@ class ProjectDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViews()
+        configureStackView()
     }
     
     private func configureViews() {
@@ -57,32 +58,6 @@ class ProjectDetailsViewController: UIViewController {
         view.addSubview(projectNameLabel)
         view.addSubview(stackView)
         view.addSubview(projectLinkButton)
-        
-        let projectTypeView = LabeledIconView(
-            icon: UIImage.SystemImages.projectType.image,
-            prefix: "Project Type: ",
-            text: AppManager.shared.prevProject?.projectType ?? ""
-        )
-        let yearView = LabeledIconView(
-            icon: UIImage.SystemImages.year.image,
-            prefix: "Year: ",
-            text: (AppManager.shared.prevProject?.date ?? "")
-        )
-        let studentsView = LabeledIconView(
-            icon: UIImage.SystemImages.choosePeer.image,
-            prefix: "Students: ",
-            text: (AppManager.shared.prevProject?.students ?? "")
-        )
-        let supervisorView = LabeledIconView(
-            icon: UIImage.SystemImages.supervisor.image,
-            prefix: "Supervisor: ",
-            text: (AppManager.shared.prevProject?.supervisor ?? "")
-        )
-        
-        stackView.addArrangedSubview(projectTypeView)
-        stackView.addArrangedSubview(yearView)
-        stackView.addArrangedSubview(studentsView)
-        stackView.addArrangedSubview(supervisorView)
         
         NSLayoutConstraint.activate([
             projectNameLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
@@ -96,5 +71,33 @@ class ProjectDetailsViewController: UIViewController {
             projectLinkButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 60),
             projectLinkButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -60),
         ])
+    }
+    
+    private func configureStackView() {
+        let projectTypeView = LabelIconView(
+            icon: UIImage.SystemImages.projectType.image,
+            prefix: "Project Type: ",
+            text: AppManager.shared.prevProject?.projectType ?? ""
+        )
+        let yearView = LabelIconView(
+            icon: UIImage.SystemImages.year.image,
+            prefix: "Year: ",
+            text: (AppManager.shared.prevProject?.date ?? "")
+        )
+        let studentsView = LabelIconView(
+            icon: UIImage.SystemImages.choosePeer.image,
+            prefix: "Students: ",
+            text: (AppManager.shared.prevProject?.students ?? "")
+        )
+        let supervisorView = LabelIconView(
+            icon: UIImage.SystemImages.supervisor.image,
+            prefix: "Supervisor: ",
+            text: (AppManager.shared.prevProject?.supervisor ?? "")
+        )
+        
+        stackView.addArrangedSubview(projectTypeView)
+        stackView.addArrangedSubview(yearView)
+        stackView.addArrangedSubview(studentsView)
+        stackView.addArrangedSubview(supervisorView)
     }
 }

@@ -1,5 +1,5 @@
 //
-//  CoursesViewModel.swift
+//  HomeViewModel.swift
 //  GP_iOS
 //
 //  Created by Mayar Abdulkareem on 10/12/2023.
@@ -28,7 +28,7 @@ class HomeViewModel {
     /// If error happens
     var onShowError: ((_ msg: String) -> Void)?
     /// If the fetch courses completed successfully
-    var onFetchCourses: (([Course]) -> ())?
+    var onCoursesFetched: (([Course]) -> ())?
     
     var courses = [Course]()
     let sections: [HomeSections] = HomeSections.allCases
@@ -52,7 +52,7 @@ class HomeViewModel {
             switch result {
             case .success(let courses):
                 self?.courses = courses
-                self?.onFetchCourses?(courses)
+                self?.onCoursesFetched?(courses)
                 
             case .failure(let error):
                 self?.onShowError?(error.localizedDescription)

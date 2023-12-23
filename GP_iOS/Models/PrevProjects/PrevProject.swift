@@ -9,8 +9,6 @@ import Foundation
 
 struct ProjectResponse: Codable {
     let totalCount: Int
-    let currentPage: Int
-    let pageSize: Int
     let previousProjects: [PreviousProject]
 }
 

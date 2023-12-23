@@ -1,5 +1,5 @@
 //
-//  UITableView.swift
+//  UITableView+Extension.swift
 //  GP_iOS
 //
 //  Created by Mayar Abdulkareem on 10/12/2023.

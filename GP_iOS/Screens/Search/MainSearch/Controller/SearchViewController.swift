@@ -69,6 +69,7 @@ class SearchViewController: UIViewController {
         bindWithViewModel()
         configureViews()
         startLoading()
+        viewModel.fetchProjectTypes()
         viewModel.fetchPrevProjects()
     }
     
@@ -121,15 +122,9 @@ class SearchViewController: UIViewController {
             self?.stopLoading()
         }
         
-        viewModel.onFetchPrevProjects = { [weak self] prevProjects in
-            if self?.viewModel.searchFilterModel.page == 1 {
-                self?.viewModel.prevProjects = prevProjects.previousProjects
-            } else {
-                self?.viewModel.prevProjects += prevProjects.previousProjects
-            }
-            self?.viewModel.totalPagesCount = prevProjects.totalCount
+        viewModel.onPreviousProjectsFetched = { [weak self] noPrevProject in
             self?.stopLoading()
-            if self?.viewModel.prevProjects.count == 0 {
+            if noPrevProject {
                 self?.tableView.setEmptyView(message: String.LocalizedKeys.noPrevProjects.localized)
             } else {
                 self?.tableView.removeEmptyView()
@@ -139,13 +134,10 @@ class SearchViewController: UIViewController {
     }
     
     func configureFilterButton() {
-        if viewModel.selectedFilterRows.isEmpty && !viewModel.isSearching {
-            filterButton.tintColor = UIColor.gray
-            filterButton.configuration?.image = UIImage.SystemImages.filter.image
-        } else {
-            filterButton.tintColor = UIColor.mySecondary
-            filterButton.configuration?.image = UIImage.SystemImages.fiterFill.image
-        }
+        let shouldHighlight = !(viewModel.selectedFilterRows.isEmpty && !viewModel.isSearching)
+        
+        filterButton.tintColor = shouldHighlight ? UIColor.mySecondary : UIColor.gray
+        filterButton.configuration?.image = shouldHighlight ? UIImage.SystemImages.filterFill.image : UIImage.SystemImages.filter.image
     }
     
     @objc private func filterButtonTapped() {
@@ -223,21 +215,11 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension SearchViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if(searchText.isEmpty) {
-            /// No text to search, then show all results
-            viewModel.searchFilterModel.page = 1
-            viewModel.searchFilterModel.projectName = nil
-            viewModel.isSearching = false
-            configureFilterButton()
-            viewModel.fetchPrevProjects()
-        } else {
-            /// Search and filter the projects based on the project name
-            viewModel.searchFilterModel.page = 1
-            viewModel.searchFilterModel.projectName = searchText
-            viewModel.isSearching = true
-            configureFilterButton()
-            viewModel.fetchPrevProjects()
-        }
+        viewModel.searchFilterModel.page = 1
+        viewModel.searchFilterModel.projectName = searchText.isEmpty ? nil : searchText
+        viewModel.isSearching = !searchText.isEmpty
+        configureFilterButton()
+        viewModel.fetchPrevProjects()
     }
 }
 
