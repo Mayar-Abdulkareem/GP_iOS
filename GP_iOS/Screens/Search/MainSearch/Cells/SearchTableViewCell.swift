@@ -14,7 +14,7 @@ class SearchTableViewCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor.myAccent
-        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
         return label
     }()
     
@@ -22,7 +22,7 @@ class SearchTableViewCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor.gray
-        label.font = UIFont.systemFont(ofSize: 12)
+        label.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
         label.numberOfLines = 0
         return label
     }()
@@ -31,69 +31,29 @@ class SearchTableViewCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor.gray
-        label.font = UIFont.systemFont(ofSize: 10)
+        label.font = UIFont.systemFont(ofSize: 14)
         return label
     }()
     
-    private let typeLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = UIColor.gray
-        label.font = UIFont.systemFont(ofSize: 12)
-        return label
+    private let arrowImageView: UIImageView = {
+        let imageView = UIImageView(image: UIImage.SystemImages.viewMore.image)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.tintColor = UIColor.gray
+        return imageView
     }()
     
     private let viewWithShadow: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = UIColor.myPrimary
-        view.addShadow()
+        view.addShadow(
+            cornerRadius: 5,
+            shadowOpacity: 0.1 ,
+            shadowRadius: 4
+        )
         return view
     }()
-    
-    private let viewMoreView: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor.myPrimary
-        view.translatesAutoresizingMaskIntoConstraints = false
         
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = UIColor.myAccent
-        label.font = UIFont.boldSystemFont(ofSize: 15)
-        label.text = String.LocalizedKeys.viewMoreTitle.localized
-        
-        let imageView = UIImageView(frame: CGRect(x: view.frame.minX, y: view.frame.minY, width: 20, height: 25))
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage.SystemImages.viewMore.image
-        imageView.tintColor = UIColor.mySecondary
-        
-        let separator = UIView()
-        separator.translatesAutoresizingMaskIntoConstraints = false
-        separator.backgroundColor = UIColor.myLightGray
-        
-        view.addSubview(separator)
-        view.addSubview(label)
-        view.addSubview(imageView)
-        
-        NSLayoutConstraint.activate([
-            label.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            label.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            
-            imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            imageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            imageView.widthAnchor.constraint(equalToConstant: 20),
-            imageView.heightAnchor.constraint(equalToConstant: 20),
-            
-            separator.topAnchor.constraint(equalTo: view.topAnchor),
-            separator.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            separator.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            separator.heightAnchor.constraint(equalToConstant: 0.5)
-        ])
-        
-        return view
-    }()
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         selectionStyle = .none
@@ -106,40 +66,64 @@ class SearchTableViewCell: UITableViewCell {
     }
     
     private func configureViews() {
-        addViewFillEntireView(viewWithShadow, top: 8, bottom: 8, leading: 16, trailing: 16)
+        addViewFillEntireView(
+            viewWithShadow,
+            top: 8,
+            bottom: 8,
+            leading: 16,
+            trailing: 16
+        )
         
-        viewWithShadow.addSubview(projectNameLabel)
-        viewWithShadow.addSubview(yearLabel)
-        viewWithShadow.addSubview(detailsLabel)
-        viewWithShadow.addSubview(typeLabel)
-        viewWithShadow.addSubview(viewMoreView)
-        viewWithShadow.addSubview(typeLabel)
+        let stackView = UIStackView(
+            arrangedSubviews: [
+                projectNameLabel,
+                getHorizontalStack(icon: UIImage.SystemImages.projectType.image, label: detailsLabel),
+                getHorizontalStack(icon: UIImage.SystemImages.year.image, label: yearLabel)
+            ]
+        )
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.setCustomSpacing(5, after: projectNameLabel)
+        stackView.axis = .vertical
+        stackView.spacing = 3
+                
+        viewWithShadow.addSubview(stackView)
+        viewWithShadow.addSubview(arrowImageView)
         
         NSLayoutConstraint.activate([
-            projectNameLabel.centerXAnchor.constraint(equalTo: viewWithShadow.centerXAnchor),
-            projectNameLabel.topAnchor.constraint(equalTo: viewWithShadow.topAnchor, constant: 10),
+            stackView.topAnchor.constraint(equalTo: viewWithShadow.topAnchor, constant: 10),
+            stackView.bottomAnchor.constraint(equalTo: viewWithShadow.bottomAnchor, constant: -10),
+            stackView.leadingAnchor.constraint(equalTo: viewWithShadow.leadingAnchor, constant: 16),
+            stackView.trailingAnchor.constraint(equalTo: arrowImageView.leadingAnchor, constant: -16),
             
-            detailsLabel.leadingAnchor.constraint(equalTo: viewWithShadow.leadingAnchor, constant: 16),
-            detailsLabel.topAnchor.constraint(equalTo: projectNameLabel.bottomAnchor, constant: 10),
-            detailsLabel.bottomAnchor.constraint(equalTo: viewMoreView.topAnchor, constant: -10),
-            
-            yearLabel.leadingAnchor.constraint(equalTo: viewWithShadow.leadingAnchor, constant: 16),
-            yearLabel.topAnchor.constraint(equalTo: viewWithShadow.topAnchor, constant: 10),
-            
-            typeLabel.trailingAnchor.constraint(equalTo: viewWithShadow.trailingAnchor, constant: -16),
-            typeLabel.topAnchor.constraint(equalTo: viewWithShadow.topAnchor, constant: 10),
-            
-            viewMoreView.bottomAnchor.constraint(equalTo: viewWithShadow.bottomAnchor, constant: -2),
-            viewMoreView.leadingAnchor.constraint(equalTo: viewWithShadow.leadingAnchor, constant: 0),
-            viewMoreView.trailingAnchor.constraint(equalTo: viewWithShadow.trailingAnchor, constant: 0),
-            viewMoreView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.2)
+            arrowImageView.centerYAnchor.constraint(equalTo: viewWithShadow.centerYAnchor),
+            arrowImageView.trailingAnchor.constraint(equalTo: viewWithShadow.trailingAnchor, constant: -16),
+            arrowImageView.widthAnchor.constraint(equalToConstant: 10),
+            arrowImageView.heightAnchor.constraint(equalToConstant: 20)
         ])
     }
     
     func configureCell(model: PreviousProject) {
         projectNameLabel.text = model.name
         yearLabel.text = model.date
-        typeLabel.text = model.projectType
-        detailsLabel.text = String.LocalizedKeys.studentsTitle.localized + " " + model.students + "\n" + String.LocalizedKeys.supervisorTitle.localized + " " + model.supervisor
+        detailsLabel.text = model.projectType
+    }
+    
+    private func getHorizontalStack(
+        icon: UIImage,
+        label: UILabel
+    ) -> UIStackView {
+//        let imageView = UIImageView(image: icon)
+//        imageView.translatesAutoresizingMaskIntoConstraints = false
+//        imageView.contentMode = .scaleAspectFit
+//        imageView.tintColor = UIColor.mySecondary.al
+//        imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor).isActive = true
+        
+        
+        let stackView = UIStackView(arrangedSubviews: [label])
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .horizontal
+        stackView.spacing = 5
+        
+        return stackView
     }
 }

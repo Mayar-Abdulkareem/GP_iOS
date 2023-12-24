@@ -11,7 +11,6 @@ class SearchViewController: UIViewController {
     
     weak var coordinator: SearchCoordinator?
     
-    private let mainView = HeaderView()
     private let viewModel = SearchViewModel()
         
     private lazy var tableView: UITableView = {
@@ -87,19 +86,13 @@ class SearchViewController: UIViewController {
     
     private func configureViews() {
         view.backgroundColor = UIColor.myPrimary
-
-        view.addSubview(mainView)
+        
         view.addSubview(searchBar)
         view.addSubview(filterButton)
         view.addSubview(tableView)
         
         NSLayoutConstraint.activate([
-            mainView.topAnchor.constraint(equalTo: view.topAnchor),
-            mainView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            mainView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            mainView.bottomAnchor.constraint(equalTo: searchBar.topAnchor, constant: -8),
-            
-            searchBar.topAnchor.constraint(equalTo: mainView.bottomAnchor, constant: 8),
+            searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
             searchBar.trailingAnchor.constraint(equalTo: filterButton.leadingAnchor, constant: 0),
             searchBar.heightAnchor.constraint(equalToConstant: 44),
@@ -111,7 +104,7 @@ class SearchViewController: UIViewController {
             
             filterButton.bottomAnchor.constraint(equalTo: tableView.topAnchor),
             filterButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            filterButton.widthAnchor.constraint(equalToConstant: 44),
+            filterButton.widthAnchor.constraint(equalTo: searchBar.heightAnchor),
             filterButton.heightAnchor.constraint(equalTo: searchBar.heightAnchor)
         ])
     }

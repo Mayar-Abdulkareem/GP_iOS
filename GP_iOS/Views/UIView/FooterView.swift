@@ -10,9 +10,9 @@ import UIKit
 class FooterView: UIView {
     private let label: UILabel = {
         let label = UILabel()
-        label.textAlignment = .left
-        label.textColor = .gray
-        label.font = UIFont.boldSystemFont(ofSize: 12)
+        label.textAlignment = .center
+        label.textColor = .lightGray
+        label.font = UIFont.systemFont(ofSize: 13, weight: .semibold)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -36,14 +36,16 @@ class FooterView: UIView {
     }
     
     private func configureViews() {
-        backgroundColor = UIColor.myLightGray
+        backgroundColor = UIColor.clear
         
         addSubview(label)
         addSubview(activityIndicator)
         
         NSLayoutConstraint.activate([
-            label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
-            label.centerYAnchor.constraint(equalTo: centerYAnchor),
+            label.topAnchor.constraint(equalTo: topAnchor),
+            label.bottomAnchor.constraint(equalTo: bottomAnchor),
+            label.leadingAnchor.constraint(equalTo: leadingAnchor),
+            label.trailingAnchor.constraint(equalTo: trailingAnchor),
             
             activityIndicator.centerXAnchor.constraint(equalTo: centerXAnchor),
             activityIndicator.centerYAnchor.constraint(equalTo: centerYAnchor),
