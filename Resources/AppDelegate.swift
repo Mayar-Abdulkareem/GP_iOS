@@ -6,14 +6,34 @@
 //
 
 import UIKit
+import SendbirdChatSDK
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        return true
-    }
+//        let initParams = InitParams(
+//            applicationId: "6A40637C-F859-4DBC-86E4-15E2B553A67A",
+//            isLocalCachingEnabled: true,
+//            logLevel: .info
+//        )
+//
+//        SendbirdChat.initialize(params: initParams) {
+//            // Migration starts.
+//        }, completionHandler: { error in
+//            // Migration completed.
+//        }
+//        
+//        SendbirdChat.connect(userId: "1") { user, error in
+//            guard let user = user, error == nil else {
+//                // Handle error.
+//                return
+//            }
+//            print("connected")
+//        }
+//        return true
+//    }
 
     // MARK: UISceneSession Lifecycle
 

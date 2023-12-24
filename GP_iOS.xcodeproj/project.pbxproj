@@ -20,7 +20,6 @@
 		2F4490C52B058186002B6975 /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4490C42B058186002B6975 /* BaseRouter.swift */; };
 		2F4490C92B0581C1002B6975 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4490C82B0581C1002B6975 /* LoginRouter.swift */; };
 		2F4490D22B094C17002B6975 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4490D12B094C17002B6975 /* UIImage+Extension.swift */; };
-		2F4490D62B095CAB002B6975 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F4490D52B095CAB002B6975 /* Colors.xcassets */; };
 		2F4490D92B097717002B6975 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4490D82B097717002B6975 /* CustomTextField.swift */; };
 		2F4490DB2B098D3B002B6975 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4490DA2B098D3B002B6975 /* CustomButton.swift */; };
 		2F4490E02B0A3541002B6975 /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4490DF2B0A3541002B6975 /* LogoView.swift */; };
@@ -40,9 +39,7 @@
 		2F9E71CE2B35B16000767A4D /* StringManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9E71CD2B35B16000767A4D /* StringManager.swift */; };
 		2F9E71D22B37108D00767A4D /* FilterCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9E71D12B37108D00767A4D /* FilterCategory.swift */; };
 		2FA7FCC22B235A5300749D38 /* MoreCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA7FCC12B235A5300749D38 /* MoreCoordinator.swift */; };
-		2FA7FCC62B24ADEF00749D38 /* GetUserByIdAndPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA7FCC52B24ADEF00749D38 /* GetUserByIdAndPassword.swift */; };
 		2FA7FCC82B24FBB700749D38 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA7FCC72B24FBB700749D38 /* HomeTableViewCell.swift */; };
-		2FA7FCCB2B25E79600749D38 /* GetCoursesByRegID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA7FCCA2B25E79600749D38 /* GetCoursesByRegID.swift */; };
 		2FA7FCCE2B25E7F000749D38 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA7FCCD2B25E7F000749D38 /* Course.swift */; };
 		2FA7FCD12B25EB9600749D38 /* CoursesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA7FCD02B25EB9600749D38 /* CoursesRouter.swift */; };
 		2FA7FCD42B25F3EF00749D38 /* CoursesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA7FCD32B25F3EF00749D38 /* CoursesViewModel.swift */; };
@@ -58,7 +55,6 @@
 		2FA7FCF22B2B818B00749D38 /* CourseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA7FCF12B2B818B00749D38 /* CourseCollectionViewCell.swift */; };
 		2FA7FCF42B2CCC0E00749D38 /* AboutCourseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA7FCF32B2CCC0E00749D38 /* AboutCourseCell.swift */; };
 		2FA7FCF62B2CDF5400749D38 /* CourseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA7FCF52B2CDF5400749D38 /* CourseCoordinator.swift */; };
-		2FA7FCF92B2D305500749D38 /* GetPreviousProjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA7FCF82B2D305500749D38 /* GetPreviousProjects.swift */; };
 		2FA7FCFC2B2D30A900749D38 /* SearchRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA7FCFB2B2D30A900749D38 /* SearchRoute.swift */; };
 		2FA7FCFF2B2D349F00749D38 /* PrevProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA7FCFE2B2D349F00749D38 /* PrevProject.swift */; };
 		2FA7FD012B2DC88400749D38 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA7FD002B2DC88400749D38 /* SearchTableViewCell.swift */; };
@@ -100,7 +96,6 @@
 		2F4490C42B058186002B6975 /* BaseRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
 		2F4490C82B0581C1002B6975 /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
 		2F4490D12B094C17002B6975 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
-		2F4490D52B095CAB002B6975 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		2F4490D82B097717002B6975 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		2F4490DA2B098D3B002B6975 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		2F4490DF2B0A3541002B6975 /* LogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoView.swift; sourceTree = "<group>"; };
@@ -123,9 +118,7 @@
 		2F9E71CD2B35B16000767A4D /* StringManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringManager.swift; sourceTree = "<group>"; };
 		2F9E71D12B37108D00767A4D /* FilterCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCategory.swift; sourceTree = "<group>"; };
 		2FA7FCC12B235A5300749D38 /* MoreCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreCoordinator.swift; sourceTree = "<group>"; };
-		2FA7FCC52B24ADEF00749D38 /* GetUserByIdAndPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserByIdAndPassword.swift; sourceTree = "<group>"; };
 		2FA7FCC72B24FBB700749D38 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
-		2FA7FCCA2B25E79600749D38 /* GetCoursesByRegID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCoursesByRegID.swift; sourceTree = "<group>"; };
 		2FA7FCCD2B25E7F000749D38 /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
 		2FA7FCD02B25EB9600749D38 /* CoursesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesRouter.swift; sourceTree = "<group>"; };
 		2FA7FCD32B25F3EF00749D38 /* CoursesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesViewModel.swift; sourceTree = "<group>"; };
@@ -141,7 +134,6 @@
 		2FA7FCF12B2B818B00749D38 /* CourseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCollectionViewCell.swift; sourceTree = "<group>"; };
 		2FA7FCF32B2CCC0E00749D38 /* AboutCourseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutCourseCell.swift; sourceTree = "<group>"; };
 		2FA7FCF52B2CDF5400749D38 /* CourseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseCoordinator.swift; sourceTree = "<group>"; };
-		2FA7FCF82B2D305500749D38 /* GetPreviousProjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPreviousProjects.swift; sourceTree = "<group>"; };
 		2FA7FCFB2B2D30A900749D38 /* SearchRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRoute.swift; sourceTree = "<group>"; };
 		2FA7FCFE2B2D349F00749D38 /* PrevProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrevProject.swift; sourceTree = "<group>"; };
 		2FA7FD002B2DC88400749D38 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
@@ -366,6 +358,7 @@
 			isa = PBXGroup;
 			children = (
 				2F5B06642AF7A0340075D083 /* GP_iOS */,
+				2F9E71D52B384F0700767A4D /* Resources */,
 				2F5B06632AF7A0340075D083 /* Products */,
 				E39B224187724220861E4712 /* Pods */,
 				BDD64D1FE57A09686C945A68 /* Frameworks */,
@@ -384,7 +377,6 @@
 			isa = PBXGroup;
 			children = (
 				2FA7FCE42B290ED300749D38 /* Enumeration  */,
-				2FA7FCC32B24AD5C00749D38 /* UseCases */,
 				2FB7A13A2B15464700923D02 /* Managers */,
 				2F70310A2B0D3E1A00FBB5D6 /* Localizable */,
 				2F4490D72B0976D2002B6975 /* Views */,
@@ -394,13 +386,6 @@
 				2F4490A22B0578A1002B6975 /* Screens */,
 				2F4490A12B05788E002B6975 /* Coordinators */,
 				2F5B06AA2AF9968D0075D083 /* Utilities */,
-				2F5B06652AF7A0340075D083 /* AppDelegate.swift */,
-				2F5B06672AF7A0340075D083 /* SceneDelegate.swift */,
-				8BA6A5B72B319C7300CACE48 /* nnu.png */,
-				2F5B066E2AF7A0370075D083 /* Assets.xcassets */,
-				2F4490D52B095CAB002B6975 /* Colors.xcassets */,
-				2F5B06702AF7A0370075D083 /* LaunchScreen.storyboard */,
-				2F5B06732AF7A0370075D083 /* Info.plist */,
 			);
 			path = GP_iOS;
 			sourceTree = "<group>";
@@ -664,30 +649,17 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		2FA7FCC32B24AD5C00749D38 /* UseCases */ = {
+		2F9E71D52B384F0700767A4D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				2FA7FCF72B2D2FE000749D38 /* Search */,
-				2FA7FCC92B25E30F00749D38 /* Courses */,
-				2FA7FCC42B24AD6700749D38 /* Authenitication */,
+				8BA6A5B72B319C7300CACE48 /* nnu.png */,
+				2F5B066E2AF7A0370075D083 /* Assets.xcassets */,
+				2F5B06732AF7A0370075D083 /* Info.plist */,
+				2F5B06702AF7A0370075D083 /* LaunchScreen.storyboard */,
+				2F5B06672AF7A0340075D083 /* SceneDelegate.swift */,
+				2F5B06652AF7A0340075D083 /* AppDelegate.swift */,
 			);
-			path = UseCases;
-			sourceTree = "<group>";
-		};
-		2FA7FCC42B24AD6700749D38 /* Authenitication */ = {
-			isa = PBXGroup;
-			children = (
-				2FA7FCC52B24ADEF00749D38 /* GetUserByIdAndPassword.swift */,
-			);
-			path = Authenitication;
-			sourceTree = "<group>";
-		};
-		2FA7FCC92B25E30F00749D38 /* Courses */ = {
-			isa = PBXGroup;
-			children = (
-				2FA7FCCA2B25E79600749D38 /* GetCoursesByRegID.swift */,
-			);
-			path = Courses;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		2FA7FCCC2B25E7D400749D38 /* Courses */ = {
@@ -713,14 +685,6 @@
 				2F9E71D12B37108D00767A4D /* FilterCategory.swift */,
 			);
 			path = "Enumeration ";
-			sourceTree = "<group>";
-		};
-		2FA7FCF72B2D2FE000749D38 /* Search */ = {
-			isa = PBXGroup;
-			children = (
-				2FA7FCF82B2D305500749D38 /* GetPreviousProjects.swift */,
-			);
-			path = Search;
 			sourceTree = "<group>";
 		};
 		2FA7FCFA2B2D308F00749D38 /* Search */ = {
@@ -879,7 +843,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2F4490D62B095CAB002B6975 /* Colors.xcassets in Resources */,
 				2F5B06722AF7A0370075D083 /* LaunchScreen.storyboard in Resources */,
 				2F7031092B0D35EE00FBB5D6 /* Localizable.xcstrings in Resources */,
 				2F5B066F2AF7A0370075D083 /* Assets.xcassets in Resources */,
@@ -955,7 +918,6 @@
 				2FA7FD012B2DC88400749D38 /* SearchTableViewCell.swift in Sources */,
 				2F4490B32B057F9D002B6975 /* Student.swift in Sources */,
 				2F4490A92B057906002B6975 /* MainCoordinator.swift in Sources */,
-				2FA7FCC62B24ADEF00749D38 /* GetUserByIdAndPassword.swift in Sources */,
 				2FB7A12C2B1493FC00923D02 /* TabBarCoordinator.swift in Sources */,
 				2F4490D22B094C17002B6975 /* UIImage+Extension.swift in Sources */,
 				2FA7FD082B2EFC3200749D38 /* FooterView.swift in Sources */,
@@ -975,7 +937,6 @@
 				2FA7FD112B2F69B100749D38 /* FilterHeaderView.swift in Sources */,
 				2FA7FCDC2B26570800749D38 /* PeerViewController.swift in Sources */,
 				2FA7FCFF2B2D349F00749D38 /* PrevProject.swift in Sources */,
-				2FA7FCF92B2D305500749D38 /* GetPreviousProjects.swift in Sources */,
 				2F4490C52B058186002B6975 /* BaseRouter.swift in Sources */,
 				2FB7A1272B13804400923D02 /* LoginViewModel.swift in Sources */,
 				2F4490A52B0578BA002B6975 /* LoginViewController.swift in Sources */,
@@ -998,7 +959,6 @@
 				2F9E71CC2B35A17C00767A4D /* LabelIconView.swift in Sources */,
 				2FB7A1232B13801E00923D02 /* AccessToken.swift in Sources */,
 				2FA7FCF42B2CCC0E00749D38 /* AboutCourseCell.swift in Sources */,
-				2FA7FCCB2B25E79600749D38 /* GetCoursesByRegID.swift in Sources */,
 				2FA7FCF22B2B818B00749D38 /* CourseCollectionViewCell.swift in Sources */,
 				2FA7FCEA2B2923B500749D38 /* UINavigationController+Extension.swift in Sources */,
 				2FB7A1392B1530B300923D02 /* MoreViewController.swift in Sources */,

@@ -7,5 +7,5 @@ target 'GP_iOS' do
 
   # Pods for GP_iOS
   pod 'Alamofire'
-
+  pod 'SendbirdChatSDK', '~> 4.0.0'
 end
