@@ -17,7 +17,6 @@ class SearchViewModel {
     var searchFilterModel = SearchFilterModel(page: 1, projectName: nil, projectType: [], sortByDate: nil)
     var selectedFilterRows: [IndexPath] = []
     var previousSelection: [IndexPath] = []
-    var isSearching = false
     var isLastResult = false
     
     // MARK: - Call Backs

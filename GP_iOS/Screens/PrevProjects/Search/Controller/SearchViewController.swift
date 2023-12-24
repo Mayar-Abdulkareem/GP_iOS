@@ -128,10 +128,8 @@ class SearchViewController: UIViewController {
     }
     
     func configureFilterButton() {
-        let shouldHighlight = !(viewModel.selectedFilterRows.isEmpty && !viewModel.isSearching)
-        
-        filterButton.tintColor = shouldHighlight ? UIColor.mySecondary : UIColor.gray
-        filterButton.configuration?.image = shouldHighlight ? UIImage.SystemImages.filterFill.image : UIImage.SystemImages.filter.image
+        filterButton.tintColor = viewModel.selectedFilterRows.isEmpty ? UIColor.gray : UIColor.mySecondary
+        filterButton.configuration?.image = viewModel.selectedFilterRows.isEmpty ?  UIImage.SystemImages.filter.image : UIImage.SystemImages.filterFill.image
     }
     
     @objc private func filterButtonTapped() {
@@ -211,7 +209,6 @@ extension SearchViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         viewModel.searchFilterModel.page = 1
         viewModel.searchFilterModel.projectName = searchText.isEmpty ? nil : searchText
-        viewModel.isSearching = !searchText.isEmpty
         configureFilterButton()
         viewModel.fetchPrevProjects()
     }

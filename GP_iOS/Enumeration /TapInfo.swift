@@ -16,7 +16,7 @@ enum TabInfo {
     var localizedTitle: String {
         switch self {
         case .home: return String.LocalizedKeys.homeTitle.localized
-        case .search: return String.LocalizedKeys.searchTitle.localized
+        case .search: return String.LocalizedKeys.previousProjectTitle.localized
         case .store: return String.LocalizedKeys.storeTitle.localized
         case .more: return String.LocalizedKeys.moreTitle.localized
         }

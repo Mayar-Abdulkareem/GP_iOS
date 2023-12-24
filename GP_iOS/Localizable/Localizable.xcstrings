@@ -324,6 +324,23 @@
         }
       }
     },
+    "previousProjectTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مشاريع سابقة"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Previous Projects"
+          }
+        }
+      }
+    },
     "profileTitle" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -388,23 +405,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Search by project name"
-          }
-        }
-      }
-    },
-    "searchTitle" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "ar" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "البحث"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Search"
           }
         }
       }

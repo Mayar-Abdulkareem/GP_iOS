@@ -38,7 +38,7 @@ extension String {
         /// - Title:
         case homeTitle
         case courseTitle
-        case searchTitle
+        case previousProjectTitle
         case storeTitle
         case moreTitle
         case profileTitle

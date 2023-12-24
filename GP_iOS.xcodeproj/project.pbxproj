@@ -197,7 +197,7 @@
 			children = (
 				2FB7A1312B151FF100923D02 /* More */,
 				2FB7A1302B151FD900923D02 /* Store */,
-				2FB7A12F2B151FA000923D02 /* Search */,
+				2FB7A12F2B151FA000923D02 /* PrevProjects */,
 				2FB7A1282B1488CA00923D02 /* Home */,
 				2F4490A32B0578AC002B6975 /* Login */,
 			);
@@ -516,14 +516,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		2F9E71BA2B330EE800767A4D /* MainSearch */ = {
+		2F9E71BA2B330EE800767A4D /* Search */ = {
 			isa = PBXGroup;
 			children = (
 				2F9E71C92B33348D00767A4D /* Cells */,
 				2F9E71BE2B330F5000767A4D /* ViewModel */,
 				2F9E71BD2B330F3800767A4D /* Controller */,
 			);
-			path = MainSearch;
+			path = Search;
 			sourceTree = "<group>";
 		};
 		2F9E71BB2B330EF000767A4D /* Filter */ = {
@@ -724,14 +724,14 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
-		2FB7A12F2B151FA000923D02 /* Search */ = {
+		2FB7A12F2B151FA000923D02 /* PrevProjects */ = {
 			isa = PBXGroup;
 			children = (
 				2F9E71BC2B330EFB00767A4D /* ProjectDetails */,
 				2F9E71BB2B330EF000767A4D /* Filter */,
-				2F9E71BA2B330EE800767A4D /* MainSearch */,
+				2F9E71BA2B330EE800767A4D /* Search */,
 			);
-			path = Search;
+			path = PrevProjects;
 			sourceTree = "<group>";
 		};
 		2FB7A1302B151FD900923D02 /* Store */ = {
