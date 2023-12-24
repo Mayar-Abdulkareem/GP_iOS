@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import SendbirdChatSDK
+//import SendbirdChatSDK
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -32,8 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            }
 //            print("connected")
 //        }
-//        return true
-//    }
+        return true
+    }
 
     // MARK: UISceneSession Lifecycle
 

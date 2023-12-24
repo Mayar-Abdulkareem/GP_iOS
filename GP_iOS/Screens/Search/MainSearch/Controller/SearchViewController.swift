@@ -36,6 +36,7 @@ class SearchViewController: UIViewController {
         searchBar.placeholder = String.LocalizedKeys.searchByProjectName.localized
         searchBar.layer.borderWidth = 0
         searchBar.searchBarStyle = .minimal
+        searchBar.tintColor = .mySecondary
         
         searchBar.delegate = self
         

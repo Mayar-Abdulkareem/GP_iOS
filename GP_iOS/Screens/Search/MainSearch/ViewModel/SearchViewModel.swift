@@ -13,10 +13,10 @@ class SearchViewModel {
     
     private(set) var totalPagesCount = 0
     private(set) var prevProjects = [PreviousProject]()
-    //var categories: [(String, [String])] = [("Date", ["Newest", "Oldest"])]
     var categories: [(String, [String])] = [(CategoryType.date.rawValue, DateOptions.allCases.map { $0.rawValue })]
     var searchFilterModel = SearchFilterModel(page: 1, projectName: nil, projectType: [], sortByDate: nil)
     var selectedFilterRows: [IndexPath] = []
+    var previousSelection: [IndexPath] = []
     var isSearching = false
     var isLastResult = false
     
@@ -35,7 +35,6 @@ class SearchViewModel {
         BaseClient.shared.performRequest(router: route, type: [String].self) { [weak self] result in
             switch result {
             case .success(let types):
-                print(types)
                 guard let self = self else { return }
                 self.categories.append((CategoryType.type.rawValue, types))
             case .failure(let error):

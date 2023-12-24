@@ -37,17 +37,55 @@ class FilterViewController: UIViewController {
         return tableView
     }()
     
+    private lazy var filterButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle(String.LocalizedKeys.filterTitle.localized, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        button.backgroundColor = UIColor.mySecondary
+        button.tintColor = UIColor.myPrimary
+        button.layer.cornerRadius = 5
+        
+        button.addAction(UIAction { [weak self] _ in
+            self?.delegate?.filterViewControllerDismissed()
+            self?.viewModel.previousSelection = self?.viewModel.selectedFilterRows ?? []
+            self?.dismiss(animated: true)
+
+        }, for: .primaryActionTriggered)
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.showDefaultNavigationBar(title: String.LocalizedKeys.filterTitle.localized, withCloseButton: true)
+        updateFilterButtonState()
         setupClearButton()
-        view.addViewFillEntireView(tableView)
+        configureViews()
+    }
+    
+    private func configureViews() {
+        view.backgroundColor = .myLightGray
+        
+        view.addSubview(tableView)
+        view.addSubview(filterButton)
+        
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            
+            filterButton.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 10),
+            filterButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40),
+            filterButton.widthAnchor.constraint(equalToConstant: 180),
+            filterButton.heightAnchor.constraint(equalToConstant: 50),
+            filterButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
     }
     
     /// Change the filter icon configuration
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        delegate?.filterViewControllerDismissed()
+        //delegate?.filterViewControllerDismissed()
     }
     
     func setupClearButton() {
@@ -64,9 +102,16 @@ class FilterViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func updateFilterButtonState() {
+        let isSelectionChanged = viewModel.selectedFilterRows != viewModel.previousSelection
+        //let isSelectionNotEmpty = !viewModel.selectedFilterRows.isEmpty
+        filterButton.isEnabled = isSelectionChanged
+    }
+    
     @objc func clearButtonTapped() {
         viewModel.selectedFilterRows.removeAll()
         tableView.reloadData()
+        updateFilterButtonState()
     }
 }
 
@@ -123,5 +168,6 @@ extension FilterViewController: UITableViewDataSource, UITableViewDelegate {
             viewModel.selectedFilterRows.append(indexPath)
         }
         tableView.reloadData()
+        updateFilterButtonState()
     }
 }
