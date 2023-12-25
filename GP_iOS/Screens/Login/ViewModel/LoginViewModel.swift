@@ -11,20 +11,24 @@ class LoginViewModel {
     
     // MARK: - Call Backs
     
-    /// If the login failed
-    var onShowError: ((_ msg: String) -> Void)?
-    // If the login succeed
+    var onShowTopAlert: ((_ title: String, _ subTitle: String, _ type: TopAlertType) -> Void)?
     var onAuthSuccess: ((AccessToken) -> ())?
+    var onShowLoading: (() -> Void)?
     
     // MARK: - Methods
     
     /// Fetch user by credential (ID and password)
     func login(with credential: Credential) {
         guard !credential.regID.isEmpty && !credential.password.isEmpty else {
-            onShowError?(String.LocalizedKeys.fillAllFieldsMsg.localized)
+            onShowTopAlert?(
+                String.LocalizedKeys.infoTitle.localized,
+                String.LocalizedKeys.fillAllFieldsMsg.localized,
+                .info
+            )
             return
         }
         
+        onShowLoading?()
         let route = LoginRouter.login(credential: credential)
         BaseClient.shared.performRequest(router: route, type: AccessToken.self) {[weak self] result in
             switch result {
@@ -36,9 +40,17 @@ class LoginViewModel {
             case .failure(let error):
                 switch error.responseCode {
                 case 401:
-                    self?.onShowError?(String.LocalizedKeys.unauthenticatedSubtitle.localized)
+                    self?.onShowTopAlert?(
+                        String.LocalizedKeys.errorTitle.localized,
+                        String.LocalizedKeys.unauthenticatedSubtitle.localized,
+                        .failure
+                    )
                 default:
-                    self?.onShowError?(error.localizedDescription)
+                    self?.onShowTopAlert?(
+                        String.LocalizedKeys.errorTitle.localized,
+                        error.localizedDescription,
+                        .failure
+                    )
                 }
             }
         }

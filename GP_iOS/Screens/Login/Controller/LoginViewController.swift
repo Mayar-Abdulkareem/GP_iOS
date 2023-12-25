@@ -11,169 +11,122 @@ class LoginViewController: UIViewController {
     
     weak var coordinator: LoginCoordinator?
     
-    private let loginImageView = {
-        let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage.login
-        return imageView
+    private lazy var registrationIDTextField = {
+        let textFieldView = TitleTextFieldView(leftImage: UIImage.SystemImages.number.image)
+        textFieldView.textField.placeholder = String.LocalizedKeys.registrationIDTextFieldText.localized
+        textFieldView.textField.keyboardType = .numberPad
+        textFieldView.textField.delegate = self
+        textFieldView.translatesAutoresizingMaskIntoConstraints = false
+        return textFieldView
     }()
     
-    private let loginView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor.mySecondary.withAlphaComponent(0.8)
-        return view
+    private lazy var passwordTextField = {
+        let textFieldView = TitleTextFieldView(leftImage: UIImage.SystemImages.lock.image, isSecureTextEntry: true)
+        textFieldView.textField.placeholder = String.LocalizedKeys.passwordTextFieldText.localized
+        textFieldView.textField.delegate = self
+        textFieldView.translatesAutoresizingMaskIntoConstraints = false
+        return textFieldView
     }()
     
-    private let registrationIDTextField = {
-        let textField = CustomTextField(withPlaceHolder: String.LocalizedKeys.registrationIDTextFieldText.localized)
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.keyboardType = .numberPad
-        return textField
-    }()
-    
-    private let passwordTextField = {
-        let textField = CustomTextField(
-            withPlaceHolder: String.LocalizedKeys.passwordTextFieldText.localized,
-            isPassword: true
-        )
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.isSecureTextEntry = true
-        return textField
-    }()
-    
-    private let loginBackgroundImageView = {
-        let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage.loginBackground
-        return imageView
-    }()
-    
-    private let loginButton = CustomButton(buttonText: String.LocalizedKeys.loginButtonKey.localized)
-    
-    private let togglePasswordButton = {
-        let button = UIButton(type: .custom)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage.SystemImages.slashFillEye.image, for: .normal)
-        button.setImage(UIImage.SystemImages.fillEye.image, for: .selected)
-        button.tintColor = UIColor.myGray
+    private lazy var loginButton = {
+        let button = CustomButton(buttonText: String.LocalizedKeys.loginButtonKey.localized)
+        button.addAction(UIAction { [weak self] _ in
+            self?.loginTapped()
+        }, for: .primaryActionTriggered)
         return button
     }()
-    
-    private let stackView = {
-        let stackView = UIStackView()
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .vertical
-        stackView.spacing = 70
-        stackView.alignment = .fill
-        return stackView
-    }()
-    
-    private let welcomeLabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = String.LocalizedKeys.welcomeMessage.localized
-        label.textAlignment = .center
-        label.textColor = .black
-        label.numberOfLines = 0
-        label.font = UIFont.boldSystemFont(ofSize: 20.0)
-        return label
-    }()
-    
-    private let logoView = LogoView(
-        symbolImage: UIImage.SystemImages.graduationCap.image,
-        logoText: String.LocalizedKeys.logoText.localized
-    )
     
     private let viewModel = LoginViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .myPrimary
         configureViews()
-        addActions()
         bindWithViewModel()
     }
     
     private func configureViews() {
-        view.addSubview(loginImageView)
-        view.addSubview(loginView)
-        view.addSubview(loginBackgroundImageView)
-        view.addSubview(logoView)
-        view.addSubview(welcomeLabel)
-        view.addSubview(stackView)
-        view.addSubview(togglePasswordButton)
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 10
+        stackView.translatesAutoresizingMaskIntoConstraints = false
         
         stackView.addArrangedSubview(registrationIDTextField)
         stackView.addArrangedSubview(passwordTextField)
         stackView.addArrangedSubview(loginButton)
-        stackView.setCustomSpacing(120, after: passwordTextField)
+        
+        stackView.setCustomSpacing(30, after: passwordTextField)
+        
+        let logoImageView = getImageView(with: UIImage.gradProHorizontal, contentMode: .scaleAspectFit)
+        
+        let bottomImageView = getImageView(with: UIImage.layeredWaves, contentMode: .scaleToFill)
+        
+        view.addSubview(logoImageView)
+        view.addSubview(stackView)
+        view.addSubview(bottomImageView)
         
         NSLayoutConstraint.activate([
-            loginImageView.topAnchor.constraint(equalTo: view.topAnchor),
-            loginImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            loginImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            loginImageView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.3),
+            logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
+            logoImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            logoImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
+            logoImageView.bottomAnchor.constraint(equalTo: stackView.topAnchor, constant: -50),
+            logoImageView.heightAnchor.constraint(equalToConstant: 100),
             
-            loginView.topAnchor.constraint(equalTo: view.topAnchor),
-            loginView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            loginView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            loginView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.3),
-            
-            loginBackgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            loginBackgroundImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            loginBackgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            loginBackgroundImageView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.75),
-            
-            logoView.centerXAnchor.constraint(equalTo: loginView.centerXAnchor),
-            logoView.centerYAnchor.constraint(equalTo: loginView.centerYAnchor, constant: 40),
-            
-            welcomeLabel.topAnchor.constraint(equalTo: loginView.bottomAnchor, constant: 15),
-            welcomeLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            
-            stackView.topAnchor.constraint(equalTo: loginView.bottomAnchor, constant: 150),
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
             
-            togglePasswordButton.centerYAnchor.constraint(equalTo: passwordTextField.centerYAnchor),
-            togglePasswordButton.trailingAnchor.constraint(equalTo: passwordTextField.trailingAnchor),
-            togglePasswordButton.widthAnchor.constraint(equalToConstant: 45),
-            togglePasswordButton.heightAnchor.constraint(equalToConstant: 45)
+            bottomImageView.heightAnchor.constraint(equalToConstant: 250),
+            bottomImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            bottomImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            bottomImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
     }
     
-    private func addActions() {
-        togglePasswordButton.addAction(UIAction { [weak self] _ in
-            self?.passwordTextField.isSecureTextEntry.toggle()
-            self?.togglePasswordButton.isSelected = !(self?.passwordTextField.isSecureTextEntry ?? false)
-        }, for: .primaryActionTriggered)
-        
-        loginButton.addAction(UIAction {
-            [weak self] _ in
-            guard let self else { return }
-            self.showLoading(maskView: view)
-            self.viewModel.login(
-                with: Credential(
-                    regID: self.registrationIDTextField.text ?? "" ,
-                    password: self.passwordTextField.text ?? ""
-                )
-            )
-        }, for: .primaryActionTriggered)
+    private func getImageView(with image: UIImage, contentMode: UIView.ContentMode) -> UIImageView {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.image = image
+        imageView.contentMode = contentMode
+        return imageView
     }
     
     private func bindWithViewModel() {
-        viewModel.onShowError = { [weak self] msg in
+        viewModel.onShowTopAlert = { [weak self] title, subTitle, type in
             AuthManager.shared.userAccessToken = nil
             self?.hideLoading()
-            if (msg == String.LocalizedKeys.fillAllFieldsMsg.localized) {
-                TopAlertManager.show(title: "Info", subTitle: msg, type: .info)
-            }
-            else {
-                TopAlertManager.show(title: "Error", subTitle: msg, type: .failure)
-            }
+            TopAlertManager.show(
+                title: title,
+                subTitle: subTitle,
+                type: type
+            )
         }
         
         viewModel.onAuthSuccess = { [weak self] accessToken in
             self?.coordinator?.didFinishAuth()
         }
+        
+        viewModel.onShowLoading = { [weak self] in
+            guard let self else { return }
+            showLoading(maskView: view)
+        }
+    }
+    
+    private func loginTapped() {
+        view.endEditing(true)
+        let registrationID = registrationIDTextField.textField.text ?? ""
+        let password = passwordTextField.textField.text ?? ""
+        viewModel.login(
+            with: Credential(
+                regID: registrationID,
+                password: password
+            )
+        )
+    }
+}
+
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

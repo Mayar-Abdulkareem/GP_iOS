@@ -1,9 +1,8 @@
 //
 //  TopAlertView.swift
-//  Paycard
+//  GP_iOS
 //
 //  Created by Mayar Abdulkareem on 08/11/2023.
-//  Copyright © 2023 R365. All rights reserved.
 //
 
 import UIKit

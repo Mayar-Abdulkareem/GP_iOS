@@ -2,7 +2,7 @@
 //  HomeAboutMeCell.swift
 //  GP_iOS
 //
-//  Created by Bassam Hillo on 19/12/2023.
+//  Created by Mayar Abdulkareem on 19/12/2023.
 //
 
 import UIKit

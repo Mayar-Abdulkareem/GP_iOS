@@ -9,13 +9,9 @@ import UIKit
 
 class CustomButton: UIButton {
     
-    init(buttonText: String) {
-        super.init(frame: .zero)
+    convenience init(buttonText: String) {
+        self.init(type: .system)
         setUpButton(buttonText: buttonText)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
     private func setUpButton(buttonText: String) {

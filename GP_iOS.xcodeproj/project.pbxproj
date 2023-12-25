@@ -20,9 +20,7 @@
 		2F4490C52B058186002B6975 /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4490C42B058186002B6975 /* BaseRouter.swift */; };
 		2F4490C92B0581C1002B6975 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4490C82B0581C1002B6975 /* LoginRouter.swift */; };
 		2F4490D22B094C17002B6975 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4490D12B094C17002B6975 /* UIImage+Extension.swift */; };
-		2F4490D92B097717002B6975 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4490D82B097717002B6975 /* CustomTextField.swift */; };
 		2F4490DB2B098D3B002B6975 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4490DA2B098D3B002B6975 /* CustomButton.swift */; };
-		2F4490E02B0A3541002B6975 /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4490DF2B0A3541002B6975 /* LogoView.swift */; };
 		2F5B06662AF7A0340075D083 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5B06652AF7A0340075D083 /* AppDelegate.swift */; };
 		2F5B06682AF7A0340075D083 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5B06672AF7A0340075D083 /* SceneDelegate.swift */; };
 		2F5B066F2AF7A0370075D083 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F5B066E2AF7A0370075D083 /* Assets.xcassets */; };
@@ -78,6 +76,8 @@
 		2FB7A1412B15F0A000923D02 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB7A1402B15F0A000923D02 /* ProfileViewController.swift */; };
 		2FB7A1432B15F10500923D02 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB7A1422B15F10500923D02 /* RegisterViewController.swift */; };
 		2FB7A1452B15F18300923D02 /* AnnouncementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB7A1442B15F18300923D02 /* AnnouncementViewController.swift */; };
+		3DCDE4872B398EFF005F9C7B /* TitleTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCDE4862B398EFF005F9C7B /* TitleTextFieldView.swift */; };
+		3DCDE4892B398F47005F9C7B /* ImageTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCDE4882B398F47005F9C7B /* ImageTextField.swift */; };
 		8B527C862B31CDC200B6ACF7 /* HomeAboutMeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B527C852B31CDC200B6ACF7 /* HomeAboutMeCell.swift */; };
 		8BA6A5B82B319C7300CACE48 /* nnu.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BA6A5B72B319C7300CACE48 /* nnu.png */; };
 		8BAA93252B32D217007B3B16 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAA93242B32D217007B3B16 /* UIViewController+Extensions.swift */; };
@@ -96,9 +96,7 @@
 		2F4490C42B058186002B6975 /* BaseRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
 		2F4490C82B0581C1002B6975 /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
 		2F4490D12B094C17002B6975 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
-		2F4490D82B097717002B6975 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		2F4490DA2B098D3B002B6975 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
-		2F4490DF2B0A3541002B6975 /* LogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoView.swift; sourceTree = "<group>"; };
 		2F5B06622AF7A0340075D083 /* GP_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GP_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F5B06652AF7A0340075D083 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F5B06672AF7A0340075D083 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -158,6 +156,8 @@
 		2FB7A1422B15F10500923D02 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		2FB7A1442B15F18300923D02 /* AnnouncementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementViewController.swift; sourceTree = "<group>"; };
 		3B79D20A1AC8A7967C76ABF4 /* Pods-GP_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GP_iOS.debug.xcconfig"; path = "Target Support Files/Pods-GP_iOS/Pods-GP_iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		3DCDE4862B398EFF005F9C7B /* TitleTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTextFieldView.swift; sourceTree = "<group>"; };
+		3DCDE4882B398F47005F9C7B /* ImageTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTextField.swift; sourceTree = "<group>"; };
 		8B527C852B31CDC200B6ACF7 /* HomeAboutMeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAboutMeCell.swift; sourceTree = "<group>"; };
 		8BA6A5B72B319C7300CACE48 /* nnu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nnu.png; sourceTree = "<group>"; };
 		8BAA93242B32D217007B3B16 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
@@ -337,7 +337,8 @@
 		2F4490DD2B0A350C002B6975 /* TextFields */ = {
 			isa = PBXGroup;
 			children = (
-				2F4490D82B097717002B6975 /* CustomTextField.swift */,
+				3DCDE4862B398EFF005F9C7B /* TitleTextFieldView.swift */,
+				3DCDE4882B398F47005F9C7B /* ImageTextField.swift */,
 			);
 			path = TextFields;
 			sourceTree = "<group>";
@@ -346,7 +347,6 @@
 			isa = PBXGroup;
 			children = (
 				2F7031002B0CE39E00FBB5D6 /* TopAlertView.swift */,
-				2F4490DF2B0A3541002B6975 /* LogoView.swift */,
 				2FB7A13B2B15467B00923D02 /* HeaderView.swift */,
 				2FA7FD072B2EFC3200749D38 /* FooterView.swift */,
 				2F9E71CB2B35A17B00767A4D /* LabelIconView.swift */,
@@ -941,7 +941,7 @@
 				2FB7A1272B13804400923D02 /* LoginViewModel.swift in Sources */,
 				2F4490A52B0578BA002B6975 /* LoginViewController.swift in Sources */,
 				2F7031022B0CE39E00FBB5D6 /* TopAlertView.swift in Sources */,
-				2F4490E02B0A3541002B6975 /* LogoView.swift in Sources */,
+				3DCDE4892B398F47005F9C7B /* ImageTextField.swift in Sources */,
 				2FB7A1372B15212E00923D02 /* StoreViewController.swift in Sources */,
 				2FA7FCF02B2B036F00749D38 /* SubmissionsViewController.swift in Sources */,
 				2F4490AB2B05791E002B6975 /* LoginCoordinator.swift in Sources */,
@@ -951,7 +951,6 @@
 				2FA7FCCE2B25E7F000749D38 /* Course.swift in Sources */,
 				8BAA93252B32D217007B3B16 /* UIViewController+Extensions.swift in Sources */,
 				2F70310E2B0E285100FBB5D6 /* String+Extension.swift in Sources */,
-				2F4490D92B097717002B6975 /* CustomTextField.swift in Sources */,
 				2FA7FCC82B24FBB700749D38 /* HomeTableViewCell.swift in Sources */,
 				2F5B06682AF7A0340075D083 /* SceneDelegate.swift in Sources */,
 				2F4490B92B0580BF002B6975 /* Administrator.swift in Sources */,
@@ -966,6 +965,7 @@
 				2F9E71D22B37108D00767A4D /* FilterCategory.swift in Sources */,
 				2FB7A1452B15F18300923D02 /* AnnouncementViewController.swift in Sources */,
 				2FB7A1352B1520BF00923D02 /* SearchViewController.swift in Sources */,
+				3DCDE4872B398EFF005F9C7B /* TitleTextFieldView.swift in Sources */,
 				2F9E71CE2B35B16000767A4D /* StringManager.swift in Sources */,
 				2FA7FCD42B25F3EF00749D38 /* CoursesViewModel.swift in Sources */,
 			);
