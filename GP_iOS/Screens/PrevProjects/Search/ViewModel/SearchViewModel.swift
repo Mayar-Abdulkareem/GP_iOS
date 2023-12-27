@@ -11,7 +11,7 @@ class SearchViewModel {
     
     // MARK: - Variables
     
-    private(set) var totalPagesCount = 0
+    private(set) var totalPrevProjectsCount = 0
     private(set) var prevProjects = [PreviousProject]()
     var categories: [(String, [String])] = [(CategoryType.date.rawValue, DateOptions.allCases.map { $0.rawValue })]
     var searchFilterModel = SearchFilterModel(page: 1, projectName: nil, projectType: [], sortByDate: nil)
@@ -53,7 +53,7 @@ class SearchViewModel {
                 } else {
                     self?.prevProjects += prevProjects.previousProjects
                 }
-                self?.totalPagesCount = prevProjects.totalCount
+                self?.totalPrevProjectsCount = prevProjects.totalCount
                 if self?.prevProjects.count == 0 {
                     self?.onPreviousProjectsFetched?(true)
                 } else {

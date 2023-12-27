@@ -33,7 +33,6 @@ class CourseViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         navigationController?.showDefaultNavigationBar(title: String.LocalizedKeys.courseTitle.localized, withCloseButton: true)
-        view.backgroundColor = UIColor.myLightGray
         configureViews()
     }
 
@@ -49,14 +48,9 @@ class CourseViewController: UIViewController {
     }
 
     private func configureViews() {
-        view.addSubview(collectionView)
+        view.backgroundColor = UIColor.myLightGray
         
-        NSLayoutConstraint.activate([
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -8),
-            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8),
-            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8)
-        ])
+        view.addViewWithConstant(collectionView, constant: 8)
     }
 }
 

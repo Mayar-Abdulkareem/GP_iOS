@@ -24,7 +24,12 @@ extension String {
         case studentsTitle
         case supervisorTitle
         case doctorInitital
+        case detailsTitle
+        case saveTitle
+        
+        /// Search bar
         case searchByProjectName
+        case searchByItemName
         
         /// Top Alert
         /// - Title:
@@ -50,6 +55,29 @@ extension String {
         case choosePeerTitle
         case boardTitle
         case submissionTitle
+        
+        /// Store
+        case itemDetailsTitle
+        case addItemTitle
+        
+        case changePhotoTitle
+        case addPhotoTitle
+        
+        case enterItemName
+        case enterItemPrice
+        case enterItemLocation
+        
+        case fillAllFields
+        case priceDataTypeError
+        
+        case shareMyPhoneNumber
+        
+        case itemInfo
+        case contactInfo
+        
+        case allItemsTitle
+        case myItemsTitle
+        case noItemsMsg
         
         var localized: String {
             return String(localizedKey: self)

@@ -57,7 +57,19 @@ extension UIImage {
         case supervisor = "person.crop.circle.badge.checkmark"
         case year = "calendar"
         case projectType = "doc.text"
-        
+
+        /// Store and Item details
+        case cart = "cart.fill"
+        case price = "shekelsign"
+        case location = "location"
+        case email = "envelope"
+        case phone = "phone"
+        case trash = "trash"
+        case copy = "doc.on.doc"
+        case name = "person"
+        case circle
+        case circleFill = "circle.fill"
+
         ///  Get image
         var image: UIImage {
             return UIImage(systemImages: self)

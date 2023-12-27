@@ -44,7 +44,7 @@ class FilterViewController: UIViewController {
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
         button.backgroundColor = UIColor.mySecondary
         button.tintColor = UIColor.myPrimary
-        button.layer.cornerRadius = 5
+        button.layer.cornerRadius = 10
         
         button.addAction(UIAction { [weak self] _ in
             self?.delegate?.filterViewControllerDismissed()

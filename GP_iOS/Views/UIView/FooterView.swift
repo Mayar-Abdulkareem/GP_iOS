@@ -7,7 +7,9 @@
 
 import UIKit
 
-class FooterView: UIView {
+class FooterView: UICollectionReusableView {
+    static let identifier = "footerViewIdentifier"
+    
     private let label: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
@@ -58,7 +60,7 @@ class FooterView: UIView {
         activityIndicator.stopAnimating()
     }
     
-    func startActivityIndicator() {
+    func startLoading() {
         label.isHidden = true
         activityIndicator.startAnimating()
     }

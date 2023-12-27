@@ -167,12 +167,12 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
                 )
             )
             
-            if (indexPath.row == viewModel.prevProjects.count - 1) && (indexPath.row < (viewModel.totalPagesCount - 1)) {
+            if (indexPath.row == viewModel.prevProjects.count - 1) && (indexPath.row < (viewModel.totalPrevProjectsCount - 1)) {
                 /// Check if the current row is the last one and it is loading
                 viewModel.isLastResult = false
                 viewModel.searchFilterModel.page += 1
                 viewModel.fetchPrevProjects()
-            } else if (indexPath.row == viewModel.prevProjects.count - 1) && (indexPath.row == viewModel.totalPagesCount - 1) {
+            } else if (indexPath.row == viewModel.prevProjects.count - 1) && (indexPath.row == viewModel.totalPrevProjectsCount - 1) {
                 /// Check if the current row is the last one and there are no more pages
                 viewModel.isLastResult = true
             }
@@ -197,7 +197,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             if viewModel.isLastResult {
                 footerView.setFooterLabelTitle(text: String.LocalizedKeys.noMoreResultsMsg.localized)
             } else {
-                footerView.startActivityIndicator()
+                footerView.startLoading()
             }
             return footerView
         }

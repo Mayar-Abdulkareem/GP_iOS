@@ -1,6 +1,57 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "addItemTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اضافة قطعة"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add Item"
+          }
+        }
+      }
+    },
+    "addPhotoTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اضف صورة"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add photo"
+          }
+        }
+      }
+    },
+    "allItemsTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "جميع القطع"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All Items"
+          }
+        }
+      }
+    },
     "announcementTitle" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -31,6 +82,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Project Board"
+          }
+        }
+      }
+    },
+    "changePhotoTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "غير الصورة"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Change Photo"
           }
         }
       }
@@ -69,6 +137,23 @@
         }
       }
     },
+    "contactInfo" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "معلومات التواصل"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contact Info"
+          }
+        }
+      }
+    },
     "courseTitle" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -82,6 +167,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Courses"
+          }
+        }
+      }
+    },
+    "detailsTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تفاصيل"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Details"
           }
         }
       }
@@ -103,6 +205,57 @@
         }
       }
     },
+    "enterItemLocation" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ادخل الموقع "
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter Item Location"
+          }
+        }
+      }
+    },
+    "enterItemName" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ادخل اسم القطعة"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter Item Name"
+          }
+        }
+      }
+    },
+    "enterItemPrice" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ادخل سعر القطعة "
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter Item Price"
+          }
+        }
+      }
+    },
     "errorTitle" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -116,6 +269,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Error"
+          }
+        }
+      }
+    },
+    "fillAllFields" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "املأ جميع الحقول "
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fill out all fields"
           }
         }
       }
@@ -188,6 +358,40 @@
         }
       }
     },
+    "itemDetailsTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تفاصيل القطعة"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Item Details"
+          }
+        }
+      }
+    },
+    "itemInfo" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "معلومات القطعة"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Item Info"
+          }
+        }
+      }
+    },
     "loginButtonKey" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -228,7 +432,7 @@
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "تسجيل خروج"
+            "value" : "تسجيل خروج "
           }
         },
         "en" : {
@@ -256,6 +460,22 @@
         }
       }
     },
+    "myItemsTitle" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "قطعي "
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "My Items"
+          }
+        }
+      }
+    },
     "noCourses" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -269,6 +489,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No registered courses"
+          }
+        }
+      }
+    },
+    "noItemsMsg" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لا توجد قطع متوفرة"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No items available"
           }
         }
       }
@@ -341,6 +578,23 @@
         }
       }
     },
+    "priceDataTypeError" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "السعر يجب أن يكون رقم"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Price must be a number"
+          }
+        }
+      }
+    },
     "profileTitle" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -392,6 +646,40 @@
         }
       }
     },
+    "saveTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "احفظ"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save"
+          }
+        }
+      }
+    },
+    "searchByItemName" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ابحث باستخدام اسم القطعة"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search by item name"
+          }
+        }
+      }
+    },
     "searchByProjectName" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -405,6 +693,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Search by project name"
+          }
+        }
+      }
+    },
+    "shareMyPhoneNumber" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "شارك رقمي "
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Share my phone number"
           }
         }
       }
