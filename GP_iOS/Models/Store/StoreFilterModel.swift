@@ -13,5 +13,3 @@ struct StoreFilterModel {
     var regID: String?
     var sortByPrice: String?
 }
-
-

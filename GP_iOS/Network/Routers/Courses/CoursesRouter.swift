@@ -8,14 +8,14 @@
 import Alamofire
 
 enum CoursesRouter: BaseRouter {
-    
+
     // MARK: Cases
-    
+
     ///  Login
     case getCourses(regID: String)
-    
+
     // MARK: Paths
-    
+
     /// Specify the path for each case
     var path: String {
         switch self {
@@ -23,9 +23,9 @@ enum CoursesRouter: BaseRouter {
             return "/registeredCourses/\(regID)"
         }
     }
-    
+
     // MARK: Method
-    
+
     ///  Specify the HTTP method for each case
     var method: HTTPMethod {
         switch self {
@@ -33,9 +33,9 @@ enum CoursesRouter: BaseRouter {
             return .get
         }
     }
-    
+
     // MARK: Parameters
-    
+
     /// Provide parameters for the request, if applicable
     var parameters: Parameters? {
         switch self {

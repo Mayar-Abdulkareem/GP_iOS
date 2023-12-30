@@ -8,12 +8,12 @@
 import UIKit
 
 class CustomButton: UIButton {
-    
+
     convenience init(buttonText: String) {
         self.init(type: .system)
         setUpButton(buttonText: buttonText)
     }
-    
+
     private func setUpButton(buttonText: String) {
         setTitle(buttonText, for: .normal)
         setTitleColor(UIColor.myPrimary, for: .normal)

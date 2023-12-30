@@ -6,15 +6,17 @@
 //
 
 import UIKit
+import Kingfisher
 
 struct StoreCollectionViewCellModel {
-    let image: UIImage
+    let image: String
     let title: String
+    let index: Int
 }
 
 class StoreCollectionViewCell: UICollectionViewCell {
     static let identifier = "storeCollectionViewCell"
-    
+
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -22,7 +24,7 @@ class StoreCollectionViewCell: UICollectionViewCell {
         label.font = UIFont.boldSystemFont(ofSize: 15)
         return label
     }()
-    
+
     private let itemImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -30,7 +32,7 @@ class StoreCollectionViewCell: UICollectionViewCell {
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
-    
+
     private let viewWithShadow: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -38,7 +40,7 @@ class StoreCollectionViewCell: UICollectionViewCell {
         view.addShadow()
         return view
     }()
-    
+
     override init(frame: CGRect) {
         super.init(frame: .zero)
         configureViews()
@@ -48,7 +50,7 @@ class StoreCollectionViewCell: UICollectionViewCell {
         super.init(coder: coder)
         configureViews()
     }
-    
+
     private func configureViews() {
         addViewFillEntireView(
             viewWithShadow,
@@ -57,10 +59,10 @@ class StoreCollectionViewCell: UICollectionViewCell {
             leading: 8,
             trailing: 8
         )
-        
+
         viewWithShadow.addSubview(itemImageView)
         viewWithShadow.addSubview(titleLabel)
-        
+
         NSLayoutConstraint.activate([
             itemImageView.topAnchor.constraint(equalTo: viewWithShadow.topAnchor, constant: 8),
             itemImageView.trailingAnchor.constraint(equalTo: viewWithShadow.trailingAnchor, constant: -8),
@@ -71,9 +73,14 @@ class StoreCollectionViewCell: UICollectionViewCell {
             titleLabel.topAnchor.constraint(equalTo: itemImageView.bottomAnchor, constant: 8)
         ])
     }
-    
+
     func configureCell(model: StoreCollectionViewCellModel) {
         titleLabel.text = model.title
-        itemImageView.image = model.image
+        self.itemImageView.showLoading(maskView: self.itemImageView, hasTransparentBackground: true, index: model.index)
+        if let url = URL(string: model.image) {
+            self.itemImageView.kf.setImage(with: url) { [weak self] result in
+                self?.itemImageView.hideLoading()
+            }
+        }
     }
 }

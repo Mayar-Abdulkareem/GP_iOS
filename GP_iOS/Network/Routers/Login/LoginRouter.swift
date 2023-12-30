@@ -13,14 +13,14 @@ struct Credential {
 }
 
 enum LoginRouter: BaseRouter {
-    
+
     // MARK: Cases
-    
+
     ///  Login
     case login(credential: Credential)
-    
+
     // MARK: Paths
-    
+
     /// Specify the path for each case
     var path: String {
         switch self {
@@ -28,9 +28,9 @@ enum LoginRouter: BaseRouter {
             return "/login"
         }
     }
-    
+
     // MARK: Method
-    
+
     ///  Specify the HTTP method for each case
     var method: HTTPMethod {
         switch self {
@@ -38,9 +38,9 @@ enum LoginRouter: BaseRouter {
             return .post
         }
     }
-    
+
     // MARK: Parameters
-    
+
     /// Provide parameters for the request, if applicable
     var parameters: Parameters? {
         switch self {

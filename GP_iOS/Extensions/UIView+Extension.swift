@@ -11,11 +11,11 @@ extension UIView {
     /**
      Adds a subview and sets constraints to make it fill the entire parent view with specified padding.
      - Parameters:
-      - viewToAdd: The view to be added as a subview.
-      - top: The top padding.
-      - bottom: The bottom padding.
-      - leading: The leading (left) padding.
-      - trailing: The trailing (right) padding.
+     - viewToAdd: The view to be added as a subview.
+     - top: The top padding.
+     - bottom: The bottom padding.
+     - leading: The leading (left) padding.
+     - trailing: The trailing (right) padding.
      */
     func addViewFillEntireView(
         _ viewToAdd: UIView,
@@ -24,10 +24,10 @@ extension UIView {
         leading: CGFloat = 0,
         trailing: CGFloat = 0
     ) {
-        
+
         viewToAdd.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(viewToAdd)
-        
+
         NSLayoutConstraint.activate([
             viewToAdd.topAnchor.constraint(equalTo: self.topAnchor, constant: top),
             viewToAdd.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -bottom),
@@ -35,15 +35,15 @@ extension UIView {
             viewToAdd.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -trailing)
         ])
     }
-    
+
     func addViewWithConstant(
         _ viewToAdd: UIView,
         constant: CGFloat
     ) {
-        
+
         viewToAdd.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(viewToAdd)
-        
+
         NSLayoutConstraint.activate([
             viewToAdd.topAnchor.constraint(equalTo: self.topAnchor, constant: constant),
             viewToAdd.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -constant),
@@ -51,7 +51,7 @@ extension UIView {
             viewToAdd.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -constant)
         ])
     }
-    
+
     func addShadow(
         cornerRadius: CGFloat = 10,
         shadowColor: UIColor = UIColor.gray,
@@ -66,4 +66,3 @@ extension UIView {
         self.layer.shadowRadius = shadowRadius
     }
 }
-

@@ -6,6 +6,7 @@
 //
 
 import Alamofire
+import UIKit
 
 /// Protocol for API routers
 protocol BaseRouter: URLRequestConvertible {
@@ -15,23 +16,23 @@ protocol BaseRouter: URLRequestConvertible {
 }
 
 extension BaseRouter {
-    
+
     var defaultHeaders: HTTPHeaders {
         return ["Content-Type": "application/json"]
     }
-    
+
     /// Returns a URLRequest object based an the provided path, method, and parameter
     func asURLRequest() throws -> URLRequest {
         let url = try (BuildConfiguration.shared.baseURL +
-                              self.path).asURL()
+                        self.path).asURL()
         var urlRequest = URLRequest(url: url)
-        
+
         // HTTP Method
         urlRequest.httpMethod = method.rawValue
-        
+
         // Headers
         urlRequest.headers = defaultHeaders
-        
+
         // Parameters
         if let parameters = parameters {
             do {

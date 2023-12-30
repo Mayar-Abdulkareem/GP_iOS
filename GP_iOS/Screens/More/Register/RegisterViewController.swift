@@ -8,10 +8,13 @@
 import UIKit
 
 class RegisterViewController: UIViewController {
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.showDefaultNavigationBar(title: String.LocalizedKeys.registerTitle.localized, withCloseButton: true)
+        navigationController?.showDefaultNavigationBar(
+            title: String.LocalizedKeys.registerTitle.localized,
+            withCloseButton: true
+        )
         view.backgroundColor = UIColor.myLightGray
     }
 }

@@ -9,11 +9,14 @@ import UIKit
 
 class SubmissionsViewController: UIViewController {
     weak var coordinator: CourseCoordinator?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.myPrimary
-        navigationController?.showDefaultNavigationBar(title: String.LocalizedKeys.submissionTitle.localized, withCloseButton: false)
+        navigationController?.showDefaultNavigationBar(
+            title: String.LocalizedKeys.submissionTitle.localized,
+            withCloseButton: false
+        )
         view.backgroundColor = UIColor.myLightGray
     }
 }

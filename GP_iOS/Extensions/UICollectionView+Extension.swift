@@ -1,13 +1,13 @@
 //
-//  UITableView+Extension.swift
+//  UICollectionView+Extension.swift
 //  GP_iOS
 //
-//  Created by Mayar Abdulkareem on 10/12/2023.
+//  Created by Mayar Abdulkareem on 28/12/2023.
 //
 
 import UIKit
 
-extension UITableView {
+extension UICollectionView {
 
     func setEmptyView(message: String) {
         let emptyView = UIView(frame: CGRect(x: 0, y: 0, width: bounds.size.width, height: bounds.size.height))

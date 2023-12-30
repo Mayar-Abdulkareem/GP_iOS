@@ -8,7 +8,7 @@
 import UIKit
 
 class ProjectDetailsViewController: UIViewController {
-    
+
     private let projectNameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -17,12 +17,12 @@ class ProjectDetailsViewController: UIViewController {
         label.numberOfLines = 0
         return label
     }()
-   
+
     private lazy var projectLinkButton = {
         var configuration = UIButton.Configuration.filled()
         configuration.title = "Open The Drive Link"
         configuration.imagePlacement = .all
-        
+
         let button = UIButton(configuration: configuration, primaryAction: nil)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addAction(UIAction { [weak self] _ in
@@ -34,7 +34,7 @@ class ProjectDetailsViewController: UIViewController {
         button.tintColor = UIColor.mySecondary
         return button
     }()
-    
+
     private let stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -44,35 +44,35 @@ class ProjectDetailsViewController: UIViewController {
         stackView.distribution = .fill
         return stackView
     }()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViews()
         configureStackView()
     }
-    
+
     private func configureViews() {
         view.backgroundColor = UIColor.myPrimary
         projectNameLabel.text = AppManager.shared.prevProject?.name
-        
+
         view.addSubview(projectNameLabel)
         view.addSubview(stackView)
         view.addSubview(projectLinkButton)
-        
+
         NSLayoutConstraint.activate([
             projectNameLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
             projectNameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            
+
             stackView.topAnchor.constraint(equalTo: projectNameLabel.bottomAnchor, constant: 30),
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            
+
             projectLinkButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 30),
             projectLinkButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 60),
-            projectLinkButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -60),
+            projectLinkButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -60)
         ])
     }
-    
+
     private func configureStackView() {
         let projectTypeView = LabelIconView(
             icon: UIImage.SystemImages.projectType.image,
@@ -94,7 +94,7 @@ class ProjectDetailsViewController: UIViewController {
             prefix: "Supervisor: ",
             text: (AppManager.shared.prevProject?.supervisor ?? "")
         )
-        
+
         stackView.addArrangedSubview(projectTypeView)
         stackView.addArrangedSubview(yearView)
         stackView.addArrangedSubview(studentsView)

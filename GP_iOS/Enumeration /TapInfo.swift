@@ -12,7 +12,7 @@ enum TabInfo {
     case search
     case store
     case more
-    
+
     var localizedTitle: String {
         switch self {
         case .home: return String.LocalizedKeys.homeTitle.localized
@@ -21,7 +21,7 @@ enum TabInfo {
         case .more: return String.LocalizedKeys.moreTitle.localized
         }
     }
-    
+
     var systemImage: UIImage {
         switch self {
         case .home: return UIImage.SystemImages.home.image
@@ -30,7 +30,7 @@ enum TabInfo {
         case .more: return UIImage.SystemImages.more.image
         }
     }
-    
+
     var tag: Int {
         switch self {
         case .home: return 0
@@ -39,7 +39,7 @@ enum TabInfo {
         case .more: return 3
         }
     }
-    
+
     func createTabBarItem() -> UITabBarItem {
         return UITabBarItem(
             title: localizedTitle,

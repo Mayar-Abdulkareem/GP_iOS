@@ -8,10 +8,13 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.showDefaultNavigationBar(title: String.LocalizedKeys.profileTitle.localized, withCloseButton: true)
+        navigationController?.showDefaultNavigationBar(
+            title: String.LocalizedKeys.profileTitle.localized,
+            withCloseButton: true
+        )
         view.backgroundColor = UIColor.myLightGray
     }
 }

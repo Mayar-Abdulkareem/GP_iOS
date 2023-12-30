@@ -12,7 +12,7 @@ enum ViewType {
     case itemDetails
     // When the user click on + button
     case addItem
-    
+
     /// Title for the page
     var title: String {
         switch self {
@@ -22,7 +22,7 @@ enum ViewType {
             return String.LocalizedKeys.addItemTitle.localized
         }
     }
-    
+
     /// Change or add photo
     var photoButtonTitle: String {
         switch self {
@@ -32,17 +32,9 @@ enum ViewType {
             return String.LocalizedKeys.addPhotoTitle.localized
         }
     }
-    
-    /// Selected item image or default cart
-    var image: UIImage {
-        switch self {
-        case .itemDetails:
-            return AppManager.shared.item?.uiImage ?? UIImage.SystemImages.cart.image
-        case .addItem:
-            return UIImage.SystemImages.cart.image
-        }
-    }
-    
+
+
+
     /// Selected item title or nil
     var itemTitleTextFieldText: String? {
         switch self {
@@ -52,7 +44,7 @@ enum ViewType {
             return nil
         }
     }
-    
+
     /// Item title placeholder or nil
     var itemTitleTextFieldPlaceHolder: String? {
         switch self {
@@ -62,7 +54,7 @@ enum ViewType {
             return String.LocalizedKeys.enterItemName.localized
         }
     }
-    
+
     /// Selected item price or nil
     var priceTitleTextFieldText: String? {
         switch self {
@@ -72,7 +64,7 @@ enum ViewType {
             return nil
         }
     }
-    
+
     /// Item price placeholder or nil
     var priceTitleTextFieldPlaceHolder: String? {
         switch self {
@@ -82,7 +74,7 @@ enum ViewType {
             return String.LocalizedKeys.enterItemPrice.localized
         }
     }
-    
+
     /// Selected item location or nil
     var locationTitleTextFieldText: String? {
         switch self {
@@ -92,7 +84,7 @@ enum ViewType {
             return nil
         }
     }
-    
+
     /// Item location placeholder
     var locationTitleTextFieldPlaceHolder: String? {
         switch self {
@@ -102,7 +94,7 @@ enum ViewType {
             return String.LocalizedKeys.enterItemLocation.localized
         }
     }
-    
+
     /// Selected item quantity or default 1
     var quantityTitleTextFieldText: String? {
         switch self {
@@ -112,7 +104,7 @@ enum ViewType {
             return "1"
         }
     }
-    
+
     /// Show item title borders when editable or not
     var itemTitleTextFieldBorderStyle: UITextField.BorderStyle {
         switch self {
@@ -122,9 +114,9 @@ enum ViewType {
             return .roundedRect
         }
     }
-    
+
     /// Execute update or add on save tapped
-    func actionOnSaveClicked(viewModel: StoreViewModel) -> Void {
+    func actionOnSaveClicked(viewModel: StoreViewModel) {
         switch self {
         case .itemDetails:
             if let id = AppManager.shared.item?.id {

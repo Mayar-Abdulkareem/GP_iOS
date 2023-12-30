@@ -6,11 +6,12 @@
 //
 
 import Alamofire
+import UIKit
 
 class SearchViewModel {
-    
+
     // MARK: - Variables
-    
+
     private(set) var totalPrevProjectsCount = 0
     private(set) var prevProjects = [PreviousProject]()
     var categories: [(String, [String])] = [(CategoryType.date.rawValue, DateOptions.allCases.map { $0.rawValue })]
@@ -18,16 +19,25 @@ class SearchViewModel {
     var selectedFilterRows: [IndexPath] = []
     var previousSelection: [IndexPath] = []
     var isLastResult = false
-    
+
     // MARK: - Call Backs
-    
+
     /// If error happens
     var onShowError: ((_ msg: String) -> Void)?
     /// If the fetch previous projects completed successfully
-    var onPreviousProjectsFetched: ((_ noPrevProject: Bool) -> ())?
-    
+    var onPreviousProjectsFetched: ((_ noPrevProject: Bool) -> Void)?
+
+    // MARK: - Computed properties
+    var getFilterButtonIcon: UIImage {
+        if selectedFilterRows.isEmpty {
+            return UIImage.SystemImages.filter.image
+        } else {
+            return UIImage.SystemImages.filterFill.image
+        }
+    }
+
     // MARK: - Methods
-    
+
     /// Fetch all types of the previous projects
     func fetchProjectTypes() {
         let route = SearchRouter.getProjectTypes
@@ -41,7 +51,7 @@ class SearchViewModel {
             }
         }
     }
-    
+
     /// Fetch previous projects
     func fetchPrevProjects() {
         let route = SearchRouter.getPrevProjects(searchFilterModel: searchFilterModel)
@@ -64,7 +74,7 @@ class SearchViewModel {
             }
         }
     }
-    
+
     /// Static Filtering
     func updateFilter() {
         searchFilterModel.projectType = []

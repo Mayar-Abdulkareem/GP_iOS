@@ -8,7 +8,7 @@
 import UIKit
 
 extension UINavigationController {
-    
+
     func showDefaultNavigationBar(title: String, withCloseButton: Bool) {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
@@ -18,25 +18,29 @@ extension UINavigationController {
         navigationBar.standardAppearance = appearance
         navigationBar.scrollEdgeAppearance = appearance
         navigationBar.compactAppearance = appearance
-        
+
         topViewController?.navigationItem.title = title
-        
+
         navigationBar.tintColor = UIColor.white
 
         if withCloseButton {
-            let closeButton = UIBarButtonItem(title: "Close", style: .plain, target: self, action: #selector(closeButtonTapped))
+            let closeButton = UIBarButtonItem(
+                title: "Close",
+                style: .plain,
+                target: self,
+                action: #selector(closeButtonTapped)
+            )
             topViewController?.navigationItem.leftBarButtonItem = closeButton
         }
 
         isNavigationBarHidden = false
     }
-    
+
     @objc func closeButtonTapped() {
         self.dismiss(animated: true)
     }
-    
+
     func hideDefaultNavigationBar() {
         isNavigationBarHidden = true
     }
 }
-

@@ -19,7 +19,10 @@ class CourseViewController: UIViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = UIColor.myLightGray
-        collectionView.register(CourseCollectionViewCell.self, forCellWithReuseIdentifier: CourseCollectionViewCell.identifier)
+        collectionView.register(
+            CourseCollectionViewCell.self,
+            forCellWithReuseIdentifier: CourseCollectionViewCell.identifier
+        )
         collectionView.register(AboutCourseCell.self, forCellWithReuseIdentifier: AboutCourseCell.identifier)
         return collectionView
     }()
@@ -32,7 +35,10 @@ class CourseViewController: UIViewController {
         super.viewDidLoad()
         collectionView.dataSource = self
         collectionView.delegate = self
-        navigationController?.showDefaultNavigationBar(title: String.LocalizedKeys.courseTitle.localized, withCloseButton: true)
+        navigationController?.showDefaultNavigationBar(
+            title: String.LocalizedKeys.courseTitle.localized,
+            withCloseButton: true
+        )
         configureViews()
     }
 
@@ -49,23 +55,35 @@ class CourseViewController: UIViewController {
 
     private func configureViews() {
         view.backgroundColor = UIColor.myLightGray
-        
+
         view.addViewWithConstant(collectionView, constant: 8)
     }
 }
 
-extension CourseViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension CourseViewController: UICollectionViewDelegate, 
+                                UICollectionViewDataSource,
+                                UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return (viewModel?.courseCollectionViewCell.count ?? 0) + 1
     }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
+
         if indexPath.item == 0 {
-            let headerCell = collectionView.dequeueReusableCell(withReuseIdentifier: AboutCourseCell.identifier, for: indexPath) as! AboutCourseCell
+            let headerCell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: AboutCourseCell.identifier,
+                for: indexPath
+            ) as? AboutCourseCell ?? AboutCourseCell()
             return headerCell
         } else {
-            let courseCell = collectionView.dequeueReusableCell(withReuseIdentifier: CourseCollectionViewCell.identifier, for: indexPath) as! CourseCollectionViewCell
+            let courseCell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: CourseCollectionViewCell.identifier,
+                for: indexPath
+            ) as? CourseCollectionViewCell ?? CourseCollectionViewCell()
             courseCell.configureCell(model: viewModel?.courseCollectionViewCell[indexPath.item - 1])
             return courseCell
         }
@@ -90,7 +108,11 @@ extension CourseViewController: UICollectionViewDelegate, UICollectionViewDataSo
         }
     }
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
         if indexPath.item == 0 {
             return CGSize(width: collectionView.bounds.width, height: 80)
         } else {

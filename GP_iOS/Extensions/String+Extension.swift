@@ -8,7 +8,7 @@
 import Foundation
 
 extension String {
-    
+
     enum LocalizedKeys: String.LocalizationValue {
         case welcomeMessage
         case registrationIDTextFieldText
@@ -26,11 +26,11 @@ extension String {
         case doctorInitital
         case detailsTitle
         case saveTitle
-        
+
         /// Search bar
         case searchByProjectName
         case searchByItemName
-        
+
         /// Top Alert
         /// - Title:
         case infoTitle
@@ -38,7 +38,7 @@ extension String {
         /// - Subtitle:
         case fillAllFieldsMsg
         case unauthenticatedSubtitle
-        
+
         /// Tab Bar Menue
         /// - Title:
         case homeTitle
@@ -50,35 +50,35 @@ extension String {
         case registerTitle
         case announcementTitle
         case logoutTitle
-        
+
         /// Project List
         case choosePeerTitle
         case boardTitle
         case submissionTitle
-        
+
         /// Store
         case itemDetailsTitle
         case addItemTitle
-        
+
         case changePhotoTitle
         case addPhotoTitle
-        
+
         case enterItemName
         case enterItemPrice
         case enterItemLocation
-        
+
         case fillAllFields
         case priceDataTypeError
-        
+
         case shareMyPhoneNumber
-        
+
         case itemInfo
         case contactInfo
-        
+
         case allItemsTitle
         case myItemsTitle
         case noItemsMsg
-        
+
         var localized: String {
             return String(localizedKey: self)
         }
@@ -87,8 +87,8 @@ extension String {
         //            return NSLocalizedString(rawValue, comment: "")
         //        }
     }
-    
-    private init!(localizedKey: LocalizedKeys){
+
+    private init!(localizedKey: LocalizedKeys) {
         self.init(localized: localizedKey.rawValue)
     }
 }

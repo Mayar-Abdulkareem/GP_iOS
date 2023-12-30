@@ -17,13 +17,13 @@ enum UserDefaultsKeys: String {
 /// Storing and rerieving values for UserDefaults.
 @propertyWrapper
 class UserDefaultStorage<T> {
-    
+
     /// The key used to store and retrieve values in UserDefaults.
     private let key: String
-    
+
     /// Storage instance
     private let storage: UserDefaults
-    
+
     /// - Parameters:
     ///   - key: The key used to store and retrieve values in UserDefaults.
     ///   - storage: The referance for UserDefaults.
@@ -32,7 +32,7 @@ class UserDefaultStorage<T> {
         self.key = key.rawValue
         self.storage = storage
     }
-    
+
     /// The value that will be stored and retrieved.
     var wrappedValue: T? {
         get {

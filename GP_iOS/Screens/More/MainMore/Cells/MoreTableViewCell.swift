@@ -13,9 +13,9 @@ struct MoreCellModel {
 }
 
 class MoreTableViewCell: UITableViewCell {
-    
+
     static let identifier = "moreCellIdentifire"
-    
+
     private let iconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -24,34 +24,30 @@ class MoreTableViewCell: UITableViewCell {
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
-    
+
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor.myAccent
         return label
     }()
-    
+
     private let view = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         configureViews()
     }
-    
+
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         configureViews()
     }
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-    
     private func configureViews() {
         backgroundColor = .clear
         addViewFillEntireView(
@@ -63,22 +59,22 @@ class MoreTableViewCell: UITableViewCell {
         )
         view.addSubview(iconImageView)
         view.addSubview(titleLabel)
-        
+
         NSLayoutConstraint.activate([
             view.heightAnchor.constraint(greaterThanOrEqualToConstant: 60),
-            
+
             iconImageView.widthAnchor.constraint(equalToConstant: 25),
             iconImageView.heightAnchor.constraint(equalToConstant: 25),
             iconImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
             iconImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            
+
             titleLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: 5),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -5),
             titleLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             titleLabel.heightAnchor.constraint(equalToConstant: 25)
         ])
     }
-    
+
     func configureCell(model: MoreCellModel) {
         iconImageView.image = model.icon
         titleLabel.text = model.title

@@ -8,15 +8,15 @@
 import Alamofire
 
 class LoginViewModel {
-    
+
     // MARK: - Call Backs
-    
+
     var onShowTopAlert: ((_ title: String, _ subTitle: String, _ type: TopAlertType) -> Void)?
-    var onAuthSuccess: ((AccessToken) -> ())?
+    var onAuthSuccess: ((AccessToken) -> Void)?
     var onShowLoading: (() -> Void)?
-    
+
     // MARK: - Methods
-    
+
     /// Fetch user by credential (ID and password)
     func login(with credential: Credential) {
         guard !credential.regID.isEmpty && !credential.password.isEmpty else {
@@ -27,7 +27,7 @@ class LoginViewModel {
             )
             return
         }
-        
+
         onShowLoading?()
         let route = LoginRouter.login(credential: credential)
         BaseClient.shared.performRequest(router: route, type: AccessToken.self) {[weak self] result in

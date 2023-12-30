@@ -8,43 +8,44 @@
 import Alamofire
 
 class StoreViewModel {
-    
+
     // MARK: - Variables
-    
+
     private(set) var totalItemsCount = 0
-    
+
     var viewType = ViewType.itemDetails
     var page = Page.itemInfo
     var state = State.normal
-    
+
     var storeFilterModel = StoreFilterModel(page: 1, title: nil, regID: nil, sortByPrice: nil)
     var items = [StoreItem]()
     var item = Item(id: "")
     var isLastResult = false
-    
+    var isFetching = false
+
     // MARK: - Call Backs
-    
+
     /// If error happens
     var onShowError: ((_ msg: String) -> Void)?
     /// If the fetch Items completed successfully
-    var onItemFetched: ((_ noItems: Bool) -> ())?
-        
+    var onItemFetched: ((_ noItems: Bool) -> Void)?
+
     // MARK: - Computed Property
-    
+
     var areItemFieldsFilled: Bool {
         if let quantity = item.quantity, !quantity.isEmpty,
            let location = item.location, !location.isEmpty,
-           let _ = item.image,
            let price = item.price, !price.isEmpty,
-           let title = item.title, !title.isEmpty {
+           let title = item.title, !title.isEmpty,
+           item.image != nil {
             return true
         } else {
             return false
         }
     }
-    
+
     // MARK: - Methods
-    
+
     /// Fetch Items
     func fetchItems() {
         let route = StoreRouter.getAllItems(storeFilterModel: storeFilterModel)
@@ -56,23 +57,24 @@ class StoreViewModel {
                 } else {
                     self?.items += items.storeItems
                 }
-                if items.storeItems.count == 0 {
+                self?.totalItemsCount = items.totalCount
+                if self?.items.count == 0 {
                     self?.onItemFetched?(true)
                 } else {
                     self?.onItemFetched?(false)
                 }
-                self?.totalItemsCount = items.totalCount
             case .failure(let error):
                 self?.onShowError?(error.localizedDescription)
             }
         }
     }
-    
+
     func deleteItem(id: String) {
         let route = StoreRouter.deleteItem(id: id)
         BaseClient.shared.performRequest(router: route, type: String.self) { [weak self] result in
             switch result {
             case .success:
+                self?.storeFilterModel.page = 1
                 self?.fetchItems()
                 self?.item = Item(id: "")
             case .failure(let error):
@@ -80,23 +82,25 @@ class StoreViewModel {
             }
         }
     }
-    
+
     func updateOrAddItem(route: StoreRouter) {
-            BaseClient.shared.uploadImage(image: item.image, router: route, type: String.self) { [weak self] result in
-                switch result {
-                case .success:
-                    self?.fetchItems()
-                    self?.item = Item(id: "")
-                case .failure(let error):
-                    self?.onShowError?(error.localizedDescription)
-                }
+        BaseClient.shared.uploadImage(image: item.image, router: route, type: String.self) { [weak self] result in
+            switch result {
+            case .success:
+                self?.storeFilterModel.page = 1
+                self?.fetchItems()
+                self?.item = Item(id: "")
+            case .failure(let error):
+                self?.onShowError?(error.localizedDescription)
             }
+        }
     }
-    
+
     func getStoreCellModel(index: Int) -> StoreCollectionViewCellModel {
         return StoreCollectionViewCellModel(
-            image: items[index].uiImage,
-            title: items[index].title
+            image: items[index].image,
+            title: items[index].title,
+            index: index
         )
     }
 }

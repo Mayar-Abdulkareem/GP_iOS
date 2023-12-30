@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1B2A41C2197133FD22703217 /* Pods_GP_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA1F783B8298801C30A3BA09 /* Pods_GP_iOS.framework */; };
 		2F4490A52B0578BA002B6975 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4490A42B0578BA002B6975 /* LoginViewController.swift */; };
 		2F4490A72B0578E3002B6975 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4490A62B0578E3002B6975 /* Coordinator.swift */; };
 		2F4490A92B057906002B6975 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4490A82B057906002B6975 /* MainCoordinator.swift */; };
@@ -45,6 +44,13 @@
 		2F9E71E92B38E88F00767A4D /* ItemDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9E71E82B38E88F00767A4D /* ItemDetailsViewController.swift */; };
 		2F9E71EC2B38F71600767A4D /* StoreCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9E71EB2B38F71600767A4D /* StoreCustomView.swift */; };
 		2F9E71EE2B3B1DE100767A4D /* StoreViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9E71ED2B3B1DE100767A4D /* StoreViewType.swift */; };
+		2F9E71F02B3C469000767A4D /* SendBirdManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9E71EF2B3C469000767A4D /* SendBirdManager.swift */; };
+		2F9E71F22B3D9A2300767A4D /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9E71F12B3D9A2200767A4D /* UICollectionView+Extension.swift */; };
+		2F9E71F52B3DFB4800767A4D /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 2F9E71F42B3DFB4800767A4D /* .swiftlint.yml */; };
+		2F9E71FA2B3F2E6B00767A4D /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 2F9E71F92B3F2E6B00767A4D /* Alamofire */; };
+		2F9E71FD2B3F2F1500767A4D /* SendbirdChatSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 2F9E71FC2B3F2F1500767A4D /* SendbirdChatSDK */; };
+		2F9E72002B3F2FFB00767A4D /* SendbirdUIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2F9E71FF2B3F2FFB00767A4D /* SendbirdUIKit */; };
+		2F9E720E2B3F4CB000767A4D /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 2F9E720D2B3F4CB000767A4D /* Kingfisher */; };
 		2FA7FCC22B235A5300749D38 /* MoreCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA7FCC12B235A5300749D38 /* MoreCoordinator.swift */; };
 		2FA7FCC82B24FBB700749D38 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA7FCC72B24FBB700749D38 /* HomeTableViewCell.swift */; };
 		2FA7FCCE2B25E7F000749D38 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA7FCCD2B25E7F000749D38 /* Course.swift */; };
@@ -133,6 +139,9 @@
 		2F9E71E82B38E88F00767A4D /* ItemDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailsViewController.swift; sourceTree = "<group>"; };
 		2F9E71EB2B38F71600767A4D /* StoreCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreCustomView.swift; sourceTree = "<group>"; };
 		2F9E71ED2B3B1DE100767A4D /* StoreViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewType.swift; sourceTree = "<group>"; };
+		2F9E71EF2B3C469000767A4D /* SendBirdManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendBirdManager.swift; sourceTree = "<group>"; };
+		2F9E71F12B3D9A2200767A4D /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
+		2F9E71F42B3DFB4800767A4D /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		2FA7FCC12B235A5300749D38 /* MoreCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreCoordinator.swift; sourceTree = "<group>"; };
 		2FA7FCC72B24FBB700749D38 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		2FA7FCCD2B25E7F000749D38 /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
@@ -173,14 +182,11 @@
 		2FB7A1402B15F0A000923D02 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		2FB7A1422B15F10500923D02 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		2FB7A1442B15F18300923D02 /* AnnouncementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementViewController.swift; sourceTree = "<group>"; };
-		3B79D20A1AC8A7967C76ABF4 /* Pods-GP_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GP_iOS.debug.xcconfig"; path = "Target Support Files/Pods-GP_iOS/Pods-GP_iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		3DCDE4862B398EFF005F9C7B /* TitleTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTextFieldView.swift; sourceTree = "<group>"; };
 		3DCDE4882B398F47005F9C7B /* ImageTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTextField.swift; sourceTree = "<group>"; };
 		8B527C852B31CDC200B6ACF7 /* HomeAboutMeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAboutMeCell.swift; sourceTree = "<group>"; };
 		8BA6A5B72B319C7300CACE48 /* nnu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nnu.png; sourceTree = "<group>"; };
 		8BAA93242B32D217007B3B16 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
-		A0417F91EF6796DE5F43F4A7 /* Pods-GP_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GP_iOS.release.xcconfig"; path = "Target Support Files/Pods-GP_iOS/Pods-GP_iOS.release.xcconfig"; sourceTree = "<group>"; };
-		BA1F783B8298801C30A3BA09 /* Pods_GP_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GP_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,7 +194,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1B2A41C2197133FD22703217 /* Pods_GP_iOS.framework in Frameworks */,
+				2F9E720E2B3F4CB000767A4D /* Kingfisher in Frameworks */,
+				2F9E71FA2B3F2E6B00767A4D /* Alamofire in Frameworks */,
+				2F9E72002B3F2FFB00767A4D /* SendbirdUIKit in Frameworks */,
+				2F9E71FD2B3F2F1500767A4D /* SendbirdChatSDK in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,6 +342,7 @@
 				2FA7FCD52B2639A800749D38 /* UITableView+Extension.swift */,
 				2FA7FCE92B2923B500749D38 /* UINavigationController+Extension.swift */,
 				8BAA93242B32D217007B3B16 /* UIViewController+Extensions.swift */,
+				2F9E71F12B3D9A2200767A4D /* UICollectionView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -378,10 +388,10 @@
 		2F5B06592AF7A0340075D083 = {
 			isa = PBXGroup;
 			children = (
+				2F9E71F42B3DFB4800767A4D /* .swiftlint.yml */,
 				2F5B06642AF7A0340075D083 /* GP_iOS */,
 				2F5B06632AF7A0340075D083 /* Products */,
 				E39B224187724220861E4712 /* Pods */,
-				BDD64D1FE57A09686C945A68 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -836,23 +846,14 @@
 				2FA7FCE12B26825B00749D38 /* AppManager.swift */,
 				2F9E71A22B32EAC300767A4D /* BuildConfiguration.swift */,
 				2F9E71CD2B35B16000767A4D /* StringManager.swift */,
+				2F9E71EF2B3C469000767A4D /* SendBirdManager.swift */,
 			);
 			path = Managers;
-			sourceTree = "<group>";
-		};
-		BDD64D1FE57A09686C945A68 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				BA1F783B8298801C30A3BA09 /* Pods_GP_iOS.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		E39B224187724220861E4712 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3B79D20A1AC8A7967C76ABF4 /* Pods-GP_iOS.debug.xcconfig */,
-				A0417F91EF6796DE5F43F4A7 /* Pods-GP_iOS.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -864,17 +865,22 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2F5B06762AF7A0370075D083 /* Build configuration list for PBXNativeTarget "GP_iOS" */;
 			buildPhases = (
-				7731F7E801923AE32D0C83E1 /* [CP] Check Pods Manifest.lock */,
 				2F5B065E2AF7A0340075D083 /* Sources */,
 				2F5B065F2AF7A0340075D083 /* Frameworks */,
 				2F5B06602AF7A0340075D083 /* Resources */,
-				23C74F8012EFC8729E0AF2C5 /* [CP] Embed Pods Frameworks */,
+				2F9E71F32B3DF85700767A4D /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = GP_iOS;
+			packageProductDependencies = (
+				2F9E71F92B3F2E6B00767A4D /* Alamofire */,
+				2F9E71FC2B3F2F1500767A4D /* SendbirdChatSDK */,
+				2F9E71FF2B3F2FFB00767A4D /* SendbirdUIKit */,
+				2F9E720D2B3F4CB000767A4D /* Kingfisher */,
+			);
 			productName = GP_iOS;
 			productReference = 2F5B06622AF7A0340075D083 /* GP_iOS.app */;
 			productType = "com.apple.product-type.application";
@@ -904,6 +910,12 @@
 				ar,
 			);
 			mainGroup = 2F5B06592AF7A0340075D083;
+			packageReferences = (
+				2F9E71F82B3F2E6B00767A4D /* XCRemoteSwiftPackageReference "Alamofire" */,
+				2F9E71FB2B3F2F1500767A4D /* XCRemoteSwiftPackageReference "sendbird-chat-sdk-ios" */,
+				2F9E71FE2B3F2FFB00767A4D /* XCRemoteSwiftPackageReference "sendbird-uikit-ios-spm" */,
+				2F9E720C2B3F4CB000767A4D /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = 2F5B06632AF7A0340075D083 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -918,6 +930,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F9E71F52B3DFB4800767A4D /* .swiftlint.yml in Resources */,
 				2F5B06722AF7A0370075D083 /* LaunchScreen.storyboard in Resources */,
 				2F7031092B0D35EE00FBB5D6 /* Localizable.xcstrings in Resources */,
 				2F5B066F2AF7A0370075D083 /* Assets.xcassets in Resources */,
@@ -928,24 +941,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		23C74F8012EFC8729E0AF2C5 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-GP_iOS/Pods-GP_iOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-GP_iOS/Pods-GP_iOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GP_iOS/Pods-GP_iOS-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		7731F7E801923AE32D0C83E1 /* [CP] Check Pods Manifest.lock */ = {
+		2F9E71F32B3DF85700767A4D /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -953,19 +949,15 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
 			);
-			name = "[CP] Check Pods Manifest.lock";
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-GP_iOS-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
+			shellScript = "
+";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -990,6 +982,7 @@
 				2F5B06AD2AF996E10075D083 /* UserDefaultStorage.swift in Sources */,
 				2F4490C12B05814B002B6975 /* BaseClient.swift in Sources */,
 				2FA7FCD12B25EB9600749D38 /* CoursesRouter.swift in Sources */,
+				2F9E71F22B3D9A2300767A4D /* UICollectionView+Extension.swift in Sources */,
 				2FA7FCC22B235A5300749D38 /* MoreCoordinator.swift in Sources */,
 				2FA7FCE62B290F0600749D38 /* TapInfo.swift in Sources */,
 				2FA7FD012B2DC88400749D38 /* SearchTableViewCell.swift in Sources */,
@@ -1023,6 +1016,7 @@
 				2FB7A1272B13804400923D02 /* LoginViewModel.swift in Sources */,
 				2F4490A52B0578BA002B6975 /* LoginViewController.swift in Sources */,
 				2F7031022B0CE39E00FBB5D6 /* TopAlertView.swift in Sources */,
+				2F9E71F02B3C469000767A4D /* SendBirdManager.swift in Sources */,
 				3DCDE4892B398F47005F9C7B /* ImageTextField.swift in Sources */,
 				2FB7A1372B15212E00923D02 /* StoreViewController.swift in Sources */,
 				2FA7FCF02B2B036F00749D38 /* SubmissionsViewController.swift in Sources */,
@@ -1192,7 +1186,6 @@
 		};
 		2F5B06772AF7A0370075D083 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B79D20A1AC8A7967C76ABF4 /* Pods-GP_iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1219,7 +1212,6 @@
 		};
 		2F5B06782AF7A0370075D083 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A0417F91EF6796DE5F43F4A7 /* Pods-GP_iOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1266,6 +1258,64 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2F9E71F82B3F2E6B00767A4D /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.8.1;
+			};
+		};
+		2F9E71FB2B3F2F1500767A4D /* XCRemoteSwiftPackageReference "sendbird-chat-sdk-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sendbird/sendbird-chat-sdk-ios";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		2F9E71FE2B3F2FFB00767A4D /* XCRemoteSwiftPackageReference "sendbird-uikit-ios-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sendbird/sendbird-uikit-ios-spm";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		2F9E720C2B3F4CB000767A4D /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.10.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2F9E71F92B3F2E6B00767A4D /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2F9E71F82B3F2E6B00767A4D /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		2F9E71FC2B3F2F1500767A4D /* SendbirdChatSDK */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2F9E71FB2B3F2F1500767A4D /* XCRemoteSwiftPackageReference "sendbird-chat-sdk-ios" */;
+			productName = SendbirdChatSDK;
+		};
+		2F9E71FF2B3F2FFB00767A4D /* SendbirdUIKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2F9E71FE2B3F2FFB00767A4D /* XCRemoteSwiftPackageReference "sendbird-uikit-ios-spm" */;
+			productName = SendbirdUIKit;
+		};
+		2F9E720D2B3F4CB000767A4D /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2F9E720C2B3F4CB000767A4D /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2F5B065A2AF7A0340075D083 /* Project object */;
 }

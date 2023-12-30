@@ -8,14 +8,14 @@
 import UIKit
 
 class LabelIconView: UIView {
-    
+
     let iconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
-    
+
     let label: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -23,30 +23,30 @@ class LabelIconView: UIView {
         label.numberOfLines = 0
         return label
     }()
-    
+
     init(icon: UIImage?, prefix: String, text: String, color: UIColor = .mySecondary) {
         super.init(frame: .zero)
         configureViews(icon: icon, prefix: prefix, text: text, color: color)
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     private func configureViews(icon: UIImage?, prefix: String, text: String, color: UIColor) {
         addSubview(iconImageView)
         addSubview(label)
-        
+
         iconImageView.tintColor = color
         iconImageView.image = icon
         label.attributedText = StringManager.shared.createAttributedText(prefix: prefix, value: text)
-        
+
         NSLayoutConstraint.activate([
             iconImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
             iconImageView.topAnchor.constraint(equalTo: topAnchor),
             iconImageView.widthAnchor.constraint(equalToConstant: 25),
             iconImageView.heightAnchor.constraint(equalToConstant: 25),
-            
+
             label.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: 8),
             label.trailingAnchor.constraint(equalTo: trailingAnchor),
             label.topAnchor.constraint(equalTo: topAnchor),
@@ -54,4 +54,3 @@ class LabelIconView: UIView {
         ])
     }
 }
-

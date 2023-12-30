@@ -8,21 +8,21 @@
 import UIKit
 
 class StoreCoordinator: Coordinator {
-    
+
     var navigationController: UINavigationController
     var childCoordinators = [Coordinator]()
     var parentCoordinator: TabBarCoordinator?
     var itemDetailsViewController: ItemDetailsViewController?
-    
+
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
-    
+
     ///  Start the ``StoreCoordinator``
     func start() {
         showStoreViewController()
     }
-    
+
     /// Present the ``StoreViewController``
     private func showStoreViewController() {
         let storeViewController = StoreViewController()
@@ -35,14 +35,14 @@ class StoreCoordinator: Coordinator {
         if let itemDetailsViewController {
             if navigationController.viewControllers.first is UITabBarController {
                 if let tabBarController = navigationController.viewControllers.first as? UITabBarController {
-                    if let storeViewController = tabBarController.viewControllers?[TabInfo.store.tag] as? StoreViewController {
-                        itemDetailsViewController.delegate = storeViewController
+                    if let storeVC = tabBarController.viewControllers?[TabInfo.store.tag] as? StoreViewController {
+                        itemDetailsViewController.delegate = storeVC
                     }
                 }
-                
+
                 itemDetailsViewController.modalPresentationStyle = .formSheet
                 if let sheetController = itemDetailsViewController.presentationController as? UISheetPresentationController {
-                    sheetController.detents = [.custom { [weak self] _ in
+                    sheetController.detents = [.custom { _ in
                         return 480
                     }]
                     sheetController.prefersGrabberVisible = true
@@ -51,15 +51,4 @@ class StoreCoordinator: Coordinator {
             }
         }
     }
-    
-//    func expandItemDetailsSheet() {
-//        guard let sheetController = itemDetailsViewController?.presentationController as? UISheetPresentationController else {
-//            return
-//        }
-//        sheetController.detents = [.custom { [weak self] _ in
-//            return 550
-//        }]
-//        //sheetController.detents = [.large()]
-//    }
 }
-

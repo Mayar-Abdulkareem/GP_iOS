@@ -7,9 +7,9 @@
 
 import UIKit
 
-struct StoreImage: Codable {
-    var contentType: String
-    var data: String
+struct StoreResponse: Codable {
+    var totalCount: Int
+    var storeItems: [StoreItem]
 }
 
 struct StoreItem: Codable {
@@ -19,26 +19,11 @@ struct StoreItem: Codable {
     var price: String
     var quantity: String
     var location: String
-    var image: StoreImage
+    var image: String
     var name: String
     var email: String
     var phoneNumber: String
     var showPhoneNumber: Bool
-    
-    var uiImage: UIImage {
-        if let data = Data(base64Encoded: image.data, options: .ignoreUnknownCharacters), let dataImage = UIImage(data: data) {
-            return dataImage
-        } else {
-            var image = UIImage.SystemImages.cart.image
-            image = image.withTintColor(.gray)
-            return image
-        }
-    }
-}
-
-struct StoreResponse: Codable {
-    var totalCount: Int
-    var storeItems: [StoreItem]
 }
 
 struct Item {

@@ -14,9 +14,9 @@ enum Environment: String {
 
 final class BuildConfiguration {
     static let shared = BuildConfiguration()
-    
+
     let environment: Environment
-    
+
     var baseURL: String {
         switch environment {
         case .dev:
@@ -25,12 +25,16 @@ final class BuildConfiguration {
             return "http://3.238.223.225:3001"
         }
     }
-    
+
     private init() {
         let currentConfiguration = Bundle.main.object(
             forInfoDictionaryKey:
                 "Configuration"
-        ) as! String
+        ) as? String
+        guard let currentConfiguration = currentConfiguration else {
+            self.environment = Environment.dev
+            return
+        }
         let environment = Environment(rawValue: currentConfiguration)!
         self.environment = environment
     }

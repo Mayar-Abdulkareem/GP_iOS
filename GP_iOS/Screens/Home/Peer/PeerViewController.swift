@@ -9,10 +9,13 @@ import UIKit
 
 class PeerViewController: UIViewController {
     weak var coordinator: CourseCoordinator?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.showDefaultNavigationBar(title: String.LocalizedKeys.choosePeerTitle.localized, withCloseButton: false)
+        navigationController?.showDefaultNavigationBar(
+            title: String.LocalizedKeys.choosePeerTitle.localized,
+            withCloseButton: false
+        )
         view.backgroundColor = UIColor.myLightGray
     }
 }

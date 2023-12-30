@@ -9,11 +9,14 @@ import UIKit
 
 class BoardViewController: UIViewController {
     weak var coordinator: CourseCoordinator?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.myPrimary
-        navigationController?.showDefaultNavigationBar(title: String.LocalizedKeys.boardTitle.localized, withCloseButton: false)
+        navigationController?.showDefaultNavigationBar(
+            title: String.LocalizedKeys.boardTitle.localized,
+            withCloseButton: false
+        )
         view.backgroundColor = UIColor.myLightGray
     }
 }
