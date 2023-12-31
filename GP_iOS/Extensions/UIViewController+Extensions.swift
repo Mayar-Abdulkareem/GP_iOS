@@ -32,11 +32,10 @@ extension UIView {
                      decreaseBottomSafeArea: Bool = false,
                      duration: TimeInterval = 0.1,
                      titleLabel: String? = nil,
-                     forceAdd: Bool = false,
-                     index: Int = 987654321) {
+                     forceAdd: Bool = false) {
 
         // Check if a loading view with the specified tag already exists
-        guard self.viewWithTag(index) == nil || forceAdd else { return }
+        guard self.viewWithTag(loadingViewTag) == nil || forceAdd else { return }
 
         // Create the main container view
         let mainContainerView = UIView()

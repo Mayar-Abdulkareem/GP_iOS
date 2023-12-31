@@ -76,9 +76,16 @@ class StoreCollectionViewCell: UICollectionViewCell {
 
     func configureCell(model: StoreCollectionViewCellModel) {
         titleLabel.text = model.title
-        self.itemImageView.showLoading(maskView: self.itemImageView, hasTransparentBackground: true, index: model.index)
+        itemImageView.image = nil
+
         if let url = URL(string: model.image) {
-            self.itemImageView.kf.setImage(with: url) { [weak self] result in
+
+            itemImageView.showLoading(
+                maskView: self.itemImageView,
+                hasTransparentBackground: true
+            )
+
+            itemImageView.kf.setImage(with: url) { [weak self] result in
                 self?.itemImageView.hideLoading()
             }
         }
