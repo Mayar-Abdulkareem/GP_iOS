@@ -46,7 +46,6 @@
 		2F9E71EE2B3B1DE100767A4D /* StoreViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9E71ED2B3B1DE100767A4D /* StoreViewType.swift */; };
 		2F9E71F02B3C469000767A4D /* SendBirdManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9E71EF2B3C469000767A4D /* SendBirdManager.swift */; };
 		2F9E71F22B3D9A2300767A4D /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9E71F12B3D9A2200767A4D /* UICollectionView+Extension.swift */; };
-		2F9E71F52B3DFB4800767A4D /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 2F9E71F42B3DFB4800767A4D /* .swiftlint.yml */; };
 		2F9E71FA2B3F2E6B00767A4D /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 2F9E71F92B3F2E6B00767A4D /* Alamofire */; };
 		2F9E71FD2B3F2F1500767A4D /* SendbirdChatSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 2F9E71FC2B3F2F1500767A4D /* SendbirdChatSDK */; };
 		2F9E72002B3F2FFB00767A4D /* SendbirdUIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2F9E71FF2B3F2FFB00767A4D /* SendbirdUIKit */; };
@@ -141,7 +140,6 @@
 		2F9E71ED2B3B1DE100767A4D /* StoreViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewType.swift; sourceTree = "<group>"; };
 		2F9E71EF2B3C469000767A4D /* SendBirdManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendBirdManager.swift; sourceTree = "<group>"; };
 		2F9E71F12B3D9A2200767A4D /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
-		2F9E71F42B3DFB4800767A4D /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		2FA7FCC12B235A5300749D38 /* MoreCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreCoordinator.swift; sourceTree = "<group>"; };
 		2FA7FCC72B24FBB700749D38 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		2FA7FCCD2B25E7F000749D38 /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
@@ -388,10 +386,8 @@
 		2F5B06592AF7A0340075D083 = {
 			isa = PBXGroup;
 			children = (
-				2F9E71F42B3DFB4800767A4D /* .swiftlint.yml */,
 				2F5B06642AF7A0340075D083 /* GP_iOS */,
 				2F5B06632AF7A0340075D083 /* Products */,
-				E39B224187724220861E4712 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -851,13 +847,6 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
-		E39B224187724220861E4712 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -930,7 +919,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2F9E71F52B3DFB4800767A4D /* .swiftlint.yml in Resources */,
 				2F5B06722AF7A0370075D083 /* LaunchScreen.storyboard in Resources */,
 				2F7031092B0D35EE00FBB5D6 /* Localizable.xcstrings in Resources */,
 				2F5B066F2AF7A0370075D083 /* Assets.xcassets in Resources */,
