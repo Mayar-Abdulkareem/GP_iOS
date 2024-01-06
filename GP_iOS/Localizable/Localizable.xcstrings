@@ -69,6 +69,23 @@
         }
       }
     },
+    "backButtonTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "السابق"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Back"
+          }
+        }
+      }
+    },
     "boardTitle" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -82,6 +99,57 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Project Board"
+          }
+        }
+      }
+    },
+    "camera" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "كاميرا"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Camera"
+          }
+        }
+      }
+    },
+    "cancel" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الغاء"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
+          }
+        }
+      }
+    },
+    "cancelRequestButtonTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الغي الطلب"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel Request"
           }
         }
       }
@@ -116,6 +184,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Choose Peer"
+          }
+        }
+      }
+    },
+    "chooseSrc" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اختر المصدر"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose a source"
           }
         }
       }
@@ -201,6 +286,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dr."
+          }
+        }
+      }
+    },
+    "email" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "البريد الالكتروني:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Email: "
           }
         }
       }
@@ -324,6 +426,34 @@
         }
       }
     },
+    "finishButtonTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "انتهاء "
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Finish"
+          }
+        }
+      }
+    },
+    "gpa" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "المعدل:"
+          }
+        }
+      }
+    },
     "homeTitle" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -443,6 +573,23 @@
         }
       }
     },
+    "matchingPeerInfoLabelText" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تساعدك هذه الصفحة على إيجاد شريك مناسب لك. يمكنك تعديل تفضيلاتك لاحقًا في شاشة 'مطابقة الشريك'، أو يمكنك تخطي هذه الخطوة إذا كان لديك شريك بالفعل."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This page helps you find a peer match. You can edit your preferences later in the 'Match Peer' screen, or you can skip this step if you already have a peer."
+          }
+        }
+      }
+    },
     "moreTitle" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -472,6 +619,57 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "My Items"
+          }
+        }
+      }
+    },
+    "nextButtonText" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تقدم"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next"
+          }
+        }
+      }
+    },
+    "noAvailableCourses" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لا يوجد مساقات متوفرة"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No available courses"
+          }
+        }
+      }
+    },
+    "noAvailableSupervisors" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لا يوجد مشرفين متوفرين "
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No available supervisors"
           }
         }
       }
@@ -506,6 +704,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No items available"
+          }
+        }
+      }
+    },
+    "noMoreCoursesToRegister" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لا يمكنك تسجيل أكتر من مساق واحد"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can only register for one course at a time."
           }
         }
       }
@@ -561,6 +776,40 @@
         }
       }
     },
+    "phoneNumber" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الرقم الشخصي:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Phone number: "
+          }
+        }
+      }
+    },
+    "photoLibrary" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "معرض الصور"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Photo Library"
+          }
+        }
+      }
+    },
     "previousProjectTitle" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -595,6 +844,23 @@
         }
       }
     },
+    "profilePic" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الصورة الشخصية "
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profile Picture"
+          }
+        }
+      }
+    },
     "profileTitle" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -608,6 +874,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Profile"
+          }
+        }
+      }
+    },
+    "regID" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "رقم التسجيل:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Registration number:"
+          }
+        }
+      }
+    },
+    "registerCoursePendingText" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تم ارسال طلبك، سيتم اعلامك عند القبول."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your request has been sent successfully. You will be notified once it is accepted."
           }
         }
       }
@@ -642,6 +942,57 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Enter your registration number"
+          }
+        }
+      }
+    },
+    "removePhoto" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "احذف الصورة"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove Photo"
+          }
+        }
+      }
+    },
+    "requestApprovedText" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تم قبول طلبك من قبل "
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your request was approved by"
+          }
+        }
+      }
+    },
+    "requestSentText" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تم تقديم طلبك بنجاح "
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your request was successfully sent"
           }
         }
       }
@@ -697,6 +1048,23 @@
         }
       }
     },
+    "sendRequestButtonTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "قدم الطلب"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Send Request"
+          }
+        }
+      }
+    },
     "shareMyPhoneNumber" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -710,6 +1078,91 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Share my phone number"
+          }
+        }
+      }
+    },
+    "stepOneNextText" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "القادم: اختر مشرفك "
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next: Choose your supervisor"
+          }
+        }
+      }
+    },
+    "stepOneText" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اختر مساق"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose your course"
+          }
+        }
+      }
+    },
+    "stepThreeText" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اختر مهاراتك"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose your skills"
+          }
+        }
+      }
+    },
+    "stepTwoNextText" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "القادم: اختر مهاراتك"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next: Choose your interests"
+          }
+        }
+      }
+    },
+    "stepTwoText" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اختر مشرفك"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose your supervisor"
           }
         }
       }
@@ -812,6 +1265,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "View More"
+          }
+        }
+      }
+    },
+    "waitingPartOne" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "في انتظار"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Waiting for "
+          }
+        }
+      }
+    },
+    "waitingPartTwo" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ليقبل الطلب"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "approval ..."
           }
         }
       }

@@ -59,7 +59,8 @@ extension UIView {
         shadowOffset: CGSize = CGSize(width: 0, height: 0),
         shadowRadius: CGFloat = 8
     ) {
-        self.layer.cornerRadius = cornerRadius
+        //self.layer.masksToBounds = false
+        //self.layer.cornerRadius = cornerRadius
         self.layer.shadowColor = shadowColor.cgColor
         self.layer.shadowOpacity = shadowOpacity
         self.layer.shadowOffset = shadowOffset

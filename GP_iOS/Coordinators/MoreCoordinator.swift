@@ -29,11 +29,11 @@ class MoreCoordinator: Coordinator {
         navigationController.present(navController, animated: true)
     }
 
-    func showRegisterViewController() {
-        let registerViewController = RegisterViewController()
-        let navController = UINavigationController(rootViewController: registerViewController)
-        navController.modalPresentationStyle = .fullScreen
-        navigationController.present(navController, animated: true)
+    func showRegisterFlow() {
+        let coordinator = RegisterCoordinator(navigationController: navigationController)
+        childCoordinators.append(coordinator)
+        coordinator.parentCoordinator = self
+        coordinator.start()
     }
 
     func showAnnouncementViewController() {

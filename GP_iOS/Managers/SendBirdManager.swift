@@ -14,7 +14,7 @@ class SendBirdManager {
 
     private let appID = "6A40637C-F859-4DBC-86E4-15E2B553A67A"
 
-    var currentChannel: GroupChannel?
+    //var currentChannel: GroupChannel?
 
     private init() {
         initSendBird()
@@ -28,19 +28,18 @@ class SendBirdManager {
         }
     }
 
-    func connectUser(id: String, nickname: String, completion: ((SBUUser?, SBError?) -> Void)? = nil) {
-        SBUGlobals.currentUser = SBUUser(userId: id, nickname: nickname)
-        SendbirdChat.connect(userId: id) { user, error in
+    func connectUser() {
+        guard let regID = AuthManager.shared.regID,
+              let name = AppManager.shared.profile?.name else { return }
+        let image = AppManager.shared.profile?.profileImage
+        self.setTheme()
+
+        SendbirdChat.connect(userId: regID) { user, error in
             guard let user = user, error == nil else {
-                completion?(nil, error)
                 return
             }
 
-            SBUGlobals.currentUser = SBUUser(userId: id, nickname: nickname)
-
-            completion?(SBUGlobals.currentUser, nil)
-            self.setTheme()
-            print("Connected as \(user.userId)")
+            SBUGlobals.currentUser = SBUUser(userId: regID, nickname: name, profileURL: image)
         }
     }
 
@@ -76,5 +75,41 @@ class SendBirdManager {
         )
 
         SBUTheme.set(theme: newTheme)
+    }
+
+    func returnSBUGroupChannelListViewController() -> SBUGroupChannelListViewController {
+        return SBUGroupChannelListViewController()
+    }
+
+    func updateUserInfo() {
+        guard let name = AppManager.shared.profile?.name,
+              let regID = AuthManager.shared.regID else { return }
+
+        let params = UserUpdateParams()
+        params.nickname = name
+
+        if let imageUrlString = AppManager.shared.profile?.profileImage,
+           let url = URL(string: imageUrlString) {
+            let task = URLSession.shared.dataTask(with: url) { data, response, error in
+                guard let data = data, error == nil else {
+                    print("Error downloading image data: \(error?.localizedDescription ?? "")")
+                    return
+                }
+                params.profileImageData = data
+
+                SendbirdChat.updateCurrentUserInfo(params: params) { bytesSent, totalBytesSent, totalBytesExpectedToSend in
+                    // Handle progress updates if needed
+                } completionHandler: { error in
+                    DispatchQueue.main.async {
+                        guard error == nil else {
+                            print("Error updating user info: \(error?.localizedDescription ?? "")")
+                            return
+                        }
+                        SBUGlobals.currentUser = SBUUser(userId: regID, nickname: name, profileURL: imageUrlString)
+                    }
+                }
+            }
+            task.resume()
+        }
     }
 }

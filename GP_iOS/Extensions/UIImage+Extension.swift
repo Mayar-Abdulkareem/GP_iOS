@@ -70,6 +70,16 @@ extension UIImage {
         case circle
         case circleFill = "circle.fill"
 
+        /// Register
+        case openLock = "lock.open"
+        case closeLock = "lock"
+
+        /// Profile
+        case personFill = "person.circle.fill"
+        case regID = "rectangle.and.pencil.and.ellipsis"
+        case GPA = "medal"
+        case camera = "camera.fill"
+
         ///  Get image
         var image: UIImage {
             return UIImage(systemImages: self)

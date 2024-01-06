@@ -6,7 +6,8 @@
 //
 
 import UIKit
-// import SendbirdChatSDK
+//import FirebaseCore
+//import FirebaseMessaging
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,6 +18,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     ) -> Bool {
         // Override point for customization after application launch.
         SendBirdManager.shared.initSendBird()
+//        FirebaseApp.configure()
+//        UNUserNotificationCenter.current().delegate = self
+//        let authOptions: UNAuthorizationOptions = [.alert, .sound, .badge]
+//        UNUserNotificationCenter.current()
+//            .requestAuthorization(options: authOptions) {
+//                succes, error in
+//                if error != nil {
+//                }
+//            }
+//        application.registerForRemoteNotifications()
         return true
     }
 
@@ -43,3 +54,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 }
+
+//extension AppDelegate: UNUserNotificationCenterDelegate {
+//    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+//        Messaging.messaging().apnsToken = deviceToken
+//
+//    }
+//
+//    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+//        TopAlertManager.show(
+//            title: String.LocalizedKeys.errorTitle.localized,
+//            subTitle: error.localizedDescription,
+//            type: .failure
+//        )
+//    }
+//
+//    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+//        print("will be called in foreground before the notification appear")
+//        completionHandler([.alert, .sound, .badge])
+//    }
+//
+//    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+//        print("will be called when the user click on notification")
+//        completionHandler()
+//    }
+//}

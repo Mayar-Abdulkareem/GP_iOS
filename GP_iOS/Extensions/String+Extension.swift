@@ -79,6 +79,39 @@ extension String {
         case myItemsTitle
         case noItemsMsg
 
+        /// ٍRegister
+        case noAvailableCourses
+        case stepOneText
+        case stepOneNextText
+        case backButtonTitle
+        case nextButtonText
+        case stepTwoText
+        case stepTwoNextText
+        case noAvailableSupervisors
+        case sendRequestButtonTitle
+        case cancelRequestButtonTitle
+        case requestSentText
+        case requestApprovedText
+        case waitingPartOne
+        case waitingPartTwo
+        case stepThreeText
+        case finishButtonTitle
+        case registerCoursePendingText
+        case noMoreCoursesToRegister
+        case matchingPeerInfoLabelText
+
+        /// Profile
+        case profilePic
+        case chooseSrc
+        case camera
+        case photoLibrary
+        case removePhoto
+        case cancel
+        case regID
+        case email
+        case phoneNumber
+        case gpa
+
         var localized: String {
             return String(localizedKey: self)
         }

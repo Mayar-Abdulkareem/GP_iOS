@@ -12,6 +12,7 @@ class AppManager {
     var course: Course?
     var prevProject: PreviousProject?
     var item: StoreItem?
+    var profile: StudentProfile?
 
     private init() {}
 }

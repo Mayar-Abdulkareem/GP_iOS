@@ -13,3 +13,15 @@ struct Course: Codable {
     let courseName: String
     let supervisorName: String
 }
+
+struct StudentProfile: Codable {
+    let regID: String
+    let courses: [Course]
+    let skillsVector: String
+    let peer: String
+    let email: String
+    let name: String
+    let phoneNumber: String
+    let GPA: String
+    var profileImage: String?
+}

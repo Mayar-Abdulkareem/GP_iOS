@@ -37,8 +37,20 @@ extension UINavigationController {
     }
 
     @objc func closeButtonTapped() {
-        self.dismiss(animated: true)
+        // Check if the view controller is presented modally by inspecting if it has a presentingViewController
+        if presentingViewController != nil {
+            dismiss(animated: true, completion: nil)
+        } else if let navigationController = navigationController {
+            // Check if the navigation controller can pop the view controller, which means it's part of a navigation stack
+      //      if navigationController.viewControllers.count > 1 {
+      //          navigationController.popViewController(animated: true)
+     //       } else {
+                // If the view controller is the root of the navigation stack, dismiss the whole navigation controller
+                navigationController.dismiss(animated: true, completion: nil)
+   //         }
+        }
     }
+
 
     func hideDefaultNavigationBar() {
         isNavigationBarHidden = true

@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SendbirdUIKit
 
 class HomeCoordinator: Coordinator {
 
@@ -47,7 +46,7 @@ class HomeCoordinator: Coordinator {
     }
 
     func presentSendbirdChatInterface() {
-        let channelListVC = SBUGroupChannelListViewController()
+        let channelListVC = SendBirdManager.shared.returnSBUGroupChannelListViewController()
         let navController = UINavigationController(rootViewController: channelListVC)
         navController.view.tintColor = UIColor.mySecondary
         navigationController.modalPresentationStyle = .fullScreen
