@@ -94,7 +94,7 @@ extension CourseViewController: UICollectionViewDelegate,
         case 1:
             coordinator?.showPeerViewController()
         case 2:
-            coordinator?.showBoardViewController()
+            coordinator?.showBoardFlow()
         case 3:
             coordinator?.showSubmissionsViewController()
         default:

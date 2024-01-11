@@ -34,10 +34,11 @@ class CourseCoordinator: Coordinator {
         navigationController.pushViewController(peerViewController, animated: true)
     }
 
-    func showBoardViewController() {
-        let boardViewController = BoardViewController()
-        boardViewController.coordinator = self
-        navigationController.pushViewController(boardViewController, animated: true)
+    func showBoardFlow() {
+        let coordinator = BoardCoordinator(navigationController: navigationController)
+        coordinator.parentCoordinator = self
+        childCoordinators.append(coordinator)
+        coordinator.start()
     }
 
     func showSubmissionsViewController() {

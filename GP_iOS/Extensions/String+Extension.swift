@@ -112,6 +112,14 @@ extension String {
         case phoneNumber
         case gpa
 
+        /// Board
+        case discardChanges
+        case discardChangesMessage
+        case discard
+        case deleteColumn
+        case addColumn
+        case addCard
+        
         var localized: String {
             return String(localizedKey: self)
         }

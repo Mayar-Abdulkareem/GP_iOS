@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseCore
 //import FirebaseCore
 //import FirebaseMessaging
 
@@ -18,7 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     ) -> Bool {
         // Override point for customization after application launch.
         SendBirdManager.shared.initSendBird()
-//        FirebaseApp.configure()
+        NotificationManager.shared.requestNotificationPermission()
+     //   FiredatabaseManager.shared.configureFireDatabase()
+        FirebaseApp.configure()
 //        UNUserNotificationCenter.current().delegate = self
 //        let authOptions: UNAuthorizationOptions = [.alert, .sound, .badge]
 //        UNUserNotificationCenter.current()

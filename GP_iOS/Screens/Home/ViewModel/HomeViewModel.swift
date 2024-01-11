@@ -60,6 +60,10 @@ class HomeViewModel {
                 self?.profile = profile
                 AppManager.shared.profile = profile
                 SendBirdManager.shared.connectUser()
+                //FiredatabaseManager.shared.connectUser(withEmail: profile.email, password: profile.password)
+                FiredatabaseManager.shared.signInAnonymously()
+                FiredatabaseManager.shared.listenForIncomingRequests()
+                FiredatabaseManager.shared.sendRequest(from: "11924246", to: "11924955", details: "test")
                 if profile.courses.count == 0 {
                     self?.onProfileFetched?(true)
                 } else {

@@ -10,6 +10,7 @@ target 'GP_iOS' do
   pod 'SendbirdChatSDK', '~> 4.0.0'
   pod 'SendBirdUIKit'
   pod 'Kingfisher', '~> 7.0'
-  pod 'Firebase/Messaging'
+  pod 'Firebase/Database'
+  pod 'Firebase/Auth'
 
 end

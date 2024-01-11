@@ -107,6 +107,19 @@
 		2FFE0EC02B48C16C0038F2F3 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE0EBF2B48C16C0038F2F3 /* ProfileViewModel.swift */; };
 		2FFE0EC32B48C7920038F2F3 /* ProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE0EC22B48C7920038F2F3 /* ProfileRouter.swift */; };
 		2FFE0EC72B49BD2D0038F2F3 /* AnnouncementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE0EC62B49BD2D0038F2F3 /* AnnouncementViewModel.swift */; };
+		2FFE0ECB2B49E6430038F2F3 /* BoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE0ECA2B49E6430038F2F3 /* BoardViewModel.swift */; };
+		2FFE0ECE2B49EB370038F2F3 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE0ECD2B49EB370038F2F3 /* Board.swift */; };
+		2FFE0ED12B49F0760038F2F3 /* BoardRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE0ED02B49F0760038F2F3 /* BoardRouter.swift */; };
+		2FFE0ED42B49F7500038F2F3 /* BoardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE0ED32B49F7500038F2F3 /* BoardCollectionViewCell.swift */; };
+		2FFE0ED62B49F91A0038F2F3 /* BoardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE0ED52B49F91A0038F2F3 /* BoardTableViewCell.swift */; };
+		2FFE0EDA2B4D89790038F2F3 /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE0ED92B4D89790038F2F3 /* TaskViewController.swift */; };
+		2FFE0EDC2B4D8A0A0038F2F3 /* BoardCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE0EDB2B4D8A0A0038F2F3 /* BoardCoordinator.swift */; };
+		2FFE0EDE2B4D9B370038F2F3 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE0EDD2B4D9B370038F2F3 /* CustomTextField.swift */; };
+		2FFE0EE12B4D9E4D0038F2F3 /* TaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE0EE02B4D9E4D0038F2F3 /* TaskViewModel.swift */; };
+		2FFE0EE32B4D9EC60038F2F3 /* TaskViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE0EE22B4D9EC60038F2F3 /* TaskViewType.swift */; };
+		2FFE0EE62B4DA9C70038F2F3 /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE0EE52B4DA9C70038F2F3 /* TaskModel.swift */; };
+		2FFE0EE82B4F5E430038F2F3 /* FiredatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE0EE72B4F5E430038F2F3 /* FiredatabaseManager.swift */; };
+		2FFE0EEA2B4F6F1F0038F2F3 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE0EE92B4F6F1F0038F2F3 /* NotificationManager.swift */; };
 		3DCDE4872B398EFF005F9C7B /* TitleTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCDE4862B398EFF005F9C7B /* TitleTextFieldView.swift */; };
 		3DCDE4892B398F47005F9C7B /* ImageTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCDE4882B398F47005F9C7B /* ImageTextField.swift */; };
 		8B527C862B31CDC200B6ACF7 /* HomeAboutMeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B527C852B31CDC200B6ACF7 /* HomeAboutMeCell.swift */; };
@@ -222,6 +235,19 @@
 		2FFE0EBF2B48C16C0038F2F3 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		2FFE0EC22B48C7920038F2F3 /* ProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRouter.swift; sourceTree = "<group>"; };
 		2FFE0EC62B49BD2D0038F2F3 /* AnnouncementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementViewModel.swift; sourceTree = "<group>"; };
+		2FFE0ECA2B49E6430038F2F3 /* BoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewModel.swift; sourceTree = "<group>"; };
+		2FFE0ECD2B49EB370038F2F3 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		2FFE0ED02B49F0760038F2F3 /* BoardRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardRouter.swift; sourceTree = "<group>"; };
+		2FFE0ED32B49F7500038F2F3 /* BoardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCollectionViewCell.swift; sourceTree = "<group>"; };
+		2FFE0ED52B49F91A0038F2F3 /* BoardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardTableViewCell.swift; sourceTree = "<group>"; };
+		2FFE0ED92B4D89790038F2F3 /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
+		2FFE0EDB2B4D8A0A0038F2F3 /* BoardCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCoordinator.swift; sourceTree = "<group>"; };
+		2FFE0EDD2B4D9B370038F2F3 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		2FFE0EE02B4D9E4D0038F2F3 /* TaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewModel.swift; sourceTree = "<group>"; };
+		2FFE0EE22B4D9EC60038F2F3 /* TaskViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewType.swift; sourceTree = "<group>"; };
+		2FFE0EE52B4DA9C70038F2F3 /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
+		2FFE0EE72B4F5E430038F2F3 /* FiredatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiredatabaseManager.swift; sourceTree = "<group>"; };
+		2FFE0EE92B4F6F1F0038F2F3 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		3DCDE4862B398EFF005F9C7B /* TitleTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTextFieldView.swift; sourceTree = "<group>"; };
 		3DCDE4882B398F47005F9C7B /* ImageTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTextField.swift; sourceTree = "<group>"; };
 		8B527C852B31CDC200B6ACF7 /* HomeAboutMeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAboutMeCell.swift; sourceTree = "<group>"; };
@@ -263,6 +289,7 @@
 				2FA7FD122B2F6B9A00749D38 /* SearchCoordinator.swift */,
 				2F9E71D72B388C6F00767A4D /* StoreCoordinator.swift */,
 				2F9E72202B42408D00767A4D /* RegisterCoordinator.swift */,
+				2FFE0EDB2B4D8A0A0038F2F3 /* BoardCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -272,8 +299,9 @@
 			children = (
 				2F9E71A92B33058100767A4D /* Submissions */,
 				2F9E71A82B33057500767A4D /* Peer */,
-				2F9E71A72B33056B00767A4D /* Borad */,
 				2F9E71C62B3333FC00767A4D /* Announcement */,
+				2FFE0ED72B4D89450038F2F3 /* Task */,
+				2F9E71A72B33056B00767A4D /* Borad */,
 				2F9E71C42B3333EA00767A4D /* Profile */,
 				2F5A7CA02B44A19600F3EF38 /* RegisterSkills */,
 				2FFE0EA52B44EA590038F2F3 /* RegisterSupervisor */,
@@ -304,6 +332,7 @@
 		2F4490AC2B057F37002B6975 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				2FFE0ECC2B49EB1A0038F2F3 /* Board */,
 				2F9E721B2B42233400767A4D /* Register */,
 				2F9E71E02B389A1D00767A4D /* Store */,
 				2FA7FCFD2B2D347900749D38 /* PrevProjects */,
@@ -369,6 +398,7 @@
 		2F4490BF2B05812B002B6975 /* Routers */ = {
 			isa = PBXGroup;
 			children = (
+				2FFE0ECF2B49F0660038F2F3 /* Board */,
 				2FFE0EC12B48C7760038F2F3 /* Profile */,
 				2F9E72242B42ED9900767A4D /* Register */,
 				2F9E71E32B389DAE00767A4D /* Store */,
@@ -435,6 +465,7 @@
 			children = (
 				3DCDE4862B398EFF005F9C7B /* TitleTextFieldView.swift */,
 				3DCDE4882B398F47005F9C7B /* ImageTextField.swift */,
+				2FFE0EDD2B4D9B370038F2F3 /* CustomTextField.swift */,
 			);
 			path = TextFields;
 			sourceTree = "<group>";
@@ -578,7 +609,9 @@
 		2F9E71A72B33056B00767A4D /* Borad */ = {
 			isa = PBXGroup;
 			children = (
-				2FA7FCD92B2656E600749D38 /* BoardViewController.swift */,
+				2FFE0ED22B49F5980038F2F3 /* Cells */,
+				2FFE0EC92B49E1D70038F2F3 /* ViewModel */,
+				2FFE0EC82B49E1CF0038F2F3 /* Controller */,
 			);
 			path = Borad;
 			sourceTree = "<group>";
@@ -893,6 +926,7 @@
 				2FA7FCE52B290F0600749D38 /* TapInfo.swift */,
 				2F9E71D12B37108D00767A4D /* FilterCategory.swift */,
 				2F9E71ED2B3B1DE100767A4D /* StoreViewType.swift */,
+				2FFE0EE22B4D9EC60038F2F3 /* TaskViewType.swift */,
 			);
 			path = "Enumeration ";
 			sourceTree = "<group>";
@@ -943,6 +977,8 @@
 				2F9E71CD2B35B16000767A4D /* StringManager.swift */,
 				2F9E71EF2B3C469000767A4D /* SendBirdManager.swift */,
 				2FFE0EB82B45B4F30038F2F3 /* MatchingPeerManager.swift */,
+				2FFE0EE72B4F5E430038F2F3 /* FiredatabaseManager.swift */,
+				2FFE0EE92B4F6F1F0038F2F3 /* NotificationManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -1102,6 +1138,81 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		2FFE0EC82B49E1CF0038F2F3 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2FA7FCD92B2656E600749D38 /* BoardViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		2FFE0EC92B49E1D70038F2F3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2FFE0ECA2B49E6430038F2F3 /* BoardViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2FFE0ECC2B49EB1A0038F2F3 /* Board */ = {
+			isa = PBXGroup;
+			children = (
+				2FFE0ECD2B49EB370038F2F3 /* Board.swift */,
+			);
+			path = Board;
+			sourceTree = "<group>";
+		};
+		2FFE0ECF2B49F0660038F2F3 /* Board */ = {
+			isa = PBXGroup;
+			children = (
+				2FFE0ED02B49F0760038F2F3 /* BoardRouter.swift */,
+			);
+			path = Board;
+			sourceTree = "<group>";
+		};
+		2FFE0ED22B49F5980038F2F3 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				2FFE0ED32B49F7500038F2F3 /* BoardCollectionViewCell.swift */,
+				2FFE0ED52B49F91A0038F2F3 /* BoardTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		2FFE0ED72B4D89450038F2F3 /* Task */ = {
+			isa = PBXGroup;
+			children = (
+				2FFE0EE42B4DA9AE0038F2F3 /* Model */,
+				2FFE0EDF2B4D9E150038F2F3 /* ViewModel */,
+				2FFE0ED82B4D895F0038F2F3 /* Controller */,
+			);
+			path = Task;
+			sourceTree = "<group>";
+		};
+		2FFE0ED82B4D895F0038F2F3 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2FFE0ED92B4D89790038F2F3 /* TaskViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		2FFE0EDF2B4D9E150038F2F3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2FFE0EE02B4D9E4D0038F2F3 /* TaskViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2FFE0EE42B4DA9AE0038F2F3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2FFE0EE52B4DA9C70038F2F3 /* TaskModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		56335FF10C1F9BB7606024DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1256,7 +1367,9 @@
 				2FB7A13F2B15EC6E00923D02 /* MoreTableViewCell.swift in Sources */,
 				2F9E72292B4450D300767A4D /* SkillsCollectionView.swift in Sources */,
 				2FA7FD0A2B2F26D600749D38 /* FilterViewController.swift in Sources */,
+				2FFE0EDE2B4D9B370038F2F3 /* CustomTextField.swift in Sources */,
 				2FA7FCFC2B2D30A900749D38 /* SearchRoute.swift in Sources */,
+				2FFE0EE12B4D9E4D0038F2F3 /* TaskViewModel.swift in Sources */,
 				2FA7FCD82B2654A500749D38 /* HomeCoordinator.swift in Sources */,
 				2F9E72302B44776400767A4D /* TagListView.swift in Sources */,
 				2FA7FCF62B2CDF5400749D38 /* CourseCoordinator.swift in Sources */,
@@ -1277,6 +1390,8 @@
 				2FA7FD012B2DC88400749D38 /* SearchTableViewCell.swift in Sources */,
 				2F9E71E52B389DCD00767A4D /* StoreRouter.swift in Sources */,
 				2F4490B32B057F9D002B6975 /* Student.swift in Sources */,
+				2FFE0ED12B49F0760038F2F3 /* BoardRouter.swift in Sources */,
+				2FFE0EEA2B4F6F1F0038F2F3 /* NotificationManager.swift in Sources */,
 				2F4490A92B057906002B6975 /* MainCoordinator.swift in Sources */,
 				2FB7A12C2B1493FC00923D02 /* TabBarCoordinator.swift in Sources */,
 				2F9E71E72B38C7B200767A4D /* StoreFilterModel.swift in Sources */,
@@ -1286,11 +1401,15 @@
 				2F5A7C9A2B448F4B00F3EF38 /* TagView.swift in Sources */,
 				2FFE0EB92B45B4F30038F2F3 /* MatchingPeerManager.swift in Sources */,
 				2F9E72212B42408D00767A4D /* RegisterCoordinator.swift in Sources */,
+				2FFE0ECE2B49EB370038F2F3 /* Board.swift in Sources */,
 				2FA7FD082B2EFC3200749D38 /* FooterView.swift in Sources */,
 				2F9E71E92B38E88F00767A4D /* ItemDetailsViewController.swift in Sources */,
 				2F9E72262B42EDAE00767A4D /* RegisterRouter.swift in Sources */,
+				2FFE0EE62B4DA9C70038F2F3 /* TaskModel.swift in Sources */,
 				2F4490A72B0578E3002B6975 /* Coordinator.swift in Sources */,
 				2F7031032B0CE39E00FBB5D6 /* TopAlertManager.swift in Sources */,
+				2FFE0EE32B4D9EC60038F2F3 /* TaskViewType.swift in Sources */,
+				2FFE0EDA2B4D89790038F2F3 /* TaskViewController.swift in Sources */,
 				2F5B06662AF7A0340075D083 /* AppDelegate.swift in Sources */,
 				2F7031052B0CFC8200FBB5D6 /* UIView+Extension.swift in Sources */,
 				2F4490B02B057F66002B6975 /* User.swift in Sources */,
@@ -1311,9 +1430,11 @@
 				2FB7A1272B13804400923D02 /* LoginViewModel.swift in Sources */,
 				2FFE0EB42B45966F0038F2F3 /* CircularProgressView.swift in Sources */,
 				2F4490A52B0578BA002B6975 /* LoginViewController.swift in Sources */,
+				2FFE0ECB2B49E6430038F2F3 /* BoardViewModel.swift in Sources */,
 				2F9E722E2B44740900767A4D /* CategoryHeaderView.swift in Sources */,
 				2F7031022B0CE39E00FBB5D6 /* TopAlertView.swift in Sources */,
 				2F9E71F02B3C469000767A4D /* SendBirdManager.swift in Sources */,
+				2FFE0EE82B4F5E430038F2F3 /* FiredatabaseManager.swift in Sources */,
 				3DCDE4892B398F47005F9C7B /* ImageTextField.swift in Sources */,
 				2FB7A1372B15212E00923D02 /* StoreViewController.swift in Sources */,
 				2FA7FCF02B2B036F00749D38 /* SubmissionsViewController.swift in Sources */,
@@ -1324,7 +1445,9 @@
 				2FA7FCD62B2639A800749D38 /* UITableView+Extension.swift in Sources */,
 				2F9E71DC2B388E2A00767A4D /* StoreViewModel.swift in Sources */,
 				2FA7FCCE2B25E7F000749D38 /* Course.swift in Sources */,
+				2FFE0ED42B49F7500038F2F3 /* BoardCollectionViewCell.swift in Sources */,
 				8BAA93252B32D217007B3B16 /* UIViewController+Extensions.swift in Sources */,
+				2FFE0EDC2B4D8A0A0038F2F3 /* BoardCoordinator.swift in Sources */,
 				2F70310E2B0E285100FBB5D6 /* String+Extension.swift in Sources */,
 				2FA7FCC82B24FBB700749D38 /* HomeTableViewCell.swift in Sources */,
 				2F5B06682AF7A0340075D083 /* SceneDelegate.swift in Sources */,
@@ -1344,6 +1467,7 @@
 				2F9E71D22B37108D00767A4D /* FilterCategory.swift in Sources */,
 				2FB7A1452B15F18300923D02 /* AnnouncementViewController.swift in Sources */,
 				2FB7A1352B1520BF00923D02 /* SearchViewController.swift in Sources */,
+				2FFE0ED62B49F91A0038F2F3 /* BoardTableViewCell.swift in Sources */,
 				3DCDE4872B398EFF005F9C7B /* TitleTextFieldView.swift in Sources */,
 				2F5A7C9C2B448FB300F3EF38 /* CloseButton.swift in Sources */,
 				2F9E71CE2B35B16000767A4D /* StringManager.swift in Sources */,

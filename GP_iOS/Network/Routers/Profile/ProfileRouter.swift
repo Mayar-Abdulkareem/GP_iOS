@@ -5,8 +5,6 @@
 //  Created by Mayar Abdulkareem on 06/01/2024.
 //
 
-import Foundation
-
 import Alamofire
 
 enum ProfileRouter: BaseRouter {
