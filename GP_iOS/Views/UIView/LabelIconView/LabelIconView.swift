@@ -18,12 +18,43 @@ class LabelIconView: UIView {
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
+    
+    lazy var stackView: UIStackView = {
+        let stackView = UIStackView(
+            arrangedSubviews: [
+                iconImageView,
+                titleLabel,
+                valueLabel
+            ]
+        )
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .horizontal
+        stackView.spacing = 5
+        stackView.alignment = .fill
+        stackView.distribution = .fill
+        stackView.setCustomSpacing(8, after: iconImageView)
+        return stackView
+    }()
 
-    let label: UILabel = {
+    let titleLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
+        label.textColor = .black
+        label.numberOfLines = 0
+        label.setContentHuggingPriority(.init(1000), for: .horizontal)
+        label.setContentCompressionResistancePriority(.init(1000), for: .horizontal)
+        return label
+    }()
+    
+    let valueLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 15)
+        label.textColor = .darkGray
         label.numberOfLines = 0
+        label.setContentHuggingPriority(.init(251), for: .horizontal)
+        label.setContentCompressionResistancePriority(.init(750), for: .horizontal)
         return label
     }()
 
@@ -60,33 +91,22 @@ class LabelIconView: UIView {
         imageSize: CGFloat,
         fontSize: CGFloat
     ) {
-        addSubview(iconImageView)
-        addSubview(label)
+        addViewFillEntireView(stackView)
 
         iconImageView.tintColor = color
         iconImageView.image = icon
-        label.attributedText = StringManager.shared.createAttributedText(prefix: prefix, value: text)
-        label.font = UIFont.systemFont(ofSize: fontSize)
+        titleLabel.text = prefix
+        valueLabel.text = text
 
         NSLayoutConstraint.activate([
-            iconImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            iconImageView.topAnchor.constraint(equalTo: topAnchor),
             iconImageView.widthAnchor.constraint(equalToConstant: imageSize),
             iconImageView.heightAnchor.constraint(equalToConstant: imageSize),
-
-            label.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: 8),
-            label.trailingAnchor.constraint(equalTo: trailingAnchor),
-            label.centerYAnchor.constraint(equalTo: iconImageView.centerYAnchor)
-            //label.topAnchor.constraint(equalTo: topAnchor),
-            //label.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
 
     func changeText(text: String) {
         self.currentValue = text
-        label.attributedText = StringManager.shared.createAttributedText(
-            prefix: currentPrefix,
-            value: currentValue
-        )
+        titleLabel.text = currentPrefix
+        valueLabel.text = text
     }
 }

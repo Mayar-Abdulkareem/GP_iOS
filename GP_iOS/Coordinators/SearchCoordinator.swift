@@ -45,15 +45,7 @@ class SearchCoordinator: Coordinator {
 
     func presentProjectDetailsViewController() {
         let projectDetailsViewController = ProjectDetailsViewController()
-
-        projectDetailsViewController.modalPresentationStyle = .formSheet
-        if let sheetPresentationController = projectDetailsViewController.presentationController as? UISheetPresentationController {
-            sheetPresentationController.detents = [.custom { _ in
-                return 300
-            }]
-            sheetPresentationController.prefersGrabberVisible = true
-        }
-
-        navigationController.present(projectDetailsViewController, animated: true)
+        let navController = UINavigationController(rootViewController: projectDetailsViewController)
+        navigationController.present(navController, animated: true)
     }
 }

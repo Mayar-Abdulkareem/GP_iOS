@@ -46,11 +46,7 @@ class SearchTableViewCell: UITableViewCell {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = UIColor.myPrimary
-        view.addShadow(
-            cornerRadius: 5,
-            shadowOpacity: 0.1,
-            shadowRadius: 4
-        )
+        view.addShadow()
         return view
     }()
 

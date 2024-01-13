@@ -9,13 +9,12 @@ import UIKit
 
 class ProjectDetailsViewController: UIViewController {
 
-    private let projectNameLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.boldSystemFont(ofSize: 25)
-        label.textColor = .mySecondary
-        label.numberOfLines = 0
-        return label
+    private lazy var separatorView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .separator
+        view.heightAnchor.constraint(equalToConstant: 1/UIScreen.main.scale).isActive = true
+        return view
     }()
 
     private lazy var projectLinkButton = {
@@ -41,7 +40,7 @@ class ProjectDetailsViewController: UIViewController {
         stackView.axis = .vertical
         stackView.spacing = 20
         stackView.alignment = .fill
-        stackView.distribution = .fill
+        stackView.distribution = .fillProportionally
         return stackView
     }()
 
@@ -53,46 +52,73 @@ class ProjectDetailsViewController: UIViewController {
 
     private func configureViews() {
         view.backgroundColor = UIColor.myPrimary
-        projectNameLabel.text = AppManager.shared.prevProject?.name
+        
+        configureNavBarTitle(title: AppManager.shared.prevProject?.name)
+        addNavCloseButton()
 
-        view.addSubview(projectNameLabel)
+        view.addSubview(separatorView)
         view.addSubview(stackView)
         view.addSubview(projectLinkButton)
 
         NSLayoutConstraint.activate([
-            projectNameLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
-            projectNameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            separatorView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            separatorView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            separatorView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 
-            stackView.topAnchor.constraint(equalTo: projectNameLabel.bottomAnchor, constant: 30),
+            stackView.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: 30),
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
 
-            projectLinkButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 30),
-            projectLinkButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 60),
-            projectLinkButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -60)
+            projectLinkButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            projectLinkButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            projectLinkButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
         ])
+    }
+    
+    private func configureNavBarTitle(title: String?) {
+        self.title = title
+        let textAttributes = [
+            NSAttributedString.Key.foregroundColor: UIColor.mySecondary,
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20, weight: .semibold)
+        ]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
+    }
+    
+    private func addNavCloseButton() {
+        let closeButton = UIBarButtonItem(
+            title: "Close",
+            primaryAction: UIAction { [weak self] _ in
+                self?.dismiss(animated: true)
+            }
+        )
+        closeButton.tintColor = UIColor.mySecondary
+        navigationItem.leftBarButtonItem = closeButton
     }
 
     private func configureStackView() {
         let projectTypeView = LabelIconView(
             icon: UIImage.SystemImages.projectType.image,
             prefix: "Project Type: ",
-            text: AppManager.shared.prevProject?.projectType ?? ""
+            text: AppManager.shared.prevProject?.projectType ?? "",
+            imageSize: 30
         )
         let yearView = LabelIconView(
             icon: UIImage.SystemImages.year.image,
             prefix: "Year: ",
-            text: (AppManager.shared.prevProject?.date ?? "")
+            text: (AppManager.shared.prevProject?.date ?? ""),
+            imageSize: 30
         )
         let studentsView = LabelIconView(
             icon: UIImage.SystemImages.choosePeer.image,
             prefix: "Students: ",
-            text: (AppManager.shared.prevProject?.students ?? "")
+            text: (AppManager.shared.prevProject?.students ?? ""),
+            imageSize: 30
         )
         let supervisorView = LabelIconView(
             icon: UIImage.SystemImages.supervisor.image,
             prefix: "Supervisor: ",
-            text: (AppManager.shared.prevProject?.supervisor ?? "")
+            text: (AppManager.shared.prevProject?.supervisor ?? ""),
+            imageSize: 30
         )
 
         stackView.addArrangedSubview(projectTypeView)

@@ -22,7 +22,7 @@ final class BuildConfiguration {
         case .dev:
             return "http:/localhost:3001"
         case .prod:
-            return "http://3.238.223.225:3001"
+            return "http://gradpro2-855153665.eu-central-1.elb.amazonaws.com"
         }
     }
 

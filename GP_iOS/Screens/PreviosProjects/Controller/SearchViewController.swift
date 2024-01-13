@@ -17,7 +17,13 @@ class SearchViewController: UIViewController {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorStyle = .none
-        tableView.separatorColor = .clear
+        
+        tableView.contentInset = UIEdgeInsets(
+            top: 8,
+            left: 0,
+            bottom: 8,
+            right: 0
+        )
 
         tableView.register(
             SearchTableViewCell.self,
@@ -98,13 +104,13 @@ class SearchViewController: UIViewController {
             searchBar.trailingAnchor.constraint(equalTo: filterButton.leadingAnchor, constant: 0),
             searchBar.heightAnchor.constraint(equalToConstant: 44),
 
-            tableView.topAnchor.constraint(equalTo: searchBar.bottomAnchor),
+            tableView.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 8),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
 
-            filterButton.bottomAnchor.constraint(equalTo: tableView.topAnchor),
-            filterButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            filterButton.centerYAnchor.constraint(equalTo: searchBar.centerYAnchor),
+            filterButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8),
             filterButton.widthAnchor.constraint(equalTo: searchBar.heightAnchor),
             filterButton.heightAnchor.constraint(equalTo: searchBar.heightAnchor)
         ])

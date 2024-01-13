@@ -233,11 +233,10 @@ extension StoreViewController: UICollectionViewDelegate,
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        AppManager.shared.item = viewModel.items[indexPath.item]
-        viewModel.viewType = .itemDetails
-        viewModel.page = .itemInfo
-        viewModel.state = .normal
-        coordinator?.presentItemDetailsViewController(viewModel: viewModel)
+        let viewModel = ItemDetailsViewModel(item: viewModel.items[indexPath.row])
+        let viewController = StoreItemDetailsViewController(viewModel: viewModel)
+        let navController = UINavigationController(rootViewController: viewController)
+        present(navController, animated: true)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {

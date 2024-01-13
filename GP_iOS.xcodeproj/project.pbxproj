@@ -120,6 +120,10 @@
 		2FFE0EE62B4DA9C70038F2F3 /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE0EE52B4DA9C70038F2F3 /* TaskModel.swift */; };
 		2FFE0EE82B4F5E430038F2F3 /* FiredatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE0EE72B4F5E430038F2F3 /* FiredatabaseManager.swift */; };
 		2FFE0EEA2B4F6F1F0038F2F3 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE0EE92B4F6F1F0038F2F3 /* NotificationManager.swift */; };
+		3D5BA74D2B52FCC70043F812 /* StoreItemDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5BA74C2B52FCC70043F812 /* StoreItemDetailsViewController.swift */; };
+		3D5BA7502B52FD890043F812 /* ItemDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5BA74F2B52FD890043F812 /* ItemDetailsTableViewCell.swift */; };
+		3D5BA7522B52FF0F0043F812 /* ItemDetailsImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5BA7512B52FF0F0043F812 /* ItemDetailsImageTableViewCell.swift */; };
+		3D5BA7552B5300620043F812 /* ItemDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5BA7542B5300620043F812 /* ItemDetailsViewModel.swift */; };
 		3DCDE4872B398EFF005F9C7B /* TitleTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCDE4862B398EFF005F9C7B /* TitleTextFieldView.swift */; };
 		3DCDE4892B398F47005F9C7B /* ImageTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCDE4882B398F47005F9C7B /* ImageTextField.swift */; };
 		8B527C862B31CDC200B6ACF7 /* HomeAboutMeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B527C852B31CDC200B6ACF7 /* HomeAboutMeCell.swift */; };
@@ -248,6 +252,10 @@
 		2FFE0EE52B4DA9C70038F2F3 /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
 		2FFE0EE72B4F5E430038F2F3 /* FiredatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiredatabaseManager.swift; sourceTree = "<group>"; };
 		2FFE0EE92B4F6F1F0038F2F3 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		3D5BA74C2B52FCC70043F812 /* StoreItemDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreItemDetailsViewController.swift; sourceTree = "<group>"; };
+		3D5BA74F2B52FD890043F812 /* ItemDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailsTableViewCell.swift; sourceTree = "<group>"; };
+		3D5BA7512B52FF0F0043F812 /* ItemDetailsImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailsImageTableViewCell.swift; sourceTree = "<group>"; };
+		3D5BA7542B5300620043F812 /* ItemDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailsViewModel.swift; sourceTree = "<group>"; };
 		3DCDE4862B398EFF005F9C7B /* TitleTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTextFieldView.swift; sourceTree = "<group>"; };
 		3DCDE4882B398F47005F9C7B /* ImageTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTextField.swift; sourceTree = "<group>"; };
 		8B527C852B31CDC200B6ACF7 /* HomeAboutMeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAboutMeCell.swift; sourceTree = "<group>"; };
@@ -1044,6 +1052,8 @@
 		2FFE0EAD2B44EB880038F2F3 /* ItemDetails */ = {
 			isa = PBXGroup;
 			children = (
+				3D5BA7532B5300480043F812 /* ViewModel */,
+				3D5BA74E2B52FD770043F812 /* Cells */,
 				2FFE0EAE2B44EB9D0038F2F3 /* Controller */,
 			);
 			path = ItemDetails;
@@ -1053,6 +1063,7 @@
 			isa = PBXGroup;
 			children = (
 				2F9E71E82B38E88F00767A4D /* ItemDetailsViewController.swift */,
+				3D5BA74C2B52FCC70043F812 /* StoreItemDetailsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1213,6 +1224,23 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		3D5BA74E2B52FD770043F812 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				3D5BA74F2B52FD890043F812 /* ItemDetailsTableViewCell.swift */,
+				3D5BA7512B52FF0F0043F812 /* ItemDetailsImageTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		3D5BA7532B5300480043F812 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3D5BA7542B5300620043F812 /* ItemDetailsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		56335FF10C1F9BB7606024DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1360,6 +1388,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F9E71A32B32EAC300767A4D /* BuildConfiguration.swift in Sources */,
+				3D5BA7522B52FF0F0043F812 /* ItemDetailsImageTableViewCell.swift in Sources */,
 				2F9E71EC2B38F71600767A4D /* StoreCustomView.swift in Sources */,
 				2FA7FD062B2E5D2000749D38 /* FilterTableViewCell.swift in Sources */,
 				2F4490DB2B098D3B002B6975 /* CustomButton.swift in Sources */,
@@ -1396,6 +1425,7 @@
 				2FB7A12C2B1493FC00923D02 /* TabBarCoordinator.swift in Sources */,
 				2F9E71E72B38C7B200767A4D /* StoreFilterModel.swift in Sources */,
 				2F9E71D82B388C6F00767A4D /* StoreCoordinator.swift in Sources */,
+				3D5BA7502B52FD890043F812 /* ItemDetailsTableViewCell.swift in Sources */,
 				2FFE0EC72B49BD2D0038F2F3 /* AnnouncementViewModel.swift in Sources */,
 				2F4490D22B094C17002B6975 /* UIImage+Extension.swift in Sources */,
 				2F5A7C9A2B448F4B00F3EF38 /* TagView.swift in Sources */,
@@ -1443,6 +1473,7 @@
 				2F9E721A2B4222FC00767A4D /* RegisterViewModel.swift in Sources */,
 				2FA7FD132B2F6B9A00749D38 /* SearchCoordinator.swift in Sources */,
 				2FA7FCD62B2639A800749D38 /* UITableView+Extension.swift in Sources */,
+				3D5BA7552B5300620043F812 /* ItemDetailsViewModel.swift in Sources */,
 				2F9E71DC2B388E2A00767A4D /* StoreViewModel.swift in Sources */,
 				2FA7FCCE2B25E7F000749D38 /* Course.swift in Sources */,
 				2FFE0ED42B49F7500038F2F3 /* BoardCollectionViewCell.swift in Sources */,
@@ -1469,6 +1500,7 @@
 				2FB7A1352B1520BF00923D02 /* SearchViewController.swift in Sources */,
 				2FFE0ED62B49F91A0038F2F3 /* BoardTableViewCell.swift in Sources */,
 				3DCDE4872B398EFF005F9C7B /* TitleTextFieldView.swift in Sources */,
+				3D5BA74D2B52FCC70043F812 /* StoreItemDetailsViewController.swift in Sources */,
 				2F5A7C9C2B448FB300F3EF38 /* CloseButton.swift in Sources */,
 				2F9E71CE2B35B16000767A4D /* StringManager.swift in Sources */,
 				2FA7FCD42B25F3EF00749D38 /* HomeViewModel.swift in Sources */,
