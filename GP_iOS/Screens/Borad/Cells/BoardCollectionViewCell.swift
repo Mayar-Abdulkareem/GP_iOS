@@ -62,7 +62,6 @@ class BoardCollectionViewCell: UICollectionViewCell {
         return tableView
     }()
 
-
     private lazy var addTaskButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -115,15 +114,10 @@ class BoardCollectionViewCell: UICollectionViewCell {
             tableView.bottomAnchor.constraint(equalTo: addTaskButton.topAnchor, constant: -16),
 
             addTaskButton.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 16),
-            addTaskButton.leadingAnchor.constraint(equalTo: tableView.leadingAnchor),
-            addTaskButton.widthAnchor.constraint(equalTo: tableView.widthAnchor, multiplier: 0.5),
-            addTaskButton.heightAnchor.constraint(equalToConstant: 50),
-            addTaskButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16),
+            addTaskButton.centerXAnchor.constraint(equalTo: tableView.centerXAnchor),
 
-            deleteColumnButton.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 16),
-            deleteColumnButton.trailingAnchor.constraint(equalTo: tableView.trailingAnchor),
-            deleteColumnButton.leadingAnchor.constraint(equalTo: addTaskButton.trailingAnchor),
-            deleteColumnButton.heightAnchor.constraint(equalToConstant: 50),
+            deleteColumnButton.topAnchor.constraint(equalTo: addTaskButton.bottomAnchor, constant: 8),
+            deleteColumnButton.centerXAnchor.constraint(equalTo: addTaskButton.centerXAnchor),
             deleteColumnButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16),
         ])
     }
@@ -191,7 +185,7 @@ extension BoardCollectionViewCell: UITableViewDragDelegate {
             let itemProvider = NSItemProvider(item: data as NSData, typeIdentifier: UTType.json.identifier)
             let dragItem = UIDragItem(itemProvider: itemProvider)
 
-            session.localContext = (self, indexPath)  // Set the local context with the cell and index path
+            session.localContext = (self, indexPath)
             return [dragItem]
         } catch {
             print("Failed to encode task: \(error)")
@@ -203,12 +197,6 @@ extension BoardCollectionViewCell: UITableViewDragDelegate {
 extension BoardCollectionViewCell: UITableViewDropDelegate {
 
     func tableView(_ tableView: UITableView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UITableViewDropProposal {
-        // Determine the destination index path: if the destination index path is nil (because the table is empty),
-        // create an index path to insert at the beginning of the section.
-        //let indexPath = destinationIndexPath ?? IndexPath(row: 0, section: 0)
-
-        // If the table view is currently empty, we'll set the intent to .insertIntoDestinationIndexPath
-        // which will insert the drag item into the specified index path.
         let dropProposal: UITableViewDropProposal
         if tableView.hasActiveDrag {
             dropProposal = UITableViewDropProposal(operation: .move, intent: .insertAtDestinationIndexPath)

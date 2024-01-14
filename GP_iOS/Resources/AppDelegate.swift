@@ -6,32 +6,18 @@
 //
 
 import UIKit
-import Firebase
-import FirebaseCore
-//import FirebaseCore
-//import FirebaseMessaging
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder {
 
     func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
-        // Override point for customization after application launch.
         SendBirdManager.shared.initSendBird()
+        FiredatabaseManager.shared.configureFireDatabase()
+        UNUserNotificationCenter.current().delegate = self
         NotificationManager.shared.requestNotificationPermission()
-     //   FiredatabaseManager.shared.configureFireDatabase()
-        FirebaseApp.configure()
-//        UNUserNotificationCenter.current().delegate = self
-//        let authOptions: UNAuthorizationOptions = [.alert, .sound, .badge]
-//        UNUserNotificationCenter.current()
-//            .requestAuthorization(options: authOptions) {
-//                succes, error in
-//                if error != nil {
-//                }
-//            }
-//        application.registerForRemoteNotifications()
         return true
     }
 
@@ -52,34 +38,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         didDiscardSceneSessions sceneSessions: Set<UISceneSession>
     ) {
         // Called when the user discards a scene session.
-        // If any sessions were discarded while the application was not running, 
+        // If any sessions were discarded while the application was not running,
         // this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
-
 }
 
-//extension AppDelegate: UNUserNotificationCenterDelegate {
-//    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-//        Messaging.messaging().apnsToken = deviceToken
-//
-//    }
-//
-//    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-//        TopAlertManager.show(
-//            title: String.LocalizedKeys.errorTitle.localized,
-//            subTitle: error.localizedDescription,
-//            type: .failure
-//        )
-//    }
-//
-//    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-//        print("will be called in foreground before the notification appear")
-//        completionHandler([.alert, .sound, .badge])
-//    }
-//
-//    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-//        print("will be called when the user click on notification")
-//        completionHandler()
-//    }
-//}
+extension AppDelegate: UIApplicationDelegate, UNUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.banner, .sound]) 
+    }
+}

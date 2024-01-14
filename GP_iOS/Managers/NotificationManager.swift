@@ -43,10 +43,10 @@ class NotificationManager {
         }
     }
 
-    func showNotification(fromID: String, details: String) {
+    func showNotification(title: String, body: String) {
         let content = UNMutableNotificationContent()
-        content.title = "New Request"
-        content.body = "From: \(fromID), Details: \(details)"
+        content.title = title
+        content.body = body
         content.sound = UNNotificationSound.default
 
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
@@ -61,34 +61,21 @@ class NotificationManager {
         }
     }
 
-
 //    func showNotification(fromID: String, details: String) {
+//        let content = UNMutableNotificationContent()
+//        content.title = "New Request"
+//        content.body = "From: \(fromID), Details: \(details)"
+//        content.sound = UNNotificationSound.default
 //
-//        let notificationCenter = UNUserNotificationCenter.current()
-//        notificationCenter.requestAuthorization { granted, error in
+//        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+//        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+//
+//        UNUserNotificationCenter.current().add(request) { error in
 //            if let error = error {
-//                // Handle errors
+//                print("Error showing notification: \(error.localizedDescription)")
+//                return
 //            }
-//
-//            guard granted else { return }
-//
-//            let content = UNMutableNotificationContent()
-//            content.title = "New Peer Request"
-//            content.body = "You have a new peer request from \(fromID): \(details)"
-//            content.sound = UNNotificationSound.default
-//
-//            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
-//            let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-//
-//            UNUserNotificationCenter.current().add(request) { error in
-//                if let error = error {
-//                    print("Error showing notification: \(error.localizedDescription)")
-//                    return
-//                }
-//            }
+//            print("Notification scheduled")
 //        }
-//
 //    }
-
-
 }

@@ -11,7 +11,7 @@ enum BoardRouter: BaseRouter {
 
     // MARK: Cases
 
-    case getBoard(regID: String, courseID: String)
+    case getBoard(regID: String, courseID: String, supervisorID: String)
     case saveOrder(board: Board)
 
     // MARK: Paths
@@ -19,8 +19,8 @@ enum BoardRouter: BaseRouter {
     /// Specify the path for each case
     var path: String {
         switch self {
-        case .getBoard(regID: let regID, courseID: let courseID):
-            return "/boards/getBoard/\(courseID)/\(regID)"
+        case .getBoard:
+            return "/boards/getBoard"
         case .saveOrder:
             return "/boards/saveBoard"
         }
@@ -32,7 +32,7 @@ enum BoardRouter: BaseRouter {
     var method: HTTPMethod {
         switch self {
         case .getBoard:
-            return .get
+            return .post
         case .saveOrder:
             return .put
         }
@@ -43,18 +43,12 @@ enum BoardRouter: BaseRouter {
     /// Provide parameters for the request, if applicable
     var parameters: Parameters? {
         switch self {
-        case .getBoard:
-            return nil
-            //        case .saveOrder(board: let board):
-            //            var params: Parameters = [:]
-            //            params["regID"] = board.regID
-            //            params["courseID"] = board.courseID
-            //            params["columns"] = board.columns
-            //            params["tasks"] = board.tasks
-            //            params["supervisorID"] = board.supervisorID
-            //            return params
-            //        }
-            //    }
+        case .getBoard(regID: let regID, courseID: let courseID, supervisorID: let supervisorID):
+            return [
+                "regID" : regID,
+                "courseID" : courseID,
+                "supervisorID" : supervisorID
+            ]
         case .saveOrder(board: let board):
             let encoder = JSONEncoder()
             if let jsonData = try? encoder.encode(board),

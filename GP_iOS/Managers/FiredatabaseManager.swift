@@ -11,13 +11,14 @@ import FirebaseAuth
 
 class FiredatabaseManager {
     static let shared = FiredatabaseManager()
-    private let dbRef = Database.database().reference()
+    private var dbRef: DatabaseReference?
 
     private init() {}
 
-//    func configureFireDatabase() {
-//        FirebaseApp.configure()
-//    }
+    func configureFireDatabase() {
+        FirebaseApp.configure()
+        dbRef = Database.database().reference()
+    }
 
     func signInAnonymously() {
         Auth.auth().signInAnonymously { authResult, error in
@@ -26,36 +27,27 @@ class FiredatabaseManager {
                 print("error signing in to firedatabase")
                 return
             }
-            // Sign in successful
             print("Signed in anonymously")
         }
     }
 
     func sendRequest(from fromID: String, to toID: String, details: String) {
-        let newRequestRef = dbRef.child("requests").childByAutoId()
+        let newRequestRef = dbRef?.child("requests").childByAutoId()
         let requestData = ["from": fromID, "to": toID, "details": details]
-        newRequestRef.setValue(requestData)
+        newRequestRef?.setValue(requestData)
     }
 
     func listenForIncomingRequests() {
         guard let userID = AuthManager.shared.regID else { return }
-        let requestsRef = dbRef.child("requests").queryOrdered(byChild: "to").queryEqual(toValue: userID)
-        requestsRef.observe(.childAdded, with: { snapshot in
+        let requestsRef = dbRef?.child("requests").queryOrdered(byChild: "to").queryEqual(toValue: userID)
+        requestsRef?.observe(.childAdded, with: { snapshot in
             guard let requestInfo = snapshot.value as? [String: Any],
                   let fromID = requestInfo["from"] as? String,
                   let details = requestInfo["details"] as? String else {
                 return
             }
 
-            print(fromID)
-            print(details)
-
-            // Schedule a local notification
-            NotificationManager.shared.showNotification(fromID: fromID, details: details)
-            NotificationManager.shared.checkNotificationSettings()
-
-            // Notify the view controller of the new request
-            //onNewRequest(fromID)
+            NotificationManager.shared.showNotification(title: "New Request", body: "Yoy have a new request from \(fromID)")
         })
     }
 
@@ -63,16 +55,13 @@ class FiredatabaseManager {
         Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
             if let error = error as NSError? {
                 if error.code == AuthErrorCode.userNotFound.rawValue {
-                    // User not found, return with flag
                     completion(false, true)
                 } else {
-                    // Other errors
                     print(error.localizedDescription)
                     completion(false, false)
                 }
                 return
             }
-            // Sign in successful
             completion(true, false)
         }
     }

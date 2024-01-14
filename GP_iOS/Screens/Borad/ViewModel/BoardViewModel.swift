@@ -21,8 +21,9 @@ class BoardViewModel {
 
     func getBoard() {
         guard let regID = AuthManager.shared.regID,
-              let courseID = AppManager.shared.course?.courseID else { return }
-        let route = BoardRouter.getBoard(regID: regID, courseID: courseID)
+              let courseID = AppManager.shared.course?.courseID,
+              let supervisorID = AppManager.shared.course?.supervisorID else { return }
+        let route = BoardRouter.getBoard(regID: regID, courseID: courseID, supervisorID: supervisorID)
         BaseClient.shared.performRequest(router: route, type: Board.self) { [weak self] result in
             switch result {
             case .success(let board):

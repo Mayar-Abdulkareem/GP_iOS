@@ -23,6 +23,5 @@ struct StudentProfile: Codable {
     let name: String
     let phoneNumber: String
     let GPA: String
-    let password: String
     var profileImage: String?
 }

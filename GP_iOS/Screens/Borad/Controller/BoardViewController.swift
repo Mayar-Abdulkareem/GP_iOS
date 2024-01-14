@@ -21,6 +21,7 @@ class BoardViewController: UIViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = UIColor.myLightGray
+        collectionView.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         collectionView.dragInteractionEnabled = true
 
 
@@ -31,8 +32,6 @@ class BoardViewController: UIViewController {
 
         collectionView.dataSource = self
         collectionView.delegate = self
-//        collectionView.dragDelegate = self
-//        collectionView.dropDelegate = self
 
         return collectionView
     }()
@@ -84,8 +83,8 @@ class BoardViewController: UIViewController {
 
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
-            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -16)
         ])
     }
@@ -182,74 +181,6 @@ extension BoardViewController: UICollectionViewDelegate,
     }
 }
 
-//extension BoardViewController: UICollectionViewDragDelegate {
-//    func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
-//        guard let column = viewModel.board?.columns?[indexPath.item] else {
-//            return []
-//        }
-//
-//        do {
-//            let data = try JSONEncoder().encode(column)
-//            let itemProvider = NSItemProvider(item: data as NSData, typeIdentifier: UTType.json.identifier)
-//            let dragItem = UIDragItem(itemProvider: itemProvider)
-//
-//            let removeColumnClosure: (Column) -> Void = { [weak self] column in
-//                self?.viewModel.board?.columns?.remove(at: indexPath.item)
-////                self?.viewModel.removeColumnByID(with: column.id)
-//            }
-//
-//            session.localContext = (collectionView, indexPath, removeColumnClosure)
-//
-//            return [dragItem]
-//        } catch {
-//            print("Failed to encode column: \(error)")
-//            return []
-//        }
-//    }
-//}
-//
-//extension BoardViewController: UICollectionViewDropDelegate {
-//    func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
-//        guard let destinationIndexPath = coordinator.destinationIndexPath else {
-//            print("Destination index path is nil.")
-//            return
-//        }
-//
-//        for item in coordinator.items {
-//            item.dragItem.itemProvider.loadDataRepresentation(forTypeIdentifier: UTType.json.identifier) { (data, error) in
-//                DispatchQueue.main.async {
-//                    guard let data = data,
-//                          let columnBeingMoved = try? JSONDecoder().decode(Column.self, from: data) else {
-//                        print("Error occurred during drop: \(error?.localizedDescription ?? "Unknown error")")
-//                        return
-//                    }
-//
-//                    if let sourceContext = coordinator.session.localDragSession?.localContext as? (UICollectionView, IndexPath, (Column) -> Void),
-//                       sourceContext.0 == collectionView {
-//                        // Reordering within the same collection view
-//                        let sourceIndex = sourceContext.1.item
-//                        self.viewModel.board?.columns?.remove(at: sourceIndex)
-//                        self.viewModel.board?.columns?.insert(columnBeingMoved, at: destinationIndexPath.item)
-//                        collectionView.performBatchUpdates({
-//                            collectionView.moveItem(at: IndexPath(item: sourceIndex, section: 0), to: destinationIndexPath)
-//                        }, completion: nil)
-//                    }
-//                }
-//            }
-//        }
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UICollectionViewDropProposal {
-//        let intent: UICollectionViewDropProposal.Intent
-//        if let indexPath = destinationIndexPath, collectionView.cellForItem(at: indexPath) != nil {
-//            intent = .insertAtDestinationIndexPath
-//        } else {
-//            intent = .insertIntoDestinationIndexPath
-//        }
-//
-//        return UICollectionViewDropProposal(operation: session.localDragSession == nil ? .copy : .move, intent: intent)
-//    }
-//}
 
 extension BoardViewController: BoardCollectionViewCellDelegate {
     func editTitle(title: String, columnIndexPath: Int) {
