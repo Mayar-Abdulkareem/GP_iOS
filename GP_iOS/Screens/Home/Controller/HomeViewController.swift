@@ -24,8 +24,8 @@ class HomeViewController: UIViewController {
         )
 
         tableView.register(
-            HomeAboutMeCell.self,
-            forCellReuseIdentifier: HomeAboutMeCell.identifier
+            HeaderTableViewCell.self,
+            forCellReuseIdentifier: HeaderTableViewCell.identifier
         )
 
         tableView.dataSource = self
@@ -125,10 +125,16 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         switch viewModel.sections[indexPath.section] {
         case .header:
             let cell = tableView.dequeueReusableCell(
-                withIdentifier: HomeAboutMeCell.identifier,
+                withIdentifier: HeaderTableViewCell.identifier,
                 for: indexPath
-            ) as? HomeAboutMeCell
-            cell?.configureCell(name: viewModel.profile?.name ?? "")
+            ) as? HeaderTableViewCell
+            cell?.configureCell(
+                model: HeaderTableViewCellModel(
+                    title: "Welcome \(viewModel.profile?.name ?? "")",
+                    subtitle: "You're one step closer to graduating on each launch!",
+                    image: .project
+                )
+            )
             return cell ?? UITableViewCell()
 
         case .courses:

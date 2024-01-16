@@ -26,10 +26,14 @@ extension String {
         case doctorInitital
         case detailsTitle
         case saveTitle
+        case closeTitle
 
         /// Search bar
         case searchByProjectName
         case searchByItemName
+        case driveLink
+        case projectType
+        case year
 
         /// Top Alert
         /// - Title:
@@ -119,7 +123,7 @@ extension String {
         case deleteColumn
         case addColumn
         case addCard
-        
+
         var localized: String {
             return String(localizedKey: self)
         }

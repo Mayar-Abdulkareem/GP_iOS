@@ -5,7 +5,7 @@
 //  Created by Mayar Abdulkareem on 03/01/2024.
 //
 
-import Foundation
+import UIKit.UIColor
 
 class MatchingPeerManager {
     static let shared = MatchingPeerManager()
@@ -20,5 +20,36 @@ class MatchingPeerManager {
         }
 
         return vectorString
+    }
+
+    func getMySkillsAttributedString() -> NSAttributedString {
+        let categories = AppManager.shared.categories
+        let skillsVector = AppManager.shared.profile?.skillsVector ?? ""
+
+        let attributedResult = NSMutableAttributedString()
+        var index = 0
+
+        for category in categories {
+            let categoryTitle = NSAttributedString(string: category.title + ": ",
+                                                   attributes: [.foregroundColor: UIColor.black])
+            attributedResult.append(categoryTitle)
+
+            var categorySkills = [String]()
+            for skill in category.skills {
+                let char = skillsVector.index(skillsVector.startIndex, offsetBy: index)
+                if skillsVector[char] == "1" {
+                    categorySkills.append(skill.title)
+                }
+                index += 1
+            }
+            let skillsString = categorySkills.joined(separator: ", ")
+            let skillsAttributedString = NSAttributedString(string: skillsString,
+                                                            attributes: [.foregroundColor: UIColor.gray])
+            attributedResult.append(skillsAttributedString)
+
+            let newline = NSAttributedString(string: "\n")
+            attributedResult.append(newline)
+        }
+        return attributedResult
     }
 }

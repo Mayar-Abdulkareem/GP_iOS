@@ -92,7 +92,7 @@ extension CourseViewController: UICollectionViewDelegate,
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch indexPath.item {
         case 1:
-            coordinator?.showPeerViewController()
+            coordinator?.showPeerFlow()
         case 2:
             coordinator?.showBoardFlow()
         case 3:

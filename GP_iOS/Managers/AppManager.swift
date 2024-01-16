@@ -13,6 +13,7 @@ class AppManager {
     var prevProject: PreviousProject?
     var item: StoreItem?
     var profile: StudentProfile?
+    var categories: [Category] = []
 
     private init() {}
 }

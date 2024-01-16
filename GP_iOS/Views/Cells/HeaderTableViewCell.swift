@@ -1,5 +1,5 @@
 //
-//  HomeAboutMeCell.swift
+//  HeaderTableViewCell.swift
 //  GP_iOS
 //
 //  Created by Mayar Abdulkareem on 19/12/2023.
@@ -7,10 +7,16 @@
 
 import UIKit
 
-class HomeAboutMeCell: UITableViewCell {
-    static let identifier = "HomeAboutMeCell"
+struct HeaderTableViewCellModel {
+    let title: String
+    let subtitle: String
+    let image: UIImage
+}
 
-    private let nameLabel: UILabel = {
+class HeaderTableViewCell: UITableViewCell {
+    static let identifier = "HeaderTableViewCell"
+
+    private let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
@@ -19,13 +25,12 @@ class HomeAboutMeCell: UITableViewCell {
         return label
     }()
 
-    private let descLabel: UILabel = {
+    private let subtitleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor.gray
         label.font = UIFont.systemFont(ofSize: 14)
         label.numberOfLines = 0
-        label.text = "You're one step closer to graduating on each launch!"
         return label
     }()
 
@@ -39,6 +44,7 @@ class HomeAboutMeCell: UITableViewCell {
     private let viewWithShadow: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.addShadow()
         return view
     }()
 
@@ -62,14 +68,10 @@ class HomeAboutMeCell: UITableViewCell {
             trailing: 20
         )
 
-        viewWithShadow.addSubview(nameLabel)
-        viewWithShadow.addSubview(descLabel)
-        viewWithShadow.backgroundColor = .white
-        viewWithShadow.addShadow()
-
+        viewWithShadow.addSubview(titleLabel)
+        viewWithShadow.addSubview(subtitleLabel)
         viewWithShadow.addSubview(image)
-        viewWithShadow.addSubview(nameLabel)
-        viewWithShadow.addSubview(descLabel)
+        viewWithShadow.backgroundColor = .myPrimary
 
         NSLayoutConstraint.activate([
             image.topAnchor.constraint(greaterThanOrEqualTo: viewWithShadow.topAnchor),
@@ -78,18 +80,20 @@ class HomeAboutMeCell: UITableViewCell {
             image.widthAnchor.constraint(equalToConstant: 170),
             image.heightAnchor.constraint(equalToConstant: 170),
 
-            nameLabel.leadingAnchor.constraint(equalTo: image.trailingAnchor, constant: 5),
-            nameLabel.topAnchor.constraint(equalTo: viewWithShadow.topAnchor, constant: 30),
-            nameLabel.trailingAnchor.constraint(equalTo: viewWithShadow.trailingAnchor, constant: -10),
-            nameLabel.bottomAnchor.constraint(equalTo: descLabel.topAnchor, constant: -10),
+            titleLabel.leadingAnchor.constraint(equalTo: image.trailingAnchor, constant: 5),
+            titleLabel.topAnchor.constraint(equalTo: viewWithShadow.topAnchor, constant: 30),
+            titleLabel.trailingAnchor.constraint(equalTo: viewWithShadow.trailingAnchor, constant: -10),
+            titleLabel.bottomAnchor.constraint(equalTo: subtitleLabel.topAnchor, constant: -10),
 
-            descLabel.leadingAnchor.constraint(equalTo: image.trailingAnchor, constant: 5),
-            descLabel.trailingAnchor.constraint(equalTo: viewWithShadow.trailingAnchor, constant: -10),
-            descLabel.bottomAnchor.constraint(equalTo: viewWithShadow.bottomAnchor, constant: -30)
+            subtitleLabel.leadingAnchor.constraint(equalTo: image.trailingAnchor, constant: 5),
+            subtitleLabel.trailingAnchor.constraint(equalTo: viewWithShadow.trailingAnchor, constant: -10),
+            subtitleLabel.bottomAnchor.constraint(equalTo: viewWithShadow.bottomAnchor, constant: -30)
         ])
     }
 
-    func configureCell(name: String) {
-        nameLabel.text = "Welcome\n\(name)"
+    func configureCell(model: HeaderTableViewCellModel) {
+        titleLabel.text = model.title
+        subtitleLabel.text = model.subtitle
+        image.image = model.image
     }
 }

@@ -147,6 +147,7 @@ class RegisterViewModel {
         BaseClient.shared.performRequest(router: route, type: Request.self) { [weak self] result in
             switch result {
             case .success(let studentRequet):
+
                 switch studentRequet.type {
                 case "supervisor":
                     self?.currentStep = 2

@@ -256,6 +256,23 @@
         }
       }
     },
+    "closeTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اغلاق"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close"
+          }
+        }
+      }
+    },
     "contactInfo" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -388,6 +405,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dr."
+          }
+        }
+      }
+    },
+    "driveLink" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "افتح رابط الدرايف"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open the drive link"
           }
         }
       }
@@ -629,6 +663,9 @@
           }
         }
       }
+    },
+    "Key" : {
+      "extractionState" : "manual"
     },
     "loginButtonKey" : {
       "extractionState" : "manual",
@@ -982,6 +1019,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Profile"
+          }
+        }
+      }
+    },
+    "projectType" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "نوع المشروع:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Project Type:"
           }
         }
       }
@@ -1425,6 +1479,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Login Today, Graduate Tomorrow!"
+          }
+        }
+      }
+    },
+    "year" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "السنة: "
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Year: "
           }
         }
       }

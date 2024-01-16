@@ -27,6 +27,7 @@ class BaseClient {
         // type: T.Type,
         router: BaseRouter,
         type: T.Type,
+      //  completion: @escaping (Result<T, Error>) -> Void
         completion: @escaping (Result<T, AFError>) -> Void
     ) {
         AF.request(router)
@@ -39,11 +40,14 @@ class BaseClient {
                 case .failure(let error):
                     if let data = response.data, let jsonString = String(data: data, encoding: .utf8) {
                         print("Response JSON: \(jsonString)")
+      //                  completion(.failure(jsonString))
                     }
-                    completion(.failure(error))
+//                    else {
+                        completion(.failure(error))
+ //                   }
                 }
             }
-    }
+            }
 
     func uploadImage<T: Codable>(
         image: UIImage?,
@@ -76,3 +80,7 @@ class BaseClient {
             }
     }
 }
+
+//extension String: Error, LocalizedError {
+//    public var errorDescription: String? { return self }
+//}

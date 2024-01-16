@@ -80,6 +80,9 @@ extension UIImage {
         case GPA = "medal"
         case camera = "camera.fill"
 
+        /// Peer
+        case pencil = "pencil.circle.fill"
+
         ///  Get image
         var image: UIImage {
             return UIImage(systemImages: self)
