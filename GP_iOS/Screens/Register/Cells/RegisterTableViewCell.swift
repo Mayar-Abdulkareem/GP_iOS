@@ -2,7 +2,7 @@
 //  RegisterTableViewCell.swift
 //  GP_iOS
 //
-//  Created by FTS on 03/01/2024.
+//  Created by Mayar Abdulkareem on 03/01/2024.
 //
 
 import UIKit

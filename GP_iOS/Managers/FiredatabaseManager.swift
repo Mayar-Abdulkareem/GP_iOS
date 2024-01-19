@@ -37,6 +37,28 @@ class FiredatabaseManager {
         newRequestRef?.setValue(requestData)
     }
 
+//    func deleteRequest(fromID: String, toID: String) {
+//        dbRef?.child("requests").queryOrdered(byChild: "from").queryEqual(toValue: fromID).observeSingleEvent(of: .value, with: { snapshot in
+//            if let requests = snapshot.value as? [String: AnyObject] {
+//                for (key, value) in requests {
+//                    if let request = value as? [String: AnyObject], let to = request["to"] as? String, to == toID {
+//                        self.dbRef?.child("requests").child(key).removeValue { error, _ in
+//                            if let error = error {
+//                                print("Error deleting request: \(error.localizedDescription)")
+//                            } else {
+//                                print("Request successfully deleted")
+//                            }
+//                        }
+//                        break
+//                    }
+//                }
+//            }
+//        }) { error in
+//            print(error.localizedDescription)
+//        }
+//    }
+
+
     func listenForIncomingRequests() {
         guard let userID = AuthManager.shared.regID else { return }
         let requestsRef = dbRef?.child("requests").queryOrdered(byChild: "to").queryEqual(toValue: userID)
@@ -47,7 +69,17 @@ class FiredatabaseManager {
                 return
             }
 
-            NotificationManager.shared.showNotification(title: "New Request", body: "Yoy have a new request from \(fromID)")
+            // Show the notification
+            NotificationManager.shared.showNotification(title: "Notification", body: details)
+
+            // Delete the request from Firebase
+            snapshot.ref.removeValue { error, _ in
+                if let error = error {
+                    print("Error deleting request: \(error.localizedDescription)")
+                } else {
+                    print("Request successfully deleted")
+                }
+            }
         })
     }
 

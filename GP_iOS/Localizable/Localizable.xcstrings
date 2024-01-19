@@ -664,9 +664,6 @@
         }
       }
     },
-    "Key" : {
-      "extractionState" : "manual"
-    },
     "loginButtonKey" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1155,6 +1152,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Your request was successfully sent"
+          }
+        }
+      }
+    },
+    "requestsTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الطلبات"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Requests"
           }
         }
       }

@@ -48,6 +48,11 @@ class CourseCoordinator: Coordinator {
         navigationController.pushViewController(submissionsViewController, animated: true)
     }
 
+    func showRequestsViewController() {
+        let requestsViewController = RequestsViewController()
+        navigationController.pushViewController(requestsViewController, animated: true)
+    }
+
     func dismiss() {
         navigationController.dismiss(animated: true)
     }

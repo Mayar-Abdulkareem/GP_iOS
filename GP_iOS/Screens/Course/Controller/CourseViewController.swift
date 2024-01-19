@@ -97,6 +97,8 @@ extension CourseViewController: UICollectionViewDelegate,
             coordinator?.showBoardFlow()
         case 3:
             coordinator?.showSubmissionsViewController()
+        case 4:
+            coordinator?.showRequestsViewController()
         default:
             print("Something Is Wrong")
         }

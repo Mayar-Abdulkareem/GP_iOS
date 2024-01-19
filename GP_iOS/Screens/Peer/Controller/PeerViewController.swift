@@ -85,6 +85,7 @@ class PeerViewController: UIViewController {
         viewModel.onRequestSent = { [weak self]  in
             self?.stopLoading()
             self?.showStatus(message: "Waiting for your peer approval")
+            self?.footerView.isHidden = false
             TopAlertManager.show(title: "Success", subTitle: "Successfully sent a request", type: .success)
         }
 
@@ -93,6 +94,7 @@ class PeerViewController: UIViewController {
                 self?.stopLoading()
                 self?.hideStatus()
                 self?.footerView.isHidden = true
+                TopAlertManager.show(title: "Success", subTitle: "Successfully canceled your request", type: .success)
             }
         }
 

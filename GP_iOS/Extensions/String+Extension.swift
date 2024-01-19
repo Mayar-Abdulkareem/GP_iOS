@@ -59,6 +59,7 @@ extension String {
         case choosePeerTitle
         case boardTitle
         case submissionTitle
+        case requestsTitle
 
         /// Store
         case itemDetailsTitle

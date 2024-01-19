@@ -83,6 +83,9 @@ extension UIImage {
         /// Peer
         case pencil = "pencil.circle.fill"
 
+        /// Requests
+        case requests = "envelope.badge.person.crop"
+
         ///  Get image
         var image: UIImage {
             return UIImage(systemImages: self)

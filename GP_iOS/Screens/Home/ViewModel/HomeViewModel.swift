@@ -45,6 +45,10 @@ class HomeViewModel {
         CourseCollectionViewCellModel(
             title: String.LocalizedKeys.submissionTitle.localized,
             icon: UIImage.SystemImages.submission.image
+        ),
+        CourseCollectionViewCellModel(
+            title: String.LocalizedKeys.requestsTitle.localized,
+            icon: UIImage.SystemImages.requests.image
         )
     ]
 
