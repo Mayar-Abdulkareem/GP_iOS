@@ -14,6 +14,7 @@ enum RequestRouter: BaseRouter {
     case getPeerRequests(regID: String)
     case acceptPeerRequest(regID: String, peerID: String)
     case declinePeerRequest(peerID: String)
+    case updateSkillsVector(regID: String, skillsVector: String)
 
     // MARK: Paths
 
@@ -26,6 +27,8 @@ enum RequestRouter: BaseRouter {
             return "/requests/acceptPeerRequest"
         case .declinePeerRequest:
             return "/requests/declinePeerRequest"
+        case .updateSkillsVector:
+            return "/student/updateSkillsVector"
         }
     }
 
@@ -51,6 +54,11 @@ enum RequestRouter: BaseRouter {
         case .declinePeerRequest(peerID: let peerID):
             return [
                 "senderID": peerID
+            ]
+        case .updateSkillsVector(regID: let regID, skillsVector: let skillsVector):
+            return [
+                "regID": regID,
+                "skillsVector": skillsVector
             ]
         }
     }

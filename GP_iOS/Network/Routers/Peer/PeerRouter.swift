@@ -13,6 +13,9 @@ enum PeerRouter: BaseRouter {
 
     case sendPeerRequest(regID: String, peerID: String)
     case cancelPeerRequest(regID: String)
+    case matchWithSameSkills(regID: String, courseID: String)
+    case matchWithOppositeSkills(regID: String, courseID: String)
+    case matchWithCustommSkills(regID: String, courseID: String, studentVector: String)
 
     // MARK: Paths
 
@@ -21,8 +24,14 @@ enum PeerRouter: BaseRouter {
         switch self {
         case .sendPeerRequest:
             return "/requests/sendPeerRequest"
-        case .cancelPeerRequest(regID: let regID):
+        case .cancelPeerRequest:
             return "/requests/cancelPeerRequest"
+        case .matchWithSameSkills:
+            return "/peerMatching/sameSkills"
+        case .matchWithOppositeSkills:
+            return "/peerMatching/oppositeSkills"
+        case .matchWithCustommSkills:
+            return "/peerMatching/customSkills"
         }
     }
 
@@ -35,6 +44,12 @@ enum PeerRouter: BaseRouter {
             return .put
         case .cancelPeerRequest:
             return .put
+        case .matchWithSameSkills:
+            return .post
+        case .matchWithOppositeSkills:
+            return .post
+        case .matchWithCustommSkills:
+            return .post
         }
     }
 
@@ -51,6 +66,22 @@ enum PeerRouter: BaseRouter {
         case .cancelPeerRequest(regID: let regID):
             return [
                 "senderID": regID
+            ]
+        case .matchWithSameSkills(regID: let regID, courseID: let courseID):
+            return [
+                "regID": regID,
+                "courseID": courseID
+            ]
+        case .matchWithOppositeSkills(regID: let regID, courseID: let courseID):
+            return [
+                "regID": regID,
+                "courseID": courseID
+            ]
+        case .matchWithCustommSkills(regID: let regID, courseID: let courseID, studentVector: let studentVector):
+            return [
+                "regID": regID,
+                "courseID": courseID,
+                "studentVector": studentVector
             ]
         }
     }

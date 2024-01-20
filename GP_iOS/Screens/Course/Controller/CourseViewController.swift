@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CourseViewController: UIViewController {
+class CourseViewController: UIViewController, GradProNavigationControllerProtocol {
     weak var coordinator: CourseCoordinator?
     var viewModel: HomeViewModel?
 
@@ -18,7 +18,7 @@ class CourseViewController: UIViewController {
 
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = UIColor.myLightGray
+        collectionView.backgroundColor = UIColor.myPrimary
         collectionView.register(
             CourseCollectionViewCell.self,
             forCellWithReuseIdentifier: CourseCollectionViewCell.identifier
@@ -35,10 +35,10 @@ class CourseViewController: UIViewController {
         super.viewDidLoad()
         collectionView.dataSource = self
         collectionView.delegate = self
-        navigationController?.showDefaultNavigationBar(
-            title: String.LocalizedKeys.courseTitle.localized,
-            withCloseButton: true
-        )
+//        navigationController?.showDefaultNavigationBar(
+//            title: String.LocalizedKeys.courseTitle.localized,
+//            withCloseButton: true
+//        )
         configureViews()
     }
 
@@ -54,9 +54,9 @@ class CourseViewController: UIViewController {
     }
 
     private func configureViews() {
-        view.backgroundColor = UIColor.myLightGray
-
+        view.backgroundColor = UIColor.myPrimary
         view.addViewWithConstant(collectionView, constant: 8)
+        addNavBar(with: String.LocalizedKeys.courseTitle.localized)
     }
 }
 

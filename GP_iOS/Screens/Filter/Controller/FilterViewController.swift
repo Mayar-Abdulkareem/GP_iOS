@@ -11,7 +11,7 @@ protocol FilterViewControllerDelegate: AnyObject {
     func filterViewControllerDismissed()
 }
 
-class FilterViewController: UIViewController {
+class FilterViewController: UIViewController, GradProNavigationControllerProtocol {
 
     weak var delegate: FilterViewControllerDelegate?
 
@@ -20,6 +20,7 @@ class FilterViewController: UIViewController {
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.backgroundColor = .myPrimary
 
         tableView.register(
             FilterTableViewCell.self,
@@ -36,51 +37,41 @@ class FilterViewController: UIViewController {
         return tableView
     }()
 
-    private lazy var filterButton = {
-        let button = UIButton(type: .system)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle(String.LocalizedKeys.filterTitle.localized, for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
-        button.backgroundColor = UIColor.mySecondary
-        button.tintColor = UIColor.myPrimary
-        button.layer.cornerRadius = 10
-
-        button.addAction(UIAction { [weak self] _ in
-            self?.delegate?.filterViewControllerDismissed()
-            self?.viewModel.previousSelection = self?.viewModel.selectedFilterRows ?? []
-            self?.dismiss(animated: true)
-
-        }, for: .primaryActionTriggered)
-        return button
+    private lazy var footerView = {
+        let footerView = FooterButtonView(
+            primaryButtonType: .disabled,
+            primaryButtonTitle: String.LocalizedKeys.filterTitle.localized,
+            secondaryButtonType: .disabled,
+            secondaryButtonTitle: nil
+        )
+        footerView.translatesAutoresizingMaskIntoConstraints = false
+        footerView.delegate = self
+        return footerView
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.showDefaultNavigationBar(
-            title: String.LocalizedKeys.filterTitle.localized,
-            withCloseButton: true
-        )
         updateFilterButtonState()
         setupClearButton()
         configureViews()
     }
 
     private func configureViews() {
-        view.backgroundColor = .myLightGray
+        view.backgroundColor = .myPrimary
 
         view.addSubview(tableView)
-        view.addSubview(filterButton)
+        view.addSubview(footerView)
+        addNavBar(with: String.LocalizedKeys.filterTitle.localized)
 
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 
-            filterButton.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 10),
-            filterButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40),
-            filterButton.widthAnchor.constraint(equalToConstant: 180),
-            filterButton.heightAnchor.constraint(equalToConstant: 50),
-            filterButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            footerView.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 10),
+            footerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            footerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            footerView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40),
         ])
     }
 
@@ -91,6 +82,7 @@ class FilterViewController: UIViewController {
             target: self,
             action: #selector(clearButtonTapped)
         )
+        clearButton.tintColor = .mySecondary
         navigationItem.rightBarButtonItem = clearButton
     }
 
@@ -104,9 +96,12 @@ class FilterViewController: UIViewController {
     }
 
     func updateFilterButtonState() {
-        let isSelectionChanged = viewModel.selectedFilterRows != viewModel.previousSelection
-        // let isSelectionNotEmpty = !viewModel.selectedFilterRows.isEmpty
-        filterButton.isEnabled = isSelectionChanged
+        let isSelectionChanged = (!viewModel.selectedFilterRows.isEmpty) && (viewModel.selectedFilterRows != viewModel.previousSelection)
+        if isSelectionChanged {
+            footerView.changePrimaryButtonType(type: .primary)
+        } else {
+            footerView.changePrimaryButtonType(type: .disabled)
+        }
     }
 
     @objc func clearButtonTapped() {
@@ -170,5 +165,13 @@ extension FilterViewController: UITableViewDataSource, UITableViewDelegate {
         }
         tableView.reloadData()
         updateFilterButtonState()
+    }
+}
+
+extension FilterViewController: FooterButtonViewDelegate {
+    func primaryButtonTapped() {
+        delegate?.filterViewControllerDismissed()
+        viewModel.previousSelection = viewModel.selectedFilterRows 
+        dismiss(animated: true)
     }
 }

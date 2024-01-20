@@ -7,9 +7,15 @@
 
 import UIKit
 
+protocol EditMySkillsProtocol: AnyObject {
+    func editButtonTapped()
+}
+
 class PeerMatchingHeaderView: UIView {
 
-    private let button: UIButton = {
+    weak var delegate: EditMySkillsProtocol?
+
+    private lazy var button: UIButton = {
         let button = UIButton(type: .system)
         var configuration = UIButton.Configuration.plain()
         configuration.imagePadding = 0
@@ -19,6 +25,10 @@ class PeerMatchingHeaderView: UIView {
         button.imageView?.contentMode = .scaleAspectFill
         button.tintColor = .mySecondary
         button.translatesAutoresizingMaskIntoConstraints = false
+
+        button.addAction(UIAction { [weak self] _ in
+            self?.delegate?.editButtonTapped()
+        }, for: .primaryActionTriggered)
         return button
     }()
 
