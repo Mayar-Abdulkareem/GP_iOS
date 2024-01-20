@@ -52,4 +52,22 @@ class MatchingPeerManager {
         }
         return attributedResult
     }
+
+    func getSelectedSkills(categories: [Category]) -> [Category] {
+        var mutableCategories = categories
+        let skillsVector = AppManager.shared.profile?.skillsVector ?? ""
+
+        var accIndex = 0
+
+        for (index, category) in mutableCategories.enumerated() {
+            for (skillsIndex, skill) in category.skills.enumerated() {
+                let charIndex = skillsVector.index(skillsVector.startIndex, offsetBy: accIndex)
+                if skillsVector[charIndex] == "1" {
+                    mutableCategories[index].skills[skillsIndex].isSelected = true
+                }
+                accIndex += 1
+            }
+        }
+        return mutableCategories
+    }
 }

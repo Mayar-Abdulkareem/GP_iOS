@@ -30,7 +30,7 @@ class AboutCourseCell: UICollectionViewCell {
 
     private let courseDetailView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.myLightGray
+        view.backgroundColor = UIColor.myPrimary
         return view
     }()
 
@@ -45,6 +45,7 @@ class AboutCourseCell: UICollectionViewCell {
     }
 
     private func configureViews() {
+        backgroundColor = .myPrimary
         addViewWithConstant(courseDetailView, constant: 8)
         courseDetailView.addSubview(courseLabel)
         courseDetailView.addSubview(descriptionLabel)

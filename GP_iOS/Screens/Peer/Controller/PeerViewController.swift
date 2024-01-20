@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PeerViewController: UIViewController {
+class PeerViewController: UIViewController, GradProNavigationControllerProtocol {
     weak var coordinator: PeerCoordinator?
     private let viewModel = PeerViewModel()
 
@@ -68,10 +68,6 @@ class PeerViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.showDefaultNavigationBar(
-            title: String.LocalizedKeys.choosePeerTitle.localized,
-            withCloseButton: false
-        )
         bindWithViewModel()
         configureViews()
     }
@@ -128,11 +124,14 @@ class PeerViewController: UIViewController {
     }
 
     private func configureViews() {
-        view.backgroundColor = UIColor.myLightGray
+        view.backgroundColor = UIColor.myPrimary
 
         view.addSubview(tableView)
         view.addSubview(statusLabel)
         view.addSubview(footerView)
+
+        configureNavBarTitle(title: String.LocalizedKeys.choosePeerTitle.localized)
+        addSeparatorView()
 
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),

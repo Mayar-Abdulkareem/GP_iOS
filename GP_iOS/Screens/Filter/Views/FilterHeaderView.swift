@@ -32,6 +32,7 @@ class FilterHeaderView: UITableViewHeaderFooterView {
     }
 
     private func configureViews() {
+        backgroundColor = .myLightGray
         addSubview(label)
 
         NSLayoutConstraint.activate([

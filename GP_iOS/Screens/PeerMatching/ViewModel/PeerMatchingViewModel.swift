@@ -2,7 +2,7 @@
 //  PeerMatchingViewModel.swift
 //  GP_iOS
 //
-//  Created by FTS on 15/01/2024.
+//  Created by Mayar Abdulkareem on 15/01/2024.
 //
 
 import Foundation
@@ -33,6 +33,14 @@ enum PeerMatchingSectionTypes: Int, CaseIterable {
 class PeerMatchingViewModel {
     let sections = PeerMatchingSectionTypes.allCases
 
+    var onShowError: ((_ msg: String) -> Void)?
+    var onCategoriesFetched: (() -> Void)?
+    var onPeerMatched: (() -> Void)?
+
+    var customSkillsSelected = false
+    var customSkills: String?
+    var matchedStudents: [Peer] = []
+
     let peerSkillsTitles = [
         "Skill Mirror",
         "Skill Contrast",
@@ -44,9 +52,6 @@ class PeerMatchingViewModel {
         "Connect with peers who have skills that complement yours.",
         "Specify and search for peers with custom skill sets."
     ]
-
-    var onCategoriesFetched: (() -> Void)?
-    var onShowError: ((_ msg: String) -> Void)?
 
     var selectedIndex = -1
 
@@ -64,9 +69,34 @@ class PeerMatchingViewModel {
         }
     }
 
+    func matchWithPeer() {
+        guard let courseID = AppManager.shared.course?.courseID,
+              let regID = AuthManager.shared.regID else { return }
+        var route: PeerRouter
+        if customSkillsSelected {
+            guard let customSkills = customSkills else { return }
+            route = PeerRouter.matchWithCustommSkills(regID: regID, courseID: courseID, studentVector: customSkills)
+        } else if (selectedIndex == 0) {
+            route = PeerRouter.matchWithSameSkills(regID: regID, courseID: courseID)
+        } else {
+            route = PeerRouter.matchWithOppositeSkills(regID: regID, courseID: courseID)
+        }
+        BaseClient.shared.performRequest(router: route, type: [Peer].self) { [weak self] result in
+            switch result {
+            case .success(let students):
+                self?.matchedStudents = students
+                self?.onPeerMatched?()
+            case .failure(let error):
+                self?.onShowError?(error.localizedDescription)
+            }
+        }
+    }
+
     func getCellModel(index: Int) -> PeerSkillsTableViewCellModel {
         var iconType: PeerCellIconType
-        if (index == peerSkillsTitles.count - 1) {
+        if (index == peerSkillsTitles.count - 1 && customSkillsSelected) {
+            iconType = .selected
+        } else if (index == peerSkillsTitles.count - 1) {
             iconType = PeerCellIconType.viewMore
         } else if (selectedIndex == index){
             iconType = .selected

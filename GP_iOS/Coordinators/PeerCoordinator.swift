@@ -11,6 +11,7 @@ class PeerCoordinator: Coordinator {
     var navigationController: UINavigationController
     var childCoordinators = [Coordinator]()
     var parentCoordinator: CourseCoordinator?
+    var peerMatchingNavController: UINavigationController?
 
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -37,13 +38,21 @@ class PeerCoordinator: Coordinator {
     }
 
     func showMatchingPeerViewController() {
-
         let peerMatchingViewController = PeerMatchingViewController()
+        peerMatchingViewController.coordinator = self
         //        if let topViewController = navigationController.topViewController as? PeerViewController {
         //            matchingPeerPeerViewController.delegate = topViewController
         //        }
-        let navController = UINavigationController(rootViewController: peerMatchingViewController)
+        peerMatchingNavController = UINavigationController(rootViewController: peerMatchingViewController)
+        guard let navController = peerMatchingNavController else { return }
         navigationController.present(navController, animated: true)
         //   }
+    }
+
+    func showSkillsViewController(categories: [Category], context: SkillsViewType, delegate: SkillsViewControllerProtocol) {
+        guard let peerMatchingNavController = peerMatchingNavController else { return }
+        let skillsViewController = SkillsViewController(categories: categories, context: context)
+        skillsViewController.delegate = delegate
+        peerMatchingNavController.pushViewController(skillsViewController, animated: true)
     }
 }

@@ -50,6 +50,9 @@
 		2F81DEA32B5AC27300C88FE6 /* RequestsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F81DEA22B5AC27300C88FE6 /* RequestsViewModel.swift */; };
 		2F81DEA62B5AC32A00C88FE6 /* RequestRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F81DEA52B5AC32A00C88FE6 /* RequestRouter.swift */; };
 		2F81DEA82B5ACE1B00C88FE6 /* RequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F81DEA72B5ACE1B00C88FE6 /* RequestsViewController.swift */; };
+		2F81DEAC2B5B26B500C88FE6 /* SkillsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F81DEAB2B5B26B500C88FE6 /* SkillsViewController.swift */; };
+		2F81DEAF2B5B28BF00C88FE6 /* SkillsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F81DEAE2B5B28BF00C88FE6 /* SkillsViewModel.swift */; };
+		2F81DEB22B5C69D400C88FE6 /* Peer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F81DEB12B5C69D400C88FE6 /* Peer.swift */; };
 		2F9E719F2B2FCA2A00767A4D /* ProjectDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9E719E2B2FCA2A00767A4D /* ProjectDetailsViewController.swift */; };
 		2F9E71A32B32EAC300767A4D /* BuildConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9E71A22B32EAC300767A4D /* BuildConfiguration.swift */; };
 		2F9E71CC2B35A17C00767A4D /* LabelIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9E71CB2B35A17B00767A4D /* LabelIconView.swift */; };
@@ -198,6 +201,9 @@
 		2F81DEA22B5AC27300C88FE6 /* RequestsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsViewModel.swift; sourceTree = "<group>"; };
 		2F81DEA52B5AC32A00C88FE6 /* RequestRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestRouter.swift; sourceTree = "<group>"; };
 		2F81DEA72B5ACE1B00C88FE6 /* RequestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsViewController.swift; sourceTree = "<group>"; };
+		2F81DEAB2B5B26B500C88FE6 /* SkillsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsViewController.swift; sourceTree = "<group>"; };
+		2F81DEAE2B5B28BF00C88FE6 /* SkillsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsViewModel.swift; sourceTree = "<group>"; };
+		2F81DEB12B5C69D400C88FE6 /* Peer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Peer.swift; sourceTree = "<group>"; };
 		2F9E719E2B2FCA2A00767A4D /* ProjectDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailsViewController.swift; sourceTree = "<group>"; };
 		2F9E71A22B32EAC300767A4D /* BuildConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildConfiguration.swift; sourceTree = "<group>"; };
 		2F9E71CB2B35A17B00767A4D /* LabelIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelIconView.swift; sourceTree = "<group>"; };
@@ -340,12 +346,13 @@
 		2F4490A22B0578A1002B6975 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				2F81DE9C2B5ABF2100C88FE6 /* Requests */,
+				2F81DEA92B5B266700C88FE6 /* Skills */,
 				2F81DE8A2B55937B00C88FE6 /* PeerMatching */,
 				2F81DE722B5476AD00C88FE6 /* SelectPeer */,
 				2F9E71A82B33057500767A4D /* Peer */,
 				2F9E71A92B33058100767A4D /* Submissions */,
 				2F9E71C62B3333FC00767A4D /* Announcement */,
+				2F81DE9C2B5ABF2100C88FE6 /* Requests */,
 				2FFE0ED72B4D89450038F2F3 /* Task */,
 				2F9E71A72B33056B00767A4D /* Borad */,
 				2F9E71C42B3333EA00767A4D /* Profile */,
@@ -378,6 +385,7 @@
 		2F4490AC2B057F37002B6975 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				2F81DEB02B5C69C200C88FE6 /* Peer */,
 				2FFE0ECC2B49EB1A0038F2F3 /* Board */,
 				2F9E721B2B42233400767A4D /* Register */,
 				2F9E71E02B389A1D00767A4D /* Store */,
@@ -795,6 +803,39 @@
 				2F81DEA52B5AC32A00C88FE6 /* RequestRouter.swift */,
 			);
 			path = Request;
+			sourceTree = "<group>";
+		};
+		2F81DEA92B5B266700C88FE6 /* Skills */ = {
+			isa = PBXGroup;
+			children = (
+				2F81DEAD2B5B28AB00C88FE6 /* ViewModel */,
+				2F81DEAA2B5B267C00C88FE6 /* Controller */,
+			);
+			path = Skills;
+			sourceTree = "<group>";
+		};
+		2F81DEAA2B5B267C00C88FE6 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2F81DEAB2B5B26B500C88FE6 /* SkillsViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		2F81DEAD2B5B28AB00C88FE6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2F81DEAE2B5B28BF00C88FE6 /* SkillsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2F81DEB02B5C69C200C88FE6 /* Peer */ = {
+			isa = PBXGroup;
+			children = (
+				2F81DEB12B5C69D400C88FE6 /* Peer.swift */,
+			);
+			path = Peer;
 			sourceTree = "<group>";
 		};
 		2F9E71A52B33054800767A4D /* Home */ = {
@@ -1596,6 +1637,7 @@
 				2FA7FD062B2E5D2000749D38 /* FilterTableViewCell.swift in Sources */,
 				2F4490DB2B098D3B002B6975 /* CustomButton.swift in Sources */,
 				2FA7FCE22B26825B00749D38 /* AppManager.swift in Sources */,
+				2F81DEAF2B5B28BF00C88FE6 /* SkillsViewModel.swift in Sources */,
 				2FB7A13F2B15EC6E00923D02 /* MoreTableViewCell.swift in Sources */,
 				2F9E72292B4450D300767A4D /* SkillsCollectionView.swift in Sources */,
 				2FA7FD0A2B2F26D600749D38 /* FilterViewController.swift in Sources */,
@@ -1603,6 +1645,7 @@
 				2F81DE6B2B542B4200C88FE6 /* PeerViewModel.swift in Sources */,
 				2FA7FCFC2B2D30A900749D38 /* SearchRoute.swift in Sources */,
 				2FFE0EE12B4D9E4D0038F2F3 /* TaskViewModel.swift in Sources */,
+				2F81DEAC2B5B26B500C88FE6 /* SkillsViewController.swift in Sources */,
 				2FA7FCD82B2654A500749D38 /* HomeCoordinator.swift in Sources */,
 				2F9E72302B44776400767A4D /* TagListView.swift in Sources */,
 				2FA7FCF62B2CDF5400749D38 /* CourseCoordinator.swift in Sources */,
@@ -1637,6 +1680,7 @@
 				3D5BA7502B52FD890043F812 /* ItemDetailsTableViewCell.swift in Sources */,
 				2FFE0EC72B49BD2D0038F2F3 /* AnnouncementViewModel.swift in Sources */,
 				2F4490D22B094C17002B6975 /* UIImage+Extension.swift in Sources */,
+				2F81DEB22B5C69D400C88FE6 /* Peer.swift in Sources */,
 				2F5A7C9A2B448F4B00F3EF38 /* TagView.swift in Sources */,
 				2F81DE7D2B556EBA00C88FE6 /* PeerRouter.swift in Sources */,
 				2FFE0EB92B45B4F30038F2F3 /* MatchingPeerManager.swift in Sources */,

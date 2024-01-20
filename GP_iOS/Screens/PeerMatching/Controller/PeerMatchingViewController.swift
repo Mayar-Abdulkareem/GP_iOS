@@ -9,6 +9,8 @@ import UIKit
 
 class PeerMatchingViewController: UIViewController, GradProNavigationControllerProtocol {
 
+    weak var coordinator: PeerCoordinator?
+
     private lazy var tableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -30,7 +32,7 @@ class PeerMatchingViewController: UIViewController, GradProNavigationControllerP
         return tableView
     }()
 
-    private let footerView: FooterButtonView = {
+    private lazy var footerView: FooterButtonView = {
         let footerView = FooterButtonView(
             primaryButtonType: .disabled,
             primaryButtonTitle: "Match With Peer",
@@ -38,6 +40,7 @@ class PeerMatchingViewController: UIViewController, GradProNavigationControllerP
             secondaryButtonTitle: nil
         )
         footerView.translatesAutoresizingMaskIntoConstraints = false
+        footerView.delegate = self
         return footerView
     }()
 
@@ -49,6 +52,12 @@ class PeerMatchingViewController: UIViewController, GradProNavigationControllerP
         bindWithViewModel()
         startLoading()
         viewModel.getCategories()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        if !viewModel.customSkillsSelected {
+            footerView.changePrimaryButtonType(type: .disabled)
+        }
     }
 
     private func configureViews() {
@@ -81,14 +90,20 @@ class PeerMatchingViewController: UIViewController, GradProNavigationControllerP
             self?.stopLoading()
             self?.tableView.reloadData()
         }
+
+        viewModel.onPeerMatched = { [weak self] in
+            self?.stopLoading()
+            print(self?.viewModel.matchedStudents)
+        }
     }
 
-    func startLoading() {
+    private func startLoading() {    
+        self.navigationController?.navigationBar.tintColor = .white
         tableView.alpha = 0
         view.showLoading(maskView: view, hasTransparentBackground: true)
     }
 
-    func stopLoading() {
+    private func stopLoading() {
         UIView.animate(withDuration: 0.3) {
             self.tableView.alpha = 1
         }
@@ -133,9 +148,10 @@ extension PeerMatchingViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if case .peerSkills = viewModel.sections[indexPath.section] {
             if indexPath.row == 0 || indexPath.row == 1 {
+                viewModel.customSkillsSelected = false
                 footerView.changePrimaryButtonType(type: .primary)
             } else {
-                footerView.changePrimaryButtonType(type: .disabled)
+                coordinator?.showSkillsViewController(categories: AppManager.shared.categories, context: .customSkillsForPeer, delegate: self)
             }
             viewModel.selectedIndex = indexPath.row
             tableView.reloadData()
@@ -149,6 +165,7 @@ extension PeerMatchingViewController: UITableViewDelegate, UITableViewDataSource
             title: viewModel.sections[section].getTitle(),
             isEditButtonHidden: viewModel.sections[section].isEditButtonHidden
         )
+        headerView.delegate = self
         return headerView
     }
 
@@ -162,5 +179,34 @@ extension PeerMatchingViewController: UITableViewDelegate, UITableViewDataSource
 
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return nil
+    }
+}
+
+extension PeerMatchingViewController: EditMySkillsProtocol {
+    func editButtonTapped() {
+        let studentCategories = MatchingPeerManager.shared.getSelectedSkills(categories: AppManager.shared.categories)
+        coordinator?.showSkillsViewController(categories: studentCategories, context: .editStudentSkills, delegate: self)
+    }
+}
+
+extension PeerMatchingViewController: SkillsViewControllerProtocol {
+    func saveButtonTapped(skillsVector: String, context: SkillsViewType) {
+        switch context {
+        case .editStudentSkills:
+            tableView.reloadData()
+        case .customSkillsForPeer:
+            viewModel.customSkills = skillsVector
+            viewModel.customSkillsSelected = true
+            viewModel.selectedIndex = -1
+            tableView.reloadData()
+            footerView.changePrimaryButtonType(type: .primary)
+        }
+    }
+}
+
+extension PeerMatchingViewController: FooterButtonViewDelegate {
+    func primaryButtonTapped() {
+        startLoading()
+        viewModel.matchWithPeer()
     }
 }

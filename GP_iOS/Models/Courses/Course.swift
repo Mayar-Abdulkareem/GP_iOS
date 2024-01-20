@@ -17,7 +17,7 @@ struct Course: Codable {
 struct StudentProfile: Codable {
     let regID: String
     let courses: [Course]
-    let skillsVector: String
+    var skillsVector: String
     let peer: String?
     let email: String
     let name: String

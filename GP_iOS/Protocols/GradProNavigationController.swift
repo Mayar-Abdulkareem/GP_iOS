@@ -22,6 +22,7 @@ extension GradProNavigationControllerProtocol where Self: UIViewController {
             NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20, weight: .semibold)
         ]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
+        navigationController?.navigationBar.tintColor = .mySecondary
     }
 
     func addNavCloseButton() {
