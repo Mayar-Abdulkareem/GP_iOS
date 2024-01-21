@@ -8,7 +8,7 @@
 import UIKit
 import Kingfisher
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, GradProNavigationControllerProtocol {
 
     private let viewModel = ProfileViewModel()
 
@@ -85,10 +85,6 @@ class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.showDefaultNavigationBar(
-            title: String.LocalizedKeys.profileTitle.localized,
-            withCloseButton: true
-        )
         view.backgroundColor = UIColor.myLightGray
         setupViews()
         viewModel.getProfile()
@@ -135,6 +131,8 @@ class ProfileViewController: UIViewController {
         view.addSubview(editButton)
         view.addSubview(nameLabel)
         view.addSubview(stackView)
+
+        addNavBar(with: String.LocalizedKeys.profileTitle.localized)
 
         stackView.addArrangedSubview(regID)
         stackView.addArrangedSubview(email)

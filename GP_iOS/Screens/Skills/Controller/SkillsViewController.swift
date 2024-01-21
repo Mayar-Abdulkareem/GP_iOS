@@ -66,8 +66,6 @@ class SkillsViewController: UIViewController, GradProNavigationControllerProtoco
 
         bindWithViewModel()
         configureViews()
-//        startLoading()
-//        viewModel.getCategories()
     }
 
     private func bindWithViewModel() {
@@ -89,6 +87,7 @@ class SkillsViewController: UIViewController, GradProNavigationControllerProtoco
         view.backgroundColor = .myPrimary
         view.addSubview(tableView)
         view.addSubview(footerView)
+        
         configureNavBarTitle(title: "Skills")
         addSeparatorView()
 

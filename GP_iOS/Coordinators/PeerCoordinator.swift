@@ -55,4 +55,10 @@ class PeerCoordinator: Coordinator {
         skillsViewController.delegate = delegate
         peerMatchingNavController.pushViewController(skillsViewController, animated: true)
     }
+
+    func showTopMatchedViewController(topMatchedStudents: [Peer]) {
+        guard let peerMatchingNavController = peerMatchingNavController else { return }
+        let topMatchedViewController = TopMatchedViewController(topMatchedStudents: topMatchedStudents)
+        peerMatchingNavController.pushViewController(topMatchedViewController, animated: true)
+    }
 }

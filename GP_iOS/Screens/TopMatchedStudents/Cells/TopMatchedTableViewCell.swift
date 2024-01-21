@@ -1,21 +1,20 @@
 //
-//  RrquestTableViewCell.swift
+//  TopMatchedTableViewCell.swift
 //  GP_iOS
 //
-//  Created by Mayar Abdulkareem on 19/01/2024.
+//  Created by Mayar Abdulkareem on 21/01/2024.
 //
 
 import UIKit
 
-struct RequestCellModel {
-    let peerID: String
-    let peerName: String
+struct TopMatchedCellModel {
+    let peer: Peer
     let isLastCell: Bool
 }
 
-class RrquestTableViewCell: UITableViewCell {
+class TopMatchedTableViewCell: UITableViewCell {
 
-    static let identifier = "RrquestTableViewCell"
+    static let identifier = "TopMatchedTableViewCell"
 
     private let peerIDLabel: UILabel = {
         let label = UILabel()
@@ -25,6 +24,13 @@ class RrquestTableViewCell: UITableViewCell {
     }()
 
     private let peerNameLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.systemFont(ofSize: 16)
+        return label
+    }()
+
+    private let peerSimilarityLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 16)
@@ -57,6 +63,7 @@ class RrquestTableViewCell: UITableViewCell {
 
         contentView.addSubview(peerIDLabel)
         contentView.addSubview(peerNameLabel)
+        contentView.addSubview(peerSimilarityLabel)
         contentView.addSubview(separatorView)
 
         NSLayoutConstraint.activate([
@@ -65,18 +72,31 @@ class RrquestTableViewCell: UITableViewCell {
 
             peerNameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             peerNameLabel.topAnchor.constraint(equalTo: peerIDLabel.bottomAnchor, constant: 8),
-            peerNameLabel.bottomAnchor.constraint(equalTo: separatorView.topAnchor, constant: -16),
+
+            peerSimilarityLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            peerSimilarityLabel.topAnchor.constraint(equalTo: peerNameLabel.bottomAnchor, constant: 8),
+            peerSimilarityLabel.bottomAnchor.constraint(equalTo: separatorView.topAnchor, constant: -16),
 
             separatorView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             separatorView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             separatorView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            separatorView.heightAnchor.constraint(equalToConstant: 1.0),
+            separatorView.heightAnchor.constraint(equalToConstant: 1/UIScreen.main.scale),
         ])
     }
 
-    func configureCell(with model: RequestCellModel) {
-        peerIDLabel.attributedText = StringManager.shared.createAttributedText(prefix: "Peer ID: ", value: model.peerID)
-        peerNameLabel.attributedText = StringManager.shared.createAttributedText(prefix: "Peer Name: ", value: model.peerName)
+    func configureCell(with model: TopMatchedCellModel) {
+        peerIDLabel.attributedText = StringManager.shared.createAttributedText(
+            prefix: "Peer ID: ",
+            value: model.peer.regID
+        )
+        peerNameLabel.attributedText = StringManager.shared.createAttributedText(
+            prefix: "Peer Name: ",
+            value: model.peer.name
+        )
+        peerSimilarityLabel.attributedText = StringManager.shared.createAttributedText(
+            prefix: "Peer Similarity: ",
+            value: model.peer.similarity + "%"
+        )
         separatorView.isHidden = model.isLastCell
     }
 }

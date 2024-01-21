@@ -36,13 +36,6 @@ class MoreCoordinator: Coordinator {
         coordinator.start()
     }
 
-    func showAnnouncementViewController() {
-        let announcementViewController = AnnouncementViewController()
-        let navController = UINavigationController(rootViewController: announcementViewController)
-        navController.modalPresentationStyle = .fullScreen
-        navigationController.present(navController, animated: true)
-    }
-
     /// Present the Login screen
     func didLogout() {
         parentCoordinator?.didLogout()

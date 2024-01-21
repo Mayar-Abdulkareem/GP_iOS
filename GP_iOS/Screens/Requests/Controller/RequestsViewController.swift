@@ -7,17 +7,23 @@
 
 import UIKit
 
-class RequestsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class RequestsViewController: UIViewController, GradProNavigationControllerProtocol {
 
     private var viewModel = RequestsViewModel()
 
     private lazy var tableView: UITableView = {
-        let table = UITableView()
-        table.translatesAutoresizingMaskIntoConstraints = false
-        table.register(RrquestTableViewCell.self, forCellReuseIdentifier: RrquestTableViewCell.identifier)
-        table.delegate = self
-        table.dataSource = self
-        return table
+        let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.separatorStyle = .none
+
+        tableView.register(
+            RequestTableViewCell.self,
+            forCellReuseIdentifier: RequestTableViewCell.identifier
+        )
+
+        tableView.delegate = self
+        tableView.dataSource = self
+        return tableView
     }()
 
     private let statusLabel: UILabel = {
@@ -40,6 +46,9 @@ class RequestsViewController: UIViewController, UITableViewDelegate, UITableView
         view.backgroundColor = .white
         view.addSubview(tableView)
         view.addSubview(statusLabel)
+
+        configureNavBarTitle(title: String.LocalizedKeys.requestsTitle.localized)
+        addSeparatorView()
 
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -118,7 +127,7 @@ class RequestsViewController: UIViewController, UITableViewDelegate, UITableView
     }
 }
 
-extension RequestsViewController {
+extension RequestsViewController: UITableViewDelegate, UITableViewDataSource {
     // MARK: - UITableViewDataSource
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -126,7 +135,7 @@ extension RequestsViewController {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: RrquestTableViewCell.identifier, for: indexPath) as? RrquestTableViewCell,
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: RequestTableViewCell.identifier, for: indexPath) as? RequestTableViewCell,
               let request = viewModel.requests?[indexPath.row] else {
             return UITableViewCell()
         }

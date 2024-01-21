@@ -80,6 +80,14 @@ class BoardCollectionViewCell: UICollectionViewCell {
         return button
     }()
 
+    private lazy var viewWithShadow: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .myPrimary
+        view.addShadow()
+        return view
+    }()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureViews()
@@ -91,26 +99,34 @@ class BoardCollectionViewCell: UICollectionViewCell {
     }
 
     private func configureViews() {
-        backgroundColor = .myPrimary
-        contentView.addSubview(addColumnButton)
-        contentView.addSubview(titleTextFiled)
-        contentView.addSubview(tableView)
-        contentView.addSubview(addTaskButton)
-        contentView.addSubview(deleteColumnButton)
+
+        contentView.addViewFillEntireView(
+            viewWithShadow,
+            top: 8,
+            bottom: 8,
+            leading: 8,
+            trailing: 8
+        )
+
+        viewWithShadow.addSubview(titleTextFiled)
+        viewWithShadow.addSubview(tableView)
+        viewWithShadow.addSubview(addTaskButton)
+        viewWithShadow.addSubview(addColumnButton)
+        viewWithShadow.addSubview(deleteColumnButton)
 
         setupEnabled(isLastCell: false)
         titleTextFiled.delegate = self
 
         NSLayoutConstraint.activate([
-            addColumnButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
-            addColumnButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            addColumnButton.topAnchor.constraint(equalTo: viewWithShadow.topAnchor, constant: 16),
+            addColumnButton.centerXAnchor.constraint(equalTo: viewWithShadow.centerXAnchor),
 
-            titleTextFiled.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
-            titleTextFiled.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            titleTextFiled.topAnchor.constraint(equalTo: viewWithShadow.topAnchor, constant: 16),
+            titleTextFiled.centerXAnchor.constraint(equalTo: viewWithShadow.centerXAnchor),
 
             tableView.topAnchor.constraint(equalTo: titleTextFiled.bottomAnchor, constant: 16),
-            tableView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            tableView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            tableView.leadingAnchor.constraint(equalTo: viewWithShadow.leadingAnchor, constant: 16),
+            tableView.trailingAnchor.constraint(equalTo: viewWithShadow.trailingAnchor, constant: -16),
             tableView.bottomAnchor.constraint(equalTo: addTaskButton.topAnchor, constant: -16),
 
             addTaskButton.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 16),
@@ -118,7 +134,7 @@ class BoardCollectionViewCell: UICollectionViewCell {
 
             deleteColumnButton.topAnchor.constraint(equalTo: addTaskButton.bottomAnchor, constant: 8),
             deleteColumnButton.centerXAnchor.constraint(equalTo: addTaskButton.centerXAnchor),
-            deleteColumnButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16),
+            deleteColumnButton.bottomAnchor.constraint(equalTo: viewWithShadow.bottomAnchor, constant: -16),
         ])
     }
 

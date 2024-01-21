@@ -93,7 +93,8 @@ class PeerMatchingViewController: UIViewController, GradProNavigationControllerP
 
         viewModel.onPeerMatched = { [weak self] in
             self?.stopLoading()
-            print(self?.viewModel.matchedStudents)
+            guard let topMatchedStudents = self?.viewModel.matchedStudents else { return }
+            self?.coordinator?.showTopMatchedViewController(topMatchedStudents: topMatchedStudents)
         }
     }
 

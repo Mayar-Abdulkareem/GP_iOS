@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RegisterViewController: UIViewController {
+class RegisterViewController: UIViewController, GradProNavigationControllerProtocol {
 
     var viewModel: RegisterViewModel
     weak var coordinator: RegisterCoordinator?
@@ -103,10 +103,6 @@ class RegisterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.showDefaultNavigationBar(
-            title: String.LocalizedKeys.registerTitle.localized,
-            withCloseButton: true
-        )
         setStepNumber(currentStep: viewModel.currentStep, totalSteps: 3)
         view.backgroundColor = UIColor.white
         bindWithViewModel()
@@ -142,6 +138,8 @@ class RegisterViewController: UIViewController {
         view.addSubview(leftButton)
         view.addSubview(rightButton)
 
+        addNavBar(with: String.LocalizedKeys.registerTitle.localized)
+
         middleView.addSubview(registerCourseStatusLabel)
 
         NSLayoutConstraint.activate([
@@ -175,9 +173,8 @@ class RegisterViewController: UIViewController {
             rightButton.leadingAnchor.constraint(equalTo: view.centerXAnchor, constant: 8),
             rightButton.widthAnchor.constraint(equalToConstant: 100),
         ])
-    //    if self.viewModel.currentStep != 4 {
-            configureLayout()
-    //    }
+
+        configureLayout()
     }
 
     private func bindWithViewModel() {

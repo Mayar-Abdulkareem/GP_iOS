@@ -7,16 +7,20 @@
 
 import UIKit
 
-class SubmissionsViewController: UIViewController {
+class SubmissionsViewController: UIViewController, GradProNavigationControllerProtocol {
     weak var coordinator: CourseCoordinator?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureViews()
+
+
+    }
+
+    private func configureViews() {
         view.backgroundColor = UIColor.myPrimary
-        navigationController?.showDefaultNavigationBar(
-            title: String.LocalizedKeys.submissionTitle.localized,
-            withCloseButton: false
-        )
-        view.backgroundColor = UIColor.myLightGray
+
+        configureNavBarTitle(title: String.LocalizedKeys.submissionTitle.localized)
+        addSeparatorView()
     }
 }

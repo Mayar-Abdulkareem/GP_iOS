@@ -8,7 +8,7 @@
 import UIKit
 import UniformTypeIdentifiers
 
-class BoardViewController: UIViewController {
+class BoardViewController: UIViewController, GradProNavigationControllerProtocol {
     weak var coordinator: BoardCoordinator?
     private var viewModel = BoardViewModel()
 
@@ -20,7 +20,7 @@ class BoardViewController: UIViewController {
 
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = UIColor.myLightGray
+        collectionView.backgroundColor = UIColor.myPrimary
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         collectionView.dragInteractionEnabled = true
 
@@ -51,11 +51,6 @@ class BoardViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.myPrimary
-        navigationController?.showDefaultNavigationBar(
-            title: String.LocalizedKeys.boardTitle.localized,
-            withCloseButton: false
-        )
-        view.backgroundColor = UIColor.myLightGray
 
         bindWithViewModel()
         configureViews()
@@ -80,6 +75,9 @@ class BoardViewController: UIViewController {
         setupSaveButton()
 
         view.addSubview(collectionView)
+
+        configureNavBarTitle(title: String.LocalizedKeys.boardTitle.localized)
+        addSeparatorView()
 
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),

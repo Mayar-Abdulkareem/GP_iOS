@@ -20,10 +20,6 @@ class MoreViewController: UIViewController {
             icon: UIImage.SystemImages.register.image
         ),
         MoreCellModel(
-            title: String.LocalizedKeys.announcementTitle.localized,
-            icon: UIImage.SystemImages.announcement.image
-        ),
-        MoreCellModel(
             title: String.LocalizedKeys.logoutTitle.localized,
             icon: UIImage.SystemImages.logout.image
         )
@@ -108,8 +104,6 @@ extension MoreViewController: UITableViewDelegate, UITableViewDataSource {
             coordinator?.showProfileViewController()
         case 1:
             coordinator?.showRegisterFlow()
-        case 2:
-            coordinator?.showAnnouncementViewController()
         default:
             coordinator?.didLogout()
         }
