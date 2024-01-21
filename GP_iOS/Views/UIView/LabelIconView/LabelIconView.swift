@@ -19,20 +19,33 @@ class LabelIconView: UIView {
         return imageView
     }()
     
-    lazy var stackView: UIStackView = {
+    lazy var horizontalStackView: UIStackView = {
         let stackView = UIStackView(
             arrangedSubviews: [
                 iconImageView,
+                verticalStackView
+            ]
+        )
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .horizontal
+        stackView.spacing = 8
+        stackView.alignment = .firstBaseline
+        stackView.distribution = .fill
+        return stackView
+    }()
+    
+    lazy var verticalStackView: UIStackView = {
+        let stackView = UIStackView(
+            arrangedSubviews: [
                 titleLabel,
                 valueLabel
             ]
         )
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .horizontal
+        stackView.axis = .vertical
         stackView.spacing = 5
         stackView.alignment = .fill
         stackView.distribution = .fill
-        stackView.setCustomSpacing(8, after: iconImageView)
         return stackView
     }()
 
@@ -57,6 +70,13 @@ class LabelIconView: UIView {
         label.setContentCompressionResistancePriority(.init(750), for: .horizontal)
         return label
     }()
+    
+    let separatorView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .separator
+        return view
+    }()
 
     init(
         icon: UIImage?,
@@ -64,7 +84,8 @@ class LabelIconView: UIView {
         text: String,
         color: UIColor = .mySecondary,
         imageSize: CGFloat = 25,
-        fontSize: CGFloat = 15
+        fontSize: CGFloat = 15,
+        isSeparatorHidden: Bool = false
     ) {
         super.init(frame: .zero)
         self.currentPrefix = prefix
@@ -75,7 +96,8 @@ class LabelIconView: UIView {
             text: text,
             color: color,
             imageSize: imageSize,
-            fontSize: fontSize
+            fontSize: fontSize,
+            isSeparatorHidden: isSeparatorHidden
         )
     }
 
@@ -89,18 +111,32 @@ class LabelIconView: UIView {
         text: String,
         color: UIColor,
         imageSize: CGFloat,
-        fontSize: CGFloat
+        fontSize: CGFloat,
+        isSeparatorHidden: Bool
     ) {
-        addViewFillEntireView(stackView)
+        addViewFillEntireView(
+            horizontalStackView,
+            top: 8,
+            bottom: 8,
+            leading: 16,
+            trailing: 16
+        )
+        addSubview(separatorView)
 
         iconImageView.tintColor = color
         iconImageView.image = icon
         titleLabel.text = prefix
         valueLabel.text = text
+        separatorView.isHidden = isSeparatorHidden
 
         NSLayoutConstraint.activate([
             iconImageView.widthAnchor.constraint(equalToConstant: imageSize),
             iconImageView.heightAnchor.constraint(equalToConstant: imageSize),
+            
+            separatorView.heightAnchor.constraint(equalToConstant: 1/UIScreen.main.scale),
+            separatorView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            separatorView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            separatorView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
 

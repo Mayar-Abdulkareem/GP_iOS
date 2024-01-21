@@ -55,7 +55,7 @@ class ProfileViewController: UIViewController, GradProNavigationControllerProtoc
         icon: UIImage.SystemImages.email.image,
         prefix: String.LocalizedKeys.email.localized + " ",
         text: AppManager.shared.profile?.email ?? "",
-        imageSize: 35,
+        imageSize: 30,
         fontSize: 18
     )
 
@@ -63,7 +63,7 @@ class ProfileViewController: UIViewController, GradProNavigationControllerProtoc
         icon: UIImage.SystemImages.phone.image,
         prefix: String.LocalizedKeys.phoneNumber.localized + " ",
         text: AppManager.shared.profile?.phoneNumber ?? "",
-        imageSize: 35,
+        imageSize: 30,
         fontSize: 18
     )
 
@@ -71,21 +71,21 @@ class ProfileViewController: UIViewController, GradProNavigationControllerProtoc
         icon: UIImage.SystemImages.GPA.image,
         prefix: String.LocalizedKeys.gpa.localized + " ",
         text: AppManager.shared.profile?.GPA ?? "",
-        imageSize: 35,
-        fontSize: 18
+        imageSize: 30,
+        fontSize: 18,
+        isSeparatorHidden: true
     )
 
     private let stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
-        stackView.spacing = 70
         return stackView
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.myLightGray
+        view.backgroundColor = UIColor.white
         setupViews()
         viewModel.getProfile()
         hideElements(isHidden: true)
@@ -154,8 +154,8 @@ class ProfileViewController: UIViewController, GradProNavigationControllerProtoc
             nameLabel.topAnchor.constraint(equalTo: profileImageView.bottomAnchor, constant: 8),
 
             stackView.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 50),
-            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
+            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
     }
 

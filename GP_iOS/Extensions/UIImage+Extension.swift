@@ -69,6 +69,7 @@ extension UIImage {
         case name = "person"
         case circle
         case circleFill = "circle.fill"
+        case document = "doc.plaintext"
 
         /// Register
         case openLock = "lock.open"

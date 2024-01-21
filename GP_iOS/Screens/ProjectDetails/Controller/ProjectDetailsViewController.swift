@@ -25,7 +25,6 @@ class ProjectDetailsViewController: UIViewController, GradProNavigationControlle
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
-        stackView.spacing = 20
         stackView.alignment = .fill
         stackView.distribution = .fillProportionally
         return stackView
@@ -47,9 +46,9 @@ class ProjectDetailsViewController: UIViewController, GradProNavigationControlle
         view.addSubview(footerView)
 
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
-            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
+            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 
             footerView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             footerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
@@ -61,26 +60,23 @@ class ProjectDetailsViewController: UIViewController, GradProNavigationControlle
         let projectTypeView = LabelIconView(
             icon: UIImage.SystemImages.projectType.image,
             prefix: String.LocalizedKeys.projectType.localized + " ",
-            text: AppManager.shared.prevProject?.projectType ?? "",
-            imageSize: 30
+            text: AppManager.shared.prevProject?.projectType ?? ""
         )
         let yearView = LabelIconView(
             icon: UIImage.SystemImages.year.image,
             prefix: String.LocalizedKeys.year.localized + " ",
-            text: (AppManager.shared.prevProject?.date ?? ""),
-            imageSize: 30
+            text: (AppManager.shared.prevProject?.date ?? "")
         )
         let studentsView = LabelIconView(
             icon: UIImage.SystemImages.choosePeer.image,
             prefix: String.LocalizedKeys.studentsTitle.localized + " ",
-            text: (AppManager.shared.prevProject?.students ?? ""),
-            imageSize: 30
+            text: (AppManager.shared.prevProject?.students ?? "")
         )
         let supervisorView = LabelIconView(
             icon: UIImage.SystemImages.supervisor.image,
             prefix: String.LocalizedKeys.supervisorTitle.localized,
             text: (AppManager.shared.prevProject?.supervisor ?? ""),
-            imageSize: 30
+            isSeparatorHidden: true
         )
 
         stackView.addArrangedSubview(projectTypeView)

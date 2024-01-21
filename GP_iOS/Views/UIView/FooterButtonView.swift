@@ -55,6 +55,7 @@ class FooterButtonView: UIView {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.cornerRadius = 8
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 18)
 
         button.addAction(UIAction { [weak self] _ in
             self?.delegate?.primaryButtonTapped()
