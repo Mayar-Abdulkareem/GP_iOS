@@ -35,15 +35,15 @@ class MySkillsTableViewCell: UITableViewCell {
     private func configureViews() {
         backgroundColor = .myPrimary
 
-        contentView.addSubview(skillsLabel)
+
         skillsLabel.attributedText = MatchingPeerManager.shared.getMySkillsAttributedString()
 
-        NSLayoutConstraint.activate([
-            skillsLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            skillsLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            skillsLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
-            skillsLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
-        ])
+        contentView.addViewFillEntireView(
+            skillsLabel,
+            top: 5,
+            leading: 16,
+            trailing: 16
+        )
     }
 
     func configureCell(mySkills: NSAttributedString) {

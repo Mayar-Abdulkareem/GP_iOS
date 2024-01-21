@@ -12,7 +12,7 @@ class PeerMatchingViewController: UIViewController, GradProNavigationControllerP
     weak var coordinator: PeerCoordinator?
 
     private lazy var tableView = {
-        let tableView = UITableView()
+        let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorStyle = .none
         tableView.separatorColor = .clear
@@ -61,7 +61,7 @@ class PeerMatchingViewController: UIViewController, GradProNavigationControllerP
     }
 
     private func configureViews() {
-        view.backgroundColor = .myPrimary
+        view.backgroundColor = .white
         
         addNavBar(with: "Peer Matching")
 
@@ -161,7 +161,7 @@ extension PeerMatchingViewController: UITableViewDelegate, UITableViewDataSource
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = PeerMatchingHeaderView()
-        headerView.backgroundColor = .clear
+        headerView.backgroundColor = .white
         headerView.configure(
             title: viewModel.sections[section].getTitle(),
             isEditButtonHidden: viewModel.sections[section].isEditButtonHidden

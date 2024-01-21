@@ -30,8 +30,9 @@ class MatchingPeerManager {
         var index = 0
 
         for category in categories {
-            let categoryTitle = NSAttributedString(string: category.title + ": ",
-                                                   attributes: [.foregroundColor: UIColor.black])
+            let categoryTitle = NSAttributedString(string: category.title + "\n",
+                                                   attributes: [.foregroundColor: UIColor.black,
+                                                    .font: UIFont.systemFont(ofSize: 18, weight: .semibold)])
             attributedResult.append(categoryTitle)
 
             var categorySkills = [String]()
@@ -47,7 +48,7 @@ class MatchingPeerManager {
                                                             attributes: [.foregroundColor: UIColor.gray])
             attributedResult.append(skillsAttributedString)
 
-            let newline = NSAttributedString(string: "\n")
+            let newline = NSAttributedString(string: "\n\n")
             attributedResult.append(newline)
         }
         return attributedResult

@@ -35,8 +35,8 @@ class PeerMatchingHeaderView: UIView {
     private let label: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.boldSystemFont(ofSize: 15)
-        label.textColor = .gray
+        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.textColor = .black
         return label
     }()
 
