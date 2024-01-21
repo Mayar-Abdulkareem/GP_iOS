@@ -56,6 +56,7 @@ class PeerMatchingViewController: UIViewController, GradProNavigationControllerP
 
     override func viewWillAppear(_ animated: Bool) {
         if !viewModel.customSkillsSelected {
+            viewModel.selectedIndex = -1
             footerView.changePrimaryButtonType(type: .disabled)
         }
     }
