@@ -22,7 +22,24 @@ class MoreViewController: UIViewController {
         MoreCellModel(
             title: String.LocalizedKeys.logoutTitle.localized,
             icon: UIImage.SystemImages.logout.image
-        )
+        ),
+        MoreCellModel(
+            title: "Students",
+            icon: UIImage.SystemImages.logout.image
+        ),
+        MoreCellModel(
+            title: "Coueses",
+            icon: UIImage.SystemImages.logout.image
+        ),
+        MoreCellModel(
+            title: "Professors",
+            icon: UIImage.SystemImages.logout.image
+        ),
+        MoreCellModel(
+            title: "Assigments",
+            icon: UIImage.SystemImages.logout.image
+        ),
+
     ]
 
     private lazy var tableView: UITableView = {
@@ -104,8 +121,33 @@ extension MoreViewController: UITableViewDelegate, UITableViewDataSource {
             coordinator?.showProfileViewController()
         case 1:
             coordinator?.showRegisterFlow()
-        default:
+        case 2:
             coordinator?.didLogout()
+        case 3:
+            let vc = AdminStudentsViewController()
+            let navController = UINavigationController(rootViewController: vc)
+            navController.modalPresentationStyle = .fullScreen
+            present(navController, animated: true)
+        case 4:
+            let vc = AdminCoursesViewController()
+            let navController = UINavigationController(rootViewController: vc)
+            navController.modalPresentationStyle = .fullScreen
+            present(navController, animated: true)
+
+        case 5:
+            let vc = AdminProfessorsViewController()
+            let navController = UINavigationController(rootViewController: vc)
+            navController.modalPresentationStyle = .fullScreen
+            present(navController, animated: true)
+
+        case 6:
+            let vc = AdminAssigmentViewController()
+            let navController = UINavigationController(rootViewController: vc)
+            navController.modalPresentationStyle = .fullScreen
+            present(navController, animated: true)
+
+        default:
+            break
         }
         if let selectedIndexPath = tableView.indexPathForSelectedRow {
             tableView.deselectRow(at: selectedIndexPath, animated: true)

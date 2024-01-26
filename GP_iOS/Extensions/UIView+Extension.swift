@@ -143,7 +143,7 @@ extension UIView {
         self.addSubview(viewToAdd)
 
         NSLayoutConstraint.activate([
-            viewToAdd.topAnchor.constraint(equalTo: self.topAnchor, constant: top),
+            viewToAdd.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: top),
             viewToAdd.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -bottom),
             viewToAdd.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: leading),
             viewToAdd.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -trailing)

@@ -146,6 +146,17 @@
 		3D5BA7552B5300620043F812 /* ItemDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5BA7542B5300620043F812 /* ItemDetailsViewModel.swift */; };
 		3DCDE4872B398EFF005F9C7B /* TitleTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCDE4862B398EFF005F9C7B /* TitleTextFieldView.swift */; };
 		3DCDE4892B398F47005F9C7B /* ImageTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCDE4882B398F47005F9C7B /* ImageTextField.swift */; };
+		8B348DA12B63AB670049BA79 /* AdminTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B348DA02B63AB670049BA79 /* AdminTableViewController.swift */; };
+		8B348DA42B63ACA50049BA79 /* AdminTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B348DA32B63ACA50049BA79 /* AdminTableViewModel.swift */; };
+		8B348DA72B63AE790049BA79 /* AdminTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B348DA62B63AE790049BA79 /* AdminTableViewCell.swift */; };
+		8B348DA92B63B4680049BA79 /* AdminStudentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B348DA82B63B4680049BA79 /* AdminStudentsViewModel.swift */; };
+		8B348DAB2B63B8700049BA79 /* AdminStudentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B348DAA2B63B8700049BA79 /* AdminStudentsViewController.swift */; };
+		8B348DAD2B63B9B20049BA79 /* AdminCoursesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B348DAC2B63B9B20049BA79 /* AdminCoursesViewModel.swift */; };
+		8B348DAF2B63BA430049BA79 /* AdminCoursesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B348DAE2B63BA430049BA79 /* AdminCoursesViewController.swift */; };
+		8B348DB12B63C2D80049BA79 /* AdminProfessorsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B348DB02B63C2D80049BA79 /* AdminProfessorsViewModel.swift */; };
+		8B348DB32B63C36C0049BA79 /* AdminProfessorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B348DB22B63C36C0049BA79 /* AdminProfessorsViewController.swift */; };
+		8B348DB52B63CE080049BA79 /* AdminAssigmentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B348DB42B63CE080049BA79 /* AdminAssigmentsViewModel.swift */; };
+		8B348DB72B63D0650049BA79 /* AdminAssigmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B348DB62B63D0650049BA79 /* AdminAssigmentViewController.swift */; };
 		8B527C862B31CDC200B6ACF7 /* HeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B527C852B31CDC200B6ACF7 /* HeaderTableViewCell.swift */; };
 		8BA6A5B82B319C7300CACE48 /* nnu.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BA6A5B72B319C7300CACE48 /* nnu.png */; };
 		8BAA93252B32D217007B3B16 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAA93242B32D217007B3B16 /* UIViewController+Extensions.swift */; };
@@ -298,6 +309,17 @@
 		3D5BA7542B5300620043F812 /* ItemDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailsViewModel.swift; sourceTree = "<group>"; };
 		3DCDE4862B398EFF005F9C7B /* TitleTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTextFieldView.swift; sourceTree = "<group>"; };
 		3DCDE4882B398F47005F9C7B /* ImageTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTextField.swift; sourceTree = "<group>"; };
+		8B348DA02B63AB670049BA79 /* AdminTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminTableViewController.swift; sourceTree = "<group>"; };
+		8B348DA32B63ACA50049BA79 /* AdminTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminTableViewModel.swift; sourceTree = "<group>"; };
+		8B348DA62B63AE790049BA79 /* AdminTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminTableViewCell.swift; sourceTree = "<group>"; };
+		8B348DA82B63B4680049BA79 /* AdminStudentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminStudentsViewModel.swift; sourceTree = "<group>"; };
+		8B348DAA2B63B8700049BA79 /* AdminStudentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminStudentsViewController.swift; sourceTree = "<group>"; };
+		8B348DAC2B63B9B20049BA79 /* AdminCoursesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminCoursesViewModel.swift; sourceTree = "<group>"; };
+		8B348DAE2B63BA430049BA79 /* AdminCoursesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminCoursesViewController.swift; sourceTree = "<group>"; };
+		8B348DB02B63C2D80049BA79 /* AdminProfessorsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminProfessorsViewModel.swift; sourceTree = "<group>"; };
+		8B348DB22B63C36C0049BA79 /* AdminProfessorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminProfessorsViewController.swift; sourceTree = "<group>"; };
+		8B348DB42B63CE080049BA79 /* AdminAssigmentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminAssigmentsViewModel.swift; sourceTree = "<group>"; };
+		8B348DB62B63D0650049BA79 /* AdminAssigmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminAssigmentViewController.swift; sourceTree = "<group>"; };
 		8B527C852B31CDC200B6ACF7 /* HeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTableViewCell.swift; sourceTree = "<group>"; };
 		8BA6A5B72B319C7300CACE48 /* nnu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nnu.png; sourceTree = "<group>"; };
 		8BAA93242B32D217007B3B16 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
@@ -346,6 +368,7 @@
 		2F4490A22B0578A1002B6975 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				8B348D9E2B63AB3B0049BA79 /* AdminTable */,
 				2F81DEB32B5C793500C88FE6 /* TopMatchedStudents */,
 				2F81DEA92B5B266700C88FE6 /* Skills */,
 				2F81DE8A2B55937B00C88FE6 /* PeerMatching */,
@@ -604,8 +627,7 @@
 		2F5B06642AF7A0340075D083 /* GP_iOS */ = {
 			isa = PBXGroup;
 			children = (
-				2FFE0EBC2B48436C0038F2F3 /* GP_iOS.entitlements */,
-				2FFE0EBA2B4836590038F2F3 /* GoogleService-Info.plist */,
+				2F4490A22B0578A1002B6975 /* Screens */,
 				2F81DE992B56111C00C88FE6 /* Protocols */,
 				2FA7FCE42B290ED300749D38 /* Enumeration  */,
 				2FB7A13A2B15464700923D02 /* Managers */,
@@ -614,10 +636,11 @@
 				2F4490D02B094BE9002B6975 /* Extensions */,
 				2F4490BD2B058117002B6975 /* Network */,
 				2F4490AC2B057F37002B6975 /* Models */,
-				2F4490A22B0578A1002B6975 /* Screens */,
 				2F4490A12B05788E002B6975 /* Coordinators */,
 				2F5B06AA2AF9968D0075D083 /* Utilities */,
 				2F9E71D52B384F0700767A4D /* Resources */,
+				2FFE0EBA2B4836590038F2F3 /* GoogleService-Info.plist */,
+				2FFE0EBC2B48436C0038F2F3 /* GP_iOS.entitlements */,
 			);
 			path = GP_iOS;
 			sourceTree = "<group>";
@@ -1494,6 +1517,48 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		8B348D9E2B63AB3B0049BA79 /* AdminTable */ = {
+			isa = PBXGroup;
+			children = (
+				8B348DA22B63AC920049BA79 /* ViewModel */,
+				8B348D9F2B63AB4F0049BA79 /* Controller */,
+				8B348DA52B63AE6C0049BA79 /* Cells */,
+			);
+			path = AdminTable;
+			sourceTree = "<group>";
+		};
+		8B348D9F2B63AB4F0049BA79 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8B348DA02B63AB670049BA79 /* AdminTableViewController.swift */,
+				8B348DAA2B63B8700049BA79 /* AdminStudentsViewController.swift */,
+				8B348DAE2B63BA430049BA79 /* AdminCoursesViewController.swift */,
+				8B348DB22B63C36C0049BA79 /* AdminProfessorsViewController.swift */,
+				8B348DB62B63D0650049BA79 /* AdminAssigmentViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		8B348DA22B63AC920049BA79 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8B348DA32B63ACA50049BA79 /* AdminTableViewModel.swift */,
+				8B348DA82B63B4680049BA79 /* AdminStudentsViewModel.swift */,
+				8B348DAC2B63B9B20049BA79 /* AdminCoursesViewModel.swift */,
+				8B348DB02B63C2D80049BA79 /* AdminProfessorsViewModel.swift */,
+				8B348DB42B63CE080049BA79 /* AdminAssigmentsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8B348DA52B63AE6C0049BA79 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				8B348DA62B63AE790049BA79 /* AdminTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1635,6 +1700,7 @@
 				3D5BA7522B52FF0F0043F812 /* ItemDetailsImageTableViewCell.swift in Sources */,
 				2F9E71EC2B38F71600767A4D /* StoreCustomView.swift in Sources */,
 				2FA7FD062B2E5D2000749D38 /* FilterTableViewCell.swift in Sources */,
+				8B348DB12B63C2D80049BA79 /* AdminProfessorsViewModel.swift in Sources */,
 				2F4490DB2B098D3B002B6975 /* CustomButton.swift in Sources */,
 				2FA7FCE22B26825B00749D38 /* AppManager.swift in Sources */,
 				2F81DEAF2B5B28BF00C88FE6 /* SkillsViewModel.swift in Sources */,
@@ -1656,10 +1722,12 @@
 				2F81DEB92B5C881900C88FE6 /* TopMatchedTableViewCell.swift in Sources */,
 				2FB7A12E2B14F02100923D02 /* AuthManager.swift in Sources */,
 				2FFE0EB02B4579FA0038F2F3 /* RegisterTableViewCell.swift in Sources */,
+				8B348DA12B63AB670049BA79 /* AdminTableViewController.swift in Sources */,
 				2F5B06AD2AF996E10075D083 /* UserDefaultStorage.swift in Sources */,
 				2F4490C12B05814B002B6975 /* BaseClient.swift in Sources */,
 				2FA7FCD12B25EB9600749D38 /* HomeRouter.swift in Sources */,
 				2F81DE9B2B56135A00C88FE6 /* GradProNavigationController.swift in Sources */,
+				8B348DA92B63B4680049BA79 /* AdminStudentsViewModel.swift in Sources */,
 				2FFE0EC32B48C7920038F2F3 /* ProfileRouter.swift in Sources */,
 				2F9E71F22B3D9A2300767A4D /* UICollectionView+Extension.swift in Sources */,
 				2FA7FCC22B235A5300749D38 /* MoreCoordinator.swift in Sources */,
@@ -1668,12 +1736,15 @@
 				2FA7FCE62B290F0600749D38 /* TapInfo.swift in Sources */,
 				2FA7FD012B2DC88400749D38 /* SearchTableViewCell.swift in Sources */,
 				2F81DE7A2B54BB6100C88FE6 /* FooterButtonView.swift in Sources */,
+				8B348DB32B63C36C0049BA79 /* AdminProfessorsViewController.swift in Sources */,
 				2F9E71E52B389DCD00767A4D /* StoreRouter.swift in Sources */,
 				2F4490B32B057F9D002B6975 /* Student.swift in Sources */,
 				2FFE0ED12B49F0760038F2F3 /* BoardRouter.swift in Sources */,
+				8B348DAB2B63B8700049BA79 /* AdminStudentsViewController.swift in Sources */,
 				2FFE0EEA2B4F6F1F0038F2F3 /* NotificationManager.swift in Sources */,
 				2F81DE952B55944900C88FE6 /* PeerMatchingViewModel.swift in Sources */,
 				2F4490A92B057906002B6975 /* MainCoordinator.swift in Sources */,
+				8B348DB52B63CE080049BA79 /* AdminAssigmentsViewModel.swift in Sources */,
 				2FB7A12C2B1493FC00923D02 /* TabBarCoordinator.swift in Sources */,
 				2F9E71E72B38C7B200767A4D /* StoreFilterModel.swift in Sources */,
 				2F9E71D82B388C6F00767A4D /* StoreCoordinator.swift in Sources */,
@@ -1693,6 +1764,7 @@
 				2F4490A72B0578E3002B6975 /* Coordinator.swift in Sources */,
 				2F7031032B0CE39E00FBB5D6 /* TopAlertManager.swift in Sources */,
 				2FFE0EE32B4D9EC60038F2F3 /* TaskViewType.swift in Sources */,
+				8B348DAD2B63B9B20049BA79 /* AdminCoursesViewModel.swift in Sources */,
 				2FFE0EDA2B4D89790038F2F3 /* TaskViewController.swift in Sources */,
 				2F5B06662AF7A0340075D083 /* AppDelegate.swift in Sources */,
 				2F7031052B0CFC8200FBB5D6 /* UIView+Extension.swift in Sources */,
@@ -1705,6 +1777,7 @@
 				2F4490B62B058094002B6975 /* Teacher.swift in Sources */,
 				8B527C862B31CDC200B6ACF7 /* HeaderTableViewCell.swift in Sources */,
 				2FB7A1432B15F10500923D02 /* RegisterViewController.swift in Sources */,
+				8B348DAF2B63BA430049BA79 /* AdminCoursesViewController.swift in Sources */,
 				2FA7FD0C2B2F459A00749D38 /* SearchFilterModel.swift in Sources */,
 				2FB7A13C2B15467B00923D02 /* HeaderView.swift in Sources */,
 				2FA7FD112B2F69B100749D38 /* FilterHeaderView.swift in Sources */,
@@ -1725,10 +1798,13 @@
 				2F81DE902B5593E300C88FE6 /* PeerSkillsTableViewCell.swift in Sources */,
 				3DCDE4892B398F47005F9C7B /* ImageTextField.swift in Sources */,
 				2FB7A1372B15212E00923D02 /* StoreViewController.swift in Sources */,
+				8B348DA72B63AE790049BA79 /* AdminTableViewCell.swift in Sources */,
 				2FA7FCF02B2B036F00749D38 /* SubmissionsViewController.swift in Sources */,
 				2F4490AB2B05791E002B6975 /* LoginCoordinator.swift in Sources */,
+				8B348DA42B63ACA50049BA79 /* AdminTableViewModel.swift in Sources */,
 				2FB7A1412B15F0A000923D02 /* ProfileViewController.swift in Sources */,
 				2F9E721A2B4222FC00767A4D /* RegisterViewModel.swift in Sources */,
+				8B348DB72B63D0650049BA79 /* AdminAssigmentViewController.swift in Sources */,
 				2FA7FD132B2F6B9A00749D38 /* SearchCoordinator.swift in Sources */,
 				2FA7FCD62B2639A800749D38 /* UITableView+Extension.swift in Sources */,
 				3D5BA7552B5300620043F812 /* ItemDetailsViewModel.swift in Sources */,

@@ -91,14 +91,34 @@ class FooterButtonView: UIView {
         return stackView
     }()
 
-    init(primaryButtonType: CustomButtonType = .primary,
-         primaryButtonTitle: String? = nil,
-         secondaryButtonType: CustomButtonType = .secondary,
-         secondaryButtonTitle: String? = nil
+    init() {
+        super.init(frame: .zero)
+        setupViews()
+    }
+
+    init(
+        primaryButtonType: CustomButtonType = .primary,
+        primaryButtonTitle: String? = nil,
+        secondaryButtonType: CustomButtonType = .secondary,
+        secondaryButtonTitle: String? = nil
     ) {
         super.init(frame: .zero)
         setupViews()
 
+        configure(
+            primaryButtonType: primaryButtonType,
+            primaryButtonTitle: primaryButtonTitle,
+            secondaryButtonType: secondaryButtonType,
+            secondaryButtonTitle: secondaryButtonTitle
+        )
+    }
+
+    func configure(
+        primaryButtonType: CustomButtonType = .primary,
+        primaryButtonTitle: String? = nil,
+        secondaryButtonType: CustomButtonType = .secondary,
+        secondaryButtonTitle: String? = nil
+    ) {
         configureButton(
             button: primaryButton,
             buttonType: primaryButtonType,

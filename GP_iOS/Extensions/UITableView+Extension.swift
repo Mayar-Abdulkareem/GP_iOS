@@ -10,7 +10,12 @@ import UIKit
 extension UITableView {
 
     func setEmptyView(message: String) {
-        let emptyView = UIView(frame: CGRect(x: 0, y: 0, width: bounds.size.width, height: bounds.size.height))
+        let emptyView = UIView(frame: CGRect(
+            x: 0,
+            y: 0,
+            width: bounds.size.width,
+            height: bounds.size.height
+        ))
 
         let messageLabel = UILabel()
         messageLabel.text = message
