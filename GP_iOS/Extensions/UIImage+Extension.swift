@@ -70,6 +70,8 @@ extension UIImage {
         case circle
         case circleFill = "circle.fill"
         case document = "doc.plaintext"
+        case plus
+        case minus
 
         /// Register
         case openLock = "lock.open"
@@ -82,7 +84,7 @@ extension UIImage {
         case camera = "camera.fill"
 
         /// Peer
-        case pencil = "pencil.circle.fill"
+        case pencil = "pencil"
 
         /// Requests
         case requests = "envelope.badge.person.crop"

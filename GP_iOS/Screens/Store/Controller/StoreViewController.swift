@@ -41,7 +41,11 @@ class StoreViewController: UIViewController {
             self.viewModel.viewType = .addItem
             self.viewModel.page = .itemInfo
             self.viewModel.state = .edit
-            self.coordinator?.presentItemDetailsViewController(viewModel: self.viewModel)
+            
+            let addEditViewModel = StoreItemAddEditViewModel(viewType: .add, item: Item(id: "", quantity: "1.0", showPhoneNumber: false))
+            let vc = StoreItemAddEditViewController(viewModel: addEditViewModel)
+            let navCont = UINavigationController(rootViewController: vc)
+            navigationController?.present(navCont, animated: true)
         }, for: .primaryActionTriggered)
 
         return button

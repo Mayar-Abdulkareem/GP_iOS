@@ -448,14 +448,14 @@
       "localizations" : {
         "ar" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "ادخل الموقع "
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Enter Item Location"
+            "value" : "Location"
           }
         }
       }
@@ -465,14 +465,14 @@
       "localizations" : {
         "ar" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "ادخل اسم القطعة"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Enter Item Name"
+            "value" : "Name"
           }
         }
       }
@@ -482,14 +482,14 @@
       "localizations" : {
         "ar" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "ادخل سعر القطعة "
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Enter Item Price"
+            "value" : "Price"
           }
         }
       }

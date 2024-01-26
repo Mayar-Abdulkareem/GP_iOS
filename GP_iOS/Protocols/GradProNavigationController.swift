@@ -35,6 +35,20 @@ extension GradProNavigationControllerProtocol where Self: UIViewController {
         closeButton.tintColor = UIColor.mySecondary
         navigationItem.leftBarButtonItem = closeButton
     }
+    
+    func addNavRightButton(
+        title: String,
+        completion: @escaping (() -> Void)
+    ) {
+        let rightButton = UIBarButtonItem(
+            title: title,
+            primaryAction: UIAction { _ in
+                completion()
+            }
+        )
+        rightButton.tintColor = UIColor.mySecondary
+        navigationItem.rightBarButtonItem = rightButton
+    }
 
     func addSeparatorView() {
         lazy var separatorView: UIView = {

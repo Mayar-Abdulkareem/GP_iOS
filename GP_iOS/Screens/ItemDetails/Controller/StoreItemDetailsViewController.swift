@@ -25,9 +25,14 @@ class StoreItemDetailsViewController: UIViewController, GradProNavigationControl
         )
         
         tableView.dataSource = self
+        tableView.delegate = self
         
         return tableView
     }()
+    
+    var canShowEditButton: Bool {
+        return (AppManager.shared.item?.regID == AuthManager.shared.regID)
+    }
     
     let viewModel: ItemDetailsViewModel
     
@@ -58,10 +63,28 @@ class StoreItemDetailsViewController: UIViewController, GradProNavigationControl
         ])
 
         addNavBar(with: viewModel.item.title)
+        addNavRightButton(title: "Edit",
+                          completion: {
+            [weak self] in
+            
+            let storeItem = AppManager.shared.item
+            let item = Item(
+                id: storeItem?.id ?? "",
+                title: storeItem?.title,
+                price: storeItem?.price,
+                location: storeItem?.location,
+                quantity: storeItem?.quantity,
+                showPhoneNumber: storeItem?.showPhoneNumber
+            )
+            let addEditViewModel = StoreItemAddEditViewModel(viewType: .edit, item: item)
+            let vc = StoreItemAddEditViewController(viewModel: addEditViewModel)
+            self?.navigationController?.pushViewController(vc, animated: true)
+        })
     }
 }
 
-extension StoreItemDetailsViewController: UITableViewDataSource {
+extension StoreItemDetailsViewController: UITableViewDataSource,
+                                          UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         viewModel.sections.count
@@ -86,7 +109,11 @@ extension StoreItemDetailsViewController: UITableViewDataSource {
                     for: indexPath
             ) as? ItemDetailsImageTableViewCell
             
-            cell?.configure(imageString: viewModel.itemImageURLString)
+            let model = ItemDetailsImageCellModel(
+                imageString: viewModel.itemImageURLString,
+                isEditable: false
+            )
+            cell?.configure(model: model)
             
             return cell ?? UITableViewCell()
         } else {
@@ -109,5 +136,25 @@ extension StoreItemDetailsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return viewModel.sections[section].sectionTitle
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        if section < (viewModel.sections.count - 1) {
+            let separatorView = UIView(
+                frame: CGRect(
+                    x: 0,
+                    y: 0,
+                    width: tableView.frame.width,
+                    height: 1 / UIScreen.main.scale
+                )
+            )
+            separatorView.backgroundColor = .separator
+            return separatorView
+        }
+        return nil
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return section < (viewModel.sections.count - 1) ? 1 / UIScreen.main.scale : 0.0
     }
 }
