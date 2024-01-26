@@ -8,11 +8,6 @@
 import UIKit
 import Kingfisher
 
-protocol ItemDetailsDelegate: AnyObject {
-    func deleteButtonTapped()
-    func saveButtonTapped()
-}
-
 class ItemDetailsViewController: UIViewController {
 
     private let viewModel: StoreViewModel
@@ -98,7 +93,7 @@ class ItemDetailsViewController: UIViewController {
         button.isHidden = !isMyItem || (viewModel.viewType == .addItem)
 
         button.addAction(UIAction { [weak self] _ in
-            self?.delegate?.deleteButtonTapped()
+            //self?.delegate?.deleteButtonTapped()
         }, for: .primaryActionTriggered)
         return button
     }()
@@ -156,7 +151,7 @@ class ItemDetailsViewController: UIViewController {
             self?.viewModel.item.price = self?.priceView.textField.text
             self?.viewModel.item.location = self?.locationView.textField.text
             self?.viewModel.item.showPhoneNumber = self?.checkboxButton.isSelected
-            self?.delegate?.saveButtonTapped()
+            //self?.delegate?.saveButtonTapped()
         }, for: .primaryActionTriggered)
 
         return button

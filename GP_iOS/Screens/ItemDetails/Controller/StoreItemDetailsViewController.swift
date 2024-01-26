@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol ItemDetailsDelegate: AnyObject {
+    func refreshMyItems()
+}
+
 class StoreItemDetailsViewController: UIViewController, GradProNavigationControllerProtocol {
+
+    weak var delegate: ItemDetailsDelegate?
 
     lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -29,10 +35,29 @@ class StoreItemDetailsViewController: UIViewController, GradProNavigationControl
         
         return tableView
     }()
-    
-    var canShowEditButton: Bool {
-        return (AppManager.shared.item?.regID == AuthManager.shared.regID)
-    }
+
+    lazy var footerView: FooterButtonView = {
+        let footerView = FooterButtonView()
+        footerView.translatesAutoresizingMaskIntoConstraints = false
+        footerView.delegate = self
+        return footerView
+    }()
+
+    lazy var stackView: UIStackView = {
+        let stackView = UIStackView(
+            arrangedSubviews: [
+                tableView,
+                footerView
+            ]
+        )
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.spacing = 0
+        stackView.axis = .vertical
+        stackView.alignment = .fill
+        stackView.distribution = .fill
+        stackView.alpha = 1
+        return stackView
+    }()
     
     let viewModel: ItemDetailsViewModel
     
@@ -45,47 +70,89 @@ class StoreItemDetailsViewController: UIViewController, GradProNavigationControl
         fatalError("init(coder:) has not been implemented")
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        bindWithViewModel()
         configureViews()
+    }
+
+    private func configureFooterView() {
+        if let footerButtonTitle = viewModel.getFooterButtonTitle() {
+            footerView.configure(
+                primaryButtonType: .primary,
+                primaryButtonTitle: footerButtonTitle
+            )
+        } else {
+            footerView.isHidden = true
+        }
+    }
+
+    private func bindWithViewModel() {
+        viewModel.onShowError = { [weak self] msg in
+            self?.stopLoading()
+            DispatchQueue.main.async {
+                TopAlertManager.show(title: String.LocalizedKeys.errorTitle.localized, subTitle: msg, type: .failure)
+            }
+        }
+
+        viewModel.onItemDeleted = { [weak self] in
+            self?.stopLoading()
+            self?.delegate?.refreshMyItems()
+            DispatchQueue.main.async {
+                self?.dismiss(animated: true)
+            }
+        }
+    }
+
+    private func startLoading() {
+        stackView.isHidden = true
+        view.showLoading(maskView: view, hasTransparentBackground: true)
+    }
+
+    private func stopLoading() {
+        UIView.animate(withDuration: 0.3) {
+            self.stackView.isHidden = false
+        }
+        view.hideLoading()
     }
 
     private func configureViews() {
         view.backgroundColor = .myPrimary
 
-        view.addSubview(tableView)
-
-        NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
+        configureFooterView()
+        view.addViewFillEntireView(stackView)
 
         addNavBar(with: viewModel.item.title)
-        addNavRightButton(title: "Edit",
-                          completion: {
-            [weak self] in
-            
-            let storeItem = AppManager.shared.item
-            let item = Item(
-                id: storeItem?.id ?? "",
-                title: storeItem?.title,
-                price: storeItem?.price,
-                location: storeItem?.location,
-                quantity: storeItem?.quantity,
-                showPhoneNumber: storeItem?.showPhoneNumber
-            )
-            let addEditViewModel = StoreItemAddEditViewModel(viewType: .edit, item: item)
-            let vc = StoreItemAddEditViewController(viewModel: addEditViewModel)
-            self?.navigationController?.pushViewController(vc, animated: true)
-        })
+
+        if viewModel.isMyItem {
+            addNavRightButton(title: "Edit",
+                              completion: {
+                [weak self] in
+
+                let storeItem = AppManager.shared.item
+                let item = Item(
+                    id: storeItem?.id ?? "",
+                    title: storeItem?.title,
+                    price: storeItem?.price,
+                    location: storeItem?.location,
+                    quantity: storeItem?.quantity,
+                    showPhoneNumber: storeItem?.showPhoneNumber
+                )
+                let addEditViewModel = StoreItemAddEditViewModel(viewType: .edit, item: item)
+                let vc = StoreItemAddEditViewController(viewModel: addEditViewModel)
+                vc.delegate = self
+                self?.navigationController?.pushViewController(vc, animated: true)
+            })
+        }
     }
 }
 
 extension StoreItemDetailsViewController: UITableViewDataSource,
                                           UITableViewDelegate {
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         viewModel.sections.count
     }
@@ -156,5 +223,18 @@ extension StoreItemDetailsViewController: UITableViewDataSource,
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return section < (viewModel.sections.count - 1) ? 1 / UIScreen.main.scale : 0.0
+    }
+}
+
+extension StoreItemDetailsViewController: FooterButtonViewDelegate {
+    func primaryButtonTapped() {
+        startLoading()
+        viewModel.deleteItem()
+    }
+}
+
+extension StoreItemDetailsViewController: ItemAddedOrUpdatedDelegate {
+    func itemAddedOrUpdated() {
+        delegate?.refreshMyItems()
     }
 }

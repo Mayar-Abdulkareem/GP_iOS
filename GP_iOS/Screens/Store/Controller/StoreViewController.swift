@@ -21,7 +21,7 @@ class StoreViewController: UIViewController {
     private lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar()
         searchBar.translatesAutoresizingMaskIntoConstraints = false
-        searchBar.placeholder = String.LocalizedKeys.searchByProjectName.localized
+        searchBar.placeholder = "Search by Item Name"
         searchBar.layer.borderWidth = 0
         searchBar.searchBarStyle = .minimal
         searchBar.tintColor = .mySecondary
@@ -44,6 +44,7 @@ class StoreViewController: UIViewController {
             
             let addEditViewModel = StoreItemAddEditViewModel(viewType: .add, item: Item(id: "", quantity: "1.0", showPhoneNumber: false))
             let vc = StoreItemAddEditViewController(viewModel: addEditViewModel)
+            vc.delegate = self
             let navCont = UINavigationController(rootViewController: vc)
             navigationController?.present(navCont, animated: true)
         }, for: .primaryActionTriggered)
@@ -99,31 +100,28 @@ class StoreViewController: UIViewController {
         return .lightContent
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        refresh()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .myPrimary
         configureViews()
-        startLoading()
-        viewModel.fetchItems()
         bindWithViewModel()
     }
 
     func startLoading() {
-     //   DispatchQueue.main.async {
-            self.collectionView.alpha = 0
-            self.view.showLoading(maskView: self.view, hasTransparentBackground: true)
-     //   }
+        self.collectionView.alpha = 0
+        self.view.showLoading(maskView: self.view, hasTransparentBackground: true)
     }
 
     func stopLoading() {
-    //    DispatchQueue.main.async {
-            UIView.animate(withDuration: 0.3) {
-                self.collectionView.alpha = 1
-            }
-            self.view.hideLoading()
-    //    }
+        UIView.animate(withDuration: 0.3) {
+            self.collectionView.alpha = 1
+        }
+        self.view.hideLoading()
     }
-
 
     private func bindWithViewModel() {
         viewModel.onShowError = { [weak self] msg in
@@ -149,7 +147,6 @@ class StoreViewController: UIViewController {
             }
         }
     }
-
 
     private func configureViews() {
         view.addSubview(searchBar)
@@ -237,8 +234,10 @@ extension StoreViewController: UICollectionViewDelegate,
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        AppManager.shared.item = viewModel.items[indexPath.row]
         let viewModel = ItemDetailsViewModel(item: viewModel.items[indexPath.row])
         let viewController = StoreItemDetailsViewController(viewModel: viewModel)
+        viewController.delegate = self
         let navController = UINavigationController(rootViewController: viewController)
         present(navController, animated: true)
     }
@@ -262,45 +261,23 @@ extension StoreViewController: UICollectionViewDelegate,
 
         return footer
     }
+
+    private func refresh() {
+        viewModel.storeFilterModel.page = 1
+        startLoading()
+        viewModel.fetchItems()
+    }
 }
 
 extension StoreViewController: ItemDetailsDelegate {
-
-    func deleteButtonTapped() {
-        if let id = AppManager.shared.item?.id {
-            startLoading()
-            viewModel.deleteItem(id: id)
-            dismiss(animated: true)
-        }
+    func refreshMyItems() {
+        refresh()
     }
+}
 
-    func saveButtonTapped() {
-        /// Make sure all items are filled if it is add operation
-        if viewModel.viewType == .addItem {
-            if !viewModel.areItemFieldsFilled {
-                TopAlertManager.show(
-                    title: String.LocalizedKeys.errorTitle.localized,
-                    subTitle: String.LocalizedKeys.fillAllFields.localized,
-                    type: .failure
-                )
-                return
-            }
-            if  let price = viewModel.item.price,
-                let _ = Float(price) {
-            } else {
-                TopAlertManager.show(
-                    title: String.LocalizedKeys.errorTitle.localized,
-                    subTitle: String.LocalizedKeys.priceDataTypeError.localized,
-                    type: .failure
-                )
-                return
-            }
-        }
-
-        /// Fetch Data
-        startLoading()
-        viewModel.viewType.actionOnSaveClicked(viewModel: viewModel)
-        dismiss(animated: true)
+extension StoreViewController: ItemAddedOrUpdatedDelegate {
+    func itemAddedOrUpdated() {
+        refresh()
     }
 }
 

@@ -7,8 +7,14 @@
 
 import UIKit
 
+protocol ItemAddedOrUpdatedDelegate: AnyObject {
+    func itemAddedOrUpdated()
+}
+
 class StoreItemAddEditViewController: UIViewController,
                                       GradProNavigationControllerProtocol {
+
+    weak var delegate: ItemAddedOrUpdatedDelegate?
 
     lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -69,9 +75,46 @@ class StoreItemAddEditViewController: UIViewController,
 
         configureViews()
         configureNavBar()
+        bindWithViewModel()
         setupKeyboardNotificationCenterObservers()
     }
-    
+
+    private func bindWithViewModel() {
+        viewModel.onShowError = { [weak self] msg in
+            self?.stopLoading()
+            DispatchQueue.main.async {
+                TopAlertManager.show(title: String.LocalizedKeys.errorTitle.localized, subTitle: msg, type: .failure)
+            }
+        }
+
+        viewModel.onItemAddedOrUpdated = { [weak self] in
+            switch self?.viewModel.viewType {
+            case .add:
+                self?.delegate?.itemAddedOrUpdated()
+                self?.dismiss(animated: true)
+            case .edit:
+                self?.delegate?.itemAddedOrUpdated()
+                self?.navigationController?.popViewController(animated: true)
+            case .none:
+                break
+            }
+        }
+    }
+
+    func startLoading() {
+        self.tableView.alpha = 0
+        footerView.isHidden = true
+        self.view.showLoading(maskView: self.view, hasTransparentBackground: true)
+    }
+
+    func stopLoading() {
+        UIView.animate(withDuration: 0.3) {
+            self.tableView.alpha = 1
+        }
+        footerView.isHidden = false
+        self.view.hideLoading()
+    }
+
     private func configureViews() {
         view.backgroundColor = .myPrimary
 
@@ -97,6 +140,7 @@ class StoreItemAddEditViewController: UIViewController,
             addNavBar(with: title)
         case .edit:
             configureNavBarTitle(title: title)
+            addSeparatorView()
         }
     }
     
@@ -227,11 +271,16 @@ extension StoreItemAddEditViewController: UIImagePickerControllerDelegate, UINav
 
 extension StoreItemAddEditViewController: FooterButtonViewDelegate {
     func primaryButtonTapped() {
+        view.endEditing(true)
         switch viewModel.viewType {
         case .add:
-            dismiss(animated: true)
+            startLoading()
+            viewModel.addItem()
+         //   dismiss(animated: true)
         case .edit:
-            navigationController?.popViewController(animated: true)
+            startLoading()
+            viewModel.editItem()
+         //   navigationController?.popViewController(animated: true)
         }
     }
 }

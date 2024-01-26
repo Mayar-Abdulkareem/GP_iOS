@@ -30,20 +30,6 @@ class StoreViewModel {
     /// If the fetch Items completed successfully
     var onItemFetched: ((_ noItems: Bool) -> Void)?
 
-    // MARK: - Computed Property
-
-    var areItemFieldsFilled: Bool {
-        if let quantity = item.quantity, !quantity.isEmpty,
-           let location = item.location, !location.isEmpty,
-           let price = item.price, !price.isEmpty,
-           let title = item.title, !title.isEmpty,
-           item.image != nil {
-            return true
-        } else {
-            return false
-        }
-    }
-
     // MARK: - Methods
 
     /// Fetch Items

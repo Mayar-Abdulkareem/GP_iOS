@@ -63,6 +63,7 @@ class ItemAddEditQuantityTableViewCell: UITableViewCell {
     }
     
     func configure(model: ItemAddEditQuantityCellModel) {
-        quantityStepper.valueTextField.text = "\(model.quantity)"
+        //quantityStepper.valueTextField.text = "\(model.quantity)"
+        quantityStepper.value = model.quantity
     }
 }

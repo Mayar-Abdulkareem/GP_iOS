@@ -51,7 +51,7 @@ extension UIImage {
         case selectedFilter = "checkmark.circle"
 
         /// Search
-        case viewMore = "greaterthan"
+        case viewMore = "chevron.right"
 
         /// Project Details
         case supervisor = "person.crop.circle.badge.checkmark"
