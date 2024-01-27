@@ -42,10 +42,15 @@ class CourseCoordinator: Coordinator {
         coordinator.start()
     }
 
+    func showAssignmentsViewController() {
+        let assignmentsViewController = AssignmentsViewController()
+        assignmentsViewController.coordinator = self
+        navigationController.pushViewController(assignmentsViewController, animated: true)
+    }
+
     func showSubmissionsViewController() {
-        let submissionsViewController = SubmissionsViewController()
-        submissionsViewController.coordinator = self
-        navigationController.pushViewController(submissionsViewController, animated: true)
+        let submissionViewController = SubmissionViewController()
+        navigationController.pushViewController(submissionViewController, animated: true)
     }
 
     func showRequestsViewController() {

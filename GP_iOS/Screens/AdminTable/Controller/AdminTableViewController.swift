@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FHAlert
 
 class AdminTableViewController: UIViewController, GradProNavigationControllerProtocol {
 
@@ -100,10 +101,10 @@ class AdminTableViewController: UIViewController, GradProNavigationControllerPro
         viewModel.onShowError = { [weak self] message in
             guard let self else { return }
             stopLoading()
-            TopAlertManager.show(
+            TopAlertView.show(
                 title: String.LocalizedKeys.errorTitle.localized,
                 subTitle: message,
-                type: .failure
+                type: TopAlertType.failure
             )
         }
     }

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FHAlert
 
 protocol ItemDetailsDelegate: AnyObject {
     func refreshMyItems()
@@ -83,7 +84,7 @@ class StoreItemDetailsViewController: UIViewController, GradProNavigationControl
     private func configureFooterView() {
         if let footerButtonTitle = viewModel.getFooterButtonTitle() {
             footerView.configure(
-                primaryButtonType: .primary,
+                primaryButtonType: .delete,
                 primaryButtonTitle: footerButtonTitle
             )
         } else {
@@ -95,7 +96,7 @@ class StoreItemDetailsViewController: UIViewController, GradProNavigationControl
         viewModel.onShowError = { [weak self] msg in
             self?.stopLoading()
             DispatchQueue.main.async {
-                TopAlertManager.show(title: String.LocalizedKeys.errorTitle.localized, subTitle: msg, type: .failure)
+                TopAlertView.show(title: String.LocalizedKeys.errorTitle.localized, subTitle: msg, type: TopAlertType.failure)
             }
         }
 
@@ -127,6 +128,7 @@ class StoreItemDetailsViewController: UIViewController, GradProNavigationControl
         view.addViewFillEntireView(stackView)
 
         addNavBar(with: viewModel.item.title)
+        addBackButton()
 
         if viewModel.isMyItem {
             addNavRightButton(title: "Edit",

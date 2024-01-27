@@ -89,6 +89,12 @@ extension UIImage {
         /// Requests
         case requests = "envelope.badge.person.crop"
 
+        /// Submission
+        case status = "questionmark.circle"
+        case uploadedText = "text.bubble"
+        case uploadedFile = "arrow.down.app"
+        case upload = "arrow.up.square"
+
         ///  Get image
         var image: UIImage {
             return UIImage(systemImages: self)

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FHAlert
 
 protocol ItemAddedOrUpdatedDelegate: AnyObject {
     func itemAddedOrUpdated()
@@ -83,7 +84,7 @@ class StoreItemAddEditViewController: UIViewController,
         viewModel.onShowError = { [weak self] msg in
             self?.stopLoading()
             DispatchQueue.main.async {
-                TopAlertManager.show(title: String.LocalizedKeys.errorTitle.localized, subTitle: msg, type: .failure)
+                TopAlertView.show(title: String.LocalizedKeys.errorTitle.localized, subTitle: msg, type: TopAlertType.failure)
             }
         }
 

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FHAlert
 
 class PeerViewController: UIViewController, GradProNavigationControllerProtocol {
     weak var coordinator: PeerCoordinator?
@@ -75,14 +76,22 @@ class PeerViewController: UIViewController, GradProNavigationControllerProtocol 
     private func bindWithViewModel() {
         viewModel.onShowError = { [weak self] msg in
             self?.stopLoading()
-            TopAlertManager.show(title: String.LocalizedKeys.errorTitle.localized, subTitle: msg, type: .failure)
+            TopAlertView.show(
+                title: String.LocalizedKeys.errorTitle.localized,
+                subTitle: msg,
+                type: TopAlertType.failure
+            )
         }
 
         viewModel.onRequestSent = { [weak self]  in
             self?.stopLoading()
             self?.showStatus(message: "Waiting for your peer approval")
             self?.footerView.isHidden = false
-            TopAlertManager.show(title: "Success", subTitle: "Successfully sent a request", type: .success)
+            TopAlertView.show(
+                title: "Success",
+                subTitle: "Successfully sent a request",
+                type: TopAlertType.success
+            )
         }
 
         viewModel.onRequestCanceled = { [weak self] in
@@ -90,7 +99,11 @@ class PeerViewController: UIViewController, GradProNavigationControllerProtocol 
                 self?.stopLoading()
                 self?.hideStatus()
                 self?.footerView.isHidden = true
-                TopAlertManager.show(title: "Success", subTitle: "Successfully canceled your request", type: .success)
+                TopAlertView.show(
+                    title: "Success",
+                    subTitle: "Successfully canceled your request",
+                    type: TopAlertType.success
+                )
             }
         }
 

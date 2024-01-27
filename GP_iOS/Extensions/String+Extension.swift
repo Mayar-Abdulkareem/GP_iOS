@@ -58,6 +58,7 @@ extension String {
         /// Project List
         case choosePeerTitle
         case boardTitle
+        case submissionsTitle
         case submissionTitle
         case requestsTitle
 
@@ -124,6 +125,11 @@ extension String {
         case deleteColumn
         case addColumn
         case addCard
+
+        /// Assignments
+        case assignmentsTitle
+        case due
+        case noAssignments
 
         var localized: String {
             return String(localizedKey: self)

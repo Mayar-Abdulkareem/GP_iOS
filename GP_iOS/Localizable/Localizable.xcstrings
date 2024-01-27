@@ -103,6 +103,23 @@
         }
       }
     },
+    "assignmentsTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "المهام"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Assignments"
+          }
+        }
+      }
+    },
     "backButtonTitle" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -422,6 +439,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Open the drive link"
+          }
+        }
+      }
+    },
+    "due" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ينتهي  "
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Due "
           }
         }
       }
@@ -782,6 +816,23 @@
         }
       }
     },
+    "noAssignments" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لا يوجد مهام متوفرة"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No available assignments"
+          }
+        }
+      }
+    },
     "noAvailableCourses" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1026,13 +1077,13 @@
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "نوع المشروع:"
+            "value" : "نوع المشروع"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Project Type:"
+            "value" : "Project Type"
           }
         }
       }
@@ -1366,18 +1417,18 @@
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "الطلاب"
+            "value" : "الطلاب "
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Students: "
+            "value" : "Students"
           }
         }
       }
     },
-    "submissionTitle" : {
+    "submissionsTitle" : {
       "extractionState" : "manual",
       "localizations" : {
         "ar" : {
@@ -1394,19 +1445,36 @@
         }
       }
     },
+    "submissionTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "التسليم"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Submission"
+          }
+        }
+      }
+    },
     "supervisorTitle" : {
       "extractionState" : "manual",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "المشرف"
+            "value" : "المشرف "
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Supervisor:"
+            "value" : "Supervisor"
           }
         }
       }
@@ -1503,13 +1571,13 @@
         "ar" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "السنة: "
+            "value" : "السنة"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Year: "
+            "value" : "Year"
           }
         }
       }

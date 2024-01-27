@@ -36,6 +36,14 @@ class MoreCoordinator: Coordinator {
         coordinator.start()
     }
 
+    func presentSendbirdChatInterface() {
+        let channelListVC = SendBirdManager.shared.returnSBUGroupChannelListViewController()
+        let navController = UINavigationController(rootViewController: channelListVC)
+        navController.view.tintColor = UIColor.mySecondary
+        navigationController.modalPresentationStyle = .fullScreen
+        navigationController.present(navController, animated: true)
+    }
+
     /// Present the Login screen
     func didLogout() {
         parentCoordinator?.didLogout()

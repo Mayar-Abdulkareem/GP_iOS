@@ -7,12 +7,13 @@
 
 import UIKit
 import Kingfisher
+import FHAlert
 
 class ProfileViewController: UIViewController, GradProNavigationControllerProtocol {
 
     private let viewModel = ProfileViewModel()
 
-    private let profileImageView: UIImageView = {
+    private lazy var profileImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.tintColor = .myGray
@@ -43,72 +44,44 @@ class ProfileViewController: UIViewController, GradProNavigationControllerProtoc
         return label
     }()
 
-    private let regID = LabelIconView(
-        icon: UIImage.SystemImages.regID.image,
-        prefix: String.LocalizedKeys.regID.localized + " ",
-        text: AppManager.shared.profile?.regID ?? "",
-        imageSize: 35,
-        fontSize: 18
-    )
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.separatorStyle = .none
+        tableView.separatorColor = .clear
+        tableView.backgroundColor = .myPrimary
 
-    private let email = LabelIconView(
-        icon: UIImage.SystemImages.email.image,
-        prefix: String.LocalizedKeys.email.localized + " ",
-        text: AppManager.shared.profile?.email ?? "",
-        imageSize: 30,
-        fontSize: 18
-    )
+        tableView.register(
+            LabelIconTableViewCell.self,
+            forCellReuseIdentifier: LabelIconTableViewCell.identifier
+        )
 
-    private let phoneNumber = LabelIconView(
-        icon: UIImage.SystemImages.phone.image,
-        prefix: String.LocalizedKeys.phoneNumber.localized + " ",
-        text: AppManager.shared.profile?.phoneNumber ?? "",
-        imageSize: 30,
-        fontSize: 18
-    )
+        tableView.dataSource = self
+        tableView.delegate = self
 
-    private let GPA = LabelIconView(
-        icon: UIImage.SystemImages.GPA.image,
-        prefix: String.LocalizedKeys.gpa.localized + " ",
-        text: AppManager.shared.profile?.GPA ?? "",
-        imageSize: 30,
-        fontSize: 18,
-        isSeparatorHidden: true
-    )
-
-    private let stackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .vertical
-        return stackView
+        return tableView
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.white
         setupViews()
         viewModel.getProfile()
-        hideElements(isHidden: true)
-        view.showLoading(maskView: view, hasTransparentBackground: false)
+        startLoading()
         bindWithViewModel()
     }
 
     private func bindWithViewModel() {
         viewModel.onShowError = { [weak self] msg in
-            self?.view.hideLoading()
-            TopAlertManager.show(title: String.LocalizedKeys.errorTitle.localized, subTitle: msg, type: .failure)
+            self?.stopLoading()
+            TopAlertView.show(title: String.LocalizedKeys.errorTitle.localized, subTitle: msg, type: TopAlertType.failure)
         }
 
         viewModel.onProfileFetched = { [weak self] in
             DispatchQueue.main.async {
-                self?.hideElements(isHidden: false)
-                self?.view.hideLoading()
+                self?.stopLoading()
                 guard let profile = AppManager.shared.profile else { return }
                 self?.nameLabel.text = profile.name
-                self?.regID.changeText(text: profile.regID)
-                self?.email.changeText(text: profile.email)
-                self?.phoneNumber.changeText(text: profile.phoneNumber)
-                self?.GPA.changeText(text: profile.GPA)
+                self?.tableView.reloadData()
 
                 if let image = AppManager.shared.profile?.profileImage {
                     let url = URL(string: image)
@@ -127,17 +100,14 @@ class ProfileViewController: UIViewController, GradProNavigationControllerProtoc
     }
 
     private func setupViews() {
+        view.backgroundColor = UIColor.myPrimary
+
         view.addSubview(profileImageView)
         view.addSubview(editButton)
         view.addSubview(nameLabel)
-        view.addSubview(stackView)
+        view.addSubview(tableView)
 
         addNavBar(with: String.LocalizedKeys.profileTitle.localized)
-
-        stackView.addArrangedSubview(regID)
-        stackView.addArrangedSubview(email)
-        stackView.addArrangedSubview(phoneNumber)
-        stackView.addArrangedSubview(GPA)
 
         NSLayoutConstraint.activate([
             profileImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
@@ -153,17 +123,31 @@ class ProfileViewController: UIViewController, GradProNavigationControllerProtoc
             nameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             nameLabel.topAnchor.constraint(equalTo: profileImageView.bottomAnchor, constant: 8),
 
-            stackView.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 50),
-            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+            tableView.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 32),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+    }
+
+    private func startLoading() {
+        tableView.alpha = 0
+        hideElements(isHidden: true)
+        view.showLoading(maskView: view, hasTransparentBackground: true)
+    }
+
+    private func stopLoading() {
+        UIView.animate(withDuration: 0.3) {
+            self.tableView.alpha = 1
+        }
+        hideElements(isHidden: false)
+        view.hideLoading()
     }
 
     private func hideElements(isHidden: Bool) {
         profileImageView.isHidden = isHidden
         editButton.isHidden = isHidden
         nameLabel.isHidden = isHidden
-        stackView.isHidden = isHidden
     }
 
     func handleEditProfilePicture() {
@@ -226,24 +210,39 @@ class ProfileViewController: UIViewController, GradProNavigationControllerProtoc
 
 extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-            var selectedImageFromPicker: UIImage?
+        var selectedImageFromPicker: UIImage?
 
-            if let editedImage = info[.editedImage] as? UIImage {
-                selectedImageFromPicker = editedImage
-            } else if let originalImage = info[.originalImage] as? UIImage {
-                selectedImageFromPicker = originalImage
-            }
-
-            if let selectedImage = selectedImageFromPicker {
-                viewModel.updateProfile(image: selectedImage)
-                view.showLoading(maskView: view)
-                hideElements(isHidden: true)
-            }
-
-            dismiss(animated: true)
+        if let editedImage = info[.editedImage] as? UIImage {
+            selectedImageFromPicker = editedImage
+        } else if let originalImage = info[.originalImage] as? UIImage {
+            selectedImageFromPicker = originalImage
         }
 
-        func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-            dismiss(animated: true)
+        if let selectedImage = selectedImageFromPicker {
+            viewModel.updateProfile(image: selectedImage)
+            view.showLoading(maskView: view)
+            hideElements(isHidden: true)
         }
+
+        dismiss(animated: true)
+    }
+
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true)
+    }
+}
+
+extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.cellsModel.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: LabelIconTableViewCell.identifier,
+            for: indexPath
+        ) as? LabelIconTableViewCell
+        cell?.configureCell(model: viewModel.cellsModel[indexPath.row])
+        return cell ?? UITableViewCell()
+    }
 }

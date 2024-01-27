@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FHAlert
 
 class RequestsViewController: UIViewController, GradProNavigationControllerProtocol {
 
@@ -64,7 +65,11 @@ class RequestsViewController: UIViewController, GradProNavigationControllerProto
     private func bindViewModel() {
         viewModel.onShowError = { [weak self] message in
             self?.stopLoading()
-            TopAlertManager.show(title: String.LocalizedKeys.errorTitle.localized, subTitle: message, type: .failure)
+            TopAlertView.show(
+                title: String.LocalizedKeys.errorTitle.localized,
+                subTitle: message,
+                type: TopAlertType.failure
+            )
         }
 
         viewModel.onViewTypeSpecified = { [weak self]  in
@@ -80,13 +85,13 @@ class RequestsViewController: UIViewController, GradProNavigationControllerProto
 
         viewModel.onRequestAccepted = { [weak self] in
             self?.stopLoading()
-            TopAlertManager.show(title: "Success", subTitle: "Request accepted successfully", type: .success)
+            TopAlertView.show(title: "Success", subTitle: "Request accepted successfully", type: TopAlertType.success)
             self?.configureViewType()
         }
 
         viewModel.onRequestDeclined = { [weak self] in
             self?.stopLoading()
-            TopAlertManager.show(title: "Success", subTitle: "Request declined successfully", type: .success)
+            TopAlertView.show(title: "Success", subTitle: "Request declined successfully", type: TopAlertType.success)
             self?.startLoading()
             self?.viewModel.setViewType()
         }

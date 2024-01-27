@@ -16,7 +16,7 @@ protocol GradProNavigationControllerProtocol: AnyObject {
 extension GradProNavigationControllerProtocol where Self: UIViewController {
 
     func configureNavBarTitle(title: String?) {
-        self.title = title
+        self.navigationItem.title = title
         let textAttributes = [
             NSAttributedString.Key.foregroundColor: UIColor.mySecondary,
             NSAttributedString.Key.font: UIFont.systemFont(ofSize: 20, weight: .semibold)
@@ -66,6 +66,12 @@ extension GradProNavigationControllerProtocol where Self: UIViewController {
             separatorView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             separatorView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
+    }
+
+    func addBackButton() {
+        let backButton = UIBarButtonItem()
+        backButton.title = "Back"
+        self.navigationItem.backBarButtonItem = backButton
     }
 
     func addNavBar(with title: String?) {

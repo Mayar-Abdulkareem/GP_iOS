@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FHAlert
 
 class PeerMatchingViewController: UIViewController, GradProNavigationControllerProtocol {
 
@@ -64,6 +65,7 @@ class PeerMatchingViewController: UIViewController, GradProNavigationControllerP
     private func configureViews() {
         view.backgroundColor = .white
         
+        addBackButton()
         addNavBar(with: "Peer Matching")
 
         view.addSubview(tableView)
@@ -83,7 +85,7 @@ class PeerMatchingViewController: UIViewController, GradProNavigationControllerP
 
     private func bindWithViewModel() {
         viewModel.onShowError = { [weak self] msg in
-            TopAlertManager.show(title: String.LocalizedKeys.errorTitle.localized, subTitle: msg, type: .failure)
+            TopAlertView.show(title: String.LocalizedKeys.errorTitle.localized, subTitle: msg, type: TopAlertType.failure)
             self?.stopLoading()
         }
 

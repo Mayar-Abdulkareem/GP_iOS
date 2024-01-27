@@ -178,5 +178,6 @@ extension UIView {
         self.layer.shadowOpacity = shadowOpacity
         self.layer.shadowOffset = shadowOffset
         self.layer.shadowRadius = shadowRadius
+        self.clipsToBounds = false
     }
 }

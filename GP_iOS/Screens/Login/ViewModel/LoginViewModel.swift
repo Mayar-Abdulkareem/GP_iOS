@@ -6,6 +6,7 @@
 //
 
 import Alamofire
+import FHAlert
 
 class LoginViewModel {
 

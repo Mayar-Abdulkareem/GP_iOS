@@ -13,13 +13,17 @@ enum CustomButtonType {
     case disabled
     case primary
     case secondary
+    case delete
+    case add
 
     var backgroundColor: UIColor {
         switch self {
         case .disabled:
-            return .lightGray
+            return .myLightGray
+        case .delete:
+            return .systemRed
         default:
-            return .mySecondary
+            return .mySecondary.withAlphaComponent(0.8)
         }
     }
 
@@ -55,7 +59,6 @@ class FooterButtonView: UIView {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.cornerRadius = 8
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 18)
 
         button.addAction(UIAction { [weak self] _ in
             self?.delegate?.primaryButtonTapped()
@@ -69,7 +72,7 @@ class FooterButtonView: UIView {
         button.layer.cornerRadius = 8
 
         button.addAction(UIAction { [weak self] _ in
-            self?.delegate?.primaryButtonTapped()
+            self?.delegate?.secondaryButtonTapped?()
         }, for: .primaryActionTriggered)
         return button
     }()
@@ -83,7 +86,7 @@ class FooterButtonView: UIView {
     }()
 
     private lazy var buttonsStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [primaryButton, secondaryButton])
+        let stackView = UIStackView(arrangedSubviews: [secondaryButton, primaryButton])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
@@ -120,15 +123,15 @@ class FooterButtonView: UIView {
         secondaryButtonTitle: String? = nil
     ) {
         configureButton(
-            button: primaryButton,
-            buttonType: primaryButtonType,
-            buttonTitle: primaryButtonTitle
-        )
-
-        configureButton(
             button: secondaryButton,
             buttonType: secondaryButtonType,
             buttonTitle: secondaryButtonTitle
+        )
+
+        configureButton(
+            button: primaryButton,
+            buttonType: primaryButtonType,
+            buttonTitle: primaryButtonTitle
         )
     }
 
@@ -164,13 +167,36 @@ class FooterButtonView: UIView {
         button.isEnabled = buttonType.isEnabled
         button.backgroundColor = buttonType.backgroundColor
         button.setTitleColor(buttonType.textColor, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
         button.isHidden = (buttonTitle == nil)
-
     }
 
     func changePrimaryButtonType(type: CustomButtonType) {
         primaryButton.backgroundColor = type.backgroundColor
         primaryButton.setTitleColor(type.textColor, for: .normal)
         primaryButton.isEnabled = type.isEnabled
+    }
+
+    func changePrimaryButtonText(text: String) {
+        primaryButton.setTitle(text, for: .normal) 
+    }
+
+    func changeSecondaryButtonType(type: CustomButtonType) {
+        secondaryButton.backgroundColor = type.backgroundColor
+        secondaryButton.setTitleColor(type.textColor, for: .normal)
+        secondaryButton.isEnabled = type.isEnabled
+    }
+
+    func changeSecondaryButtonText(text: String) {
+        secondaryButton.setTitle(text, for: .normal)
+    }
+
+    func addAlphaToPrimary() {
+        primaryButton.alpha = 0.8
+    }
+
+    func showSecondary(isHidden: Bool) {
+        secondaryButton.isHidden = isHidden
+        changeSecondaryButtonType(type: .secondary)
     }
 }

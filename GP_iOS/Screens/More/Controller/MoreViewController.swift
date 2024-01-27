@@ -23,22 +23,22 @@ class MoreViewController: UIViewController {
             title: String.LocalizedKeys.logoutTitle.localized,
             icon: UIImage.SystemImages.logout.image
         ),
-        MoreCellModel(
-            title: "Students",
-            icon: UIImage.SystemImages.logout.image
-        ),
-        MoreCellModel(
-            title: "Coueses",
-            icon: UIImage.SystemImages.logout.image
-        ),
-        MoreCellModel(
-            title: "Professors",
-            icon: UIImage.SystemImages.logout.image
-        ),
-        MoreCellModel(
-            title: "Assigments",
-            icon: UIImage.SystemImages.logout.image
-        ),
+//        MoreCellModel(
+//            title: "Students",
+//            icon: UIImage.SystemImages.logout.image
+//        ),
+//        MoreCellModel(
+//            title: "Coueses",
+//            icon: UIImage.SystemImages.logout.image
+//        ),
+//        MoreCellModel(
+//            title: "Professors",
+//            icon: UIImage.SystemImages.logout.image
+//        ),
+//        MoreCellModel(
+//            title: "Assigments",
+//            icon: UIImage.SystemImages.logout.image
+//        ),
 
     ]
 
@@ -60,9 +60,10 @@ class MoreViewController: UIViewController {
         return tableView
     }()
 
-    private let mainView: UIView = {
+    private lazy var mainView: UIView = {
         let view = HeaderView()
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.delegate = self
         return view
     }()
 
@@ -123,28 +124,28 @@ extension MoreViewController: UITableViewDelegate, UITableViewDataSource {
             coordinator?.showRegisterFlow()
         case 2:
             coordinator?.didLogout()
-        case 3:
-            let vc = AdminStudentsViewController()
-            let navController = UINavigationController(rootViewController: vc)
-            navController.modalPresentationStyle = .fullScreen
-            present(navController, animated: true)
-        case 4:
-            let vc = AdminCoursesViewController()
-            let navController = UINavigationController(rootViewController: vc)
-            navController.modalPresentationStyle = .fullScreen
-            present(navController, animated: true)
-
-        case 5:
-            let vc = AdminProfessorsViewController()
-            let navController = UINavigationController(rootViewController: vc)
-            navController.modalPresentationStyle = .fullScreen
-            present(navController, animated: true)
-
-        case 6:
-            let vc = AdminAssigmentViewController()
-            let navController = UINavigationController(rootViewController: vc)
-            navController.modalPresentationStyle = .fullScreen
-            present(navController, animated: true)
+//        case 3:
+//            let vc = AdminStudentsViewController()
+//            let navController = UINavigationController(rootViewController: vc)
+//            navController.modalPresentationStyle = .fullScreen
+//            present(navController, animated: true)
+//        case 4:
+//            let vc = AdminCoursesViewController()
+//            let navController = UINavigationController(rootViewController: vc)
+//            navController.modalPresentationStyle = .fullScreen
+//            present(navController, animated: true)
+//
+//        case 5:
+//            let vc = AdminProfessorsViewController()
+//            let navController = UINavigationController(rootViewController: vc)
+//            navController.modalPresentationStyle = .fullScreen
+//            present(navController, animated: true)
+//
+//        case 6:
+//            let vc = AdminAssigmentViewController()
+//            let navController = UINavigationController(rootViewController: vc)
+//            navController.modalPresentationStyle = .fullScreen
+//            present(navController, animated: true)
 
         default:
             break
@@ -152,5 +153,11 @@ extension MoreViewController: UITableViewDelegate, UITableViewDataSource {
         if let selectedIndexPath = tableView.indexPathForSelectedRow {
             tableView.deselectRow(at: selectedIndexPath, animated: true)
         }
+    }
+}
+
+extension MoreViewController: HeaderViewControllerDelegate {
+    func chatButtonTapped() {
+        coordinator?.presentSendbirdChatInterface()
     }
 }

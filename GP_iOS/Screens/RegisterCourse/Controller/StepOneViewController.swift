@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FHAlert
 
 class StepOneViewController: RegisterViewController {
 
@@ -43,10 +44,9 @@ class StepOneViewController: RegisterViewController {
         super.viewDidLoad()
         configure(
             cuurrentStepText: String.LocalizedKeys.stepOneText.localized,
-            nextStepText: String.LocalizedKeys.stepOneNextText.localized,
-            leftButtonText: String.LocalizedKeys.backButtonTitle.localized,
-            rightButtonText:String.LocalizedKeys.nextButtonText.localized
+            nextStepText: String.LocalizedKeys.stepOneNextText.localized
         )
+        changePrimaryButtonTitle(text: "SUBMIT")
         bindWithViewModel()
         configureViews()
         startLoading()
@@ -55,7 +55,7 @@ class StepOneViewController: RegisterViewController {
 
     private func bindWithViewModel() {
         viewModel.onShowError = { [weak self] msg in
-            TopAlertManager.show(title: String.LocalizedKeys.errorTitle.localized, subTitle: msg, type: .failure)
+            TopAlertView.show(title: String.LocalizedKeys.errorTitle.localized, subTitle: msg, type: TopAlertType.failure)
             self?.stopLoading()
         }
 
@@ -71,6 +71,7 @@ class StepOneViewController: RegisterViewController {
     }
 
     private func configureViews() {
+        addBackButton()
         middleView.addViewFillEntireView(tableView)
     }
 }
@@ -101,11 +102,11 @@ extension StepOneViewController: UITableViewDelegate, UITableViewDataSource {
         if viewModel.selectedIndexPath == indexPath {
             tableView.deselectRow(at: indexPath, animated: true)
             viewModel.selectedCourse = nil
-            enableRightButton(isEnabled: false)
+            disablePrimaryButton()
             viewModel.selectedIndexPath = nil
         } else {
             viewModel.selectedCourse = viewModel.availableCourses[indexPath.row]
-            enableRightButton(isEnabled: true)
+            enablePrimaryButton()
             viewModel.selectedIndexPath = indexPath
         }
     }

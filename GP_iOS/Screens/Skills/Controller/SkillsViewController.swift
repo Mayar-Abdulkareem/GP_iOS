@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FHAlert
 
 protocol SkillsViewControllerProtocol: AnyObject {
     func saveButtonTapped(skillsVector: String, context: SkillsViewType)
@@ -70,7 +71,7 @@ class SkillsViewController: UIViewController, GradProNavigationControllerProtoco
 
     private func bindWithViewModel() {
         viewModel.onShowError = { [weak self] msg in
-            TopAlertManager.show(title: String.LocalizedKeys.errorTitle.localized, subTitle: msg, type: .failure)
+            TopAlertView.show(title: String.LocalizedKeys.errorTitle.localized, subTitle: msg, type: TopAlertType.failure)
             self?.stopLoading()
         }
 

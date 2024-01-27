@@ -8,6 +8,7 @@
 
 
 import UIKit
+import FHAlert
 
 protocol TaskViewControllerDelegate: AnyObject {
     func addTask(task: Task, columnIndexPath: Int)
@@ -125,10 +126,10 @@ class TaskViewController: UIViewController {
 
             guard let title = titleText, !title.isEmpty,
                   let description = descriptionText, !description.isEmpty else {
-                TopAlertManager.show(
+                TopAlertView.show(
                     title: String.LocalizedKeys.errorTitle.localized,
                     subTitle: String.LocalizedKeys.fillAllFields.localized,
-                    type: .failure
+                    type: TopAlertType.failure
                 )
                 return
             }

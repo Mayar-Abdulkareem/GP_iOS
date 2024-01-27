@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FHAlert
 
 class RegisterViewController: UIViewController, GradProNavigationControllerProtocol {
 
@@ -50,46 +51,16 @@ class RegisterViewController: UIViewController, GradProNavigationControllerProto
         return label
     }()
 
-    private lazy var leftButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle(String.LocalizedKeys.filterTitle.localized, for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
-        button.backgroundColor = UIColor.mySecondary
-        button.tintColor = UIColor.myPrimary
-        button.layer.cornerRadius = 10
-
-        button.addAction(UIAction { [weak self] _ in
-            guard let self = self else { return }
-            guard let coordinator = self.coordinator else { return }
-            self.coordinator?.showBackStepViewController(registerViewModel: self.viewModel)
-            self.viewModel.currentStep -= 1
-        }, for: .primaryActionTriggered)
-        return button
-    }()
-
-    private lazy var rightButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle(String.LocalizedKeys.filterTitle.localized, for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
-        button.backgroundColor = UIColor.mySecondary
-        button.tintColor = UIColor.myPrimary
-        button.layer.cornerRadius = 10
-
-        button.addAction(UIAction { [weak self] _ in
-            guard let self = self else { return }
-            guard let coordinator = self.coordinator else { return }
-            self.coordinator?.showNextStepViewController(registerViewModel: self.viewModel)
-            self.viewModel.currentStep += 1
-            self.viewModel.selectedIndexPath = nil
-            if self.viewModel.currentStep == 4 {
-                self.viewModel.requestStatus = .notSent
-                self.middleView.showLoading(maskView: self.middleView)
-                self.viewModel.registerCourse()
-            }
-        }, for: .primaryActionTriggered)
-        return button
+    lazy var footerView: FooterButtonView = {
+        let footerView = FooterButtonView(
+            primaryButtonType: .disabled,
+            primaryButtonTitle: "",
+            secondaryButtonType: .disabled,
+            secondaryButtonTitle: nil
+        )
+        footerView.translatesAutoresizingMaskIntoConstraints = false
+        footerView.delegate = self
+        return footerView
     }()
 
     init(viewModel: RegisterViewModel) {
@@ -116,18 +87,10 @@ class RegisterViewController: UIViewController, GradProNavigationControllerProto
 
     func configure(
         cuurrentStepText: String,
-        nextStepText: String,
-        leftButtonText: String,
-        leftButtonEnable: Bool = false,
-        rightButtonText: String,
-        rightButtonEnable: Bool = false
+        nextStepText: String
     ) {
         currentStepLabel.text = cuurrentStepText
         nextStepLabel.text = nextStepText
-        leftButton.setTitle(leftButtonText, for: .normal)
-        leftButton.isEnabled = leftButtonEnable
-        rightButton.setTitle(rightButtonText, for: .normal)
-        rightButton.isEnabled = rightButtonEnable
     }
     
     private func configureViews() {
@@ -135,8 +98,7 @@ class RegisterViewController: UIViewController, GradProNavigationControllerProto
         view.addSubview(currentStepLabel)
         view.addSubview(nextStepLabel)
         view.addSubview(middleView)
-        view.addSubview(leftButton)
-        view.addSubview(rightButton)
+        view.addSubview(footerView)
 
         addNavBar(with: String.LocalizedKeys.registerTitle.localized)
 
@@ -145,14 +107,14 @@ class RegisterViewController: UIViewController, GradProNavigationControllerProto
         NSLayoutConstraint.activate([
             progressView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
             progressView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            progressView.widthAnchor.constraint(equalToConstant: 100),
-            progressView.heightAnchor.constraint(equalToConstant: 100),
+            progressView.widthAnchor.constraint(equalToConstant: 80),
+            progressView.heightAnchor.constraint(equalToConstant: 80),
 
             currentStepLabel.centerYAnchor.constraint(equalTo: progressView.centerYAnchor, constant: -10),
-            currentStepLabel.leadingAnchor.constraint(equalTo: progressView.trailingAnchor, constant: 8),
+            currentStepLabel.leadingAnchor.constraint(equalTo: progressView.trailingAnchor, constant: 16),
 
             nextStepLabel.centerYAnchor.constraint(equalTo: progressView.centerYAnchor, constant: 10),
-            nextStepLabel.leadingAnchor.constraint(equalTo: progressView.trailingAnchor, constant: 8),
+            nextStepLabel.leadingAnchor.constraint(equalTo: progressView.trailingAnchor, constant: 16),
 
             middleView.topAnchor.constraint(equalTo: progressView.bottomAnchor, constant: 8),
             middleView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -162,16 +124,10 @@ class RegisterViewController: UIViewController, GradProNavigationControllerProto
             registerCourseStatusLabel.leadingAnchor.constraint(equalTo: middleView.leadingAnchor, constant: 16),
             registerCourseStatusLabel.trailingAnchor.constraint(equalTo: middleView.trailingAnchor, constant: -16),
 
-            leftButton.topAnchor.constraint(equalTo: middleView.bottomAnchor, constant: 8),
-            leftButton.trailingAnchor.constraint(equalTo: view.centerXAnchor, constant: -8),
-            leftButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -32),
-            leftButton.widthAnchor.constraint(equalToConstant: 100),
-
-
-            rightButton.topAnchor.constraint(equalTo: middleView.bottomAnchor, constant: 8),
-            rightButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -32),
-            rightButton.leadingAnchor.constraint(equalTo: view.centerXAnchor, constant: 8),
-            rightButton.widthAnchor.constraint(equalToConstant: 100),
+            footerView.topAnchor.constraint(equalTo: middleView.bottomAnchor),
+            footerView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            footerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            footerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
 
         configureLayout()
@@ -179,30 +135,31 @@ class RegisterViewController: UIViewController, GradProNavigationControllerProto
 
     private func bindWithViewModel() {
         viewModel.onShowError = { msg in
-            TopAlertManager.show(title: String.LocalizedKeys.errorTitle.localized, subTitle: msg, type: .failure)
+            TopAlertView.show(title: String.LocalizedKeys.errorTitle.localized, subTitle: msg, type: TopAlertType.failure)
         }
 
         viewModel.onCourseRegistered = { [weak self] in
-            //self?.middleView.hideLoading()
             self?.configureLayout()
         }
     }
 
     private func configureLayout() {
-        //middleView.hideLoading()
-        rightButton.isHidden = (viewModel.currentStep == 4)
-        leftButton.isHidden = (viewModel.currentStep == 4)
+        footerView.isHidden = viewModel.currentStep == 4
         progressView.isHidden = (viewModel.currentStep == 4)
         registerCourseStatusLabel.isHidden = (viewModel.currentStep != 4)
         registerCourseStatusLabel.text = viewModel.requestStatus.getRegisterCourseStatusLabelText(step: viewModel.currentStep)
     }
 
-    func enableRightButton(isEnabled: Bool) {
-        rightButton.isEnabled = isEnabled
+    func disablePrimaryButton() {
+        footerView.changePrimaryButtonType(type: .disabled)
     }
 
-    func enableLeftButton(isEnabled: Bool) {
-        leftButton.isEnabled = isEnabled
+    func enablePrimaryButton() {
+        footerView.changePrimaryButtonType(type: .primary)
+    }
+
+    func changePrimaryButtonTitle(text: String) {
+        footerView.changePrimaryButtonText(text: text)
     }
 
     func updateProgress() {
@@ -213,5 +170,18 @@ class RegisterViewController: UIViewController, GradProNavigationControllerProto
 
     func setStepNumber(currentStep: Int, totalSteps: Int) {
         progressView.setStepNumber(currentStep: currentStep, totalSteps: totalSteps)
+    }
+}
+
+extension RegisterViewController: FooterButtonViewDelegate {
+    func primaryButtonTapped() {
+        coordinator?.showNextStepViewController(registerViewModel: self.viewModel)
+        viewModel.currentStep += 1
+        viewModel.selectedIndexPath = nil
+        if viewModel.currentStep == 4 {
+            viewModel.requestStatus = .notSent
+            middleView.showLoading(maskView: self.middleView)
+            viewModel.registerCourse()
+        }
     }
 }

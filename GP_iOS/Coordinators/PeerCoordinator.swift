@@ -40,13 +40,9 @@ class PeerCoordinator: Coordinator {
     func showMatchingPeerViewController() {
         let peerMatchingViewController = PeerMatchingViewController()
         peerMatchingViewController.coordinator = self
-        //        if let topViewController = navigationController.topViewController as? PeerViewController {
-        //            matchingPeerPeerViewController.delegate = topViewController
-        //        }
         peerMatchingNavController = UINavigationController(rootViewController: peerMatchingViewController)
         guard let navController = peerMatchingNavController else { return }
         navigationController.present(navController, animated: true)
-        //   }
     }
 
     func showSkillsViewController(categories: [Category], context: SkillsViewType, delegate: SkillsViewControllerProtocol) {

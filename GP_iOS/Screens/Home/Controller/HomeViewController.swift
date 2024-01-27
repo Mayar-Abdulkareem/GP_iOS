@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FHAlert
 
 class HomeViewController: UIViewController {
 
@@ -69,7 +70,7 @@ class HomeViewController: UIViewController {
     private func bindWithViewModel() {
         viewModel.onShowError = { [weak self] msg in
             self?.stopLoading()
-            TopAlertManager.show(title: String.LocalizedKeys.errorTitle.localized, subTitle: msg, type: .failure)
+            TopAlertView.show(title: String.LocalizedKeys.errorTitle.localized, subTitle: msg, type: TopAlertType.failure)
         }
 
         viewModel.onProfileFetched = { [weak self] noCourses in
@@ -84,7 +85,7 @@ class HomeViewController: UIViewController {
     }
 
     private func configureViews() {
-        view.backgroundColor = .white
+        view.backgroundColor = .myPrimary
 
         view.addSubview(tableView)
         view.addSubview(mainView)

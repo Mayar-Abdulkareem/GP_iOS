@@ -35,10 +35,6 @@ class CourseViewController: UIViewController, GradProNavigationControllerProtoco
         super.viewDidLoad()
         collectionView.dataSource = self
         collectionView.delegate = self
-//        navigationController?.showDefaultNavigationBar(
-//            title: String.LocalizedKeys.courseTitle.localized,
-//            withCloseButton: true
-//        )
         configureViews()
     }
 
@@ -55,6 +51,8 @@ class CourseViewController: UIViewController, GradProNavigationControllerProtoco
 
     private func configureViews() {
         view.backgroundColor = UIColor.myPrimary
+        
+        addBackButton()
         view.addViewWithConstant(collectionView, constant: 8)
         addNavBar(with: String.LocalizedKeys.courseTitle.localized)
     }
@@ -96,7 +94,7 @@ extension CourseViewController: UICollectionViewDelegate,
         case 2:
             coordinator?.showBoardFlow()
         case 3:
-            coordinator?.showSubmissionsViewController()
+            coordinator?.showAssignmentsViewController()
         case 4:
             coordinator?.showRequestsViewController()
         default:

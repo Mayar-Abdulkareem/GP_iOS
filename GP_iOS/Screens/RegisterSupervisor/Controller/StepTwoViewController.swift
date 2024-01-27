@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FHAlert
 
 class StepTwoViewController: RegisterViewController {
 
@@ -45,27 +46,18 @@ class StepTwoViewController: RegisterViewController {
         return label
     }()
 
-    private lazy var requestButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle(String.LocalizedKeys.sendRequestButtonTitle.localized, for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
-        button.backgroundColor = UIColor.mySecondary
-        button.tintColor = UIColor.myPrimary
-        button.layer.cornerRadius = 10
-
-        button.addAction(UIAction { [weak self] _ in
-            self?.startLoading()
-            // Send request
-            if self?.viewModel.requestStatus == .notSent {
-                self?.viewModel.postRequest()
-            } else {
-                // Cancel request
-                self?.viewModel.deleteRequest()
-            }
-        }, for: .primaryActionTriggered)
-        return button
-    }()
+    override func primaryButtonTapped() {
+        startLoading()
+        // Send request
+        if viewModel.requestStatus == .notSent {
+            viewModel.postRequest()
+        } else if viewModel.requestStatus == .pending {
+            // Cancel request
+            viewModel.deleteRequest()
+        } else {
+            super.primaryButtonTapped()
+        }
+    }
 
     func startLoading() {
         requestLabel.isHidden = true
@@ -87,11 +79,11 @@ class StepTwoViewController: RegisterViewController {
         super.viewDidLoad()
         configure(
             cuurrentStepText: String.LocalizedKeys.stepTwoText.localized,
-            nextStepText: String.LocalizedKeys.stepTwoNextText.localized,
-            leftButtonText: String.LocalizedKeys.backButtonTitle.localized,
-            leftButtonEnable: true,
-            rightButtonText: String.LocalizedKeys.nextButtonText.localized
+            nextStepText: String.LocalizedKeys.stepTwoNextText.localized
         )
+
+        enablePrimaryButton()
+        changePrimaryButtonTitle(text: "CANCEL REQUEST")
         bindWithViewModel()
         configureViews()
         if viewModel.requestStatus == .notSent {
@@ -102,7 +94,7 @@ class StepTwoViewController: RegisterViewController {
 
     private func bindWithViewModel() {
         viewModel.onShowError = { [weak self] msg in
-            TopAlertManager.show(title: String.LocalizedKeys.errorTitle.localized, subTitle: msg, type: .failure)
+            TopAlertView.show(title: String.LocalizedKeys.errorTitle.localized, subTitle: msg, type: TopAlertType.failure)
             self?.stopLoading()
         }
 
@@ -125,25 +117,16 @@ class StepTwoViewController: RegisterViewController {
 
     private func showTableView() {
         requestLabel.isHidden = true
-        requestButton.isHidden = true
+        footerView.isHidden = true
     }
 
     private func configureViews() {
         middleView.addSubview(tableView)
-        middleView.addSubview(requestButton)
         middleView.addSubview(requestLabel)
         middleView.addSubview(pendingLabel)
+        middleView.addViewFillEntireView(tableView, top: 16)
 
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: middleView.topAnchor),
-            tableView.leadingAnchor.constraint(equalTo: middleView.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: middleView.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: requestButton.topAnchor, constant: -8),
-
-            requestButton.centerXAnchor.constraint(equalTo: middleView.centerXAnchor),
-            requestButton.bottomAnchor.constraint(equalTo: middleView.bottomAnchor, constant: -16),
-            requestButton.widthAnchor.constraint(equalToConstant: 150),
-
             requestLabel.topAnchor.constraint(equalTo: middleView.topAnchor, constant: 16),
             requestLabel.leadingAnchor.constraint(equalTo: middleView.leadingAnchor, constant: 16),
             requestLabel.trailingAnchor.constraint(equalTo: middleView.trailingAnchor, constant: -16),
@@ -158,28 +141,24 @@ class StepTwoViewController: RegisterViewController {
         switch viewModel.requestStatus {
         case .notSent:
             tableView.isHidden = false
-            requestButton.isHidden = false
-            requestButton.isEnabled = false
+            changePrimaryButtonTitle(text: "SEND REQUEST")
+            disablePrimaryButton()
             requestLabel.isHidden = true
             pendingLabel.isHidden = true
-            enableLeftButton(isEnabled: true)
         case .pending:
-            enableLeftButton(isEnabled: false)
+            changePrimaryButtonTitle(text: "CANCEL REQUEST")
+            enablePrimaryButton()
             tableView.isHidden = true
-            requestButton.isHidden = false
             requestLabel.isHidden = false
             pendingLabel.isHidden = false
-            enableLeftButton(isEnabled: false)
         case .accepted:
+            changePrimaryButtonTitle(text: "NEXT")
+            enablePrimaryButton()
             tableView.isHidden = true
-            requestButton.isHidden = true
             requestLabel.isHidden = false
             pendingLabel.isHidden = true
-            enableLeftButton(isEnabled: false)
-            enableRightButton(isEnabled: true)
         }
         requestLabel.text = viewModel.requestStatus.requestLabelText
-        requestButton.setTitle(viewModel.requestStatus.requestButtonText, for: .normal)
         pendingLabel.text = String.LocalizedKeys.waitingPartOne.localized + " " + (viewModel.selectedSupervisor?.name ?? viewModel.request?.receiverName ?? "") + " " + String.LocalizedKeys.waitingPartTwo.localized
     }
 }
@@ -208,11 +187,11 @@ extension StepTwoViewController: UITableViewDelegate, UITableViewDataSource {
         if viewModel.selectedIndexPath == indexPath {
             tableView.deselectRow(at: indexPath, animated: true)
             viewModel.selectedSupervisor = nil
-            requestButton.isEnabled = false
+            disablePrimaryButton()
             viewModel.selectedIndexPath = nil
         } else {
             viewModel.selectedSupervisor = viewModel.availableSupervisors[indexPath.row]
-            requestButton.isEnabled = true
+            enablePrimaryButton()
             viewModel.selectedIndexPath = indexPath
         }
     }

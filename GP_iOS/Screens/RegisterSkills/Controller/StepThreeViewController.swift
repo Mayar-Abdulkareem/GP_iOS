@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FHAlert
 
 class StepThreeViewController: RegisterViewController, TagListViewDelegate {
 
@@ -31,16 +32,6 @@ class StepThreeViewController: RegisterViewController, TagListViewDelegate {
         return tableView
     }()
 
-    private lazy var informationLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.boldSystemFont(ofSize: 15)
-        label.numberOfLines = 0
-        label.text = String.LocalizedKeys.matchingPeerInfoLabelText.localized
-        label.textColor = UIColor.gray
-        return label
-    }()
-
     func startLoading() {
         tableView.alpha = 0
         view.showLoading(maskView: view, hasTransparentBackground: true)
@@ -57,10 +48,7 @@ class StepThreeViewController: RegisterViewController, TagListViewDelegate {
         super.viewDidLoad()
         configure(
             cuurrentStepText: String.LocalizedKeys.stepThreeText.localized,
-            nextStepText: "",
-            leftButtonText: String.LocalizedKeys.backButtonTitle.localized,
-            rightButtonText: String.LocalizedKeys.finishButtonTitle.localized,
-            rightButtonEnable: true
+            nextStepText: ""
         )
         bindWithViewModel()
         configureViews()
@@ -70,7 +58,7 @@ class StepThreeViewController: RegisterViewController, TagListViewDelegate {
 
     private func bindWithViewModel() {
         viewModel.onShowError = { [weak self] msg in
-            TopAlertManager.show(title: String.LocalizedKeys.errorTitle.localized, subTitle: msg, type: .failure)
+            TopAlertView.show(title: String.LocalizedKeys.errorTitle.localized, subTitle: msg, type: TopAlertType.failure)
             self?.stopLoading()
         }
 
@@ -86,19 +74,12 @@ class StepThreeViewController: RegisterViewController, TagListViewDelegate {
     }
 
     private func configureViews() {
-        middleView.addSubview(informationLabel)
-        middleView.addSubview(tableView)
+        let headerView = SkillsTableViewHeader(frame: CGRect(x: 0, y: 0, width: self.tableView.bounds.width, height: 70))
+        tableView.tableHeaderView = headerView
 
-        NSLayoutConstraint.activate([
-            informationLabel.topAnchor.constraint(equalTo: middleView.topAnchor, constant: 16),
-            informationLabel.leadingAnchor.constraint(equalTo: middleView.leadingAnchor, constant: 16),
-            informationLabel.trailingAnchor.constraint(equalTo: middleView.trailingAnchor, constant: -16),
-
-            tableView.topAnchor.constraint(equalTo: informationLabel.bottomAnchor, constant: 8),
-            tableView.leadingAnchor.constraint(equalTo: middleView.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: middleView.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: middleView.bottomAnchor),
-        ])
+        changePrimaryButtonTitle(text: "FINISH")
+        enablePrimaryButton()
+        middleView.addViewFillEntireView(tableView, top: 16)
     }
 }
 
@@ -131,7 +112,7 @@ extension StepThreeViewController: UITableViewDelegate, UITableViewDataSource {
         let header = tableView.dequeueReusableHeaderFooterView(
             withIdentifier: CategoryHeaderView.reuseIdentifier
         ) as? CategoryHeaderView ?? CategoryHeaderView()
-
+        
         header.configureCell(category: viewModel.categoriesWithSkills[section].title)
 
         return header

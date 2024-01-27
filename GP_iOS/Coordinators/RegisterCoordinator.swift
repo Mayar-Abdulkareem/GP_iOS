@@ -45,7 +45,6 @@ class RegisterCoordinator: Coordinator {
             guard let navController = self?.navController else { return }
             navController.modalPresentationStyle = .fullScreen
             self?.navigationController.present(navController, animated: true)
-            //self?.navigationController.pushViewController(viewController, animated: true)
         }
     }
 
@@ -64,7 +63,6 @@ class RegisterCoordinator: Coordinator {
         guard let viewController = viewController else { return }
         viewController.coordinator = self
         navController?.pushViewController(viewController, animated: true)
-        //navigationController.pushViewController(viewController, animated: true)
     }
 
     func showBackStepViewController(registerViewModel: RegisterViewModel) {
@@ -80,6 +78,5 @@ class RegisterCoordinator: Coordinator {
         guard let viewController = viewController else { return }
         viewController.coordinator = self
         navController?.pushViewController(viewController, animated: true)
-        //navigationController.pushViewController(viewController, animated: true)
     }
 }

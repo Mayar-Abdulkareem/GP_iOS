@@ -15,16 +15,16 @@ class HeaderView: UIView {
 
     weak var delegate: HeaderViewControllerDelegate?
 
-    private let notificationButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        let image = UIImage.SystemImages.notification.image.withConfiguration(
-            UIImage.SymbolConfiguration(pointSize: 27.5)
-        )
-        button.setImage(image, for: .normal)
-        button.tintColor = UIColor.darkMain
-        return button
-    }()
+//    private let notificationButton: UIButton = {
+//        let button = UIButton(type: .system)
+//        button.translatesAutoresizingMaskIntoConstraints = false
+//        let image = UIImage.SystemImages.notification.image.withConfiguration(
+//            UIImage.SymbolConfiguration(pointSize: 27.5)
+//        )
+//        button.setImage(image, for: .normal)
+//        button.tintColor = UIColor.darkMain
+//        return button
+//    }()
 
     private lazy var chatButton: UIButton = {
         let button = UIButton(type: .system)
@@ -67,7 +67,7 @@ class HeaderView: UIView {
         let stackView = UIStackView(
             arrangedSubviews: [
                 chatButton,
-                notificationButton
+//                notificationButton
             ]
         )
         stackView.translatesAutoresizingMaskIntoConstraints = false

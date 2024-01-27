@@ -27,7 +27,7 @@ class BaseClient {
         // type: T.Type,
         router: BaseRouter,
         type: T.Type,
-      //  completion: @escaping (Result<T, Error>) -> Void
+        //  completion: @escaping (Result<T, Error>) -> Void
         completion: @escaping (Result<T, AFError>) -> Void
     ) {
         AF.request(router)
@@ -40,14 +40,14 @@ class BaseClient {
                 case .failure(let error):
                     if let data = response.data, let jsonString = String(data: data, encoding: .utf8) {
                         print("Response JSON: \(jsonString)")
-      //                  completion(.failure(jsonString))
+                        //                  completion(.failure(jsonString))
                     }
-//                    else {
-                        completion(.failure(error))
- //                   }
+                    //                    else {
+                    completion(.failure(error))
+                    //                   }
                 }
             }
-            }
+    }
 
     func uploadImage<T: Codable>(
         image: UIImage?,
@@ -74,13 +74,34 @@ class BaseClient {
                 }
             },
             with: router)
-            .validate()
-            .responseDecodable(of: T.self) { response in
-                completion(response.result)
+        .validate()
+        .responseDecodable(of: T.self) { response in
+            completion(response.result)
+        }
+    }
+
+    func uploadFile<T: Decodable>(
+        router: BaseRouter,
+        file: MyFile?,
+        parameters: [String: Any]?,
+        type: T.Type,
+        completion: @escaping (Result<T, AFError>) -> Void
+    ) {
+        AF.upload(multipartFormData: { multipartFormData in
+            parameters?.forEach { key, value in
+                if let val = value as? String {
+                    multipartFormData.append(val.data(using: .utf8)!, withName: key)
+                }
             }
+
+            if let file = file, let fileURL = URL(string: file.fileURL ?? "") {
+                multipartFormData.append(fileURL, withName: "file", fileName: file.fileName , mimeType: file.contentType )
+            }
+
+        }, with: router)
+        .validate()
+        .responseDecodable(of: T.self) { response in
+            completion(response.result)
+        }
     }
 }
-
-//extension String: Error, LocalizedError {
-//    public var errorDescription: String? { return self }
-//}

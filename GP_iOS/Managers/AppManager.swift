@@ -14,6 +14,7 @@ class AppManager {
     var item: StoreItem?
     var profile: StudentProfile?
     var categories: [Category] = []
+    var assignment: Assignment?
 
     private init() {}
 }

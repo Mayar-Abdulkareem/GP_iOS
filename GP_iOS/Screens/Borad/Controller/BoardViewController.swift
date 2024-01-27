@@ -7,6 +7,7 @@
 
 import UIKit
 import UniformTypeIdentifiers
+import FHAlert
 
 class BoardViewController: UIViewController, GradProNavigationControllerProtocol {
     weak var coordinator: BoardCoordinator?
@@ -61,7 +62,7 @@ class BoardViewController: UIViewController, GradProNavigationControllerProtocol
     private func bindWithViewModel() {
         viewModel.onShowError = { [weak self] msg in
             self?.stopLoading()
-            TopAlertManager.show(title: String.LocalizedKeys.errorTitle.localized, subTitle: msg, type: .failure)
+            TopAlertView.show(title: String.LocalizedKeys.errorTitle.localized, subTitle: msg, type: TopAlertType.failure)
         }
 
         viewModel.onBoardFetched = { [weak self]  in

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FHAlert
 
 class StoreViewController: UIViewController {
 
@@ -127,7 +128,11 @@ class StoreViewController: UIViewController {
         viewModel.onShowError = { [weak self] msg in
             self?.stopLoading()
             DispatchQueue.main.async {
-                TopAlertManager.show(title: String.LocalizedKeys.errorTitle.localized, subTitle: msg, type: .failure)
+                TopAlertView.show(
+                    title: String.LocalizedKeys.errorTitle.localized,
+                    subTitle: msg,
+                    type: TopAlertType.failure
+                )
                 self?.segmentControl.isEnabled = true
                 self?.searchBar.isEnabled = true
             }

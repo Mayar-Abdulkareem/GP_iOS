@@ -7,6 +7,29 @@
 
 import UIKit
 
+enum TagType: String {
+    case submitted
+    case notSubmitted
+
+    var tagBackgrountColor: UIColor {
+        switch self {
+        case .submitted:
+            return .mySecondary
+        case .notSubmitted:
+            return .red
+        }
+    }
+
+    var tagStatus: String {
+        switch self {
+        case .submitted:
+            return "Submitted"
+        case .notSubmitted:
+            return "Not Submitted"
+        }
+    }
+}
+
 class LabelIconView: UIView {
 
     private var currentPrefix: String = ""
@@ -17,36 +40,6 @@ class LabelIconView: UIView {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
         return imageView
-    }()
-    
-    lazy var horizontalStackView: UIStackView = {
-        let stackView = UIStackView(
-            arrangedSubviews: [
-                iconImageView,
-                verticalStackView
-            ]
-        )
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .horizontal
-        stackView.spacing = 8
-        stackView.alignment = .firstBaseline
-        stackView.distribution = .fill
-        return stackView
-    }()
-    
-    lazy var verticalStackView: UIStackView = {
-        let stackView = UIStackView(
-            arrangedSubviews: [
-                titleLabel,
-                valueLabel
-            ]
-        )
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .vertical
-        stackView.spacing = 5
-        stackView.alignment = .fill
-        stackView.distribution = .fill
-        return stackView
     }()
 
     let titleLabel: UILabel = {
@@ -65,7 +58,7 @@ class LabelIconView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 15)
         label.textColor = .darkGray
-        label.numberOfLines = 0
+        label.numberOfLines = 1
         label.setContentHuggingPriority(.init(251), for: .horizontal)
         label.setContentCompressionResistancePriority(.init(750), for: .horizontal)
         return label
@@ -84,7 +77,7 @@ class LabelIconView: UIView {
         text: String,
         color: UIColor = .mySecondary,
         imageSize: CGFloat = 25,
-        fontSize: CGFloat = 15,
+        fontSize: CGFloat = 20,
         isSeparatorHidden: Bool = false
     ) {
         super.init(frame: .zero)
@@ -114,14 +107,10 @@ class LabelIconView: UIView {
         fontSize: CGFloat,
         isSeparatorHidden: Bool
     ) {
-        addViewFillEntireView(
-            horizontalStackView,
-            top: 8,
-            bottom: 8,
-            leading: 16,
-            trailing: 16
-        )
-        addSubview(separatorView)
+
+        addSubview(iconImageView)
+        addSubview(titleLabel)
+        addSubview(valueLabel)
 
         iconImageView.tintColor = color
         iconImageView.image = icon
@@ -130,14 +119,22 @@ class LabelIconView: UIView {
         separatorView.isHidden = isSeparatorHidden
 
         NSLayoutConstraint.activate([
-            iconImageView.widthAnchor.constraint(equalToConstant: imageSize),
-            iconImageView.heightAnchor.constraint(equalToConstant: imageSize),
-            
-            separatorView.heightAnchor.constraint(equalToConstant: 1/UIScreen.main.scale),
-            separatorView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            separatorView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            separatorView.bottomAnchor.constraint(equalTo: bottomAnchor)
+
+            iconImageView.widthAnchor.constraint(equalTo: titleLabel.heightAnchor),
+            iconImageView.heightAnchor.constraint(equalTo: titleLabel.heightAnchor),
+            iconImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            iconImageView.topAnchor.constraint(equalTo: topAnchor),
+
+            titleLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: 8),
+            //titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor),
+
+            valueLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+            valueLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),
+            valueLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
+            //valueLabel.widthAnchor.constraint(equalTo: titleLabel.widthAnchor)
         ])
+
     }
 
     func changeText(text: String) {
@@ -145,4 +142,43 @@ class LabelIconView: UIView {
         titleLabel.text = currentPrefix
         valueLabel.text = text
     }
+
+    func changePrefixText(text: String) {
+        self.currentPrefix = text
+        titleLabel.text = currentPrefix
+        valueLabel.text = currentValue
+    }
+
+    func changeIcon(icon: UIImage) {
+        iconImageView.image = icon
+    }
+
+
+    func setTag(tagType: TagType) {
+        changeText(text: tagType.tagStatus)
+        valueLabel.backgroundColor = tagType.tagBackgrountColor
+        valueLabel.textColor = .white
+        valueLabel.clipsToBounds = true
+        valueLabel.textAlignment = .center
+
+        layoutIfNeeded()
+
+        valueLabel.layer.cornerRadius = valueLabel.bounds.height / 2
+
+        updateLabelConstraints()
+    }
+
+    private func updateLabelConstraints() {
+        valueLabel.constraints.forEach { constraint in
+            if constraint.firstAttribute == .width {
+                valueLabel.removeConstraint(constraint)
+            }
+        }
+
+        let padding = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+        let widthConstraint = valueLabel.widthAnchor.constraint(equalToConstant: valueLabel.intrinsicContentSize.width + padding.left + padding.right)
+        widthConstraint.priority = .defaultHigh
+        widthConstraint.isActive = true
+    }
+
 }

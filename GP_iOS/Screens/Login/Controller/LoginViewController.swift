@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FHAlert
 
 class LoginViewController: UIViewController {
 
@@ -94,7 +95,7 @@ class LoginViewController: UIViewController {
         viewModel.onShowTopAlert = { [weak self] title, subTitle, type in
             AuthManager.shared.userAccessToken = nil
             self?.view.hideLoading()
-            TopAlertManager.show(
+            TopAlertView.show(
                 title: title,
                 subTitle: subTitle,
                 type: type
