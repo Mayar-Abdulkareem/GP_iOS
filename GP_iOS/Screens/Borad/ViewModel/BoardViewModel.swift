@@ -20,9 +20,27 @@ class BoardViewModel {
     // MARK: - Methods
 
     func getBoard() {
-        guard let regID = AuthManager.shared.regID,
-              let courseID = AppManager.shared.course?.courseID,
-              let supervisorID = AppManager.shared.course?.supervisorID else { return }
+
+        var regID: String?
+        var courseID: String?
+        var supervisorID: String?
+        switch Role.getRole() {
+        case .student:
+            regID = AuthManager.shared.regID
+            courseID = AppManager.shared.course?.courseID
+            supervisorID = AppManager.shared.course?.supervisorID
+        case .supervisor:
+            regID = AppManager.shared.selectedStudent
+            courseID = AppManager.shared.courseStudents?.courseID
+            supervisorID = AuthManager.shared.regID
+        case .none:
+            fatalError()
+        }
+
+        guard let regID = regID,
+              let courseID = courseID,
+              let supervisorID = supervisorID else { return }
+
         let route = BoardRouter.getBoard(regID: regID, courseID: courseID, supervisorID: supervisorID)
         BaseClient.shared.performRequest(router: route, type: Board.self) { [weak self] result in
             switch result {

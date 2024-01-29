@@ -102,7 +102,9 @@ class BoardViewController: UIViewController, GradProNavigationControllerProtocol
             target: self,
             action: #selector(saveButtonTapped)
         )
-        navigationItem.rightBarButtonItem = clearButton
+        if Role.getRole() != .supervisor {
+            navigationItem.rightBarButtonItem = clearButton
+        }
     }
 
     func showUnsavedChangesAlert() {
@@ -130,7 +132,7 @@ class BoardViewController: UIViewController, GradProNavigationControllerProtocol
     }
 
     @objc func backButtonPressed() {
-        if viewModel.hasUnsavedChanges {
+        if (Role.getRole() != .supervisor) && viewModel.hasUnsavedChanges {
             showUnsavedChangesAlert()
         } else {
             navigationController?.popViewController(animated: true)
@@ -145,7 +147,8 @@ extension BoardViewController: UICollectionViewDelegate,
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
-        return (viewModel.board?.columns?.count ?? 0) + 1
+        let baseCount = viewModel.board?.columns?.count ?? 0
+        return Role.getRole() == .supervisor ? baseCount : baseCount + 1
     }
 
     func collectionView(

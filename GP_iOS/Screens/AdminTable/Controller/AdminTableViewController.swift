@@ -120,7 +120,7 @@ class AdminTableViewController: UIViewController, GradProNavigationControllerPro
         let navTitle = viewModel.getNavTitle()
         configureNavBarTitle(title: navTitle)
         addSeparatorView()
-        addNavCloseButton()
+//        addNavCloseButton()
     }
 
     private func configureFooterView() {

@@ -27,3 +27,31 @@ struct MySubmission: Codable {
     let courseID: String
     let text: String?
 }
+
+struct SupervisorSubmissoins: Codable {
+    let id: String?
+    let file: File?
+    let text: String?
+    let studentID: String
+    let studentName: String
+    let peerID: String?
+    let peerName: String?
+    let supervisorID: String?
+    let supervisorName: String?
+    let supervisorComment: String?
+    let assignmentID: String
+
+    enum CodingKeys: String, CodingKey {
+        case id = "_id"
+        case file
+        case text
+        case studentID
+        case studentName
+        case peerID
+        case peerName
+        case supervisorID
+        case supervisorName
+        case supervisorComment
+        case assignmentID
+    }
+}

@@ -23,7 +23,16 @@ class AssignmentsViewModel {
     // MARK: - Methods
 
     func getAllAssignments() {
-        guard let courseID = AppManager.shared.course?.courseID else { return }
+        var courseID: String?
+        switch Role.getRole() {
+        case .student:
+            courseID = AppManager.shared.course?.courseID
+        case .supervisor:
+            courseID = AppManager.shared.courseStudents?.courseID
+        case .none:
+            fatalError()
+        }
+        guard let courseID = courseID else { return }
         let route = SubmissionsRouter.getAssignments(courseID: courseID)
         BaseClient.shared.performRequest(router: route, type: [Assignment].self) { [weak self] result in
             switch result {

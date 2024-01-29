@@ -26,13 +26,13 @@ class CircularProgressView: UIView {
 
     private func setupLayers() {
         // Background layer for the unfilled part of the circle
-        backgroundLayer.lineWidth = 10
+        backgroundLayer.lineWidth = 8
         backgroundLayer.fillColor = UIColor.clear.cgColor
         backgroundLayer.strokeColor = UIColor.myGray.cgColor
         layer.addSublayer(backgroundLayer)
 
         // Shape layer for the filled part of the circle
-        shapeLayer.lineWidth = 10
+        shapeLayer.lineWidth = 8
         shapeLayer.fillColor = UIColor.clear.cgColor
         shapeLayer.strokeColor = UIColor.mySecondary.cgColor // Change to your desired color
         layer.addSublayer(shapeLayer)

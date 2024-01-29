@@ -89,16 +89,22 @@ class SubmissionViewController: UIViewController, GradProNavigationControllerPro
 
     private func configureViewType() {
         footerView.changePrimaryButtonType(type: .primary)
-        switch viewModel.tagType {
-        case .notSubmitted:
-            hideEditButton()
+        if Role.getRole() == .supervisor {
             footerView.changePrimaryButtonType(type: .primary)
-            footerView.changePrimaryButtonText(text: "UPLOAD")
-        case .submitted:
-            addEditButton()
-            footerView.isHidden = false
-            footerView.changePrimaryButtonType(type: .delete)
-            footerView.changePrimaryButtonText(text: "DELETE")
+            footerView.changePrimaryButtonText(text: "GRADE")
+            hideEditButton()
+        } else {
+            switch viewModel.tagType {
+            case .notSubmitted:
+                hideEditButton()
+                footerView.changePrimaryButtonType(type: .primary)
+                footerView.changePrimaryButtonText(text: "UPLOAD")
+            case .submitted:
+                addEditButton()
+                footerView.isHidden = false
+                footerView.changePrimaryButtonType(type: .delete)
+                footerView.changePrimaryButtonText(text: "DELETE")
+            }
         }
         if DateUtils.shared.isAssignmentDue(dateString: viewModel.assignment?.deadline ?? "") {
             footerView.isHidden = true
@@ -161,8 +167,8 @@ class SubmissionViewController: UIViewController, GradProNavigationControllerPro
         navigationController?.present(navController, animated: true)
     }
 
-    func viewText(text: String) {
-        let viewController = ContentDisplayViewController(type: .showText(text))
+    func viewText(text: String, canSupervisorEdit: Bool) {
+        let viewController = ContentDisplayViewController(type: .showText(text, canSupervisorEdit))
         let navController = UINavigationController(rootViewController: viewController)
         navigationController?.present(navController, animated: true)
     }
@@ -227,7 +233,10 @@ extension SubmissionViewController: UITableViewDelegate, UITableViewDataSource {
             handleFile(file)
         case .uploadedText:
             guard let text = viewModel.submission?.text else { return }
-            viewText(text: text)
+            viewText(text: text, canSupervisorEdit: false)
+        case .comments:
+            guard let text = viewModel.submission?.supervisorComment else { return }
+            viewText(text: text, canSupervisorEdit: false)
         default:
             return
         }
@@ -236,7 +245,12 @@ extension SubmissionViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension SubmissionViewController: FooterButtonViewDelegate {
     func primaryButtonTapped() {
-        if viewModel.tagType == .notSubmitted {
+        if Role.getRole() == .supervisor {
+            let viewController = ContentDisplayViewController(type: .showText(AppManager.shared.selectedSubmission?.supervisorComment ?? "", true))
+            viewController.delegate = self
+            let navController = UINavigationController(rootViewController: viewController)
+            navigationController?.present(navController, animated: true)
+        } else if viewModel.tagType == .notSubmitted {
             let viewController = ContentDisplayViewController(type: .addSubmission)
             viewController.delegate = self
             let navController = UINavigationController(rootViewController: viewController)
@@ -251,7 +265,9 @@ extension SubmissionViewController: FooterButtonViewDelegate {
 extension SubmissionViewController: ContentDelegate {
     func saveSubmission(file: MyFile?, text: String?) {
         startLoading()
-        if file == nil && viewModel.tagType == .submitted {
+        if Role.getRole() == .supervisor && text != nil{
+            viewModel.addSupervisorText(text: text)
+        } else if file == nil && viewModel.tagType == .submitted {
             viewModel.editText(text: text)
         } else {
             viewModel.addSubmission(file: file, text: text)

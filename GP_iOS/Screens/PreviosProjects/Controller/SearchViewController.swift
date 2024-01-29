@@ -224,6 +224,7 @@ extension SearchViewController: UISearchBarDelegate {
         viewModel.searchFilterModel.page = 1
         viewModel.searchFilterModel.projectName = searchText.isEmpty ? nil : searchText
         configureFilterButton()
+        startLoading()
         viewModel.fetchPrevProjects()
     }
 }

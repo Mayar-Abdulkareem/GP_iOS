@@ -9,7 +9,7 @@ import UIKit
 
 class CourseViewController: UIViewController, GradProNavigationControllerProtocol {
     weak var coordinator: CourseCoordinator?
-    var viewModel: HomeViewModel?
+    var viewModel: HomeViewModelProtocol?
 
     private let collectionView: UICollectionView = {
         let collectionViewLayout = UICollectionViewFlowLayout()
@@ -63,7 +63,7 @@ extension CourseViewController: UICollectionViewDelegate,
                                 UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return (viewModel?.courseCollectionViewCell.count ?? 0) + 1
+        return (viewModel?.getCoursesCellsModel().count ?? 0) + 1
     }
 
     func collectionView(
@@ -82,7 +82,7 @@ extension CourseViewController: UICollectionViewDelegate,
                 withReuseIdentifier: CourseCollectionViewCell.identifier,
                 for: indexPath
             ) as? CourseCollectionViewCell ?? CourseCollectionViewCell()
-            courseCell.configureCell(model: viewModel?.courseCollectionViewCell[indexPath.item - 1])
+            courseCell.configureCell(model: viewModel?.getCoursesCellsModel()[indexPath.item - 1])
             return courseCell
         }
     }
@@ -90,13 +90,13 @@ extension CourseViewController: UICollectionViewDelegate,
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch indexPath.item {
         case 1:
-            coordinator?.showPeerFlow()
-        case 2:
             coordinator?.showBoardFlow()
-        case 3:
+        case 2:
             coordinator?.showAssignmentsViewController()
-        case 4:
+        case 3:
             coordinator?.showRequestsViewController()
+        case 4:
+            coordinator?.showPeerFlow()
         default:
             print("Something Is Wrong")
         }

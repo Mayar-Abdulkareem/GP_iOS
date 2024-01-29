@@ -18,12 +18,23 @@ enum SubmissionCellType: Int, CaseIterable {
     case comments
 }
 
+//class SubmissionViewModel {
+//
+//}
+//
+//class StudentSubmissionViewModel: SubmissionViewModel {
+//
+//}
+
+//class SupervisorSubmissoinViewModel: SubmissionViewModel {
+//
+//}
+
 class SubmissionViewModel {
 
     var cellTypes: [SubmissionCellType] = SubmissionCellType.allCases
     var tagType = TagType.notSubmitted
     var submission: Submission?
-
     let assignment: Assignment?
 
     var cellModels: [LabelIconCellModel] { return [
@@ -69,10 +80,10 @@ class SubmissionViewModel {
             icon: UIImage.SystemImages.uploadedText.image,
             prefixText: "Supervisor Comment",
             valueText: submission?.supervisorComment ?? "No comment",
+            isMoreIconHidden: submission?.supervisorComment == nil || submission?.supervisorComment == "",
             isLastCell: true
         )
-    ]
-    }
+    ]}
 
     init() {
         assignment = AppManager.shared.assignment
@@ -119,10 +130,22 @@ class SubmissionViewModel {
     }
 
     func getSubmission() {
-        guard let regID = AuthManager.shared.regID,
-              let courseID = AppManager.shared.course?.courseID,
+        var studentID: String?
+        var courseID: String?
+        switch Role.getRole() {
+        case .student:
+            studentID = AuthManager.shared.regID
+            courseID = AppManager.shared.course?.courseID
+        case .supervisor:
+            studentID = AppManager.shared.selectedSubmission?.studentID
+            courseID = AppManager.shared.courseStudents?.courseID
+        case .none:
+            fatalError()
+        }
+        guard let studentID = studentID,
+              let courseID = courseID,
               let assignmentID = AppManager.shared.assignment?.id else { return }
-        let route = SubmissionsRouter.getSubmission(studentID: regID, courseID: courseID, assignmentID: assignmentID)
+        let route = SubmissionsRouter.getSubmission(studentID: studentID, courseID: courseID, assignmentID: assignmentID)
         BaseClient.shared.performRequest(router: route, type: Submission.self) { [weak self] result in
             switch result {
             case .success(let data):
@@ -171,6 +194,28 @@ class SubmissionViewModel {
                 }
                 self?.updateCellTypes()
                 self?.onSubmissionFetched?()
+            case .failure(let error):
+                self?.onShowError?(error.localizedDescription)
+            }
+        }
+    }
+
+    func addSupervisorText(text: String?) {
+        guard let submissionID = AppManager.shared.selectedSubmission?.id,
+              let text = text else { return }
+        let route = SubmissionsRouter.addSupervisorComment(submissionID: submissionID, comment: text)
+        BaseClient.shared.performRequest(router: route, type: String.self) { [weak self] result in
+            switch result {
+            case .success:
+                self?.getSubmission()
+//                self?.submission = data
+//                if (data.id == nil) {
+//                    self?.tagType = .notSubmitted
+//                } else {
+//                    self?.tagType = .submitted
+//                }
+//                self?.updateCellTypes()
+//                self?.onSubmissionFetched?()
             case .failure(let error):
                 self?.onShowError?(error.localizedDescription)
             }

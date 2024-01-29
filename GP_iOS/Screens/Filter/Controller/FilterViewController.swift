@@ -40,7 +40,7 @@ class FilterViewController: UIViewController, GradProNavigationControllerProtoco
     private lazy var footerView = {
         let footerView = FooterButtonView(
             primaryButtonType: .disabled,
-            primaryButtonTitle: String.LocalizedKeys.filterTitle.localized,
+            primaryButtonTitle: "SAVE",
             secondaryButtonType: .disabled,
             secondaryButtonTitle: nil
         )
@@ -107,7 +107,7 @@ class FilterViewController: UIViewController, GradProNavigationControllerProtoco
     @objc func clearButtonTapped() {
         viewModel.selectedFilterRows.removeAll()
         tableView.reloadData()
-        updateFilterButtonState()
+        footerView.changePrimaryButtonType(type: .primary)
     }
 }
 

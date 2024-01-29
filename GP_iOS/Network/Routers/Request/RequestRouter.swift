@@ -15,6 +15,9 @@ enum RequestRouter: BaseRouter {
     case acceptPeerRequest(regID: String, peerID: String)
     case declinePeerRequest(peerID: String)
     case updateSkillsVector(regID: String, skillsVector: String)
+    case getSupervisorRequests(receiverID: String, courseID: String)
+    case acceptSupervisorRequest(senderID: String, receiverID: String, courseID: String)
+    case declineSupervisorRequest(studentID: String)
 
     // MARK: Paths
 
@@ -29,6 +32,12 @@ enum RequestRouter: BaseRouter {
             return "/requests/declinePeerRequest"
         case .updateSkillsVector:
             return "/student/updateSkillsVector"
+        case .getSupervisorRequests:
+            return "/requests/getSupervisorRequests"
+        case .acceptSupervisorRequest:
+            return "/requests/acceptSupervisorRequest"
+        case .declineSupervisorRequest(let studentID):
+            return "/requests/declineSupervisorRequest/\(studentID)"
         }
     }
 
@@ -36,7 +45,12 @@ enum RequestRouter: BaseRouter {
 
     /// Specify the HTTP method for each case
     var method: HTTPMethod {
-        return .put
+        switch self {
+        case .declineSupervisorRequest:
+            return .delete
+        default:
+            return .put
+        }
     }
 
     // MARK: Parameters
@@ -60,6 +74,19 @@ enum RequestRouter: BaseRouter {
                 "regID": regID,
                 "skillsVector": skillsVector
             ]
+        case .getSupervisorRequests(receiverID: let receiverID, courseID: let courseID):
+            return [
+                "receiverID": receiverID,
+                "courseID": courseID
+            ]
+        case .acceptSupervisorRequest(senderID: let senderID, receiverID: let receiverID, courseID: let courseID):
+            return [
+                "senderID": senderID,
+                "receiverID": receiverID,
+                "courseID": courseID
+            ]
+        case .declineSupervisorRequest:
+            return nil
         }
     }
 }

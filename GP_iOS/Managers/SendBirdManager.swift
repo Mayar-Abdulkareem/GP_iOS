@@ -12,7 +12,7 @@ import SendbirdUIKit
 class SendBirdManager {
     static let shared = SendBirdManager()
 
-    private let appID = "6A40637C-F859-4DBC-86E4-15E2B553A67A"
+    private let appID = "05A974A5-CF55-44D8-BE52-74295F78F379"
 
     //var currentChannel: GroupChannel?
 
@@ -29,10 +29,11 @@ class SendBirdManager {
     }
 
     func connectUser() {
+        self.setTheme()
         guard let regID = AuthManager.shared.regID,
               let name = AppManager.shared.profile?.name else { return }
         let image = AppManager.shared.profile?.profileImage
-        self.setTheme()
+
 
         SendbirdChat.connect(userId: regID) { user, error in
             guard let user = user, error == nil else {

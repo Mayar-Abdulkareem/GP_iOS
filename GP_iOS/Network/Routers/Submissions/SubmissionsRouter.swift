@@ -18,6 +18,8 @@ enum SubmissionsRouter: BaseRouter {
     case addSubmission(mySubmission: MySubmission)
     case deleteSubmission(submissionID: String)
     case editText(submissionId: String, text: String)
+    case getSupervisorSubmissions(assignmentID: String, supervisorID: String)
+    case addSupervisorComment(submissionID: String, comment: String)
 
     // MARK: Paths
 
@@ -34,6 +36,10 @@ enum SubmissionsRouter: BaseRouter {
             return "/submissions/\(submissionID)"
         case .editText:
             return "/submissions/editText"
+        case .getSupervisorSubmissions:
+            return "/submissions/getSupervisorSubmissions"
+        case .addSupervisorComment:
+            return "/submissions/addComment"
         }
     }
 
@@ -52,6 +58,10 @@ enum SubmissionsRouter: BaseRouter {
             return .delete
         case .editText:
             return .post
+        case .getSupervisorSubmissions:
+            return .post
+        case .addSupervisorComment(submissionID: let submissionID, comment: let comment):
+            return .put
         }
     }
 
@@ -78,6 +88,16 @@ enum SubmissionsRouter: BaseRouter {
             return [
                 "submissionId": submissionId,
                 "newText": text
+            ]
+        case .getSupervisorSubmissions(assignmentID: let assignmentID, supervisorID: let supervisorID):
+            return [
+                "assignmentID": assignmentID,
+                "supervisorID": supervisorID
+            ]
+        case .addSupervisorComment(submissionID: let submissionID, comment: let comment):
+            return [
+                "submissionID": submissionID,
+                "comment": comment
             ]
         }
     }

@@ -36,12 +36,10 @@ class StoreViewController: UIViewController {
         let button = UIButton(type: .contactAdd)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.tintColor = UIColor.gray
+        button.isHidden = viewModel.hideForSupervisor
 
         button.addAction(UIAction { [weak self] _ in
             guard let self = self else { return }
-            self.viewModel.viewType = .addItem
-            self.viewModel.page = .itemInfo
-            self.viewModel.state = .edit
             
             let addEditViewModel = StoreItemAddEditViewModel(viewType: .add, item: Item(id: "", quantity: "1.0", showPhoneNumber: false))
             let vc = StoreItemAddEditViewController(viewModel: addEditViewModel)
@@ -53,6 +51,21 @@ class StoreViewController: UIViewController {
         return button
     }()
 
+    lazy var searchAndAddStackView: UIStackView = {
+        let stackView = UIStackView(
+            arrangedSubviews: [
+                searchBar,
+                addButton
+            ]
+        )
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.spacing = 8
+        stackView.axis = .horizontal
+        stackView.alignment = .fill
+       // stackView.distribution = .
+        return stackView
+    }()
+
     private lazy var segmentControl: UISegmentedControl = {
         let segmentControl = UISegmentedControl(
             items: [
@@ -62,7 +75,7 @@ class StoreViewController: UIViewController {
         )
         segmentControl.translatesAutoresizingMaskIntoConstraints = false
         segmentControl.selectedSegmentIndex = 0
-        segmentControl.isHidden = (viewModel.viewType == .addItem)
+        segmentControl.isHidden = viewModel.hideForSupervisor
 
         let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.mySecondary]
         segmentControl.setTitleTextAttributes(textAttributes, for: .normal)
@@ -95,6 +108,21 @@ class StoreViewController: UIViewController {
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
 
         return collectionView
+    }()
+
+    lazy var stackView: UIStackView = {
+        let stackView = UIStackView(
+            arrangedSubviews: [
+                segmentControl,
+                collectionView
+            ]
+        )
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.spacing = 8
+        stackView.axis = .vertical
+        stackView.alignment = .fill
+  //      stackView.distribution = .fill
+        return stackView
     }()
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -154,31 +182,43 @@ class StoreViewController: UIViewController {
     }
 
     private func configureViews() {
-        view.addSubview(searchBar)
-        view.addSubview(addButton)
-        view.addSubview(segmentControl)
-        view.addSubview(collectionView)
+//        view.addSubview(searchBar)
+//        view.addSubview(addButton)
+        view.addSubview(searchAndAddStackView)
+//        view.addSubview(segmentControl)
+//        view.addSubview(collectionView)
+        view.addSubview(stackView)
 
         NSLayoutConstraint.activate([
-            searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
-            searchBar.trailingAnchor.constraint(equalTo: addButton.leadingAnchor, constant: 0),
-            searchBar.heightAnchor.constraint(equalToConstant: 44),
+            searchAndAddStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            searchAndAddStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
+            searchAndAddStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8),
+            searchAndAddStackView.heightAnchor.constraint(equalToConstant: 44),
 
-            addButton.bottomAnchor.constraint(equalTo: segmentControl.topAnchor, constant: -8),
-            addButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            addButton.widthAnchor.constraint(equalTo: searchBar.heightAnchor),
-            addButton.heightAnchor.constraint(equalTo: searchBar.heightAnchor),
+//            searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+//            searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
+//            searchBar.trailingAnchor.constraint(equalTo: addButton.leadingAnchor, constant: 0),
+//            searchBar.heightAnchor.constraint(equalToConstant: 44),
+//
+//            addButton.bottomAnchor.constraint(equalTo: segmentControl.topAnchor, constant: -8),
+//            addButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+//            addButton.widthAnchor.constraint(equalTo: searchBar.heightAnchor),
+//            addButton.heightAnchor.constraint(equalTo: searchBar.heightAnchor),
 
-            segmentControl.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 8),
-            segmentControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            segmentControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            segmentControl.heightAnchor.constraint(equalToConstant: 35),
+//            segmentControl.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 8),
+//            segmentControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+//            segmentControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+//            segmentControl.heightAnchor.constraint(equalToConstant: 35),
+//
+//            collectionView.topAnchor.constraint(equalTo: segmentControl.bottomAnchor, constant: 8),
+//            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+//            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
+//            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
 
-            collectionView.topAnchor.constraint(equalTo: segmentControl.bottomAnchor, constant: 8),
-            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            stackView.topAnchor.constraint(equalTo: searchAndAddStackView.bottomAnchor, constant: 8),
+            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
+            stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
 
@@ -239,8 +279,8 @@ extension StoreViewController: UICollectionViewDelegate,
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        AppManager.shared.item = viewModel.items[indexPath.row]
-        let viewModel = ItemDetailsViewModel(item: viewModel.items[indexPath.row])
+        AppManager.shared.item = viewModel.items[indexPath.item]
+        let viewModel = ItemDetailsViewModel(item: viewModel.items[indexPath.item])
         let viewController = StoreItemDetailsViewController(viewModel: viewModel)
         viewController.delegate = self
         let navController = UINavigationController(rootViewController: viewController)

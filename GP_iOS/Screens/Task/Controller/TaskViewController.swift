@@ -29,7 +29,7 @@ class TaskViewController: UIViewController {
         let button = UIButton(configuration: configuration, primaryAction: nil)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.tintColor = UIColor.mySecondary
-        button.isHidden = viewModel.editButtonIsHidden
+        button.isHidden = viewModel.editButtonIsHidden || Role.getRole() == .supervisor
 
         button.addAction(UIAction { [weak self] _ in
             self?.viewModel.taskModel.viewType = .edit
@@ -48,7 +48,7 @@ class TaskViewController: UIViewController {
         let button = UIButton(configuration: configuration, primaryAction: nil)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.tintColor = UIColor.mySecondary
-        button.isHidden = viewModel.deleteButtonIsHidden
+        button.isHidden = viewModel.deleteButtonIsHidden || Role.getRole() == .supervisor
 
         button.addAction(UIAction {
             [weak self] _ in

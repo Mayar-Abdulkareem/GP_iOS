@@ -36,10 +36,17 @@ class CourseCoordinator: Coordinator {
     }
 
     func showBoardFlow() {
-        let coordinator = BoardCoordinator(navigationController: navigationController)
-        coordinator.parentCoordinator = self
-        childCoordinators.append(coordinator)
-        coordinator.start()
+//        switch Role.getRole() {
+//        case .student:
+            let coordinator = BoardCoordinator(navigationController: navigationController)
+            coordinator.parentCoordinator = self
+            childCoordinators.append(coordinator)
+            coordinator.start()
+//        case .supervisor:
+//
+//        case .none:
+//            fatalError()
+//        }
     }
 
     func showAssignmentsViewController() {
@@ -49,8 +56,16 @@ class CourseCoordinator: Coordinator {
     }
 
     func showSubmissionsViewController() {
-        let submissionViewController = SubmissionViewController()
-        navigationController.pushViewController(submissionViewController, animated: true)
+        switch Role.getRole() {
+        case .student:
+            let submissionViewController = SubmissionViewController()
+            navigationController.pushViewController(submissionViewController, animated: true)
+        case .supervisor:
+            let supervisorAssignmentViewController = SupervisorAssignmentViewController()
+            navigationController.pushViewController(supervisorAssignmentViewController, animated: true)
+        case .none:
+            fatalError()
+        }
     }
 
     func showRequestsViewController() {

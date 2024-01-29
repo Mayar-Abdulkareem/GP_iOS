@@ -28,7 +28,7 @@ class HomeCoordinator: Coordinator {
         navigationController.pushViewController(homeViewController, animated: false)
     }
 
-    func showCourseViewController(viewModel: HomeViewModel) {
+    func showCourseViewController(viewModel: HomeViewModelProtocol) {
         let courseViewController = CourseViewController()
         courseViewController.viewModel = viewModel
         let navController = UINavigationController(rootViewController: courseViewController)

@@ -103,6 +103,11 @@ extension AssignmentsViewController: UITableViewDelegate, UITableViewDataSource 
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         AppManager.shared.assignment = viewModel.assignments[indexPath.row]
-        coordinator?.showSubmissionsViewController()
+//        switch Role.getRole() {
+//        case .student:
+            coordinator?.showSubmissionsViewController()
+//        case .supervisor:
+//
+//        }
     }
 }

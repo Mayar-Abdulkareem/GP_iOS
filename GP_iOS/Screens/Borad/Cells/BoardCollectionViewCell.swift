@@ -151,11 +151,11 @@ class BoardCollectionViewCell: UICollectionViewCell {
     }
 
     private func setupEnabled(isLastCell: Bool) {
-        deleteColumnButton.isHidden = isLastCell
+        deleteColumnButton.isHidden = isLastCell || (Role.getRole() == .supervisor)
         titleTextFiled.isHidden = isLastCell
         tableView.isHidden = isLastCell
-        addTaskButton.isHidden = isLastCell
-        addColumnButton.isHidden = !isLastCell
+        addTaskButton.isHidden = isLastCell || (Role.getRole() == .supervisor)
+        addColumnButton.isHidden = !isLastCell || (Role.getRole() == .supervisor)
     }
 
     @objc private func deleteButtonTapped() {

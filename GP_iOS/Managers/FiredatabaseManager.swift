@@ -68,7 +68,8 @@ class FiredatabaseManager {
                   let details = requestInfo["details"] as? String else {
                 return
             }
-
+            print(fromID)
+            print(details)
             // Show the notification
             NotificationManager.shared.showNotification(title: "Notification", body: details)
 

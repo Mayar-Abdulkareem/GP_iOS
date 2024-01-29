@@ -11,13 +11,13 @@ import FHAlert
 
 class ProfileViewController: UIViewController, GradProNavigationControllerProtocol {
 
-    private let viewModel = ProfileViewModel()
+    private var viewModel: ProfileViewModelProtocol
 
     private lazy var profileImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.tintColor = .myGray
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         return imageView
     }()
 
@@ -62,6 +62,22 @@ class ProfileViewController: UIViewController, GradProNavigationControllerProtoc
         return tableView
     }()
 
+    init() {
+        switch Role.getRole() {
+        case .student:
+            viewModel = StudentProfileViewModel()
+        case .supervisor:
+            viewModel = SupervisorProfileViewModel()
+        case .none:
+            fatalError()
+        }
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -79,11 +95,10 @@ class ProfileViewController: UIViewController, GradProNavigationControllerProtoc
         viewModel.onProfileFetched = { [weak self] in
             DispatchQueue.main.async {
                 self?.stopLoading()
-                guard let profile = AppManager.shared.profile else { return }
-                self?.nameLabel.text = profile.name
+                self?.nameLabel.text = self?.viewModel.getName()
                 self?.tableView.reloadData()
 
-                if let image = AppManager.shared.profile?.profileImage {
+                if let image = self?.viewModel.image {
                     let url = URL(string: image)
                     self?.profileImageView.kf.setImage(with: url)
                 } else {
@@ -96,6 +111,8 @@ class ProfileViewController: UIViewController, GradProNavigationControllerProtoc
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         profileImageView.layer.cornerRadius = profileImageView.bounds.size.width / 2
+        //profileImageView.layer.borderWidth = 1 / UIScreen.main.scale
+        profileImageView.layer.borderColor = UIColor.myGray.cgColor
         profileImageView.clipsToBounds = true
     }
 

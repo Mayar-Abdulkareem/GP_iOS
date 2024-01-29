@@ -36,8 +36,24 @@ class HomeViewController: UIViewController {
     }()
 
     weak var coordinator: HomeCoordinator?
-    private var viewModel = HomeViewModel()
+    private var viewModel: HomeViewModelProtocol
 
+    init() {
+        switch Role.getRole() {
+        case .student:
+            viewModel = StudentHomeViewModel()
+        case .supervisor:
+            viewModel = SupervisorHomeViewModel()
+        case .none:
+            fatalError()
+        }
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .darkContent
     }
@@ -118,7 +134,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         case .header:
             return 1
         case .courses:
-            return viewModel.profile?.courses.count ?? 0
+            return viewModel.getCount()
         }
     }
 
@@ -131,7 +147,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             ) as? HeaderTableViewCell
             cell?.configureCell(
                 model: HeaderTableViewCellModel(
-                    title: "Welcome \(viewModel.profile?.name ?? "")",
+                    title: "Welcome \(viewModel.getName())",
                     subtitle: "You're one step closer to graduating on each launch!",
                     image: .project
                 )
@@ -152,7 +168,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if case .courses = viewModel.sections[indexPath.section] {
-            AppManager.shared.course = viewModel.profile?.courses[indexPath.row]
+            //AppManager.shared.course = viewModel.profile?.courses[indexPath.row]
+            viewModel.onCourseTapped(index: indexPath.row)
             coordinator?.showCourseViewController(viewModel: viewModel)
         }
     }

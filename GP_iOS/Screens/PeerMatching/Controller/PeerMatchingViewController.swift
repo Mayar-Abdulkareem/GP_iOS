@@ -7,6 +7,7 @@
 
 import UIKit
 import FHAlert
+//import FirebaseAnalytics
 
 class PeerMatchingViewController: UIViewController, GradProNavigationControllerProtocol {
 
@@ -17,6 +18,7 @@ class PeerMatchingViewController: UIViewController, GradProNavigationControllerP
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorStyle = .none
         tableView.separatorColor = .clear
+        tableView.backgroundColor = UIColor.myPrimary
 
         tableView.register(
             MySkillsTableViewCell.self,
@@ -63,8 +65,8 @@ class PeerMatchingViewController: UIViewController, GradProNavigationControllerP
     }
 
     private func configureViews() {
-        view.backgroundColor = .white
-        
+        view.backgroundColor = .myPrimary
+
         addBackButton()
         addNavBar(with: "Peer Matching")
 
@@ -210,6 +212,7 @@ extension PeerMatchingViewController: SkillsViewControllerProtocol {
 
 extension PeerMatchingViewController: FooterButtonViewDelegate {
     func primaryButtonTapped() {
+        //Analytics.logEvent("Button_Clicked", parameters: nil)
         startLoading()
         viewModel.matchWithPeer()
     }

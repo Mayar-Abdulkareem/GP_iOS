@@ -10,37 +10,72 @@ import UIKit
 class MoreViewController: UIViewController {
     weak var coordinator: MoreCoordinator?
 
-    private let moreCellModel = [
-        MoreCellModel(
-            title: String.LocalizedKeys.profileTitle.localized,
-            icon: UIImage.SystemImages.profile.image
-        ),
-        MoreCellModel(
-            title: String.LocalizedKeys.registerTitle.localized,
-            icon: UIImage.SystemImages.register.image
-        ),
-        MoreCellModel(
-            title: String.LocalizedKeys.logoutTitle.localized,
-            icon: UIImage.SystemImages.logout.image
-        ),
+    private var moreCellModel: [MoreCellModel] {
+        switch Role.getRole() {
+        case .student:
+            var cells = [
+                MoreCellModel(
+                    title: String.LocalizedKeys.profileTitle.localized,
+                    icon: UIImage.SystemImages.profile.image
+                ),
+                MoreCellModel(
+                    title: String.LocalizedKeys.registerTitle.localized,
+                    icon: UIImage.SystemImages.register.image
+                ),
+                MoreCellModel(
+                    title: String.LocalizedKeys.logoutTitle.localized,
+                    icon: UIImage.SystemImages.logout.image
+                ),
+            ]
+            if AppManager.shared.profile?.registrationFinished ?? false {
+                cells.remove(at: 1)
+            }
+            return cells
+        case .supervisor:
+            return [
+                MoreCellModel(
+                    title: String.LocalizedKeys.profileTitle.localized,
+                    icon: UIImage.SystemImages.profile.image
+                ),
+                MoreCellModel(
+                    title: String.LocalizedKeys.logoutTitle.localized,
+                    icon: UIImage.SystemImages.logout.image
+                ),
+            ]
+        case .none:
+            fatalError()
+        }
+    }
 //        MoreCellModel(
-//            title: "Students",
-//            icon: UIImage.SystemImages.logout.image
+//            title: String.LocalizedKeys.profileTitle.localized,
+//            icon: UIImage.SystemImages.profile.image
 //        ),
 //        MoreCellModel(
-//            title: "Coueses",
-//            icon: UIImage.SystemImages.logout.image
+//            title: String.LocalizedKeys.registerTitle.localized,
+//            icon: UIImage.SystemImages.register.image
 //        ),
 //        MoreCellModel(
-//            title: "Professors",
+//            title: String.LocalizedKeys.logoutTitle.localized,
 //            icon: UIImage.SystemImages.logout.image
 //        ),
-//        MoreCellModel(
-//            title: "Assigments",
-//            icon: UIImage.SystemImages.logout.image
-//        ),
+        //        MoreCellModel(
+        //            title: "Students",
+        //            icon: UIImage.SystemImages.logout.image
+        //        ),
+        //        MoreCellModel(
+        //            title: "Coueses",
+        //            icon: UIImage.SystemImages.logout.image
+        //        ),
+        //        MoreCellModel(
+        //            title: "Professors",
+        //            icon: UIImage.SystemImages.logout.image
+        //        ),
+        //        MoreCellModel(
+        //            title: "Assigments",
+        //            icon: UIImage.SystemImages.logout.image
+        //        ),
 
-    ]
+//    ]}
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -81,7 +116,7 @@ class MoreViewController: UIViewController {
     }
 
     private func configureViews() {
-        view.backgroundColor = .white
+        view.backgroundColor = .myPrimary
         view.addSubview(mainView)
         view.addSubview(tableView)
 
@@ -117,13 +152,18 @@ extension MoreViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch indexPath.row {
-        case 0:
-            coordinator?.showProfileViewController()
-        case 1:
-            coordinator?.showRegisterFlow()
-        case 2:
-            coordinator?.didLogout()
+        let selectedItem = moreCellModel[indexPath.row]
+
+            switch selectedItem.title {
+            case String.LocalizedKeys.profileTitle.localized:
+                coordinator?.showProfileViewController()
+            case String.LocalizedKeys.registerTitle.localized:
+                coordinator?.showRegisterFlow()
+            case String.LocalizedKeys.logoutTitle.localized:
+                coordinator?.didLogout()
+            default:
+                break 
+            }
 //        case 3:
 //            let vc = AdminStudentsViewController()
 //            let navController = UINavigationController(rootViewController: vc)
@@ -147,9 +187,9 @@ extension MoreViewController: UITableViewDelegate, UITableViewDataSource {
 //            navController.modalPresentationStyle = .fullScreen
 //            present(navController, animated: true)
 
-        default:
-            break
-        }
+//        default:
+//            break
+//        }
         if let selectedIndexPath = tableView.indexPathForSelectedRow {
             tableView.deselectRow(at: selectedIndexPath, animated: true)
         }

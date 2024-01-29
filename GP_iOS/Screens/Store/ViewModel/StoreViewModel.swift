@@ -7,21 +7,32 @@
 
 import Alamofire
 
+
+
 class StoreViewModel {
 
     // MARK: - Variables
 
     private(set) var totalItemsCount = 0
 
-    var viewType = ViewType.itemDetails
-    var page = Page.itemInfo
-    var state = State.normal
-
     var storeFilterModel = StoreFilterModel(page: 1, title: nil, regID: nil, sortByPrice: nil)
     var items = [StoreItem]()
     var item = Item(id: "")
     var isLastResult = false
     var isFetching = false
+
+    var role = Role.getRole()
+
+    var hideForSupervisor: Bool {
+        switch role {
+        case .student:
+            return false
+        case .supervisor:
+            return true
+        case .none:
+            return false
+        }
+    }
 
     // MARK: - Call Backs
 

@@ -8,8 +8,8 @@
 import UIKit
 
 struct HomeTableViewCellModel {
-    let name: String
-    let supervisor: String
+    let title: String
+    let subtitle: String
     let background: UIColor
     let titleColor: UIColor
     let subTitleColor: UIColor
@@ -74,8 +74,8 @@ class HomeTableViewCell: UITableViewCell {
 
     func configureCell(model: HomeTableViewCellModel) {
         viewWithShadow.backgroundColor = model.background
-        courseNameLabel.text = model.name
-        supervisorNameLabel.text = model.supervisor
+        courseNameLabel.text = model.title
+        supervisorNameLabel.text = model.subtitle
         courseNameLabel.textColor = model.titleColor
         supervisorNameLabel.textColor = model.subTitleColor
     }

@@ -38,6 +38,7 @@ class ItemAddEditQuantityTableViewCell: UITableViewCell {
     lazy var quantityStepper: ItemEditStepperView = {
         let stepper = ItemEditStepperView()
         stepper.translatesAutoresizingMaskIntoConstraints = false
+        stepper.value = 1.0
         return stepper
     }()
 

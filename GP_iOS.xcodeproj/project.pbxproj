@@ -81,7 +81,6 @@
 		2F9E71E22B389A3300767A4D /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9E71E12B389A3300767A4D /* Item.swift */; };
 		2F9E71E52B389DCD00767A4D /* StoreRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9E71E42B389DCD00767A4D /* StoreRouter.swift */; };
 		2F9E71E72B38C7B200767A4D /* StoreFilterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9E71E62B38C7B200767A4D /* StoreFilterModel.swift */; };
-		2F9E71E92B38E88F00767A4D /* ItemDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9E71E82B38E88F00767A4D /* ItemDetailsViewController.swift */; };
 		2F9E71EC2B38F71600767A4D /* StoreCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9E71EB2B38F71600767A4D /* StoreCustomView.swift */; };
 		2F9E71EE2B3B1DE100767A4D /* StoreViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9E71ED2B3B1DE100767A4D /* StoreViewType.swift */; };
 		2F9E71F02B3C469000767A4D /* SendBirdManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9E71EF2B3C469000767A4D /* SendBirdManager.swift */; };
@@ -137,6 +136,10 @@
 		2FB7A1412B15F0A000923D02 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB7A1402B15F0A000923D02 /* ProfileViewController.swift */; };
 		2FB7A1432B15F10500923D02 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB7A1422B15F10500923D02 /* RegisterViewController.swift */; };
 		2FE3D8882B64774500015800 /* SkillsHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE3D8872B64774500015800 /* SkillsHeaderTableViewCell.swift */; };
+		2FE3D88B2B65AB8000015800 /* SupervisorAssignmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE3D88A2B65AB8000015800 /* SupervisorAssignmentViewController.swift */; };
+		2FE3D88D2B65AD0300015800 /* SupervisorAssignmentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE3D88C2B65AD0300015800 /* SupervisorAssignmentViewModel.swift */; };
+		2FE3D8952B66A13400015800 /* SupervisorBoardListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE3D8942B66A13400015800 /* SupervisorBoardListViewController.swift */; };
+		2FE3D8982B66A17900015800 /* SupervisorBoardListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE3D8972B66A17900015800 /* SupervisorBoardListViewModel.swift */; };
 		2FFE0EB02B4579FA0038F2F3 /* RegisterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE0EAF2B4579FA0038F2F3 /* RegisterTableViewCell.swift */; };
 		2FFE0EB42B45966F0038F2F3 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE0EB32B45966F0038F2F3 /* CircularProgressView.swift */; };
 		2FFE0EB92B45B4F30038F2F3 /* MatchingPeerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFE0EB82B45B4F30038F2F3 /* MatchingPeerManager.swift */; };
@@ -266,7 +269,6 @@
 		2F9E71E12B389A3300767A4D /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		2F9E71E42B389DCD00767A4D /* StoreRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreRouter.swift; sourceTree = "<group>"; };
 		2F9E71E62B38C7B200767A4D /* StoreFilterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreFilterModel.swift; sourceTree = "<group>"; };
-		2F9E71E82B38E88F00767A4D /* ItemDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailsViewController.swift; sourceTree = "<group>"; };
 		2F9E71EB2B38F71600767A4D /* StoreCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreCustomView.swift; sourceTree = "<group>"; };
 		2F9E71ED2B3B1DE100767A4D /* StoreViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreViewType.swift; sourceTree = "<group>"; };
 		2F9E71EF2B3C469000767A4D /* SendBirdManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendBirdManager.swift; sourceTree = "<group>"; };
@@ -322,6 +324,10 @@
 		2FB7A1402B15F0A000923D02 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		2FB7A1422B15F10500923D02 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		2FE3D8872B64774500015800 /* SkillsHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillsHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		2FE3D88A2B65AB8000015800 /* SupervisorAssignmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupervisorAssignmentViewController.swift; sourceTree = "<group>"; };
+		2FE3D88C2B65AD0300015800 /* SupervisorAssignmentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupervisorAssignmentViewModel.swift; sourceTree = "<group>"; };
+		2FE3D8942B66A13400015800 /* SupervisorBoardListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupervisorBoardListViewController.swift; sourceTree = "<group>"; };
+		2FE3D8972B66A17900015800 /* SupervisorBoardListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupervisorBoardListViewModel.swift; sourceTree = "<group>"; };
 		2FFE0EAF2B4579FA0038F2F3 /* RegisterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterTableViewCell.swift; sourceTree = "<group>"; };
 		2FFE0EB32B45966F0038F2F3 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		2FFE0EB82B45B4F30038F2F3 /* MatchingPeerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingPeerManager.swift; sourceTree = "<group>"; };
@@ -416,6 +422,7 @@
 		2F4490A22B0578A1002B6975 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				2FE3D8892B65A85700015800 /* Supervisor */,
 				8B348D9E2B63AB3B0049BA79 /* AdminTable */,
 				2F81DEE52B6018B400C88FE6 /* FileDisplay */,
 				2F81DEE22B5ED1C500C88FE6 /* ImageDisplay */,
@@ -1467,6 +1474,65 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
+		2FE3D8892B65A85700015800 /* Supervisor */ = {
+			isa = PBXGroup;
+			children = (
+				2FE3D8922B66A10500015800 /* Board */,
+				2FE3D88F2B66A0A200015800 /* Assignments */,
+			);
+			path = Supervisor;
+			sourceTree = "<group>";
+		};
+		2FE3D88F2B66A0A200015800 /* Assignments */ = {
+			isa = PBXGroup;
+			children = (
+				2FE3D8912B66A0CE00015800 /* ViewModel */,
+				2FE3D8902B66A0B500015800 /* Controller */,
+			);
+			path = Assignments;
+			sourceTree = "<group>";
+		};
+		2FE3D8902B66A0B500015800 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2FE3D88A2B65AB8000015800 /* SupervisorAssignmentViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		2FE3D8912B66A0CE00015800 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2FE3D88C2B65AD0300015800 /* SupervisorAssignmentViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2FE3D8922B66A10500015800 /* Board */ = {
+			isa = PBXGroup;
+			children = (
+				2FE3D8962B66A16300015800 /* ViewModel */,
+				2FE3D8932B66A11300015800 /* Controller */,
+			);
+			path = Board;
+			sourceTree = "<group>";
+		};
+		2FE3D8932B66A11300015800 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2FE3D8942B66A13400015800 /* SupervisorBoardListViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		2FE3D8962B66A16300015800 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2FE3D8972B66A17900015800 /* SupervisorBoardListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		2FFE0EA52B44EA590038F2F3 /* RegisterSupervisor */ = {
 			isa = PBXGroup;
 			children = (
@@ -1540,7 +1606,6 @@
 			isa = PBXGroup;
 			children = (
 				3D6938D42B5DA1A800979EBA /* StoreItemAddEditViewController.swift */,
-				2F9E71E82B38E88F00767A4D /* ItemDetailsViewController.swift */,
 				3D5BA74C2B52FCC70043F812 /* StoreItemDetailsViewController.swift */,
 			);
 			path = Controller;
@@ -1966,6 +2031,7 @@
 				8B348DA92B63B4680049BA79 /* AdminStudentsViewModel.swift in Sources */,
 				2FFE0EC32B48C7920038F2F3 /* ProfileRouter.swift in Sources */,
 				2F9E71F22B3D9A2300767A4D /* UICollectionView+Extension.swift in Sources */,
+				2FE3D88D2B65AD0300015800 /* SupervisorAssignmentViewModel.swift in Sources */,
 				2FA7FCC22B235A5300749D38 /* MoreCoordinator.swift in Sources */,
 				2F9E72182B42180D00767A4D /* StepOneViewController.swift in Sources */,
 				2F81DEA82B5ACE1B00C88FE6 /* RequestsViewController.swift in Sources */,
@@ -1977,6 +2043,7 @@
 				2F9E71E52B389DCD00767A4D /* StoreRouter.swift in Sources */,
 				2F4490B32B057F9D002B6975 /* Student.swift in Sources */,
 				2FFE0ED12B49F0760038F2F3 /* BoardRouter.swift in Sources */,
+				2FE3D8982B66A17900015800 /* SupervisorBoardListViewModel.swift in Sources */,
 				8B348DAB2B63B8700049BA79 /* AdminStudentsViewController.swift in Sources */,
 				2FFE0EEA2B4F6F1F0038F2F3 /* NotificationManager.swift in Sources */,
 				2F81DE952B55944900C88FE6 /* PeerMatchingViewModel.swift in Sources */,
@@ -1986,6 +2053,7 @@
 				2F9E71E72B38C7B200767A4D /* StoreFilterModel.swift in Sources */,
 				2F9E71D82B388C6F00767A4D /* StoreCoordinator.swift in Sources */,
 				2F81DE922B55941300C88FE6 /* PeerMatchingViewController.swift in Sources */,
+				2FE3D88B2B65AB8000015800 /* SupervisorAssignmentViewController.swift in Sources */,
 				2F4490D22B094C17002B6975 /* UIImage+Extension.swift in Sources */,
 				2F81DEB22B5C69D400C88FE6 /* Peer.swift in Sources */,
 				2F5A7C9A2B448F4B00F3EF38 /* TagView.swift in Sources */,
@@ -1999,7 +2067,6 @@
 				2F81DEE42B60155E00C88FE6 /* ImageDisplayViewController.swift in Sources */,
 				2FFE0ECE2B49EB370038F2F3 /* Board.swift in Sources */,
 				2FA7FD082B2EFC3200749D38 /* FooterView.swift in Sources */,
-				2F9E71E92B38E88F00767A4D /* ItemDetailsViewController.swift in Sources */,
 				2F9E72262B42EDAE00767A4D /* RegisterRouter.swift in Sources */,
 				2FFE0EE62B4DA9C70038F2F3 /* TaskModel.swift in Sources */,
 				2F4490A72B0578E3002B6975 /* Coordinator.swift in Sources */,
@@ -2075,6 +2142,7 @@
 				2F9E71EE2B3B1DE100767A4D /* StoreViewType.swift in Sources */,
 				2F81DE672B54297400C88FE6 /* PeerCoordinator.swift in Sources */,
 				2F9E71CC2B35A17C00767A4D /* LabelIconView.swift in Sources */,
+				2FE3D8952B66A13400015800 /* SupervisorBoardListViewController.swift in Sources */,
 				2F81DEA62B5AC32A00C88FE6 /* RequestRouter.swift in Sources */,
 				2F9E72232B42C6FE00767A4D /* StepThreeViewController.swift in Sources */,
 				2FB7A1232B13801E00923D02 /* AccessToken.swift in Sources */,

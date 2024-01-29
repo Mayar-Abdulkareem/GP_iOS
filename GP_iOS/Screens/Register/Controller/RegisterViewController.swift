@@ -29,7 +29,7 @@ class RegisterViewController: UIViewController, GradProNavigationControllerProto
     private let nextStepLabel: UILabel = { 
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.boldSystemFont(ofSize: 15)
+        label.font = UIFont.boldSystemFont(ofSize: 14)
         label.textColor = UIColor.gray
         return label
     }()
@@ -107,16 +107,16 @@ class RegisterViewController: UIViewController, GradProNavigationControllerProto
         NSLayoutConstraint.activate([
             progressView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
             progressView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            progressView.widthAnchor.constraint(equalToConstant: 80),
-            progressView.heightAnchor.constraint(equalToConstant: 80),
+            progressView.widthAnchor.constraint(equalToConstant: 75),
+            progressView.heightAnchor.constraint(equalToConstant: 75),
 
-            currentStepLabel.centerYAnchor.constraint(equalTo: progressView.centerYAnchor, constant: -10),
+            currentStepLabel.centerYAnchor.constraint(equalTo: progressView.centerYAnchor, constant: -15),
             currentStepLabel.leadingAnchor.constraint(equalTo: progressView.trailingAnchor, constant: 16),
 
-            nextStepLabel.centerYAnchor.constraint(equalTo: progressView.centerYAnchor, constant: 10),
+            nextStepLabel.centerYAnchor.constraint(equalTo: progressView.centerYAnchor, constant: 15),
             nextStepLabel.leadingAnchor.constraint(equalTo: progressView.trailingAnchor, constant: 16),
 
-            middleView.topAnchor.constraint(equalTo: progressView.bottomAnchor, constant: 8),
+            middleView.topAnchor.constraint(equalTo: progressView.bottomAnchor, constant: 16),
             middleView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             middleView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 

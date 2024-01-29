@@ -23,8 +23,8 @@ class AboutCourseCell: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor.myAccent
         label.numberOfLines = 0
-        label.text = AppManager.shared.course?.supervisorName
         label.font = UIFont.systemFont(ofSize: 12)
+        label.textColor = .gray
         return label
     }()
 
@@ -36,12 +36,29 @@ class AboutCourseCell: UICollectionViewCell {
 
     override init(frame: CGRect) {
         super.init(frame: .zero)
+        fillText()
         configureViews()
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+        fillText()
         configureViews()
+    }
+
+    func fillText() {
+        switch Role.getRole() {
+        case .student:
+            if let course = AppManager.shared.course {
+                courseLabel.text = course.courseName
+                descriptionLabel.text = "Course ID: " + course.courseID + "\nSpervisor: " + course.supervisorName
+            }
+        default:
+            if let course = AppManager.shared.courseStudents {
+                courseLabel.text = course.courseName
+                descriptionLabel.text = "Course ID: " + course.courseID
+            }
+        }
     }
 
     private func configureViews() {
@@ -49,11 +66,6 @@ class AboutCourseCell: UICollectionViewCell {
         addViewWithConstant(courseDetailView, constant: 8)
         courseDetailView.addSubview(courseLabel)
         courseDetailView.addSubview(descriptionLabel)
-
-        if let course = AppManager.shared.course {
-            courseLabel.text = course.courseName
-            descriptionLabel.text = "Course ID: " + course.courseID + "\nSpervisor: " + course.supervisorName
-        }
 
         NSLayoutConstraint.activate([
             courseLabel.leadingAnchor.constraint(equalTo: courseDetailView.leadingAnchor),

@@ -32,7 +32,7 @@ class MatchingPeerManager {
         for category in categories {
             let categoryTitle = NSAttributedString(string: category.title + "\n",
                                                    attributes: [.foregroundColor: UIColor.black,
-                                                    .font: UIFont.systemFont(ofSize: 18, weight: .semibold)])
+                                                    .font: UIFont.systemFont(ofSize: 14, weight: .semibold)])
             attributedResult.append(categoryTitle)
 
             var categorySkills = [String]()

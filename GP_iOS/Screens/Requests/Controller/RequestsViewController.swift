@@ -10,7 +10,7 @@ import FHAlert
 
 class RequestsViewController: UIViewController, GradProNavigationControllerProtocol {
 
-    private var viewModel = RequestsViewModel()
+    private var viewModel: RequestViewModelProtocol
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -35,12 +35,28 @@ class RequestsViewController: UIViewController, GradProNavigationControllerProto
         return label
     }()
 
+    init() {
+        switch Role.getRole() {
+        case .student:
+            viewModel = StudentRequestViewModel()
+        case .supervisor:
+            viewModel = SupervisorRequestViewModel()
+        case .none:
+            fatalError()
+        }
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
         bindViewModel()
         startLoading()
-        viewModel.setViewType()
+        viewModel.getMyRequests()
     }
 
     private func setupViews() {
@@ -90,10 +106,9 @@ class RequestsViewController: UIViewController, GradProNavigationControllerProto
         }
 
         viewModel.onRequestDeclined = { [weak self] in
-            self?.stopLoading()
             TopAlertView.show(title: "Success", subTitle: "Request declined successfully", type: TopAlertType.success)
-            self?.startLoading()
-            self?.viewModel.setViewType()
+            //self?.startLoading()
+            //self?.viewModel.setViewType()
         }
     }
 
@@ -154,17 +169,20 @@ extension RequestsViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let acceptAction = UIContextualAction(style: .normal, title: "Accept") { [weak self] (action, view, completionHandler) in
-            guard let peerID = self?.viewModel.requests?[indexPath.row].senderID else { return }
-            self?.viewModel.acceptPeerRequest(peerID: peerID)
+            guard let request = self?.viewModel.requests?[indexPath.row] else { return }
+            self?.startLoading()
+            self?.viewModel.acceptRequest(id: request.senderID, name: request.senderName)
             completionHandler(true)
         }
         acceptAction.backgroundColor = .mySecondary
 
         let declineAction = UIContextualAction(style: .destructive, title: "Decline") { [weak self] (action, view, completionHandler) in
             guard let peerID = self?.viewModel.requests?[indexPath.row].senderID else { return }
-            self?.viewModel.declinePeerRequest(peerID: peerID)
+            self?.startLoading()
+            self?.viewModel.declineRequest(id: peerID)
             completionHandler(true)
         }
+
         declineAction.backgroundColor = .systemRed
 
         let configuration = UISwipeActionsConfiguration(actions: [declineAction, acceptAction])

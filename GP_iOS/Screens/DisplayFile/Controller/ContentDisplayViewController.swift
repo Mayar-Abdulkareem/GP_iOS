@@ -10,7 +10,7 @@ import PDFKit
 import UniformTypeIdentifiers
 
 enum ViewControllerType {
-    case showText(String)
+    case showText(String, Bool)
     case addSubmission
     case editSubmission(fileName: String?,text: String?)
 }
@@ -132,8 +132,8 @@ class ContentDisplayViewController: UIViewController, GradProNavigationControlle
                 textView.textColor = .lightGray
             }
             textView.isEditable = true
-        case .showText(let text):
-            configureShowText(text: text)
+        case .showText(let text, let canSupervisorEdit):
+            configureShowText(text: text, canSupervisorEdit: canSupervisorEdit)
         }
     }
 
@@ -168,7 +168,6 @@ class ContentDisplayViewController: UIViewController, GradProNavigationControlle
         view.addSubview(viewWithShadow)
         viewWithShadow.addSubview(uploadButton)
         viewWithShadow.addSubview(fileNameLabel)
-        view.addSubview(footerView)
 
         NSLayoutConstraint.activate([
             viewWithShadow.topAnchor.constraint(equalTo: charCountLabel.bottomAnchor, constant: 24),
@@ -181,13 +180,19 @@ class ContentDisplayViewController: UIViewController, GradProNavigationControlle
 
             fileNameLabel.centerXAnchor.constraint(equalTo: viewWithShadow.centerXAnchor),
             fileNameLabel.centerYAnchor.constraint(equalTo: viewWithShadow.centerYAnchor, constant: 20),
+        ])
+        configureFooterView()
+        updateUploadFileView()
+    }
 
+    func configureFooterView() {
+        view.addSubview(footerView)
+
+        NSLayoutConstraint.activate([
             footerView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             footerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             footerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
-
-        updateUploadFileView()
     }
 
 
@@ -202,18 +207,30 @@ class ContentDisplayViewController: UIViewController, GradProNavigationControlle
 
         if uploadedFileName != nil && uploadedFileName != "" {
             footerView.changePrimaryButtonType(type: .primary)
-            footerView.changeSecondaryButtonType(type: .secondary)
+            footerView.changeSecondaryButtonType(type: .delete)
         }
         if !textView.text.contains("Enter the text ...") && !textView.text.isEmpty {
             footerView.changePrimaryButtonType(type: .primary)
         }
     }
 
-    func configureShowText(text: String) {
-        textView.text = text
-
+    func configureShowText(text: String, canSupervisorEdit: Bool) {
+        if text.isEmpty {
+            textView.text = "Enter the text ..."
+            textView.textColor = .lightGray
+        } else {
+            textView.text = text
+        }
         let charCount = min(text.count, 120)
         updateCharCount(count: charCount)
+
+        if canSupervisorEdit {
+            textView.isEditable = true
+            configureFooterView()
+            footerView.changePrimaryButtonType(type: .primary)
+            footerView.changePrimaryButtonText(text: "SAVE")
+            footerView.showSecondary(isHidden: true)
+        }
     }
 
     func configureAddSubmission() {

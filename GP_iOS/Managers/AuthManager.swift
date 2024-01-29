@@ -7,6 +7,23 @@
 
 import Foundation
 
+enum Role {
+    case student
+    case supervisor
+    case none
+
+    static func getRole() -> Role {
+        switch AuthManager.shared.role {
+        case "student":
+            return .student
+        case "supervisor":
+            return .supervisor
+        default:
+            return .none
+        }
+    }
+}
+
 class AuthManager {
 
     static let shared = AuthManager()

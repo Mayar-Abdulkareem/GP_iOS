@@ -237,6 +237,10 @@ extension StoreItemDetailsViewController: FooterButtonViewDelegate {
 
 extension StoreItemDetailsViewController: ItemAddedOrUpdatedDelegate {
     func itemAddedOrUpdated() {
+        if let item = AppManager.shared.item {
+            viewModel.item = AppManager.shared.item ?? viewModel.item
+        }
+        tableView.reloadData()
         delegate?.refreshMyItems()
     }
 }

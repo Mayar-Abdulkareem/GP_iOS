@@ -18,10 +18,23 @@ class BoardCoordinator: Coordinator {
 
     ///  Start the ``BoardCoordinator``
     func start() {
-        showBoardViewController()
+        showViewController()
     }
 
-    private func showBoardViewController() {
+    private func showViewController() {
+        switch Role.getRole() {
+        case .student:
+            showBoardViewController()
+        case .supervisor:
+            let boardViewController = SupervisorBoardListViewController()
+            boardViewController.coordinator = self
+            navigationController.pushViewController(boardViewController, animated: true)
+        case .none:
+            fatalError()
+        }
+    }
+
+    func showBoardViewController() {
         let boardViewController = BoardViewController()
         boardViewController.coordinator = self
         navigationController.pushViewController(boardViewController, animated: true)

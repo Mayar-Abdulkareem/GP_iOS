@@ -14,7 +14,7 @@ class MySkillsTableViewCell: UITableViewCell {
     private let skillsLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+        label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
         label.numberOfLines = 0
         return label
     }()
