@@ -50,11 +50,9 @@ Contributions to GradPro are welcome! Please refer to the CONTRIBUTING.md for gu
 Some selected screens from the app
 
 ![image](https://i.ibb.co/ygNHF2p/image.png)
+![image](https://i.ibb.co/5hfq7ML/image.png)
 ![image](https://i.ibb.co/3ybV8KV/image.png)
 ![image](https://i.ibb.co/4Vm0Km8/image.png)
-![image](https://i.ibb.co/5hfq7ML/image.png)
-![image](https://i.ibb.co/tJHbzFT/image.png)
-
 
 ## Read more
 For more resources and the project files, visit our [Google Drive folder](https://drive.google.com/drive/folders/1GLZAwa_dn6UE3PcFKim08dd20J7e_46d?usp=sharing).
