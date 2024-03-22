@@ -7,5 +7,10 @@ target 'GP_iOS' do
 
   # Pods for GP_iOS
   pod 'Alamofire'
+  pod 'SendbirdChatSDK', '~> 4.0.0'
+  pod 'SendBirdUIKit'
+  pod 'Kingfisher', '~> 7.0'
+  pod 'Firebase/Database'
+  pod 'Firebase/Auth'
 
 end

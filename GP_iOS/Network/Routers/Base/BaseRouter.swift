@@ -5,8 +5,8 @@
 //  Created by Mayar Abdulkareem - FTS on 06/11/2023.
 //
 
-import Foundation
 import Alamofire
+import UIKit
 
 /// Protocol for API routers
 protocol BaseRouter: URLRequestConvertible {
@@ -16,15 +16,23 @@ protocol BaseRouter: URLRequestConvertible {
 }
 
 extension BaseRouter {
-    /// Retums a URLRequest object based an the provided path, method, and parameter
+
+    var defaultHeaders: HTTPHeaders {
+        return ["Content-Type": "application/json"]
+    }
+
+    /// Returns a URLRequest object based an the provided path, method, and parameter
     func asURLRequest() throws -> URLRequest {
-        let url = try (NetworkConstant.baseURL +
-                       self.path).asURL()
+        let url = try (BuildConfiguration.shared.baseURL +
+                        self.path).asURL()
         var urlRequest = URLRequest(url: url)
-        
+
         // HTTP Method
         urlRequest.httpMethod = method.rawValue
-        
+
+        // Headers
+        urlRequest.headers = defaultHeaders
+
         // Parameters
         if let parameters = parameters {
             do {

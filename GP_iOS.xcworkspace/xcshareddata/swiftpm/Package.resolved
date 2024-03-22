@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "fhalert",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/BassamHilloFoothill/FHAlert",
+      "state" : {
+        "branch" : "master",
+        "revision" : "0708cacdf1486cd5269a329ad36243ea82b709b1"
+      }
+    }
+  ],
+  "version" : 2
+}
